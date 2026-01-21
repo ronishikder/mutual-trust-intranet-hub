@@ -89,11 +89,11 @@ function ExpandableItem({ item }: { item: ShortcutItem }) {
 
   if (!item.hasSubmenu) {
     return (
-      <a href="#" className="mtb-sidebar-link group">
+      <a href="#" className="mtb-sidebar-link group text-xs">
         <span className="text-muted-foreground">›</span>
         <span className="flex-1">{item.label}</span>
         {item.count !== undefined && (
-          <span className="text-xs text-muted-foreground">{item.count}</span>
+          <span className="text-[10px] text-muted-foreground">{item.count}</span>
         )}
       </a>
     );
@@ -102,24 +102,24 @@ function ExpandableItem({ item }: { item: ShortcutItem }) {
   return (
     <Collapsible open={isOpen} onOpenChange={setIsOpen}>
       <CollapsibleTrigger className="w-full">
-        <div className="mtb-sidebar-link group cursor-pointer">
+        <div className="mtb-sidebar-link group cursor-pointer text-xs">
           {isOpen ? (
-            <ChevronDown className="w-3 h-3 text-mtb-teal" />
+            <ChevronDown className="w-2.5 h-2.5 text-mtb-teal" />
           ) : (
-            <ChevronRight className="w-3 h-3 text-muted-foreground group-hover:text-mtb-teal" />
+            <ChevronRight className="w-2.5 h-2.5 text-muted-foreground group-hover:text-mtb-teal" />
           )}
           <span className="flex-1 text-left">{item.label}</span>
         </div>
       </CollapsibleTrigger>
       <CollapsibleContent>
-        <div className="ml-5 border-l-2 border-mtb-teal/20 pl-3 py-1 space-y-1">
+        <div className="ml-4 border-l border-mtb-teal/20 pl-2 py-0.5 space-y-0.5">
           {item.subItems?.map((subItem) => (
             <a
               key={subItem}
               href="#"
-              className="flex items-center gap-2 px-2 py-1.5 text-sm text-muted-foreground hover:text-mtb-teal hover:bg-mtb-teal/5 rounded transition-colors"
+              className="flex items-center gap-1.5 px-1.5 py-1 text-[11px] text-muted-foreground hover:text-mtb-teal hover:bg-mtb-teal/5 rounded transition-colors"
             >
-              <span className="text-mtb-teal text-xs">▸</span>
+              <span className="text-mtb-teal text-[8px]">▸</span>
               {subItem}
             </a>
           ))}
@@ -131,30 +131,32 @@ function ExpandableItem({ item }: { item: ShortcutItem }) {
 
 export function LeftSidebar() {
   return (
-    <aside className="space-y-4">
+    <aside className="space-y-3">
       {/* User Profile Card */}
-      <div className="mtb-card p-4">
-        <div className="flex flex-col items-center text-center">
-          <div className="w-16 h-16 rounded-full bg-gradient-to-br from-muted to-secondary flex items-center justify-center mb-3">
-            <User className="w-8 h-8 text-muted-foreground" />
+      <div className="mtb-card p-3">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-muted to-secondary flex items-center justify-center flex-shrink-0">
+            <User className="w-5 h-5 text-muted-foreground" />
           </div>
-          <h3 className="font-semibold text-foreground flex items-center gap-2">
-            <Mail className="w-4 h-4 text-primary" />
-            MNet-Mail
-          </h3>
+          <div>
+            <h3 className="font-semibold text-foreground text-sm flex items-center gap-1.5">
+              <Mail className="w-3.5 h-3.5 text-primary" />
+              MNet-Mail
+            </h3>
+          </div>
         </div>
         
-        <div className="mt-4 space-y-1">
+        <div className="mt-3 space-y-0.5">
           {mailLinks.map((link) => (
             <a
               key={link.label}
               href="#"
-              className="mtb-sidebar-link"
+              className="mtb-sidebar-link text-xs"
             >
-              <link.icon className="w-4 h-4 text-muted-foreground" />
+              <link.icon className="w-3.5 h-3.5 text-muted-foreground" />
               <span>{link.label}</span>
               {link.count !== null && (
-                <span className="ml-auto text-xs text-muted-foreground">
+                <span className="ml-auto text-[10px] text-muted-foreground">
                   ({link.count})
                 </span>
               )}
@@ -164,8 +166,8 @@ export function LeftSidebar() {
       </div>
 
       {/* Shortcuts */}
-      <div className="mtb-card p-4">
-        <h4 className="mtb-section-header">Shortcuts</h4>
+      <div className="mtb-card p-3">
+        <h4 className="mtb-section-header text-xs">Shortcuts</h4>
         <div className="space-y-0.5">
           {shortcuts.map((item) => (
             <ExpandableItem key={item.label} item={item} />
@@ -175,12 +177,12 @@ export function LeftSidebar() {
 
       {/* Life Quote */}
       <div className="mtb-card overflow-hidden">
-        <div className="bg-gradient-to-r from-mtb-red/90 to-mtb-orange/90 px-4 py-2">
-          <h4 className="text-sm font-semibold text-white">Life Quote</h4>
+        <div className="bg-gradient-to-r from-mtb-red to-mtb-orange px-3 py-1.5">
+          <h4 className="text-xs font-semibold text-white">Life Quote</h4>
         </div>
-        <div className="p-4">
-          <blockquote className="text-sm italic text-muted-foreground leading-relaxed">
-            <span className="text-2xl text-primary leading-none">"</span>
+        <div className="p-3">
+          <blockquote className="text-xs italic text-muted-foreground leading-relaxed">
+            <span className="text-xl text-primary leading-none">"</span>
             The more you praise and celebrate your life, the more there is in life to celebrate.
           </blockquote>
         </div>

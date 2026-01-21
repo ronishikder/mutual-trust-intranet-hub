@@ -121,14 +121,14 @@ function ExpandableAppLink({ link }: { link: AppLink }) {
     return (
       <a
         href="#"
-        className={`flex items-center justify-between p-3 rounded-lg bg-gradient-to-r ${link.color} text-white hover:opacity-90 transition-opacity`}
+        className={`flex items-center justify-between p-2.5 rounded bg-gradient-to-r ${link.color} text-white hover:opacity-90 transition-opacity`}
       >
         <div className="flex items-center gap-2">
-          <link.icon className="w-4 h-4" />
-          <span className="text-sm font-medium">{link.label}</span>
+          <link.icon className="w-3.5 h-3.5" />
+          <span className="text-xs font-medium">{link.label}</span>
         </div>
         {link.badge && (
-          <span className="text-xs bg-white/20 px-2 py-0.5 rounded">
+          <span className="text-[10px] bg-white/20 px-1.5 py-0.5 rounded">
             {link.badge}
           </span>
         )}
@@ -140,28 +140,28 @@ function ExpandableAppLink({ link }: { link: AppLink }) {
     <Collapsible open={isOpen} onOpenChange={setIsOpen}>
       <CollapsibleTrigger className="w-full">
         <div
-          className={`flex items-center justify-between p-3 rounded-lg bg-gradient-to-r ${link.color} text-white hover:opacity-90 transition-opacity cursor-pointer`}
+          className={`flex items-center justify-between p-2.5 rounded bg-gradient-to-r ${link.color} text-white hover:opacity-90 transition-opacity cursor-pointer`}
         >
           <div className="flex items-center gap-2">
-            <link.icon className="w-4 h-4" />
-            <span className="text-sm font-medium">{link.label}</span>
+            <link.icon className="w-3.5 h-3.5" />
+            <span className="text-xs font-medium">{link.label}</span>
           </div>
           {isOpen ? (
-            <ChevronDown className="w-4 h-4" />
+            <ChevronDown className="w-3.5 h-3.5" />
           ) : (
-            <ChevronRight className="w-4 h-4" />
+            <ChevronRight className="w-3.5 h-3.5" />
           )}
         </div>
       </CollapsibleTrigger>
       <CollapsibleContent>
-        <div className="mt-1 bg-card border border-border rounded-lg p-2 space-y-1">
+        <div className="mt-1 bg-card border border-border rounded p-1.5 space-y-0.5">
           {link.subItems?.map((item) => (
             <a
               key={item}
               href="#"
-              className="flex items-center gap-2 px-3 py-2 text-sm text-foreground hover:bg-muted rounded-md transition-colors"
+              className="flex items-center gap-1.5 px-2 py-1.5 text-xs text-foreground hover:bg-muted rounded transition-colors"
             >
-              <span className="text-mtb-teal">▸</span>
+              <span className="text-mtb-teal text-[10px]">▸</span>
               {item}
             </a>
           ))}
@@ -173,46 +173,46 @@ function ExpandableAppLink({ link }: { link: AppLink }) {
 
 export function RightSidebar() {
   return (
-    <aside className="space-y-4">
+    <aside className="space-y-3">
       {/* Trainings */}
       <div className="mtb-card overflow-hidden">
-        <div className="bg-gradient-to-r from-mtb-teal to-mtb-blue px-4 py-2.5">
-          <h4 className="text-sm font-semibold text-white flex items-center gap-2">
-            <GraduationCap className="w-4 h-4" />
+        <div className="bg-gradient-to-r from-mtb-teal to-mtb-blue px-3 py-2">
+          <h4 className="text-xs font-semibold text-white flex items-center gap-1.5">
+            <GraduationCap className="w-3.5 h-3.5" />
             Upcoming Trainings
           </h4>
         </div>
-        <div className="p-3">
-          <div className="flex gap-1 mb-3">
+        <div className="p-2.5">
+          <div className="flex gap-1 mb-2">
             {trainingMonths.map((month, idx) => (
               <Button
                 key={month}
                 variant={idx === 0 ? "default" : "outline"}
                 size="sm"
-                className={`h-7 text-xs flex-1 ${idx === 0 ? 'bg-primary' : ''}`}
+                className={`h-6 text-[10px] flex-1 ${idx === 0 ? 'bg-primary' : ''}`}
               >
                 {month}
               </Button>
             ))}
           </div>
-          <div className="text-center py-4 text-sm text-muted-foreground">
+          <div className="text-center py-3 text-xs text-muted-foreground">
             No trainings scheduled for January
           </div>
         </div>
       </div>
 
       {/* Quick Apps */}
-      <div className="mtb-card p-3 space-y-2">
+      <div className="mtb-card p-2.5 space-y-1.5">
         {quickApps.map((app) => (
           <a
             key={app.label}
             href="#"
-            className="flex items-center gap-3 p-2.5 rounded-md hover:bg-muted transition-colors group"
+            className="flex items-center gap-2.5 p-2 rounded hover:bg-muted/50 transition-colors group"
           >
-            <div className={`${app.color} p-2 rounded-lg`}>
-              <app.icon className="w-4 h-4 text-white" />
+            <div className={`${app.color} p-1.5 rounded`}>
+              <app.icon className="w-3.5 h-3.5 text-white" />
             </div>
-            <span className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">
+            <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">
               {app.label}
             </span>
           </a>
@@ -220,7 +220,7 @@ export function RightSidebar() {
       </div>
 
       {/* Application Links - Expandable */}
-      <div className="space-y-2">
+      <div className="space-y-1.5">
         {appLinks.map((link) => (
           <ExpandableAppLink key={link.label} link={link} />
         ))}
@@ -228,14 +228,14 @@ export function RightSidebar() {
 
       {/* Featured Employee */}
       <div className="mtb-card overflow-hidden">
-        <div className="aspect-[4/3] bg-gradient-to-br from-mtb-purple/20 to-mtb-blue/20 flex items-center justify-center">
+        <div className="aspect-[4/3] bg-gradient-to-br from-mtb-purple/10 to-mtb-blue/10 flex items-center justify-center">
           <div className="text-center">
-            <Users className="w-12 h-12 text-muted-foreground/50 mx-auto mb-2" />
-            <p className="text-xs text-muted-foreground">Employee Spotlight</p>
+            <Users className="w-10 h-10 text-muted-foreground/40 mx-auto mb-1" />
+            <p className="text-[10px] text-muted-foreground">Employee Spotlight</p>
           </div>
         </div>
-        <div className="p-3 bg-gradient-to-r from-mtb-purple to-mtb-blue">
-          <p className="text-sm font-medium text-white">Employee of the Month</p>
+        <div className="p-2.5 bg-gradient-to-r from-mtb-purple to-mtb-blue">
+          <p className="text-xs font-medium text-white">Employee of the Month</p>
         </div>
       </div>
     </aside>
