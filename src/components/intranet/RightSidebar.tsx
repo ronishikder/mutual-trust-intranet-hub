@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { 
   GraduationCap, 
   HeartPulse, 
@@ -8,10 +9,22 @@ import {
   BarChart3, 
   Archive,
   ChevronDown,
+  ChevronRight,
   Users,
-  Search
+  Search,
+  CreditCard,
+  Wallet,
+  FileText,
+  Shield,
+  Database,
+  Settings,
+  Smartphone,
+  Globe2,
+  Mail,
+  Calendar,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 
 const trainingMonths = ["Jan", "Feb", "Mar", "MTB Library"];
 
@@ -22,13 +35,141 @@ const quickApps = [
   { icon: Monitor, label: "IT Service Desk", color: "bg-mtb-blue" },
 ];
 
-const appLinks = [
-  { icon: Monitor, label: "CBS Apps", color: "from-mtb-teal to-mtb-blue", hasSubmenu: true },
-  { icon: Globe, label: "Online Apps", color: "from-mtb-green to-mtb-teal", hasSubmenu: true },
-  { icon: Bell, label: "Alerts", color: "from-mtb-red to-mtb-orange", hasSubmenu: false, badge: "6 New" },
-  { icon: BarChart3, label: "MTBian Dashboard", color: "from-mtb-blue to-mtb-purple", hasSubmenu: false },
-  { icon: Archive, label: "Info & Archives", color: "from-mtb-purple to-mtb-blue", hasSubmenu: true },
+interface AppLink {
+  icon: typeof Monitor;
+  label: string;
+  color: string;
+  hasSubmenu: boolean;
+  badge?: string;
+  subItems?: string[];
+}
+
+const appLinks: AppLink[] = [
+  { 
+    icon: Monitor, 
+    label: "CBS Apps", 
+    color: "from-mtb-teal to-mtb-blue", 
+    hasSubmenu: true,
+    subItems: [
+      "Core Banking System",
+      "CBS User Portal",
+      "Transaction Inquiry",
+      "Account Management",
+      "Loan Management",
+      "Trade Finance Module",
+      "Treasury Management",
+      "CBS Reports"
+    ]
+  },
+  { 
+    icon: Globe, 
+    label: "Online Apps", 
+    color: "from-mtb-green to-mtb-teal", 
+    hasSubmenu: true,
+    subItems: [
+      "Internet Banking Admin",
+      "Mobile Banking Portal",
+      "SMS Banking Console",
+      "Payment Gateway",
+      "ATM Management",
+      "Card Management System",
+      "Agent Banking Portal",
+      "e-Commerce Integration"
+    ]
+  },
+  { 
+    icon: Bell, 
+    label: "Alerts", 
+    color: "from-mtb-red to-mtb-orange", 
+    hasSubmenu: false, 
+    badge: "6 New" 
+  },
+  { 
+    icon: BarChart3, 
+    label: "Business Dashboards", 
+    color: "from-mtb-blue to-mtb-purple", 
+    hasSubmenu: true,
+    subItems: [
+      "Executive Dashboard",
+      "Branch Performance",
+      "Deposit Analytics",
+      "Loan Portfolio",
+      "Revenue Reports",
+      "KPI Tracking"
+    ]
+  },
+  { 
+    icon: Archive, 
+    label: "MTBian Dashboard", 
+    color: "from-mtb-purple to-mtb-blue", 
+    hasSubmenu: true,
+    subItems: [
+      "Employee Directory",
+      "HR Self Service",
+      "Leave Management",
+      "Payroll Info",
+      "Performance Review",
+      "Training Records"
+    ]
+  },
 ];
+
+function ExpandableAppLink({ link }: { link: AppLink }) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  if (!link.hasSubmenu) {
+    return (
+      <a
+        href="#"
+        className={`flex items-center justify-between p-3 rounded-lg bg-gradient-to-r ${link.color} text-white hover:opacity-90 transition-opacity`}
+      >
+        <div className="flex items-center gap-2">
+          <link.icon className="w-4 h-4" />
+          <span className="text-sm font-medium">{link.label}</span>
+        </div>
+        {link.badge && (
+          <span className="text-xs bg-white/20 px-2 py-0.5 rounded">
+            {link.badge}
+          </span>
+        )}
+      </a>
+    );
+  }
+
+  return (
+    <Collapsible open={isOpen} onOpenChange={setIsOpen}>
+      <CollapsibleTrigger className="w-full">
+        <div
+          className={`flex items-center justify-between p-3 rounded-lg bg-gradient-to-r ${link.color} text-white hover:opacity-90 transition-opacity cursor-pointer`}
+        >
+          <div className="flex items-center gap-2">
+            <link.icon className="w-4 h-4" />
+            <span className="text-sm font-medium">{link.label}</span>
+          </div>
+          {isOpen ? (
+            <ChevronDown className="w-4 h-4" />
+          ) : (
+            <ChevronRight className="w-4 h-4" />
+          )}
+        </div>
+      </CollapsibleTrigger>
+      <CollapsibleContent>
+        <div className="mt-1 bg-card border border-border rounded-lg p-2 space-y-1">
+          {link.subItems?.map((item) => (
+            <a
+              key={item}
+              href="#"
+              className="flex items-center gap-2 px-3 py-2 text-sm text-foreground hover:bg-muted rounded-md transition-colors"
+            >
+              <span className="text-mtb-teal">▸</span>
+              {item}
+            </a>
+          ))}
+        </div>
+      </CollapsibleContent>
+    </Collapsible>
+  );
+}
 
 export function RightSidebar() {
   return (
@@ -38,7 +179,7 @@ export function RightSidebar() {
         <div className="bg-gradient-to-r from-mtb-teal to-mtb-blue px-4 py-2.5">
           <h4 className="text-sm font-semibold text-white flex items-center gap-2">
             <GraduationCap className="w-4 h-4" />
-            Trainings
+            Upcoming Trainings
           </h4>
         </div>
         <div className="p-3">
@@ -78,25 +219,10 @@ export function RightSidebar() {
         ))}
       </div>
 
-      {/* Application Links */}
+      {/* Application Links - Expandable */}
       <div className="space-y-2">
         {appLinks.map((link) => (
-          <a
-            key={link.label}
-            href="#"
-            className={`flex items-center justify-between p-3 rounded-lg bg-gradient-to-r ${link.color} text-white hover:opacity-90 transition-opacity`}
-          >
-            <div className="flex items-center gap-2">
-              <link.icon className="w-4 h-4" />
-              <span className="text-sm font-medium">{link.label}</span>
-            </div>
-            {link.hasSubmenu && <ChevronDown className="w-4 h-4" />}
-            {link.badge && (
-              <span className="text-xs bg-white/20 px-2 py-0.5 rounded">
-                {link.badge}
-              </span>
-            )}
-          </a>
+          <ExpandableAppLink key={link.label} link={link} />
         ))}
       </div>
 
