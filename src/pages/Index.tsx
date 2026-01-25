@@ -12,18 +12,18 @@ const Index = () => {
       
       <div className="container px-3 sm:px-4 lg:px-6 py-4 lg:py-5">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-5">
-          {/* Left Sidebar - Hidden on mobile, shown in order on tablet+ */}
-          <div className="hidden lg:block lg:col-span-3 xl:col-span-2">
+          {/* Left Sidebar - Equal width with right */}
+          <div className="hidden lg:block lg:col-span-2">
             <LeftSidebar />
           </div>
           
           {/* Main Content */}
-          <div className="lg:col-span-6 xl:col-span-7 order-1 lg:order-none">
+          <div className="lg:col-span-7 order-1 lg:order-none">
             <MainContent />
           </div>
           
-          {/* Right Sidebar */}
-          <div className="lg:col-span-3 xl:col-span-3 order-2 lg:order-none">
+          {/* Right Sidebar - Equal width with left */}
+          <div className="lg:col-span-3 order-2 lg:order-none">
             <RightSidebar />
           </div>
 
@@ -37,7 +37,7 @@ const Index = () => {
       {/* Footer */}
       <footer className="border-t border-border bg-card mt-6">
         <div className="container px-3 sm:px-4 lg:px-6 py-3">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] text-muted-foreground">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-2 text-[10px] text-muted-foreground">
             <p>© 2026 Mutual Trust Bank PLC. All rights reserved.</p>
             <div className="flex items-center gap-3">
               <a href="#" className="hover:text-foreground transition-colors">IT Support</a>

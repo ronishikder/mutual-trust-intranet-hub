@@ -120,45 +120,49 @@
 @layer components {
   .mtb-gradient-bar {
     background: var(--header-gradient);
-    height: 4px;
+    height: 3px;
   }
 
   .mtb-card {
-    @apply bg-card rounded-lg border border-border;
-    box-shadow: var(--shadow-card);
+    @apply bg-card rounded border border-border/60;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
   }
 
   .mtb-card-elevated {
-    @apply bg-card rounded-lg border border-border;
-    box-shadow: var(--shadow-elevated);
+    @apply bg-card rounded border border-border/60;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
   }
 
   .mtb-section-header {
-    @apply text-sm font-semibold uppercase tracking-wide text-muted-foreground mb-3;
+    @apply text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-2;
   }
 
   .mtb-nav-item {
-    @apply px-6 py-2.5 text-sm font-medium text-white/90 hover:bg-[hsl(var(--nav-hover))] transition-colors rounded-t-md;
+    @apply px-5 py-2.5 text-sm font-medium text-white/80 transition-all duration-150 rounded-t-md;
+  }
+
+  .mtb-nav-item:hover {
+    @apply bg-white/10 text-white;
   }
 
   .mtb-nav-item-active {
-    @apply bg-primary text-primary-foreground;
+    @apply bg-[hsl(var(--mtb-teal))] text-white;
   }
 
   .mtb-link {
-    @apply text-primary hover:text-primary/80 transition-colors cursor-pointer;
+    @apply text-[hsl(var(--mtb-teal))] hover:text-[hsl(var(--mtb-teal))]/80 transition-colors cursor-pointer;
   }
 
   .mtb-sidebar-link {
-    @apply flex items-center gap-2 px-3 py-2 text-sm text-sidebar-foreground hover:bg-sidebar-accent rounded-md transition-colors;
+    @apply flex items-center gap-2 px-2.5 py-1.5 text-xs text-foreground/75 hover:text-[hsl(var(--mtb-teal))] hover:bg-[hsl(var(--mtb-teal))]/5 rounded transition-colors;
   }
 
   .notice-highlight {
-    @apply bg-gradient-to-r from-[hsl(var(--mtb-teal))] to-[hsl(var(--mtb-blue))] text-white p-4 rounded-md;
+    @apply bg-[hsl(var(--mtb-teal))]/8 border-l-[3px] border-l-[hsl(var(--mtb-teal))] p-3 rounded-md;
   }
 
   .alert-badge {
-    @apply inline-flex items-center justify-center w-5 h-5 text-xs font-bold text-white bg-destructive rounded-full;
+    @apply inline-flex items-center justify-center min-w-[16px] h-4 text-[9px] font-bold text-white bg-[hsl(var(--mtb-red))] rounded-full px-1;
   }
 }
 

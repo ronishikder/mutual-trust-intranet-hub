@@ -156,8 +156,8 @@ const navItems = [
 ];
 
 export function Navigation() {
-  const [activeItem, setActiveItem] = useState<string | null>(null);
   const [openMenu, setOpenMenu] = useState<string | null>(null);
+  const [isHovering, setIsHovering] = useState<string | null>(null);
   const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -171,7 +171,6 @@ export function Navigation() {
   }, []);
 
   const handleNavClick = (itemId: string) => {
-    setActiveItem(itemId);
     setOpenMenu(openMenu === itemId ? null : itemId);
   };
 
@@ -180,18 +179,24 @@ export function Navigation() {
   return (
     <nav className="bg-nav-bg relative" ref={menuRef}>
       <div className="container px-6">
-        <ul className="flex items-center gap-1">
+        <ul className="flex items-center gap-0.5">
           {navItems.map((item) => (
             <li key={item.id}>
               <button
                 onClick={() => handleNavClick(item.id)}
-                className={`mtb-nav-item flex items-center gap-2 ${
-                  activeItem === item.id || openMenu === item.id ? "mtb-nav-item-active" : ""
+                onMouseEnter={() => setIsHovering(item.id)}
+                onMouseLeave={() => setIsHovering(null)}
+                className={`flex items-center gap-2 px-5 py-2.5 text-sm font-medium transition-all duration-150 rounded-t-md ${
+                  openMenu === item.id 
+                    ? "bg-mtb-teal text-white" 
+                    : isHovering === item.id 
+                      ? "bg-white/10 text-white" 
+                      : "text-white/80"
                 }`}
               >
                 <item.icon className="w-4 h-4" />
                 {item.label}
-                <ChevronDown className={`w-3 h-3 transition-transform ${openMenu === item.id ? 'rotate-180' : ''}`} />
+                <ChevronDown className={`w-3 h-3 transition-transform duration-150 ${openMenu === item.id ? 'rotate-180' : ''}`} />
               </button>
             </li>
           ))}
@@ -200,16 +205,16 @@ export function Navigation() {
 
       {/* Dropdown Menu */}
       {openMenu && currentMenu && (
-        <div className="absolute left-0 right-0 top-full bg-card border-b border-border shadow-lg z-50">
+        <div className="absolute left-0 right-0 top-full bg-card border-b border-border shadow-elevated z-50">
           <div className="container px-6 py-4">
             {/* Menu Header */}
-            <div className="flex items-center justify-between mb-4">
-              <h2 className="text-lg font-bold text-mtb-red">{currentMenu.menuTitle}</h2>
+            <div className="flex items-center justify-between mb-4 pb-3 border-b border-border/50">
+              <h2 className="text-base font-bold text-mtb-teal">{currentMenu.menuTitle}</h2>
               <Button 
                 variant="ghost" 
                 size="sm"
                 onClick={() => setOpenMenu(null)}
-                className="text-muted-foreground hover:text-foreground"
+                className="text-muted-foreground hover:text-foreground hover:bg-muted/50 h-7"
               >
                 <X className="w-4 h-4 mr-1" />
                 Close
@@ -217,29 +222,29 @@ export function Navigation() {
             </div>
 
             {/* Menu Content */}
-            <div className="grid grid-cols-3 gap-6 max-h-96 overflow-y-auto">
+            <div className="grid grid-cols-3 gap-6 max-h-80 overflow-y-auto">
               {currentMenu.sections.map((section, idx) => (
                 <div key={idx} className="space-y-2">
                   {'title' in section && (
-                    <h3 className="text-sm font-semibold text-mtb-red border-b border-mtb-red/20 pb-1">
+                    <h3 className="text-xs font-semibold text-mtb-teal uppercase tracking-wide border-b border-mtb-teal/20 pb-1.5 mb-2">
                       {section.title}
                     </h3>
                   )}
                   {'letter' in section && (
                     <div className="flex items-center gap-2 mb-2">
-                      <span className="w-6 h-6 bg-mtb-blue text-white text-xs font-bold flex items-center justify-center rounded">
+                      <span className="w-5 h-5 bg-mtb-teal text-white text-[10px] font-bold flex items-center justify-center rounded">
                         {section.letter}
                       </span>
                     </div>
                   )}
-                  <ul className="space-y-1">
+                  <ul className="space-y-0.5">
                     {section.items.map((item, itemIdx) => (
                       <li key={itemIdx}>
                         <a 
                           href="#" 
-                          className="flex items-center gap-2 text-sm text-foreground hover:text-mtb-blue transition-colors py-0.5"
+                          className="flex items-center gap-1.5 text-xs text-foreground/80 hover:text-mtb-teal transition-colors py-0.5"
                         >
-                          <span className="text-mtb-blue">▪</span>
+                          <span className="text-mtb-teal text-[8px]">▸</span>
                           {item}
                         </a>
                       </li>
@@ -251,13 +256,13 @@ export function Navigation() {
 
             {/* Branch Stats */}
             {'stats' in currentMenu && currentMenu.stats && (
-              <div className="mt-4 pt-4 border-t border-border">
-                <div className="flex items-center gap-6 text-sm">
-                  <span className="text-muted-foreground">No of Branch: <strong className="text-foreground">{currentMenu.stats.branches}</strong></span>
-                  <span className="text-muted-foreground">No of Sub-Branch: <strong className="text-foreground">{currentMenu.stats.subBranches}</strong></span>
-                  <span className="text-mtb-red font-semibold">Total Branch: {currentMenu.stats.total}</span>
-                  <span className="text-mtb-green">● Opened Recently</span>
-                  <span className="text-mtb-purple">● Proposed Branches</span>
+              <div className="mt-4 pt-3 border-t border-border/50">
+                <div className="flex items-center gap-6 text-xs">
+                  <span className="text-muted-foreground">Branches: <strong className="text-foreground">{currentMenu.stats.branches}</strong></span>
+                  <span className="text-muted-foreground">Sub-Branches: <strong className="text-foreground">{currentMenu.stats.subBranches}</strong></span>
+                  <span className="text-mtb-teal font-semibold">Total: {currentMenu.stats.total}</span>
+                  <span className="text-mtb-green text-[10px]">● Opened Recently</span>
+                  <span className="text-mtb-purple text-[10px]">● Proposed</span>
                 </div>
               </div>
             )}
