@@ -12,16 +12,6 @@ import {
   ChevronRight,
   Users,
   Search,
-  CreditCard,
-  Wallet,
-  FileText,
-  Shield,
-  Database,
-  Settings,
-  Smartphone,
-  Globe2,
-  Mail,
-  Calendar,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
@@ -48,7 +38,7 @@ const appLinks: AppLink[] = [
   { 
     icon: Monitor, 
     label: "CBS Apps", 
-    color: "from-mtb-teal to-mtb-blue", 
+    color: "bg-mtb-teal", 
     hasSubmenu: true,
     subItems: [
       "Core Banking System",
@@ -64,7 +54,7 @@ const appLinks: AppLink[] = [
   { 
     icon: Globe, 
     label: "Online Apps", 
-    color: "from-mtb-green to-mtb-teal", 
+    color: "bg-mtb-green", 
     hasSubmenu: true,
     subItems: [
       "Internet Banking Admin",
@@ -80,14 +70,14 @@ const appLinks: AppLink[] = [
   { 
     icon: Bell, 
     label: "Alerts", 
-    color: "from-mtb-red to-mtb-orange", 
+    color: "bg-mtb-orange", 
     hasSubmenu: false, 
     badge: "6 New" 
   },
   { 
     icon: BarChart3, 
     label: "Business Dashboards", 
-    color: "from-mtb-blue to-mtb-purple", 
+    color: "bg-mtb-blue", 
     hasSubmenu: true,
     subItems: [
       "Executive Dashboard",
@@ -101,7 +91,7 @@ const appLinks: AppLink[] = [
   { 
     icon: Archive, 
     label: "MTBian Dashboard", 
-    color: "from-mtb-purple to-mtb-blue", 
+    color: "bg-mtb-purple", 
     hasSubmenu: true,
     subItems: [
       "Employee Directory",
@@ -121,14 +111,14 @@ function ExpandableAppLink({ link }: { link: AppLink }) {
     return (
       <a
         href="#"
-        className={`flex items-center justify-between p-2.5 rounded bg-gradient-to-r ${link.color} text-white hover:opacity-90 transition-opacity`}
+        className={`flex items-center justify-between p-2.5 rounded ${link.color} text-white hover:opacity-90 transition-opacity`}
       >
         <div className="flex items-center gap-2">
           <link.icon className="w-3.5 h-3.5" />
-          <span className="text-xs font-medium">{link.label}</span>
+          <span className="text-[11px] font-medium">{link.label}</span>
         </div>
         {link.badge && (
-          <span className="text-[10px] bg-white/20 px-1.5 py-0.5 rounded">
+          <span className="text-[9px] bg-white/20 px-1.5 py-0.5 rounded">
             {link.badge}
           </span>
         )}
@@ -140,28 +130,28 @@ function ExpandableAppLink({ link }: { link: AppLink }) {
     <Collapsible open={isOpen} onOpenChange={setIsOpen}>
       <CollapsibleTrigger className="w-full">
         <div
-          className={`flex items-center justify-between p-2.5 rounded bg-gradient-to-r ${link.color} text-white hover:opacity-90 transition-opacity cursor-pointer`}
+          className={`flex items-center justify-between p-2.5 rounded ${link.color} text-white hover:opacity-90 transition-opacity cursor-pointer`}
         >
           <div className="flex items-center gap-2">
             <link.icon className="w-3.5 h-3.5" />
-            <span className="text-xs font-medium">{link.label}</span>
+            <span className="text-[11px] font-medium">{link.label}</span>
           </div>
           {isOpen ? (
-            <ChevronDown className="w-3.5 h-3.5" />
+            <ChevronDown className="w-3 h-3" />
           ) : (
-            <ChevronRight className="w-3.5 h-3.5" />
+            <ChevronRight className="w-3 h-3" />
           )}
         </div>
       </CollapsibleTrigger>
       <CollapsibleContent>
-        <div className="mt-1 bg-card border border-border rounded p-1.5 space-y-0.5">
+        <div className="mt-1 bg-card border border-border/50 rounded p-1.5 space-y-0.5">
           {link.subItems?.map((item) => (
             <a
               key={item}
               href="#"
-              className="flex items-center gap-1.5 px-2 py-1.5 text-xs text-foreground hover:bg-muted rounded transition-colors"
+              className="flex items-center gap-1.5 px-2 py-1.5 text-[10px] text-foreground/80 hover:text-mtb-teal hover:bg-mtb-teal/5 rounded transition-colors"
             >
-              <span className="text-mtb-teal text-[10px]">▸</span>
+              <span className="text-mtb-teal text-[8px]">▸</span>
               {item}
             </a>
           ))}
@@ -176,8 +166,8 @@ export function RightSidebar() {
     <aside className="space-y-3">
       {/* Trainings */}
       <div className="mtb-card overflow-hidden">
-        <div className="bg-gradient-to-r from-mtb-teal to-mtb-blue px-3 py-2">
-          <h4 className="text-xs font-semibold text-white flex items-center gap-1.5">
+        <div className="bg-mtb-teal px-3 py-2">
+          <h4 className="text-[10px] font-semibold text-white flex items-center gap-1.5">
             <GraduationCap className="w-3.5 h-3.5" />
             Upcoming Trainings
           </h4>
@@ -189,30 +179,30 @@ export function RightSidebar() {
                 key={month}
                 variant={idx === 0 ? "default" : "outline"}
                 size="sm"
-                className={`h-6 text-[10px] flex-1 ${idx === 0 ? 'bg-primary' : ''}`}
+                className={`h-6 text-[9px] flex-1 ${idx === 0 ? 'bg-mtb-teal hover:bg-mtb-teal/90 text-white' : 'border-border/50 text-foreground/70 hover:bg-muted/50 hover:text-foreground'}`}
               >
                 {month}
               </Button>
             ))}
           </div>
-          <div className="text-center py-3 text-xs text-muted-foreground">
+          <div className="text-center py-3 text-[10px] text-muted-foreground">
             No trainings scheduled for January
           </div>
         </div>
       </div>
 
       {/* Quick Apps */}
-      <div className="mtb-card p-2.5 space-y-1.5">
+      <div className="mtb-card p-2.5 space-y-1">
         {quickApps.map((app) => (
           <a
             key={app.label}
             href="#"
-            className="flex items-center gap-2.5 p-2 rounded hover:bg-muted/50 transition-colors group"
+            className="flex items-center gap-2.5 p-2 rounded hover:bg-muted/30 transition-colors group"
           >
             <div className={`${app.color} p-1.5 rounded`}>
-              <app.icon className="w-3.5 h-3.5 text-white" />
+              <app.icon className="w-3 h-3 text-white" />
             </div>
-            <span className="text-xs font-medium text-foreground group-hover:text-primary transition-colors">
+            <span className="text-[10px] font-medium text-foreground/80 group-hover:text-mtb-teal transition-colors">
               {app.label}
             </span>
           </a>
@@ -228,14 +218,14 @@ export function RightSidebar() {
 
       {/* Featured Employee */}
       <div className="mtb-card overflow-hidden">
-        <div className="aspect-[4/3] bg-gradient-to-br from-mtb-purple/10 to-mtb-blue/10 flex items-center justify-center">
+        <div className="aspect-[4/3] bg-muted/30 flex items-center justify-center">
           <div className="text-center">
-            <Users className="w-10 h-10 text-muted-foreground/40 mx-auto mb-1" />
-            <p className="text-[10px] text-muted-foreground">Employee Spotlight</p>
+            <Users className="w-8 h-8 text-muted-foreground/30 mx-auto mb-1" />
+            <p className="text-[9px] text-muted-foreground">Employee Spotlight</p>
           </div>
         </div>
-        <div className="p-2.5 bg-gradient-to-r from-mtb-purple to-mtb-blue">
-          <p className="text-xs font-medium text-white">Employee of the Month</p>
+        <div className="p-2.5 bg-mtb-purple">
+          <p className="text-[10px] font-medium text-white">Employee of the Month</p>
         </div>
       </div>
     </aside>
