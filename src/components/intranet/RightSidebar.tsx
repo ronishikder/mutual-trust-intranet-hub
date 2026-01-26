@@ -9,8 +9,10 @@ import {
   Bell, 
   BarChart3, 
   ChevronRight,
+  ChevronDown,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 
 const trainingMonths = ["Jan", "Feb", "Mar"];
 
@@ -24,13 +26,22 @@ const quickLinks = [
 const appLinks = [
   { icon: Monitor, label: "CBS Apps", bgColor: "bg-[hsl(var(--mtb-teal))]" },
   { icon: Globe, label: "Online Apps", bgColor: "bg-[hsl(var(--mtb-green))]" },
-  { icon: Bell, label: "Alerts", bgColor: "bg-[hsl(var(--mtb-red))]", badge: "6 New" },
-  { icon: BarChart3, label: "Business Dashboards", bgColor: "bg-[hsl(var(--mtb-purple))]" },
-  { icon: BarChart3, label: "MTBian Dashboard", bgColor: "bg-[hsl(var(--mtb-blue))]" },
+  { icon: BarChart3, label: "Business Dashboards", bgColor: "bg-[hsl(var(--mtb-teal))]" },
+  { icon: BarChart3, label: "MTBian Dashboard", bgColor: "bg-[hsl(var(--mtb-teal))]" },
+];
+
+const alertItems = [
+  { title: "System maintenance scheduled for tonight", time: "2 hours ago" },
+  { title: "New security update available", time: "5 hours ago" },
+  { title: "Password expiry reminder", time: "1 day ago" },
+  { title: "New circular published", time: "1 day ago" },
+  { title: "Training registration deadline", time: "2 days ago" },
+  { title: "Holiday schedule updated", time: "3 days ago" },
 ];
 
 export function RightSidebar() {
   const [activeMonth, setActiveMonth] = useState("Jan");
+  const [alertsExpanded, setAlertsExpanded] = useState(false);
 
   return (
     <aside className="space-y-3">
@@ -71,7 +82,7 @@ export function RightSidebar() {
         </div>
       </div>
 
-      {/* Quick Links - Card style like attached */}
+      {/* Quick Links - Card style */}
       <div className="space-y-2">
         {quickLinks.map((link) => (
           <a
@@ -87,9 +98,9 @@ export function RightSidebar() {
         ))}
       </div>
 
-      {/* App Links - Colorful backgrounds with chevron */}
+      {/* App Links - Unified teal headers */}
       <div className="space-y-2">
-        {appLinks.map((link) => (
+        {appLinks.slice(0, 2).map((link) => (
           <a
             key={link.label}
             href="#"
@@ -99,14 +110,55 @@ export function RightSidebar() {
               <link.icon className="w-4 h-4" />
               <span className="text-sm font-medium">{link.label}</span>
             </div>
-            <div className="flex items-center gap-2">
-              {link.badge && (
+            <ChevronRight className="w-4 h-4" />
+          </a>
+        ))}
+
+        {/* Alerts - Expandable/Collapsible */}
+        <Collapsible open={alertsExpanded} onOpenChange={setAlertsExpanded}>
+          <CollapsibleTrigger asChild>
+            <button
+              className="w-full flex items-center justify-between p-3 rounded-lg bg-[hsl(var(--mtb-orange))] text-white hover:opacity-95 transition-all shadow-sm"
+            >
+              <div className="flex items-center gap-3">
+                <Bell className="w-4 h-4" />
+                <span className="text-sm font-medium">Alerts</span>
+              </div>
+              <div className="flex items-center gap-2">
                 <span className="text-[10px] bg-white/20 px-2 py-0.5 rounded-full font-medium">
-                  {link.badge}
+                  6 New
                 </span>
-              )}
-              <ChevronRight className="w-4 h-4" />
+                <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${alertsExpanded ? 'rotate-180' : ''}`} />
+              </div>
+            </button>
+          </CollapsibleTrigger>
+          <CollapsibleContent className="overflow-hidden data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
+            <div className="mt-1 bg-card border border-border rounded-lg shadow-sm overflow-hidden">
+              {alertItems.map((alert, idx) => (
+                <div 
+                  key={idx} 
+                  className="px-3 py-2.5 border-b border-border/30 last:border-0 hover:bg-muted/30 transition-colors cursor-pointer"
+                >
+                  <p className="text-sm text-foreground font-medium">{alert.title}</p>
+                  <p className="text-xs text-muted-foreground mt-0.5">{alert.time}</p>
+                </div>
+              ))}
             </div>
+          </CollapsibleContent>
+        </Collapsible>
+
+        {/* Remaining app links */}
+        {appLinks.slice(2).map((link) => (
+          <a
+            key={link.label}
+            href="#"
+            className={`flex items-center justify-between p-3 rounded-lg ${link.bgColor} text-white hover:opacity-95 transition-all shadow-sm`}
+          >
+            <div className="flex items-center gap-3">
+              <link.icon className="w-4 h-4" />
+              <span className="text-sm font-medium">{link.label}</span>
+            </div>
+            <ChevronRight className="w-4 h-4" />
           </a>
         ))}
       </div>
