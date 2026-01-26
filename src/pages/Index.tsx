@@ -11,19 +11,19 @@ const Index = () => {
       <Navigation />
       
       <div className="container px-4 lg:px-6 py-5">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5">
-          {/* Left Sidebar - Equal width with right */}
+        <div className="grid grid-cols-1 lg:grid-cols-10 gap-5">
+          {/* Left Sidebar - Equal width with right (2 cols each) */}
           <div className="hidden lg:block lg:col-span-2">
             <LeftSidebar />
           </div>
           
-          {/* Main Content */}
-          <div className="lg:col-span-7 order-1 lg:order-none">
+          {/* Main Content - 6 cols */}
+          <div className="lg:col-span-6 order-1 lg:order-none">
             <MainContent />
           </div>
           
-          {/* Right Sidebar - Equal width with left */}
-          <div className="lg:col-span-3 order-2 lg:order-none">
+          {/* Right Sidebar - Equal width with left (2 cols) */}
+          <div className="lg:col-span-2 order-2 lg:order-none">
             <RightSidebar />
           </div>
 
