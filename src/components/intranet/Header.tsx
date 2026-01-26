@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Link, useNavigate } from "react-router-dom";
 import mtbLogo from "@/assets/mtb-logo.png";
 import mnetLogo from "@/assets/mnet-logo.png";
+import { ThemeToggle } from "./ThemeToggle";
 
 const notifications = [
   { id: 1, type: "alert", title: "System Maintenance", message: "Scheduled for Jan 25, 2026 at 10 PM", time: "2h ago", unread: true },
@@ -99,6 +100,9 @@ export function Header() {
 
         {/* Right section: Icons + MNet logo + Sign Out */}
         <div className="flex items-center gap-2">
+          {/* Day/Night Mode Toggle */}
+          <ThemeToggle />
+
           {/* MNet-Mail Icon */}
           <div className="relative" ref={mailRef}>
             <Button 

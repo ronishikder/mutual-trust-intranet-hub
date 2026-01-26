@@ -113,7 +113,7 @@ export function MainContent() {
               className={`h-7 px-4 text-xs font-semibold rounded-sm ${
                 activeTab === "mtb" 
                   ? 'bg-[hsl(var(--mtb-red))] hover:bg-[hsl(var(--mtb-red))]/90 text-white' 
-                  : 'text-foreground hover:bg-muted/50 bg-transparent'
+                  : 'text-foreground hover:bg-[hsl(var(--mtb-teal))]/10 hover:text-[hsl(var(--mtb-teal))] bg-transparent'
               }`}
             >
               MTB Circulars
@@ -125,7 +125,7 @@ export function MainContent() {
               className={`h-7 px-4 text-xs font-semibold rounded-sm ${
                 activeTab === "bb" 
                   ? 'bg-[hsl(var(--mtb-red))] hover:bg-[hsl(var(--mtb-red))]/90 text-white' 
-                  : 'text-foreground hover:bg-muted/50 bg-transparent'
+                  : 'text-foreground hover:bg-[hsl(var(--mtb-teal))]/10 hover:text-[hsl(var(--mtb-teal))] bg-transparent'
               }`}
             >
               BB Circular
@@ -156,9 +156,9 @@ export function MainContent() {
 
       {/* Branch Reporting */}
       <div className="rounded-lg overflow-hidden shadow-md bg-card">
-        <div className="bg-gradient-to-r from-[hsl(var(--mtb-red))] via-[hsl(var(--mtb-orange))] to-[hsl(var(--mtb-green))] px-4 py-2.5 flex items-center gap-2">
-          <Clock className="w-4 h-4 text-white" />
-          <h3 className="font-bold text-white text-sm">Branch Reporting</h3>
+        <div className="bg-[hsl(var(--mtb-teal))] px-4 py-1.5 flex items-center gap-2">
+          <Clock className="w-3.5 h-3.5 text-white" />
+          <h3 className="font-semibold text-white text-xs">Branch Reporting</h3>
         </div>
         
         <div className="overflow-x-auto">

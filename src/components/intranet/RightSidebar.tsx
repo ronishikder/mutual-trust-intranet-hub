@@ -43,9 +43,9 @@ export function RightSidebar() {
     <aside className="space-y-3">
       {/* Upcoming Trainings */}
       <div className="rounded-xl overflow-hidden shadow-sm bg-card">
-        <div className="bg-[hsl(var(--mtb-teal))] px-4 py-2.5 flex items-center gap-2">
-          <GraduationCap className="w-4 h-4 text-white" />
-          <h4 className="text-sm font-semibold text-white">Upcoming Trainings</h4>
+        <div className="bg-[hsl(var(--mtb-teal))] px-4 py-1.5 flex items-center gap-2">
+          <GraduationCap className="w-3.5 h-3.5 text-white" />
+          <h4 className="text-xs font-semibold text-white">Upcoming Trainings</h4>
         </div>
         <div className="p-3">
           <div className="flex gap-1.5 mb-3">
@@ -101,12 +101,12 @@ export function RightSidebar() {
         {/* CBS Apps - Expandable */}
         <Collapsible open={cbsExpanded} onOpenChange={setCbsExpanded}>
           <CollapsibleTrigger asChild>
-            <button className="w-full flex items-center justify-between px-4 py-2.5 rounded-xl bg-[hsl(var(--mtb-blue))] text-white hover:opacity-95 transition-all shadow-sm">
+            <button className="w-full flex items-center justify-between px-4 py-1.5 rounded-xl bg-[hsl(var(--mtb-blue))] text-white hover:opacity-95 transition-all shadow-sm">
               <div className="flex items-center gap-3">
-                <Monitor className="w-4 h-4" />
-                <span className="text-sm font-semibold">CBS Apps</span>
+                <Monitor className="w-3.5 h-3.5" />
+                <span className="text-xs font-semibold">CBS Apps</span>
               </div>
-              <ChevronRight className={`w-4 h-4 transition-transform duration-200 ${cbsExpanded ? 'rotate-90' : ''}`} />
+              <ChevronRight className={`w-3.5 h-3.5 transition-transform duration-200 ${cbsExpanded ? 'rotate-90' : ''}`} />
             </button>
           </CollapsibleTrigger>
           <CollapsibleContent className="overflow-hidden data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
@@ -121,12 +121,12 @@ export function RightSidebar() {
         {/* Online Apps - Expandable */}
         <Collapsible open={onlineExpanded} onOpenChange={setOnlineExpanded}>
           <CollapsibleTrigger asChild>
-            <button className="w-full flex items-center justify-between px-4 py-2.5 rounded-xl bg-[hsl(var(--mtb-green))] text-white hover:opacity-95 transition-all shadow-sm">
+            <button className="w-full flex items-center justify-between px-4 py-1.5 rounded-xl bg-[hsl(var(--mtb-green))] text-white hover:opacity-95 transition-all shadow-sm">
               <div className="flex items-center gap-3">
-                <Globe className="w-4 h-4" />
-                <span className="text-sm font-semibold">Online Apps</span>
+                <Globe className="w-3.5 h-3.5" />
+                <span className="text-xs font-semibold">Online Apps</span>
               </div>
-              <ChevronRight className={`w-4 h-4 transition-transform duration-200 ${onlineExpanded ? 'rotate-90' : ''}`} />
+              <ChevronRight className={`w-3.5 h-3.5 transition-transform duration-200 ${onlineExpanded ? 'rotate-90' : ''}`} />
             </button>
           </CollapsibleTrigger>
           <CollapsibleContent className="overflow-hidden data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
@@ -141,16 +141,16 @@ export function RightSidebar() {
         {/* Alerts - Expandable */}
         <Collapsible open={alertsExpanded} onOpenChange={setAlertsExpanded}>
           <CollapsibleTrigger asChild>
-            <button className="w-full flex items-center justify-between px-4 py-2.5 rounded-xl bg-[hsl(var(--mtb-orange))] text-white hover:opacity-95 transition-all shadow-sm">
+            <button className="w-full flex items-center justify-between px-4 py-1.5 rounded-xl bg-[hsl(var(--mtb-orange))] text-white hover:opacity-95 transition-all shadow-sm">
               <div className="flex items-center gap-3">
-                <Bell className="w-4 h-4" />
-                <span className="text-sm font-semibold">Alerts</span>
+                <Bell className="w-3.5 h-3.5" />
+                <span className="text-xs font-semibold">Alerts</span>
               </div>
               <div className="flex items-center gap-2">
                 <span className="text-[10px] bg-[hsl(var(--mtb-red))] text-white px-2 py-0.5 rounded font-semibold">
                   6 New
                 </span>
-                <ChevronRight className={`w-4 h-4 transition-transform duration-200 ${alertsExpanded ? 'rotate-90' : ''}`} />
+                <ChevronRight className={`w-3.5 h-3.5 transition-transform duration-200 ${alertsExpanded ? 'rotate-90' : ''}`} />
               </div>
             </button>
           </CollapsibleTrigger>
@@ -172,12 +172,12 @@ export function RightSidebar() {
         {/* Business Dashboards - Expandable */}
         <Collapsible open={dashboardsExpanded} onOpenChange={setDashboardsExpanded}>
           <CollapsibleTrigger asChild>
-            <button className="w-full flex items-center justify-between px-4 py-2.5 rounded-xl bg-[hsl(var(--mtb-purple))] text-white hover:opacity-95 transition-all shadow-sm">
+            <button className="w-full flex items-center justify-between px-4 py-1.5 rounded-xl bg-[hsl(var(--mtb-purple))] text-white hover:opacity-95 transition-all shadow-sm">
               <div className="flex items-center gap-3">
-                <BarChart3 className="w-4 h-4" />
-                <span className="text-sm font-semibold">Business Dashboards</span>
+                <BarChart3 className="w-3.5 h-3.5" />
+                <span className="text-xs font-semibold">Business Dashboards</span>
               </div>
-              <ChevronRight className={`w-4 h-4 transition-transform duration-200 ${dashboardsExpanded ? 'rotate-90' : ''}`} />
+              <ChevronRight className={`w-3.5 h-3.5 transition-transform duration-200 ${dashboardsExpanded ? 'rotate-90' : ''}`} />
             </button>
           </CollapsibleTrigger>
           <CollapsibleContent className="overflow-hidden data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
@@ -192,12 +192,12 @@ export function RightSidebar() {
         {/* MTBian Dashboard - Expandable */}
         <Collapsible open={mtbianExpanded} onOpenChange={setMtbianExpanded}>
           <CollapsibleTrigger asChild>
-            <button className="w-full flex items-center justify-between px-4 py-2.5 rounded-xl bg-[hsl(var(--mtb-teal))] text-white hover:opacity-95 transition-all shadow-sm">
+            <button className="w-full flex items-center justify-between px-4 py-1.5 rounded-xl bg-[hsl(var(--mtb-teal))] text-white hover:opacity-95 transition-all shadow-sm">
               <div className="flex items-center gap-3">
-                <BarChart3 className="w-4 h-4" />
-                <span className="text-sm font-semibold">MTBian Dashboard</span>
+                <BarChart3 className="w-3.5 h-3.5" />
+                <span className="text-xs font-semibold">MTBian Dashboard</span>
               </div>
-              <ChevronRight className={`w-4 h-4 transition-transform duration-200 ${mtbianExpanded ? 'rotate-90' : ''}`} />
+              <ChevronRight className={`w-3.5 h-3.5 transition-transform duration-200 ${mtbianExpanded ? 'rotate-90' : ''}`} />
             </button>
           </CollapsibleTrigger>
           <CollapsibleContent className="overflow-hidden data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
