@@ -7,6 +7,8 @@ import Index from "./pages/Index";
 import Profile from "./pages/Profile";
 import MyBankAccount from "./pages/MyBankAccount";
 import SearchResults from "./pages/SearchResults";
+import BranchPage from "./pages/BranchPage";
+import CHODepartmentPage from "./pages/CHODepartmentPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -22,6 +24,8 @@ const App = () => (
           <Route path="/profile" element={<Profile />} />
           <Route path="/my-bank-account" element={<MyBankAccount />} />
           <Route path="/search" element={<SearchResults />} />
+          <Route path="/branch/:branchName" element={<BranchPage />} />
+          <Route path="/cho/:departmentName" element={<CHODepartmentPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
