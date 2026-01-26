@@ -17,17 +17,10 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/component
 const trainingMonths = ["Jan", "Feb", "Mar"];
 
 const quickLinks = [
-  { icon: Search, label: "Internal JobWatch", bgColor: "bg-white", iconBg: "bg-[hsl(var(--mtb-red))]", iconColor: "text-white" },
-  { icon: HeartPulse, label: "Life & Medical Insurance", bgColor: "bg-white", iconBg: "bg-[hsl(var(--mtb-green))]", iconColor: "text-white" },
-  { icon: Headphones, label: "CBS-Support", bgColor: "bg-white", iconBg: "bg-[hsl(var(--mtb-orange))]", iconColor: "text-white" },
-  { icon: Monitor, label: "IT Service Desk", bgColor: "bg-white", iconBg: "bg-[hsl(var(--mtb-blue))]", iconColor: "text-white" },
-];
-
-const appLinks = [
-  { icon: Monitor, label: "CBS Apps", bgColor: "bg-[hsl(var(--mtb-teal))]" },
-  { icon: Globe, label: "Online Apps", bgColor: "bg-[hsl(var(--mtb-green))]" },
-  { icon: BarChart3, label: "Business Dashboards", bgColor: "bg-[hsl(var(--mtb-teal))]" },
-  { icon: BarChart3, label: "MTBian Dashboard", bgColor: "bg-[hsl(var(--mtb-teal))]" },
+  { icon: Search, label: "Internal JobWatch", iconBg: "bg-[hsl(var(--mtb-red))]" },
+  { icon: HeartPulse, label: "Life & Medical Insurance", iconBg: "bg-[hsl(var(--mtb-green))]" },
+  { icon: Headphones, label: "CBS-Support", iconBg: "bg-[hsl(var(--mtb-orange))]" },
+  { icon: Monitor, label: "IT Service Desk", iconBg: "bg-[hsl(var(--mtb-blue))]" },
 ];
 
 const alertItems = [
@@ -42,14 +35,18 @@ const alertItems = [
 export function RightSidebar() {
   const [activeMonth, setActiveMonth] = useState("Jan");
   const [alertsExpanded, setAlertsExpanded] = useState(false);
+  const [cbsExpanded, setCbsExpanded] = useState(false);
+  const [onlineExpanded, setOnlineExpanded] = useState(false);
+  const [dashboardsExpanded, setDashboardsExpanded] = useState(false);
+  const [mtbianExpanded, setMtbianExpanded] = useState(false);
 
   return (
     <aside className="space-y-3">
       {/* Upcoming Trainings */}
       <div className="rounded-lg overflow-hidden shadow-md bg-card">
-        <div className="bg-[hsl(var(--mtb-teal))] px-4 py-3 flex items-center gap-2">
+        <div className="bg-[hsl(var(--mtb-teal))] px-4 py-2.5 flex items-center gap-2">
           <GraduationCap className="w-4 h-4 text-white" />
-          <h4 className="text-sm font-bold text-white">Upcoming Trainings</h4>
+          <h4 className="text-sm font-semibold text-white">Upcoming Trainings</h4>
         </div>
         <div className="p-3">
           <div className="flex gap-1.5 mb-3">
@@ -88,44 +85,68 @@ export function RightSidebar() {
           <a
             key={link.label}
             href="#"
-            className={`flex items-center gap-3 p-3 rounded-lg ${link.bgColor} border border-border hover:shadow-md transition-all`}
+            className="flex items-center gap-3 p-3 rounded-lg bg-card border border-border hover:shadow-md transition-all"
           >
             <div className={`w-8 h-8 rounded-lg ${link.iconBg} flex items-center justify-center`}>
-              <link.icon className={`w-4 h-4 ${link.iconColor}`} />
+              <link.icon className="w-4 h-4 text-white" />
             </div>
             <span className="text-sm font-medium text-foreground">{link.label}</span>
           </a>
         ))}
       </div>
 
-      {/* App Links - Unified teal headers */}
+      {/* App Links - Expandable sections */}
       <div className="space-y-2">
-        {appLinks.slice(0, 2).map((link) => (
-          <a
-            key={link.label}
-            href="#"
-            className={`flex items-center justify-between p-3 rounded-lg ${link.bgColor} text-white hover:opacity-95 transition-all shadow-sm`}
-          >
-            <div className="flex items-center gap-3">
-              <link.icon className="w-4 h-4" />
-              <span className="text-sm font-medium">{link.label}</span>
+        {/* CBS Apps - Expandable */}
+        <Collapsible open={cbsExpanded} onOpenChange={setCbsExpanded}>
+          <CollapsibleTrigger asChild>
+            <button className="w-full flex items-center justify-between p-3 rounded-lg bg-[hsl(var(--mtb-teal))] text-white hover:opacity-95 transition-all shadow-sm">
+              <div className="flex items-center gap-3">
+                <Monitor className="w-4 h-4" />
+                <span className="text-sm font-medium">CBS Apps</span>
+              </div>
+              <ChevronRight className={`w-4 h-4 transition-transform duration-200 ${cbsExpanded ? 'rotate-90' : ''}`} />
+            </button>
+          </CollapsibleTrigger>
+          <CollapsibleContent className="overflow-hidden data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
+            <div className="mt-1 bg-card border border-border rounded-lg shadow-sm p-3 space-y-2">
+              <a href="#" className="block text-sm text-foreground hover:text-[hsl(var(--mtb-teal))]">Core Banking System</a>
+              <a href="#" className="block text-sm text-foreground hover:text-[hsl(var(--mtb-teal))]">Trade Finance</a>
+              <a href="#" className="block text-sm text-foreground hover:text-[hsl(var(--mtb-teal))]">Loan Management</a>
             </div>
-            <ChevronRight className="w-4 h-4" />
-          </a>
-        ))}
+          </CollapsibleContent>
+        </Collapsible>
 
-        {/* Alerts - Expandable/Collapsible */}
+        {/* Online Apps - Expandable */}
+        <Collapsible open={onlineExpanded} onOpenChange={setOnlineExpanded}>
+          <CollapsibleTrigger asChild>
+            <button className="w-full flex items-center justify-between p-3 rounded-lg bg-[hsl(var(--mtb-green))] text-white hover:opacity-95 transition-all shadow-sm">
+              <div className="flex items-center gap-3">
+                <Globe className="w-4 h-4" />
+                <span className="text-sm font-medium">Online Apps</span>
+              </div>
+              <ChevronRight className={`w-4 h-4 transition-transform duration-200 ${onlineExpanded ? 'rotate-90' : ''}`} />
+            </button>
+          </CollapsibleTrigger>
+          <CollapsibleContent className="overflow-hidden data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
+            <div className="mt-1 bg-card border border-border rounded-lg shadow-sm p-3 space-y-2">
+              <a href="#" className="block text-sm text-foreground hover:text-[hsl(var(--mtb-teal))]">Internet Banking</a>
+              <a href="#" className="block text-sm text-foreground hover:text-[hsl(var(--mtb-teal))]">Mobile Banking</a>
+              <a href="#" className="block text-sm text-foreground hover:text-[hsl(var(--mtb-teal))]">Agent Banking</a>
+            </div>
+          </CollapsibleContent>
+        </Collapsible>
+
+        {/* Alerts - Expandable */}
         <Collapsible open={alertsExpanded} onOpenChange={setAlertsExpanded}>
           <CollapsibleTrigger asChild>
-            <button
-              className="w-full flex items-center justify-between p-3 rounded-lg bg-[hsl(var(--mtb-orange))] text-white hover:opacity-95 transition-all shadow-sm"
-            >
+            <button className="w-full flex items-center justify-between p-3 rounded-lg bg-[hsl(var(--mtb-red))] text-white hover:opacity-95 transition-all shadow-sm">
               <div className="flex items-center gap-3">
                 <Bell className="w-4 h-4" />
                 <span className="text-sm font-medium">Alerts</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-[10px] bg-white/20 px-2 py-0.5 rounded-full font-medium">
+                <span className="text-[10px] bg-white text-[hsl(var(--mtb-red))] px-2 py-0.5 rounded-full font-semibold">
                   6 New
                 </span>
                 <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${alertsExpanded ? 'rotate-180' : ''}`} />
@@ -147,20 +168,45 @@ export function RightSidebar() {
           </CollapsibleContent>
         </Collapsible>
 
-        {/* Remaining app links */}
-        {appLinks.slice(2).map((link) => (
-          <a
-            key={link.label}
-            href="#"
-            className={`flex items-center justify-between p-3 rounded-lg ${link.bgColor} text-white hover:opacity-95 transition-all shadow-sm`}
-          >
-            <div className="flex items-center gap-3">
-              <link.icon className="w-4 h-4" />
-              <span className="text-sm font-medium">{link.label}</span>
+        {/* Business Dashboards - Expandable */}
+        <Collapsible open={dashboardsExpanded} onOpenChange={setDashboardsExpanded}>
+          <CollapsibleTrigger asChild>
+            <button className="w-full flex items-center justify-between p-3 rounded-lg bg-[hsl(var(--mtb-teal))] text-white hover:opacity-95 transition-all shadow-sm">
+              <div className="flex items-center gap-3">
+                <BarChart3 className="w-4 h-4" />
+                <span className="text-sm font-medium">Business Dashboards</span>
+              </div>
+              <ChevronRight className={`w-4 h-4 transition-transform duration-200 ${dashboardsExpanded ? 'rotate-90' : ''}`} />
+            </button>
+          </CollapsibleTrigger>
+          <CollapsibleContent className="overflow-hidden data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
+            <div className="mt-1 bg-card border border-border rounded-lg shadow-sm p-3 space-y-2">
+              <a href="#" className="block text-sm text-foreground hover:text-[hsl(var(--mtb-teal))]">MIS Dashboard</a>
+              <a href="#" className="block text-sm text-foreground hover:text-[hsl(var(--mtb-teal))]">Performance Analytics</a>
+              <a href="#" className="block text-sm text-foreground hover:text-[hsl(var(--mtb-teal))]">Risk Dashboard</a>
             </div>
-            <ChevronRight className="w-4 h-4" />
-          </a>
-        ))}
+          </CollapsibleContent>
+        </Collapsible>
+
+        {/* MTBian Dashboard - Expandable */}
+        <Collapsible open={mtbianExpanded} onOpenChange={setMtbianExpanded}>
+          <CollapsibleTrigger asChild>
+            <button className="w-full flex items-center justify-between p-3 rounded-lg bg-[hsl(var(--mtb-teal))] text-white hover:opacity-95 transition-all shadow-sm">
+              <div className="flex items-center gap-3">
+                <BarChart3 className="w-4 h-4" />
+                <span className="text-sm font-medium">MTBian Dashboard</span>
+              </div>
+              <ChevronRight className={`w-4 h-4 transition-transform duration-200 ${mtbianExpanded ? 'rotate-90' : ''}`} />
+            </button>
+          </CollapsibleTrigger>
+          <CollapsibleContent className="overflow-hidden data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
+            <div className="mt-1 bg-card border border-border rounded-lg shadow-sm p-3 space-y-2">
+              <a href="#" className="block text-sm text-foreground hover:text-[hsl(var(--mtb-teal))]">My Performance</a>
+              <a href="#" className="block text-sm text-foreground hover:text-[hsl(var(--mtb-teal))]">Leave Balance</a>
+              <a href="#" className="block text-sm text-foreground hover:text-[hsl(var(--mtb-teal))]">Attendance</a>
+            </div>
+          </CollapsibleContent>
+        </Collapsible>
       </div>
     </aside>
   );
