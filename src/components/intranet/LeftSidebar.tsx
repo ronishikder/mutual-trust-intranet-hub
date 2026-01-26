@@ -230,8 +230,8 @@ export function LeftSidebar() {
 
       {/* Shortcuts */}
       <div className="mtb-card overflow-hidden">
-        <div className="bg-[hsl(var(--mtb-green))] px-3 py-2">
-          <h4 className="text-sm font-bold text-white">Shortcuts</h4>
+        <div className="bg-[hsl(var(--mtb-teal))] px-3 py-1.5">
+          <h4 className="text-xs font-semibold text-white">Shortcuts</h4>
         </div>
         <div className="p-2 space-y-0.5">
           {shortcuts.map((item) => (
@@ -242,8 +242,8 @@ export function LeftSidebar() {
 
       {/* Life Quote */}
       <div className="mtb-card overflow-hidden">
-        <div className="bg-[hsl(var(--mtb-orange))] px-3 py-2">
-          <h4 className="text-sm font-bold text-white">Life Quote</h4>
+        <div className="bg-[hsl(var(--mtb-blue))] px-3 py-1.5">
+          <h4 className="text-xs font-semibold text-white">Life Quote</h4>
         </div>
         <div className="p-3">
           <blockquote className="text-sm italic text-foreground leading-relaxed">
@@ -262,8 +262,8 @@ export function LeftSidebar() {
 
       {/* Search a Word */}
       <div className="mtb-card overflow-hidden">
-        <div className="bg-[hsl(var(--mtb-red))] px-3 py-2">
-          <h4 className="text-sm font-bold text-white">Search a Word</h4>
+        <div className="bg-[hsl(var(--mtb-green))] px-3 py-1.5">
+          <h4 className="text-xs font-semibold text-white">Search a Word</h4>
         </div>
         <div className="p-3">
           <div className="flex gap-1.5">
@@ -288,8 +288,8 @@ export function LeftSidebar() {
 
       {/* MTBians' News */}
       <div className="mtb-card overflow-hidden">
-        <div className="bg-[hsl(var(--mtb-blue))] px-3 py-2">
-          <h4 className="text-sm font-bold text-white">MTBians' News</h4>
+        <div className="bg-[hsl(var(--mtb-blue))] px-3 py-1.5">
+          <h4 className="text-xs font-semibold text-white">MTBians' News</h4>
         </div>
         <div className="p-3 space-y-2">
           {mtbiansNews.map((news, idx) => (
@@ -311,8 +311,8 @@ export function LeftSidebar() {
       <Collapsible open={knowledgeOpen} onOpenChange={setKnowledgeOpen}>
         <div className="mtb-card overflow-hidden">
           <CollapsibleTrigger className="w-full">
-            <div className="bg-[hsl(var(--mtb-green))] px-3 py-2 flex items-center justify-between cursor-pointer hover:bg-[hsl(var(--mtb-green))]/90 transition-colors">
-              <h4 className="text-sm font-bold text-white">Knowledge Point</h4>
+            <div className="bg-[hsl(var(--mtb-orange))] px-3 py-1.5 flex items-center justify-between cursor-pointer hover:bg-[hsl(var(--mtb-orange))]/90 transition-colors">
+              <h4 className="text-xs font-semibold text-white">Knowledge Point</h4>
               {knowledgeOpen ? (
                 <ChevronDown className="w-4 h-4 text-white" />
               ) : (
