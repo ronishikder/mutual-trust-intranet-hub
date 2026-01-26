@@ -17,10 +17,10 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/component
 const trainingMonths = ["Jan", "Feb", "Mar"];
 
 const quickLinks = [
-  { icon: Search, label: "Internal JobWatch", iconBg: "bg-[hsl(var(--mtb-red))]" },
-  { icon: HeartPulse, label: "Life & Medical Insurance", iconBg: "bg-[hsl(var(--mtb-green))]" },
-  { icon: Headphones, label: "CBS-Support", iconBg: "bg-[hsl(var(--mtb-orange))]" },
-  { icon: Monitor, label: "IT Service Desk", iconBg: "bg-[hsl(var(--mtb-blue))]" },
+  { icon: Search, label: "Internal JobWatch", iconBg: "bg-gradient-to-r from-[hsl(var(--mtb-red))] to-[hsl(var(--mtb-orange))]" },
+  { icon: HeartPulse, label: "Life & Medical Insurance", iconBg: "bg-gradient-to-r from-[hsl(var(--mtb-green))] to-[hsl(var(--mtb-teal))]" },
+  { icon: Headphones, label: "CBS-Support", iconBg: "bg-gradient-to-r from-[hsl(var(--mtb-orange))] to-[hsl(var(--mtb-yellow))]" },
+  { icon: Monitor, label: "IT Service Desk", iconBg: "bg-gradient-to-r from-[hsl(var(--mtb-blue))] to-[hsl(var(--mtb-teal))]" },
 ];
 
 const alertItems = [
@@ -44,7 +44,7 @@ export function RightSidebar() {
     <aside className="space-y-3">
       {/* Upcoming Trainings */}
       <div className="rounded-lg overflow-hidden shadow-md bg-card">
-        <div className="bg-[hsl(var(--mtb-teal))] px-4 py-2.5 flex items-center gap-2">
+        <div className="bg-gradient-to-r from-[hsl(var(--mtb-red))] via-[hsl(var(--mtb-orange))] to-[hsl(var(--mtb-green))] px-4 py-2.5 flex items-center gap-2">
           <GraduationCap className="w-4 h-4 text-white" />
           <h4 className="text-sm font-semibold text-white">Upcoming Trainings</h4>
         </div>
@@ -100,7 +100,7 @@ export function RightSidebar() {
         {/* CBS Apps - Expandable */}
         <Collapsible open={cbsExpanded} onOpenChange={setCbsExpanded}>
           <CollapsibleTrigger asChild>
-            <button className="w-full flex items-center justify-between p-3 rounded-lg bg-[hsl(var(--mtb-teal))] text-white hover:opacity-95 transition-all shadow-sm">
+            <button className="w-full flex items-center justify-between p-3 rounded-lg bg-gradient-to-r from-[hsl(var(--mtb-teal))] to-[hsl(var(--mtb-green))] text-white hover:opacity-95 transition-all shadow-sm">
               <div className="flex items-center gap-3">
                 <Monitor className="w-4 h-4" />
                 <span className="text-sm font-medium">CBS Apps</span>
@@ -120,7 +120,7 @@ export function RightSidebar() {
         {/* Online Apps - Expandable */}
         <Collapsible open={onlineExpanded} onOpenChange={setOnlineExpanded}>
           <CollapsibleTrigger asChild>
-            <button className="w-full flex items-center justify-between p-3 rounded-lg bg-[hsl(var(--mtb-green))] text-white hover:opacity-95 transition-all shadow-sm">
+            <button className="w-full flex items-center justify-between p-3 rounded-lg bg-gradient-to-r from-[hsl(var(--mtb-green))] to-[hsl(var(--mtb-teal))] text-white hover:opacity-95 transition-all shadow-sm">
               <div className="flex items-center gap-3">
                 <Globe className="w-4 h-4" />
                 <span className="text-sm font-medium">Online Apps</span>
@@ -140,7 +140,7 @@ export function RightSidebar() {
         {/* Alerts - Expandable */}
         <Collapsible open={alertsExpanded} onOpenChange={setAlertsExpanded}>
           <CollapsibleTrigger asChild>
-            <button className="w-full flex items-center justify-between p-3 rounded-lg bg-[hsl(var(--mtb-red))] text-white hover:opacity-95 transition-all shadow-sm">
+            <button className="w-full flex items-center justify-between p-3 rounded-lg bg-gradient-to-r from-[hsl(var(--mtb-red))] to-[hsl(var(--mtb-orange))] text-white hover:opacity-95 transition-all shadow-sm">
               <div className="flex items-center gap-3">
                 <Bell className="w-4 h-4" />
                 <span className="text-sm font-medium">Alerts</span>
@@ -171,7 +171,7 @@ export function RightSidebar() {
         {/* Business Dashboards - Expandable */}
         <Collapsible open={dashboardsExpanded} onOpenChange={setDashboardsExpanded}>
           <CollapsibleTrigger asChild>
-            <button className="w-full flex items-center justify-between p-3 rounded-lg bg-[hsl(var(--mtb-teal))] text-white hover:opacity-95 transition-all shadow-sm">
+            <button className="w-full flex items-center justify-between p-3 rounded-lg bg-gradient-to-r from-[hsl(var(--mtb-blue))] to-[hsl(var(--mtb-teal))] text-white hover:opacity-95 transition-all shadow-sm">
               <div className="flex items-center gap-3">
                 <BarChart3 className="w-4 h-4" />
                 <span className="text-sm font-medium">Business Dashboards</span>
@@ -191,7 +191,7 @@ export function RightSidebar() {
         {/* MTBian Dashboard - Expandable */}
         <Collapsible open={mtbianExpanded} onOpenChange={setMtbianExpanded}>
           <CollapsibleTrigger asChild>
-            <button className="w-full flex items-center justify-between p-3 rounded-lg bg-[hsl(var(--mtb-teal))] text-white hover:opacity-95 transition-all shadow-sm">
+            <button className="w-full flex items-center justify-between p-3 rounded-lg bg-gradient-to-r from-[hsl(var(--mtb-teal))] to-[hsl(var(--mtb-blue))] text-white hover:opacity-95 transition-all shadow-sm">
               <div className="flex items-center gap-3">
                 <BarChart3 className="w-4 h-4" />
                 <span className="text-sm font-medium">MTBian Dashboard</span>

@@ -105,15 +105,15 @@ export function MainContent() {
       {/* Circulars Section */}
       <div className="rounded-lg overflow-hidden shadow-md bg-card">
         <div className="px-4 py-2.5 border-b border-border/50 flex items-center justify-between">
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-1">
             <Button 
               variant={activeTab === "mtb" ? "default" : "ghost"}
               size="sm" 
               onClick={() => setActiveTab("mtb")}
-              className={`h-7 px-4 text-xs font-semibold rounded-full ${
+              className={`h-7 px-4 text-xs font-semibold rounded-sm ${
                 activeTab === "mtb" 
-                  ? 'bg-[hsl(var(--mtb-teal))] hover:bg-[hsl(var(--mtb-teal))]/90 text-white' 
-                  : 'text-foreground hover:bg-muted/50'
+                  ? 'bg-[hsl(var(--mtb-red))] hover:bg-[hsl(var(--mtb-red))]/90 text-white' 
+                  : 'text-foreground hover:bg-muted/50 bg-transparent'
               }`}
             >
               MTB Circulars
@@ -122,10 +122,10 @@ export function MainContent() {
               variant={activeTab === "bb" ? "default" : "ghost"}
               size="sm" 
               onClick={() => setActiveTab("bb")}
-              className={`h-7 px-4 text-xs font-semibold rounded-full ${
+              className={`h-7 px-4 text-xs font-semibold rounded-sm ${
                 activeTab === "bb" 
-                  ? 'bg-[hsl(var(--mtb-teal))] hover:bg-[hsl(var(--mtb-teal))]/90 text-white' 
-                  : 'text-foreground hover:bg-muted/50'
+                  ? 'bg-[hsl(var(--mtb-red))] hover:bg-[hsl(var(--mtb-red))]/90 text-white' 
+                  : 'text-foreground hover:bg-muted/50 bg-transparent'
               }`}
             >
               BB Circular
@@ -156,7 +156,7 @@ export function MainContent() {
 
       {/* Branch Reporting */}
       <div className="rounded-lg overflow-hidden shadow-md bg-card">
-        <div className="bg-[hsl(var(--mtb-teal))] px-4 py-2.5 flex items-center gap-2">
+        <div className="bg-gradient-to-r from-[hsl(var(--mtb-red))] via-[hsl(var(--mtb-orange))] to-[hsl(var(--mtb-green))] px-4 py-2.5 flex items-center gap-2">
           <Clock className="w-4 h-4 text-white" />
           <h3 className="font-bold text-white text-sm">Branch Reporting</h3>
         </div>
