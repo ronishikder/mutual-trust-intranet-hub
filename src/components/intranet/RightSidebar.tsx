@@ -1,32 +1,24 @@
 import { useState } from "react";
 import { 
   GraduationCap, 
+  Search,
   HeartPulse, 
   Headphones, 
   Monitor, 
   Globe, 
   Bell, 
   BarChart3, 
-  Archive,
   ChevronRight,
-  Users,
-  Search,
-  Calendar,
-  AlertTriangle,
-  Building2,
-  Briefcase,
-  FileText,
-  BookOpen,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const trainingMonths = ["Jan", "Feb", "Mar"];
 
 const quickLinks = [
-  { icon: Search, label: "Internal JobWatch", bgColor: "bg-[hsl(var(--mtb-red))]", iconBg: "bg-white/20" },
-  { icon: HeartPulse, label: "Life & Medical Insurance", bgColor: "bg-white border border-border", iconBg: "bg-[hsl(var(--mtb-teal))]/10", textColor: "text-foreground", iconColor: "text-[hsl(var(--mtb-teal))]" },
-  { icon: Headphones, label: "CBS-Support", bgColor: "bg-white border border-border", iconBg: "bg-[hsl(var(--mtb-teal))]/10", textColor: "text-foreground", iconColor: "text-[hsl(var(--mtb-teal))]" },
-  { icon: Monitor, label: "IT Service Desk", bgColor: "bg-white border border-border", iconBg: "bg-[hsl(var(--mtb-blue))]/10", textColor: "text-foreground", iconColor: "text-[hsl(var(--mtb-blue))]" },
+  { icon: Search, label: "Internal JobWatch", bgColor: "bg-white", iconBg: "bg-[hsl(var(--mtb-red))]", iconColor: "text-white" },
+  { icon: HeartPulse, label: "Life & Medical Insurance", bgColor: "bg-white", iconBg: "bg-[hsl(var(--mtb-green))]", iconColor: "text-white" },
+  { icon: Headphones, label: "CBS-Support", bgColor: "bg-white", iconBg: "bg-[hsl(var(--mtb-orange))]", iconColor: "text-white" },
+  { icon: Monitor, label: "IT Service Desk", bgColor: "bg-white", iconBg: "bg-[hsl(var(--mtb-blue))]", iconColor: "text-white" },
 ];
 
 const appLinks = [
@@ -34,13 +26,15 @@ const appLinks = [
   { icon: Globe, label: "Online Apps", bgColor: "bg-[hsl(var(--mtb-green))]" },
   { icon: Bell, label: "Alerts", bgColor: "bg-[hsl(var(--mtb-red))]", badge: "6 New" },
   { icon: BarChart3, label: "Business Dashboards", bgColor: "bg-[hsl(var(--mtb-purple))]" },
-  { icon: Archive, label: "MTBian Dashboard", bgColor: "bg-[hsl(var(--mtb-teal))]" },
+  { icon: BarChart3, label: "MTBian Dashboard", bgColor: "bg-[hsl(var(--mtb-blue))]" },
 ];
 
 export function RightSidebar() {
+  const [activeMonth, setActiveMonth] = useState("Jan");
+
   return (
     <aside className="space-y-3">
-      {/* Upcoming Trainings - Attachment-2 Style */}
+      {/* Upcoming Trainings */}
       <div className="rounded-lg overflow-hidden shadow-md bg-card">
         <div className="bg-[hsl(var(--mtb-teal))] px-4 py-3 flex items-center gap-2">
           <GraduationCap className="w-4 h-4 text-white" />
@@ -48,13 +42,14 @@ export function RightSidebar() {
         </div>
         <div className="p-3">
           <div className="flex gap-1.5 mb-3">
-            {trainingMonths.map((month, idx) => (
+            {trainingMonths.map((month) => (
               <Button
                 key={month}
-                variant={idx === 0 ? "default" : "outline"}
+                variant={activeMonth === month ? "default" : "outline"}
                 size="sm"
+                onClick={() => setActiveMonth(month)}
                 className={`h-7 text-xs flex-1 rounded-full font-medium ${
-                  idx === 0 
+                  activeMonth === month 
                     ? 'bg-[hsl(var(--mtb-teal))] hover:bg-[hsl(var(--mtb-teal))]/90 text-white' 
                     : 'border-border text-foreground hover:bg-muted/50'
                 }`}
@@ -70,29 +65,29 @@ export function RightSidebar() {
               MTB Library
             </Button>
           </div>
-          <div className="text-center py-3 text-sm text-muted-foreground">
-            No trainings scheduled for January
+          <div className="text-center py-3 text-sm text-muted-foreground italic">
+            No trainings scheduled for {activeMonth === "Jan" ? "January" : activeMonth === "Feb" ? "February" : "March"}
           </div>
         </div>
       </div>
 
-      {/* Quick Links - Attachment-2 Style */}
+      {/* Quick Links - Card style like attached */}
       <div className="space-y-2">
         {quickLinks.map((link) => (
           <a
             key={link.label}
             href="#"
-            className={`flex items-center gap-3 p-3 rounded-lg ${link.bgColor} hover:opacity-95 transition-all shadow-sm`}
+            className={`flex items-center gap-3 p-3 rounded-lg ${link.bgColor} border border-border hover:shadow-md transition-all`}
           >
-            <div className={`w-8 h-8 rounded-lg ${link.iconBg || 'bg-white/20'} flex items-center justify-center`}>
-              <link.icon className={`w-4 h-4 ${link.iconColor || 'text-white'}`} />
+            <div className={`w-8 h-8 rounded-lg ${link.iconBg} flex items-center justify-center`}>
+              <link.icon className={`w-4 h-4 ${link.iconColor}`} />
             </div>
-            <span className={`text-sm font-medium ${link.textColor || 'text-white'}`}>{link.label}</span>
+            <span className="text-sm font-medium text-foreground">{link.label}</span>
           </a>
         ))}
       </div>
 
-      {/* App Links - Attachment-2 Style with colorful backgrounds */}
+      {/* App Links - Colorful backgrounds with chevron */}
       <div className="space-y-2">
         {appLinks.map((link) => (
           <a
