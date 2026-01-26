@@ -10,46 +10,47 @@
 /* MTB Banking Intranet Design System */
 @layer base {
   :root {
-    /* Core brand gradient colors */
+    /* Core brand gradient colors - MTB Brand */
     --mtb-red: 0 72% 50%;
-    --mtb-orange: 25 95% 53%;
-    --mtb-green: 142 71% 45%;
-    --mtb-teal: 174 72% 40%;
-    --mtb-blue: 217 91% 60%;
-    --mtb-purple: 280 68% 50%;
+    --mtb-orange: 25 95% 50%;
+    --mtb-green: 120 70% 38%;
+    --mtb-teal: 174 72% 35%;
+    --mtb-blue: 210 85% 45%;
+    --mtb-purple: 280 68% 45%;
+    --mtb-yellow: 45 95% 50%;
     
-    /* Main palette */
-    --background: 210 20% 98%;
-    --foreground: 220 20% 15%;
+    /* Main palette - Higher contrast for readability */
+    --background: 210 15% 97%;
+    --foreground: 220 25% 12%;
 
     --card: 0 0% 100%;
-    --card-foreground: 220 20% 15%;
+    --card-foreground: 220 25% 12%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 220 20% 15%;
+    --popover-foreground: 220 25% 12%;
 
-    --primary: 174 72% 40%;
+    --primary: 174 72% 35%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 14% 96%;
-    --secondary-foreground: 220 20% 25%;
+    --secondary: 220 14% 95%;
+    --secondary-foreground: 220 25% 15%;
 
-    --muted: 220 14% 96%;
-    --muted-foreground: 220 10% 45%;
+    --muted: 220 14% 95%;
+    --muted-foreground: 220 12% 40%;
 
-    --accent: 217 91% 60%;
+    --accent: 210 85% 45%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 72% 50%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: 174 72% 40%;
+    --border: 220 15% 88%;
+    --input: 220 15% 88%;
+    --ring: 174 72% 35%;
 
-    --radius: 0.5rem;
+    --radius: 0.375rem;
 
-    /* Header gradient */
+    /* Header gradient - MTB Brand Wave */
     --header-gradient: linear-gradient(
       90deg,
       hsl(var(--mtb-red)) 0%,
@@ -60,49 +61,49 @@
       hsl(var(--mtb-purple)) 100%
     );
 
-    /* Card shadows */
-    --shadow-card: 0 2px 8px -2px rgba(0, 0, 0, 0.08), 0 4px 16px -4px rgba(0, 0, 0, 0.06);
+    /* Card shadows - Subtle corporate */
+    --shadow-card: 0 1px 4px -1px rgba(0, 0, 0, 0.06), 0 2px 8px -2px rgba(0, 0, 0, 0.04);
     --shadow-elevated: 0 4px 12px -2px rgba(0, 0, 0, 0.1), 0 8px 24px -4px rgba(0, 0, 0, 0.08);
 
     /* Sidebar colors */
     --sidebar-background: 0 0% 100%;
-    --sidebar-foreground: 220 20% 25%;
-    --sidebar-primary: 174 72% 40%;
+    --sidebar-foreground: 220 25% 15%;
+    --sidebar-primary: 174 72% 35%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 220 14% 96%;
-    --sidebar-accent-foreground: 220 20% 25%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 174 72% 40%;
+    --sidebar-accent: 220 14% 95%;
+    --sidebar-accent-foreground: 220 25% 15%;
+    --sidebar-border: 220 15% 88%;
+    --sidebar-ring: 174 72% 35%;
 
-    /* Navigation */
-    --nav-bg: 220 20% 25%;
-    --nav-active: 174 72% 40%;
-    --nav-hover: 220 20% 30%;
+    /* Navigation - Dark professional */
+    --nav-bg: 220 20% 22%;
+    --nav-active: 174 72% 35%;
+    --nav-hover: 220 20% 28%;
   }
 
   .dark {
-    --background: 220 20% 10%;
-    --foreground: 210 20% 98%;
-    --card: 220 20% 13%;
-    --card-foreground: 210 20% 98%;
-    --popover: 220 20% 13%;
-    --popover-foreground: 210 20% 98%;
-    --primary: 174 72% 45%;
+    --background: 220 20% 8%;
+    --foreground: 210 25% 95%;
+    --card: 220 20% 11%;
+    --card-foreground: 210 25% 95%;
+    --popover: 220 20% 11%;
+    --popover-foreground: 210 25% 95%;
+    --primary: 174 72% 42%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 220 20% 18%;
-    --secondary-foreground: 210 20% 98%;
-    --muted: 220 20% 18%;
-    --muted-foreground: 220 10% 60%;
-    --accent: 217 91% 60%;
+    --secondary: 220 20% 16%;
+    --secondary-foreground: 210 25% 95%;
+    --muted: 220 20% 16%;
+    --muted-foreground: 220 12% 55%;
+    --accent: 210 85% 50%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 62% 45%;
     --destructive-foreground: 0 0% 100%;
-    --border: 220 20% 20%;
-    --input: 220 20% 20%;
-    --ring: 174 72% 45%;
-    --nav-bg: 220 20% 8%;
-    --nav-active: 174 72% 45%;
-    --nav-hover: 220 20% 15%;
+    --border: 220 20% 18%;
+    --input: 220 20% 18%;
+    --ring: 174 72% 42%;
+    --nav-bg: 220 20% 6%;
+    --nav-active: 174 72% 42%;
+    --nav-hover: 220 20% 12%;
   }
 }
 
@@ -114,6 +115,8 @@
   body {
     @apply bg-background text-foreground font-sans antialiased;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
   }
 }
 

@@ -10,8 +10,8 @@ const Index = () => {
       <Header />
       <Navigation />
       
-      <div className="container px-3 sm:px-4 lg:px-6 py-4 lg:py-5">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-5">
+      <div className="container px-4 lg:px-6 py-5">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5">
           {/* Left Sidebar - Equal width with right */}
           <div className="hidden lg:block lg:col-span-2">
             <LeftSidebar />
@@ -36,13 +36,19 @@ const Index = () => {
 
       {/* Footer */}
       <footer className="border-t border-border bg-card mt-6">
-        <div className="container px-3 sm:px-4 lg:px-6 py-3">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-2 text-[10px] text-muted-foreground">
-            <p>© 2026 Mutual Trust Bank PLC. All rights reserved.</p>
-            <div className="flex items-center gap-3">
+        <div className="container px-4 lg:px-6 py-4">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-muted-foreground">
+            <p>© Mutual Trust Bank PLC. All rights reserved.</p>
+            <div className="flex items-center gap-4">
               <a href="#" className="hover:text-foreground transition-colors">IT Support</a>
               <a href="#" className="hover:text-foreground transition-colors">Privacy Policy</a>
               <a href="#" className="hover:text-foreground transition-colors">Terms of Use</a>
+            </div>
+            <div className="flex items-center gap-2">
+              <span>Powered by</span>
+              <span className="px-2 py-0.5 bg-[hsl(var(--mtb-orange))] text-white text-[10px] rounded">DBD</span>
+              <span>&</span>
+              <span className="px-2 py-0.5 bg-[hsl(var(--mtb-blue))] text-white text-[10px] rounded">ITD</span>
             </div>
           </div>
         </div>
