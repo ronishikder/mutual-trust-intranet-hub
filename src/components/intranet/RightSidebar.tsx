@@ -9,7 +9,6 @@ import {
   Bell, 
   BarChart3, 
   ChevronRight,
-  ChevronDown,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
@@ -17,10 +16,10 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/component
 const trainingMonths = ["Jan", "Feb", "Mar"];
 
 const quickLinks = [
-  { icon: Search, label: "Internal JobWatch", iconBg: "bg-gradient-to-r from-[hsl(var(--mtb-red))] to-[hsl(var(--mtb-orange))]" },
-  { icon: HeartPulse, label: "Life & Medical Insurance", iconBg: "bg-gradient-to-r from-[hsl(var(--mtb-green))] to-[hsl(var(--mtb-teal))]" },
-  { icon: Headphones, label: "CBS-Support", iconBg: "bg-gradient-to-r from-[hsl(var(--mtb-orange))] to-[hsl(var(--mtb-yellow))]" },
-  { icon: Monitor, label: "IT Service Desk", iconBg: "bg-gradient-to-r from-[hsl(var(--mtb-blue))] to-[hsl(var(--mtb-teal))]" },
+  { icon: Search, label: "Internal JobWatch", iconBg: "bg-[hsl(var(--mtb-blue))]" },
+  { icon: HeartPulse, label: "Life & Medical Insurance", iconBg: "bg-[hsl(var(--mtb-teal))]" },
+  { icon: Headphones, label: "CBS-Support", iconBg: "bg-[hsl(var(--mtb-blue))]" },
+  { icon: Monitor, label: "IT Service Desk", iconBg: "bg-[hsl(var(--mtb-blue))]" },
 ];
 
 const alertItems = [
@@ -43,8 +42,8 @@ export function RightSidebar() {
   return (
     <aside className="space-y-3">
       {/* Upcoming Trainings */}
-      <div className="rounded-lg overflow-hidden shadow-md bg-card">
-        <div className="bg-gradient-to-r from-[hsl(var(--mtb-red))] via-[hsl(var(--mtb-orange))] to-[hsl(var(--mtb-green))] px-4 py-2.5 flex items-center gap-2">
+      <div className="rounded-xl overflow-hidden shadow-sm bg-card">
+        <div className="bg-[hsl(var(--mtb-teal))] px-4 py-2.5 flex items-center gap-2">
           <GraduationCap className="w-4 h-4 text-white" />
           <h4 className="text-sm font-semibold text-white">Upcoming Trainings</h4>
         </div>
@@ -58,8 +57,8 @@ export function RightSidebar() {
                 onClick={() => setActiveMonth(month)}
                 className={`h-7 text-xs flex-1 rounded-full font-medium ${
                   activeMonth === month 
-                    ? 'bg-[hsl(var(--mtb-teal))] hover:bg-[hsl(var(--mtb-teal))]/90 text-white' 
-                    : 'border-border text-foreground hover:bg-muted/50'
+                    ? 'bg-[hsl(var(--mtb-teal))] hover:bg-[hsl(var(--mtb-teal))]/90 text-white border-0' 
+                    : 'border-border text-foreground hover:bg-muted/50 bg-white'
                 }`}
               >
                 {month}
@@ -68,7 +67,7 @@ export function RightSidebar() {
             <Button
               variant="outline"
               size="sm"
-              className="h-7 text-xs flex-1 border-border text-foreground hover:bg-muted/50 rounded-full font-medium"
+              className="h-7 text-xs flex-1 border-border text-foreground hover:bg-muted/50 rounded-full font-medium bg-white"
             >
               MTB Library
             </Button>
@@ -80,19 +79,21 @@ export function RightSidebar() {
       </div>
 
       {/* Quick Links - Card style */}
-      <div className="space-y-2">
-        {quickLinks.map((link) => (
-          <a
-            key={link.label}
-            href="#"
-            className="flex items-center gap-3 p-3 rounded-lg bg-card border border-border hover:shadow-md transition-all"
-          >
-            <div className={`w-8 h-8 rounded-lg ${link.iconBg} flex items-center justify-center`}>
-              <link.icon className="w-4 h-4 text-white" />
-            </div>
-            <span className="text-sm font-medium text-foreground">{link.label}</span>
-          </a>
-        ))}
+      <div className="rounded-xl overflow-hidden shadow-sm bg-card">
+        <div className="divide-y divide-border/50">
+          {quickLinks.map((link) => (
+            <a
+              key={link.label}
+              href="#"
+              className="flex items-center gap-3 px-4 py-3 hover:bg-muted/30 transition-colors"
+            >
+              <div className={`w-8 h-8 rounded-lg ${link.iconBg} flex items-center justify-center`}>
+                <link.icon className="w-4 h-4 text-white" />
+              </div>
+              <span className="text-sm font-medium text-foreground">{link.label}</span>
+            </a>
+          ))}
+        </div>
       </div>
 
       {/* App Links - Expandable sections */}
@@ -100,10 +101,10 @@ export function RightSidebar() {
         {/* CBS Apps - Expandable */}
         <Collapsible open={cbsExpanded} onOpenChange={setCbsExpanded}>
           <CollapsibleTrigger asChild>
-            <button className="w-full flex items-center justify-between p-3 rounded-lg bg-gradient-to-r from-[hsl(var(--mtb-teal))] to-[hsl(var(--mtb-green))] text-white hover:opacity-95 transition-all shadow-sm">
+            <button className="w-full flex items-center justify-between px-4 py-2.5 rounded-xl bg-[hsl(var(--mtb-blue))] text-white hover:opacity-95 transition-all shadow-sm">
               <div className="flex items-center gap-3">
                 <Monitor className="w-4 h-4" />
-                <span className="text-sm font-medium">CBS Apps</span>
+                <span className="text-sm font-semibold">CBS Apps</span>
               </div>
               <ChevronRight className={`w-4 h-4 transition-transform duration-200 ${cbsExpanded ? 'rotate-90' : ''}`} />
             </button>
@@ -120,10 +121,10 @@ export function RightSidebar() {
         {/* Online Apps - Expandable */}
         <Collapsible open={onlineExpanded} onOpenChange={setOnlineExpanded}>
           <CollapsibleTrigger asChild>
-            <button className="w-full flex items-center justify-between p-3 rounded-lg bg-gradient-to-r from-[hsl(var(--mtb-green))] to-[hsl(var(--mtb-teal))] text-white hover:opacity-95 transition-all shadow-sm">
+            <button className="w-full flex items-center justify-between px-4 py-2.5 rounded-xl bg-[hsl(var(--mtb-green))] text-white hover:opacity-95 transition-all shadow-sm">
               <div className="flex items-center gap-3">
                 <Globe className="w-4 h-4" />
-                <span className="text-sm font-medium">Online Apps</span>
+                <span className="text-sm font-semibold">Online Apps</span>
               </div>
               <ChevronRight className={`w-4 h-4 transition-transform duration-200 ${onlineExpanded ? 'rotate-90' : ''}`} />
             </button>
@@ -140,16 +141,16 @@ export function RightSidebar() {
         {/* Alerts - Expandable */}
         <Collapsible open={alertsExpanded} onOpenChange={setAlertsExpanded}>
           <CollapsibleTrigger asChild>
-            <button className="w-full flex items-center justify-between p-3 rounded-lg bg-gradient-to-r from-[hsl(var(--mtb-red))] to-[hsl(var(--mtb-orange))] text-white hover:opacity-95 transition-all shadow-sm">
+            <button className="w-full flex items-center justify-between px-4 py-2.5 rounded-xl bg-[hsl(var(--mtb-orange))] text-white hover:opacity-95 transition-all shadow-sm">
               <div className="flex items-center gap-3">
                 <Bell className="w-4 h-4" />
-                <span className="text-sm font-medium">Alerts</span>
+                <span className="text-sm font-semibold">Alerts</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-[10px] bg-white text-[hsl(var(--mtb-red))] px-2 py-0.5 rounded-full font-semibold">
+                <span className="text-[10px] bg-[hsl(var(--mtb-red))] text-white px-2 py-0.5 rounded font-semibold">
                   6 New
                 </span>
-                <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${alertsExpanded ? 'rotate-180' : ''}`} />
+                <ChevronRight className={`w-4 h-4 transition-transform duration-200 ${alertsExpanded ? 'rotate-90' : ''}`} />
               </div>
             </button>
           </CollapsibleTrigger>
@@ -171,10 +172,10 @@ export function RightSidebar() {
         {/* Business Dashboards - Expandable */}
         <Collapsible open={dashboardsExpanded} onOpenChange={setDashboardsExpanded}>
           <CollapsibleTrigger asChild>
-            <button className="w-full flex items-center justify-between p-3 rounded-lg bg-gradient-to-r from-[hsl(var(--mtb-blue))] to-[hsl(var(--mtb-teal))] text-white hover:opacity-95 transition-all shadow-sm">
+            <button className="w-full flex items-center justify-between px-4 py-2.5 rounded-xl bg-[hsl(var(--mtb-purple))] text-white hover:opacity-95 transition-all shadow-sm">
               <div className="flex items-center gap-3">
                 <BarChart3 className="w-4 h-4" />
-                <span className="text-sm font-medium">Business Dashboards</span>
+                <span className="text-sm font-semibold">Business Dashboards</span>
               </div>
               <ChevronRight className={`w-4 h-4 transition-transform duration-200 ${dashboardsExpanded ? 'rotate-90' : ''}`} />
             </button>
@@ -191,10 +192,10 @@ export function RightSidebar() {
         {/* MTBian Dashboard - Expandable */}
         <Collapsible open={mtbianExpanded} onOpenChange={setMtbianExpanded}>
           <CollapsibleTrigger asChild>
-            <button className="w-full flex items-center justify-between p-3 rounded-lg bg-gradient-to-r from-[hsl(var(--mtb-teal))] to-[hsl(var(--mtb-blue))] text-white hover:opacity-95 transition-all shadow-sm">
+            <button className="w-full flex items-center justify-between px-4 py-2.5 rounded-xl bg-[hsl(var(--mtb-teal))] text-white hover:opacity-95 transition-all shadow-sm">
               <div className="flex items-center gap-3">
                 <BarChart3 className="w-4 h-4" />
-                <span className="text-sm font-medium">MTBian Dashboard</span>
+                <span className="text-sm font-semibold">MTBian Dashboard</span>
               </div>
               <ChevronRight className={`w-4 h-4 transition-transform duration-200 ${mtbianExpanded ? 'rotate-90' : ''}`} />
             </button>
