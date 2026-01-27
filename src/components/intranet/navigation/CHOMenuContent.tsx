@@ -1,182 +1,281 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { X, User, ChevronDown, ChevronRight } from "lucide-react";
+import { X, ChevronDown, ChevronRight, Minus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 
-// Top leadership hierarchy
-const topLeadership = [
+// CHO Hierarchy Data - Tree Structure
+const choHierarchy = [
   {
-    title: "Office of the MTB Group Chairman",
-    person: "Mr. Rashed Ahmed Chowdhury",
-    role: "Chairman",
-    items: []
+    id: "office-chairman",
+    label: "Office of the MTB Group Chairman",
+    person: "Mr. Rashed Ahmed Chowdhury, Chairman",
+    children: []
   },
   {
-    title: "Office of the MTB Managing Director & CEO",
+    id: "office-md",
+    label: "Office of the MTB Managing Director & CEO",
     person: "Syed Mahbubar Rahman",
-    role: "Managing Director & CEO",
-    items: [
-      "Office of the MTB Managing Director & CEO",
-      "MTB Investor Relations Department",
-      "MTB Group Human Resources Division",
-      "HR Attached Staff",
-      "Training Institute",
-      "Management Trainee",
-      "Group Finance",
-      "Financial Market Operations Department",
-      "Reconciliation Department",
-      "MTB Centralized Reporting Department",
-      "MTB Group Legal Affairs Division",
-      "MTB Research & Development Department",
-      "MTB Communications Department"
+    children: [
+      { id: "investor-relations", label: "MTB Investor Relations Department" },
+      {
+        id: "hr-division",
+        label: "MTB Group Human Resources Division",
+        href: "/cho/mtb-group-human-resources-division",
+        children: [
+          { id: "hr-attached", label: "HR Attached Staff" },
+          { id: "training-institute", label: "Training Institute" },
+          { id: "management-trainee", label: "Management Trainee" }
+        ]
+      },
+      { 
+        id: "group-finance", 
+        label: "Group Finance",
+        children: [
+          { id: "fmo", label: "Financial Market Operations Department" },
+          { id: "recon", label: "Reconciliation Department" },
+          { id: "reporting", label: "MTB Centralized Reporting Department" }
+        ]
+      },
+      { id: "legal", label: "MTB Group Legal Affairs Division" },
+      { id: "research", label: "MTB Research & Development Department" },
+      { id: "comms", label: "MTB Communications Department" }
     ]
   },
   {
-    title: "Additional Managing Director",
-    person: "Chowdhury Akhtar Asif",
-    role: "AMD & CBO",
-    items: [
-      "Office of AMD & CBO",
-      "Business Monitoring & Analytics Department",
-      "Cash Management & Transaction Banking Division",
-      "MTB MNC Banking Department",
-      "MTB China Desk",
-      "Branch Banking Division",
-      "Wholesale Banking Division",
-      "WBD-1",
-      "WBD-2",
-      "WBD-3",
-      "MTB OBU (Business)",
-      "Islamic Banking Division",
-      "Structured Finance Department"
+    id: "office-amd",
+    label: "Additional Managing Director",
+    person: "Chowdhury Akhtar Asif, AMD & CBO",
+    children: [
+      { id: "bma", label: "Business Monitoring & Analytics Department" },
+      { 
+        id: "cmtb", 
+        label: "Cash Management & Transaction Banking Division",
+        children: [
+          { id: "mnc", label: "MTB MNC Banking Department" },
+          { id: "china-desk", label: "MTB China Desk" }
+        ]
+      },
+      { id: "branch-banking", label: "Branch Banking Division" },
+      { 
+        id: "wholesale", 
+        label: "Wholesale Banking Division",
+        children: [
+          { id: "wbd-1", label: "WBD-1" },
+          { id: "wbd-2", label: "WBD-2" },
+          { id: "wbd-3", label: "WBD-3" }
+        ]
+      },
+      { id: "obu-business", label: "MTB OBU (Business)" },
+      { id: "islamic", label: "Islamic Banking Division" },
+      { id: "structured-finance", label: "Structured Finance Department" }
+    ]
+  },
+  {
+    id: "dmd-section",
+    label: "Deputy Managing Directors",
+    isSection: true,
+    children: [
+      {
+        id: "dmd-ghoicc",
+        label: "DMD & GHOICC",
+        person: "Goutam Prosad Das",
+        children: [
+          { id: "reg-affairs", label: "Regulatory Affairs" },
+          { 
+            id: "icc", 
+            label: "Internal Control & Compliance",
+            children: [
+              { id: "audit", label: "Audit and Inspection Unit" },
+              { id: "reg-compliance", label: "Regulatory Compliance Unit" },
+              { id: "monitoring", label: "Monitoring Unit" },
+              { id: "system-audit", label: "System Audit Unit" }
+            ]
+          }
+        ]
+      },
+      {
+        id: "dmd-camlco",
+        label: "DMD & CAMLCO",
+        person: "Rais Uddin Ahmad",
+        children: [
+          { id: "board", label: "Board Division" },
+          { id: "share", label: "Share Department" },
+          { id: "flora", label: "Payment Technology & Reports (Flora) Division" },
+          { id: "tech-ops", label: "Technology Operations Division" },
+          { id: "service-quality", label: "MTB Service Quality Department" },
+          { id: "aml", label: "AML & CFT Division" },
+          { id: "fatca", label: "FATCA Compliance Department" }
+        ]
+      },
+      {
+        id: "dmd-coo",
+        label: "DMD & COO",
+        person: "Md. Bakhteyer Hossain",
+        children: [
+          { id: "mits", label: "MITS Facilitation Department" },
+          { id: "factoring", label: "MTB Factoring Services" },
+          { id: "intl-trade", label: "MTB International Trade" },
+          { id: "fi", label: "MTB Financial Institutions" },
+          { id: "obu-ops", label: "MTB OBU (Operations)" },
+          { id: "swift", label: "SWIFT Department" },
+          { 
+            id: "ops-div", 
+            label: "MTB Operations Division",
+            children: [
+              { id: "branch-ops", label: "Branch Operations Department" },
+              { id: "liability-ops", label: "Liability Operations" },
+              { id: "centralized-acct", label: "Centralized Account Department" },
+              { id: "bond-mgmt", label: "Centralized Bond Management" },
+              { id: "agent-ops", label: "Agent Banking Operations" }
+            ]
+          }
+        ]
+      },
+      {
+        id: "dmd-treasury",
+        label: "DMD & HoTreasury",
+        person: "Md. Shamsul Islam",
+        children: [
+          { id: "treasury", label: "MTB Treasury Division" },
+          { id: "infra", label: "MTB Infrastructure Department" },
+          { id: "engineering", label: "MTB Engineering Department" },
+          { id: "security-printing", label: "Security & Printing Department" },
+          { id: "transport", label: "Transport Department" }
+        ]
+      },
+      {
+        id: "dmd-gcro",
+        label: "DMD & GCRO",
+        person: "Usman Rashed Muyeen",
+        children: [
+          { 
+            id: "crm", 
+            label: "Credit Risk Management",
+            children: [
+              { id: "wholesale-uw", label: "Wholesale Underwriting" },
+              { id: "retail-loans", label: "Retail (Loan & Cards)" },
+              { id: "sme-uw", label: "SME Underwriting" }
+            ]
+          },
+          { id: "cib", label: "CIB Department" },
+          { id: "sustainable", label: "Sustainable Finance" },
+          { id: "it", label: "Information Technology" },
+          { id: "risk-mgmt", label: "Risk Management Division" },
+          { id: "treasury-mid", label: "Treasury Mid-Office" }
+        ]
+      },
+      {
+        id: "dmd-retail",
+        label: "DMD & HoRetail",
+        person: "Md. Shafquat Hossain",
+        children: [
+          { id: "nrb", label: "Non-Resident Banking" },
+          { 
+            id: "retail-div", 
+            label: "Retail Banking Division",
+            children: [
+              { id: "retail-products", label: "Retail Products" },
+              { id: "contact-centre", label: "Contact Centre" },
+              { id: "payroll", label: "Payroll Banking Department" },
+              { id: "women-banking", label: "MTB Women Banking Department" },
+              { id: "student-banking", label: "Student Banking Department" }
+            ]
+          },
+          { id: "card-div", label: "Card Division" },
+          { id: "adc", label: "ADC Business Department" },
+          { id: "agent-banking", label: "Agent Banking Department" },
+          { id: "privilege", label: "Privilege Banking Department" }
+        ]
+      }
     ]
   }
 ];
 
-// Deputy Managing Directors
-const deputyManagingDirectors = [
-  {
-    name: "Goutam Prosad Das",
-    title: "DMD & GHOICC",
-    departments: [
-      "Regulatory Affairs",
-      "Internal Control & Compliance",
-      "Audit and Inspection Unit",
-      "Regulatory Compliance Unit",
-      "Monitoring Unit",
-      "System Audit Unit"
-    ]
-  },
-  {
-    name: "Rais Uddin Ahmad",
-    title: "DMD & CAMLCO",
-    departments: [
-      "Office of the DMD & CAMLCO",
-      "Board Division",
-      "Share Department",
-      "Payment Technology & Reports (Flora) Division",
-      "Technology Operations Division",
-      "MTB Service Quality Department",
-      "AML & CFT Division",
-      "FATCA Compliance Department"
-    ]
-  },
-  {
-    name: "Md. Bakhteyer Hossain",
-    title: "DMD & COO",
-    departments: [
-      "Office of the DMD & COO",
-      "MITS Facilitation Department",
-      "MTB Factoring Services",
-      "MTB International Trade",
-      "MTB Financial Institutions",
-      "MTB OBU (Operations)",
-      "SWIFT Department",
-      "MTB Operations Division",
-      "Branch Operations Department",
-      "Liability Operations",
-      "Centralized Account Department",
-      "Centralized Bond Management",
-      "Agent Banking Operations"
-    ]
-  },
-  {
-    name: "Md. Shamsul Islam",
-    title: "DMD & HoTreasury",
-    departments: [
-      "MTB Treasury Division",
-      "MTB Infrastructure Department",
-      "MTB Engineering Department",
-      "Security & Printing Department",
-      "Transport Department"
-    ]
-  },
-  {
-    name: "Usman Rashed Muyeen",
-    title: "DMD & GCRO",
-    departments: [
-      "Credit Risk Management",
-      "Wholesale Underwriting",
-      "Retail (Loan & Cards)",
-      "SME Underwriting",
-      "CIB Department",
-      "Sustainable Finance",
-      "Information Technology",
-      "Risk Management Division",
-      "Treasury Mid-Office"
-    ]
-  },
-  {
-    name: "Md. Shafquat Hossain",
-    title: "DMD & HoRetail",
-    departments: [
-      "Non-Resident Banking",
-      "Retail Banking Division",
-      "Retail Products",
-      "Contact Centre",
-      "Payroll Banking Department",
-      "MTB Women Banking Department",
-      "Student Banking Department",
-      "Card Division",
-      "ADC Business Department",
-      "Agent Banking Department",
-      "Privilege Banking Department"
-    ]
-  }
-];
-
-interface TreeItemProps {
+interface TreeNodeData {
+  id: string;
   label: string;
-  children?: React.ReactNode;
-  isLast?: boolean;
+  person?: string;
   href?: string;
+  isSection?: boolean;
+  children?: TreeNodeData[];
 }
 
-function TreeItem({ label, children, isLast, href }: TreeItemProps) {
-  const [isOpen, setIsOpen] = useState(false);
-  const hasChildren = !!children;
+interface TreeNodeProps {
+  node: TreeNodeData;
+  level: number;
+  isLast?: boolean;
+}
 
-  const content = href ? (
-    <Link 
-      to={href}
-      className="text-xs text-foreground hover:text-[hsl(var(--mtb-teal))] transition-colors"
-    >
-      {label}
-    </Link>
-  ) : (
-    <span className="text-xs text-foreground hover:text-[hsl(var(--mtb-teal))] cursor-pointer transition-colors">
-      {label}
-    </span>
+function TreeNode({ node, level, isLast }: TreeNodeProps) {
+  const [isOpen, setIsOpen] = useState(level === 0);
+  const hasChildren = node.children && node.children.length > 0;
+  
+  const paddingLeft = level * 16;
+  
+  // Different styling based on level
+  const getLabelStyle = () => {
+    if (level === 0) {
+      return "font-semibold text-[hsl(var(--mtb-teal))] text-sm";
+    } else if (level === 1) {
+      return "font-medium text-foreground text-[13px]";
+    } else {
+      return "text-foreground/80 text-xs";
+    }
+  };
+
+  const content = (
+    <div className="flex items-start gap-1.5">
+      {/* Tree connector lines */}
+      <div className="flex items-center gap-0.5 flex-shrink-0 mt-1.5">
+        {level > 0 && (
+          <>
+            <span className="w-3 h-px bg-[hsl(var(--mtb-teal))]/40"></span>
+            {hasChildren ? (
+              isOpen ? (
+                <ChevronDown className="w-3 h-3 text-[hsl(var(--mtb-teal))]" />
+              ) : (
+                <ChevronRight className="w-3 h-3 text-[hsl(var(--mtb-teal))]" />
+              )
+            ) : (
+              <Minus className="w-3 h-3 text-[hsl(var(--mtb-teal))]/50" />
+            )}
+          </>
+        )}
+        {level === 0 && hasChildren && (
+          isOpen ? (
+            <ChevronDown className="w-3.5 h-3.5 text-[hsl(var(--mtb-teal))]" />
+          ) : (
+            <ChevronRight className="w-3.5 h-3.5 text-[hsl(var(--mtb-teal))]" />
+          )
+        )}
+      </div>
+      
+      {/* Label and person info */}
+      <div className="min-w-0 flex-1">
+        {node.href ? (
+          <Link 
+            to={node.href}
+            className={`${getLabelStyle()} hover:text-[hsl(var(--mtb-teal))] transition-colors`}
+          >
+            {node.label}
+          </Link>
+        ) : (
+          <span className={getLabelStyle()}>{node.label}</span>
+        )}
+        {node.person && (
+          <p className="text-[10px] text-muted-foreground mt-0.5">{node.person}</p>
+        )}
+      </div>
+    </div>
   );
 
   if (!hasChildren) {
     return (
-      <div className="flex items-start gap-1.5 py-0.5 relative">
-        <div className="flex items-center">
-          <span className="w-3 h-px bg-[hsl(var(--mtb-teal))]/40"></span>
-          <span className="w-1.5 h-1.5 rounded-full bg-[hsl(var(--mtb-teal))]/60 flex-shrink-0"></span>
-        </div>
+      <div 
+        className="py-1 hover:bg-[hsl(var(--mtb-teal))]/5 rounded px-1 transition-colors cursor-pointer"
+        style={{ paddingLeft: `${paddingLeft}px` }}
+      >
         {content}
       </div>
     );
@@ -184,122 +283,27 @@ function TreeItem({ label, children, isLast, href }: TreeItemProps) {
 
   return (
     <Collapsible open={isOpen} onOpenChange={setIsOpen}>
-      <div className="relative">
-        <CollapsibleTrigger asChild>
-          <div className="flex items-center gap-1.5 py-0.5 cursor-pointer group">
-            <div className="flex items-center">
-              <span className="w-3 h-px bg-[hsl(var(--mtb-teal))]/40"></span>
-              {isOpen ? (
-                <ChevronDown className="w-3 h-3 text-[hsl(var(--mtb-teal))]" />
-              ) : (
-                <ChevronRight className="w-3 h-3 text-[hsl(var(--mtb-teal))]" />
-              )}
-            </div>
-            <span className="text-xs text-foreground group-hover:text-[hsl(var(--mtb-teal))] transition-colors font-medium">
-              {label}
-            </span>
-          </div>
-        </CollapsibleTrigger>
-        <CollapsibleContent>
-          <div className="ml-3 pl-3 border-l border-[hsl(var(--mtb-teal))]/30 space-y-0">
-            {children}
-          </div>
-        </CollapsibleContent>
-      </div>
+      <CollapsibleTrigger asChild>
+        <div 
+          className="py-1 hover:bg-[hsl(var(--mtb-teal))]/5 rounded px-1 cursor-pointer transition-colors"
+          style={{ paddingLeft: `${paddingLeft}px` }}
+        >
+          {content}
+        </div>
+      </CollapsibleTrigger>
+      <CollapsibleContent>
+        <div className={`${level > 0 ? 'ml-3 border-l border-[hsl(var(--mtb-teal))]/20' : ''}`}>
+          {node.children?.map((child, idx) => (
+            <TreeNode 
+              key={child.id} 
+              node={child} 
+              level={level + 1}
+              isLast={idx === (node.children?.length || 0) - 1}
+            />
+          ))}
+        </div>
+      </CollapsibleContent>
     </Collapsible>
-  );
-}
-
-function LeadershipCard({ 
-  title, 
-  person, 
-  role, 
-  items 
-}: { 
-  title: string; 
-  person: string; 
-  role: string; 
-  items: string[] 
-}) {
-  const [isOpen, setIsOpen] = useState(false);
-
-  return (
-    <div className="bg-[hsl(var(--mtb-teal))]/5 rounded-lg p-3 border border-[hsl(var(--mtb-teal))]/20">
-      <div className="flex items-center gap-2.5 mb-2">
-        <div className="w-10 h-10 rounded-full bg-muted flex items-center justify-center border-2 border-[hsl(var(--mtb-teal))]">
-          <User className="w-5 h-5 text-muted-foreground" />
-        </div>
-        <div className="flex-1 min-w-0">
-          <p className="text-[10px] text-[hsl(var(--mtb-teal))] font-medium truncate">{title}</p>
-          <p className="text-xs font-bold text-foreground truncate">{person}</p>
-          <p className="text-[10px] text-muted-foreground">{role}</p>
-        </div>
-      </div>
-      {items.length > 0 && (
-        <Collapsible open={isOpen} onOpenChange={setIsOpen}>
-          <CollapsibleTrigger asChild>
-            <button className="w-full flex items-center gap-1 text-[10px] text-[hsl(var(--mtb-teal))] hover:underline font-medium">
-              {isOpen ? <ChevronDown className="w-3 h-3" /> : <ChevronRight className="w-3 h-3" />}
-              {items.length} Departments
-            </button>
-          </CollapsibleTrigger>
-          <CollapsibleContent>
-            <div className="mt-2 ml-2 pl-2 border-l border-[hsl(var(--mtb-teal))]/30 space-y-0.5 max-h-40 overflow-y-auto">
-              {items.map((item, idx) => (
-                <Link
-                  key={idx}
-                  to={item === "MTB Group Human Resources Division" ? "/cho/mtb-group-human-resources-division" : "#"}
-                  className="flex items-center gap-1.5 text-[10px] text-foreground hover:text-[hsl(var(--mtb-teal))] transition-colors py-0.5"
-                >
-                  <span className="w-1 h-1 rounded-full bg-[hsl(var(--mtb-teal))]/50"></span>
-                  {item}
-                </Link>
-              ))}
-            </div>
-          </CollapsibleContent>
-        </Collapsible>
-      )}
-    </div>
-  );
-}
-
-function DMDCard({ dmd }: { dmd: typeof deputyManagingDirectors[0] }) {
-  const [isOpen, setIsOpen] = useState(false);
-
-  return (
-    <div className="bg-muted/30 rounded-lg p-2.5 border border-border/50">
-      <div className="flex items-center gap-2 mb-2">
-        <div className="w-8 h-8 rounded-full bg-muted flex items-center justify-center border border-[hsl(var(--mtb-teal))]">
-          <User className="w-4 h-4 text-muted-foreground" />
-        </div>
-        <div className="flex-1 min-w-0">
-          <p className="text-[10px] font-bold text-foreground truncate">{dmd.name}</p>
-          <p className="text-[9px] text-muted-foreground">{dmd.title}</p>
-        </div>
-      </div>
-      <Collapsible open={isOpen} onOpenChange={setIsOpen}>
-        <CollapsibleTrigger asChild>
-          <button className="w-full flex items-center gap-1 text-[9px] text-[hsl(var(--mtb-teal))] hover:underline font-medium">
-            {isOpen ? <ChevronDown className="w-2.5 h-2.5" /> : <ChevronRight className="w-2.5 h-2.5" />}
-            {dmd.departments.length} Departments
-          </button>
-        </CollapsibleTrigger>
-        <CollapsibleContent>
-          <div className="mt-1.5 ml-2 pl-2 border-l border-[hsl(var(--mtb-teal))]/30 space-y-0.5 max-h-28 overflow-y-auto">
-            {dmd.departments.map((dept, idx) => (
-              <a
-                key={idx}
-                href="#"
-                className="flex items-center gap-1 text-[9px] text-foreground hover:text-[hsl(var(--mtb-teal))] transition-colors py-0.5"
-              >
-                <span className="w-1 h-1 rounded-full bg-[hsl(var(--mtb-teal))]/40"></span>
-                <span className="truncate">{dept}</span>
-              </a>
-            ))}
-          </div>
-        </CollapsibleContent>
-      </Collapsible>
-    </div>
   );
 }
 
@@ -309,11 +313,11 @@ interface CHOMenuContentProps {
 
 export function CHOMenuContent({ onClose }: CHOMenuContentProps) {
   return (
-    <div className="absolute left-0 right-0 top-full bg-card border-b border-border shadow-elevated z-50">
+    <div className="absolute left-0 right-0 top-full bg-card border-b border-border shadow-lg z-50">
       <div className="container px-6 py-4">
         {/* Menu Header */}
         <div className="flex items-center justify-between mb-4 pb-3 border-b border-border/50">
-          <h2 className="text-base font-bold text-[hsl(var(--mtb-teal))]">CHO Organizational Hierarchy</h2>
+          <h2 className="text-sm font-bold text-[hsl(var(--mtb-teal))]">CHO Organizational Hierarchy</h2>
           <Button 
             variant="ghost" 
             size="sm"
@@ -325,31 +329,37 @@ export function CHOMenuContent({ onClose }: CHOMenuContentProps) {
           </Button>
         </div>
 
-        {/* Top Leadership Row */}
-        <div className="grid grid-cols-3 gap-4 mb-5">
-          {topLeadership.map((leader, idx) => (
-            <LeadershipCard 
-              key={idx}
-              title={leader.title}
-              person={leader.person}
-              role={leader.role}
-              items={leader.items}
-            />
-          ))}
-        </div>
-
-        {/* Deputy Managing Directors Section */}
-        <div className="border-t border-border/50 pt-4">
-          <div className="flex items-center gap-2 mb-3">
-            <div className="w-5 h-5 rounded bg-[hsl(var(--mtb-orange))] flex items-center justify-center">
-              <User className="w-3 h-3 text-white" />
-            </div>
-            <h3 className="text-sm font-bold text-[hsl(var(--mtb-orange))]">Deputy Managing Directors</h3>
-          </div>
-          <div className="grid grid-cols-6 gap-3">
-            {deputyManagingDirectors.map((dmd, idx) => (
-              <DMDCard key={idx} dmd={dmd} />
+        {/* Tree View - 3 columns */}
+        <div className="grid grid-cols-3 gap-6 max-h-[70vh] overflow-y-auto">
+          {/* Column 1: Office hierarchy */}
+          <div className="space-y-1">
+            <h3 className="text-xs font-bold text-[hsl(var(--mtb-orange))] uppercase tracking-wide mb-2 pb-1 border-b border-[hsl(var(--mtb-orange))]/30">
+              Executive Leadership
+            </h3>
+            {choHierarchy.slice(0, 3).map((node) => (
+              <TreeNode key={node.id} node={node} level={0} />
             ))}
+          </div>
+
+          {/* Column 2 & 3: Deputy Managing Directors */}
+          <div className="col-span-2">
+            <h3 className="text-xs font-bold text-[hsl(var(--mtb-orange))] uppercase tracking-wide mb-2 pb-1 border-b border-[hsl(var(--mtb-orange))]/30">
+              Deputy Managing Directors
+            </h3>
+            <div className="grid grid-cols-2 gap-4">
+              {/* First 3 DMDs */}
+              <div className="space-y-1">
+                {choHierarchy[3]?.children?.slice(0, 3).map((node) => (
+                  <TreeNode key={node.id} node={node} level={0} />
+                ))}
+              </div>
+              {/* Last 3 DMDs */}
+              <div className="space-y-1">
+                {choHierarchy[3]?.children?.slice(3).map((node) => (
+                  <TreeNode key={node.id} node={node} level={0} />
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>

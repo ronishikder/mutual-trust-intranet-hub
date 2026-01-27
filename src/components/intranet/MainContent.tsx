@@ -73,32 +73,46 @@ export function MainContent() {
 
   return (
     <main className="space-y-4">
-      {/* Notice Board - Corporate refined design */}
-      <div className="rounded-lg overflow-hidden shadow-sm border border-border/60 bg-card">
-        <div className="bg-[hsl(var(--mtb-teal))] px-4 py-2 flex items-center justify-between">
+      {/* Notice Board - Corporate Banking Style like live app */}
+      <div className="rounded-lg overflow-hidden shadow-md border border-border/40">
+        {/* Dark gradient header like the live app */}
+        <div className="bg-gradient-to-r from-[#1a4a4a] via-[#1f5555] to-[#1a4a4a] px-4 py-2.5 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <Pin className="w-3.5 h-3.5 text-white" />
-            <h2 className="font-semibold text-white text-xs">MTB Notice Board</h2>
-            <span className="text-white/70 text-[10px] hidden sm:inline ml-2">Tuesday, Jan 21, 2026</span>
+            <Pin className="w-4 h-4 text-[hsl(var(--mtb-orange))]" />
+            <h2 className="font-bold text-[hsl(var(--mtb-orange))] text-sm">MTB Notice Board</h2>
+            <span className="text-white/80 text-xs font-medium ml-1">::</span>
+            <span className="text-white text-xs font-medium">Tuesday Jan 21, 2026</span>
           </div>
-          <a href="#" className="text-[10px] text-white/80 hover:text-white transition-colors">
+          <a href="#" className="text-xs text-white/90 hover:text-white transition-colors font-medium">
             View All
           </a>
         </div>
         
-        <div className="divide-y divide-border/40">
+        {/* Notice content with colored announcement bars like live app */}
+        <div className="bg-card">
           {noticeItems.map((item, idx) => (
-            <div key={idx} className="flex items-start gap-3 px-4 py-3 hover:bg-muted/20 transition-colors">
-              <div className="w-7 h-7 rounded-full bg-muted/50 flex items-center justify-center flex-shrink-0 mt-0.5">
-                <item.icon className={`w-3.5 h-3.5 ${item.iconColor}`} />
-              </div>
-              <div className="flex-1 min-w-0">
-                <p className="text-sm text-foreground leading-relaxed">
-                  {item.text}
-                </p>
-                <a href="#" className={`text-xs ${item.linkColor} hover:underline font-medium mt-1 inline-block`}>
-                  {item.link}
-                </a>
+            <div 
+              key={idx} 
+              className={`px-4 py-3 border-b border-border/30 last:border-0 ${
+                idx === 0 ? 'bg-[#1a5555]/10' : idx === 1 ? 'bg-[#d4507a]/10' : 'bg-muted/20'
+              }`}
+            >
+              <div className="flex items-start gap-3">
+                <div className={`w-6 h-6 rounded flex items-center justify-center flex-shrink-0 mt-0.5 ${
+                  idx === 0 ? 'bg-[#1a5555]/20' : idx === 1 ? 'bg-[#d4507a]/20' : 'bg-muted'
+                }`}>
+                  <item.icon className={`w-3.5 h-3.5 ${
+                    idx === 0 ? 'text-[#1a5555]' : idx === 1 ? 'text-[#d4507a]' : 'text-muted-foreground'
+                  }`} />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <p className="text-sm text-foreground leading-relaxed">
+                    {item.text}
+                  </p>
+                  <a href="#" className={`text-xs ${item.linkColor} hover:underline font-medium mt-1 inline-block`}>
+                    {item.link}
+                  </a>
+                </div>
               </div>
             </div>
           ))}
