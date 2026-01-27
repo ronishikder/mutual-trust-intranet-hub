@@ -33,6 +33,7 @@ interface ShortcutItem {
   label: string;
   hasSubmenu: boolean;
   count?: number;
+  defaultOpen?: boolean;
   subItems?: { label: string; href?: string }[];
 }
 
@@ -65,7 +66,12 @@ const shortcuts: ShortcutItem[] = [
   { 
     icon: Clock, 
     label: "M-Tracker", 
-    hasSubmenu: false,
+    hasSubmenu: true,
+    defaultOpen: true,
+    subItems: [
+      { label: "CIF Tracker" },
+      { label: "EMail Address" },
+    ]
   },
   { 
     icon: BookOpen, 
@@ -120,7 +126,7 @@ const shortcuts: ShortcutItem[] = [
 ];
 
 function ExpandableItem({ item }: { item: ShortcutItem }) {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(item.defaultOpen || false);
 
   if (!item.hasSubmenu) {
     return (
@@ -143,7 +149,7 @@ function ExpandableItem({ item }: { item: ShortcutItem }) {
           ) : (
             <ChevronRight className="w-3 h-3 text-muted-foreground" />
           )}
-          <span className="flex-1 text-left">{item.label}</span>
+          <span className={`flex-1 text-left ${item.label === "M-Tracker" ? "text-[hsl(var(--mtb-orange))] font-medium" : ""}`}>{item.label}</span>
         </div>
       </CollapsibleTrigger>
       <CollapsibleContent>
@@ -155,7 +161,7 @@ function ExpandableItem({ item }: { item: ShortcutItem }) {
                 to={subItem.href}
                 className="flex items-center gap-1.5 px-1.5 py-1 text-sm text-foreground/80 hover:text-[hsl(var(--mtb-teal))] hover:bg-[hsl(var(--mtb-teal))]/5 rounded transition-colors"
               >
-                <span className="text-[hsl(var(--mtb-teal))] text-[8px]">▸</span>
+                <span className="text-[hsl(var(--mtb-orange))] text-[8px]">●</span>
                 {subItem.label}
               </Link>
             ) : (
@@ -164,7 +170,7 @@ function ExpandableItem({ item }: { item: ShortcutItem }) {
                 href="#"
                 className="flex items-center gap-1.5 px-1.5 py-1 text-sm text-foreground/80 hover:text-[hsl(var(--mtb-teal))] hover:bg-[hsl(var(--mtb-teal))]/5 rounded transition-colors"
               >
-                <span className="text-[hsl(var(--mtb-teal))] text-[8px]">▸</span>
+                <span className="text-[hsl(var(--mtb-orange))] text-[8px]">●</span>
                 {subItem.label}
               </a>
             )

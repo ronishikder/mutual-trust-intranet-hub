@@ -10,6 +10,7 @@ import {
   BarChart3, 
   ChevronRight,
   Archive,
+  User,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
@@ -230,6 +231,41 @@ export function RightSidebar() {
             </div>
           </CollapsibleContent>
         </Collapsible>
+
+        {/* Shreya Banner */}
+        <div className="rounded-lg overflow-hidden shadow-sm bg-gradient-to-r from-[#1a5555] to-[#2a6666] border border-border/30">
+          <div className="p-3 flex items-center justify-center">
+            <div className="text-center">
+              <div className="w-16 h-16 mx-auto mb-1 bg-white/10 rounded-lg flex items-center justify-center">
+                <div className="text-2xl">🌸</div>
+              </div>
+              <p className="text-white font-bold text-sm">SHREYA</p>
+              <p className="text-white/70 text-[9px]">MTB Women's Platform</p>
+            </div>
+          </div>
+        </div>
+
+        {/* A-Face-A-Day */}
+        <div className="rounded-lg overflow-hidden shadow-sm bg-card border border-border/30">
+          <div className="bg-[hsl(var(--mtb-blue))] px-3 py-1.5">
+            <h4 className="text-xs font-semibold text-white">A-Face-A-Day</h4>
+          </div>
+          <div className="p-3">
+            <div className="flex items-start gap-3">
+              <div className="w-12 h-14 bg-muted rounded border border-border/50 flex items-center justify-center flex-shrink-0">
+                <User className="w-6 h-6 text-muted-foreground/40" />
+              </div>
+              <div className="flex-1 text-[11px] text-foreground/80 leading-relaxed">
+                Our today's face is <span className="font-semibold text-foreground">Sathi Parvin</span> who is working in Cash Department at our Shyamoli Branch.
+                <div className="mt-2 flex items-center gap-2 text-[10px]">
+                  <a href="#" className="text-[hsl(var(--mtb-teal))] hover:underline">know More</a>
+                  <span className="text-[hsl(var(--mtb-orange))]">●</span>
+                  <a href="#" className="text-[hsl(var(--mtb-orange))] hover:underline">congratulate</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </aside>
   );
