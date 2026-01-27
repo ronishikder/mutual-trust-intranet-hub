@@ -10,8 +10,8 @@ const Index = () => {
       <Header />
       <Navigation />
       
-      <div className="container px-4 lg:px-6 py-5">
-        <div className="grid grid-cols-1 lg:grid-cols-10 gap-5">
+      <div className="container px-4 lg:px-6 py-4">
+        <div className="grid grid-cols-1 lg:grid-cols-10 gap-4">
           {/* Left Sidebar - Equal width with right (2 cols each) */}
           <div className="hidden lg:block lg:col-span-2">
             <LeftSidebar />

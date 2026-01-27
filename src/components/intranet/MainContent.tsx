@@ -47,18 +47,18 @@ const noticeItems = [
 
 function CircularList({ circulars }: { circulars: typeof mtbCirculars }) {
   return (
-    <div className="divide-y divide-border/30">
+    <div className="divide-y divide-border/20">
       {circulars.map((circular, idx) => (
-        <div key={idx} className="flex items-center gap-3 py-2.5 px-1 hover:bg-muted/30 transition-colors">
-          <span className="text-foreground font-mono text-xs w-16 flex-shrink-0">
+        <div key={idx} className="flex items-center gap-2 py-2 px-1 hover:bg-muted/20 transition-colors">
+          <span className="text-foreground font-mono text-[11px] w-14 flex-shrink-0">
             {circular.date}
           </span>
-          <a href="#" className="text-[hsl(var(--mtb-teal))] hover:text-[hsl(var(--mtb-teal))]/80 text-sm flex-1 truncate transition-colors font-medium">
+          <a href="#" className="text-[hsl(var(--mtb-teal))] hover:text-[hsl(var(--mtb-teal))]/80 text-xs flex-1 truncate transition-colors font-medium">
             {circular.title}
-            <span className="text-[hsl(var(--mtb-teal))]/70 ml-1 text-xs font-normal">...more..</span>
+            <span className="text-[hsl(var(--mtb-teal))]/70 ml-1 text-[10px] font-normal">...more..</span>
           </a>
           {circular.isNew && (
-            <span className="text-[10px] bg-[hsl(var(--mtb-red))] text-white px-2 py-0.5 rounded font-semibold flex-shrink-0">
+            <span className="text-[9px] bg-[hsl(var(--mtb-red))] text-white px-1.5 py-0.5 rounded font-semibold flex-shrink-0">
               New
             </span>
           )}
@@ -72,14 +72,14 @@ export function MainContent() {
   const [activeTab, setActiveTab] = useState<"mtb" | "bb">("mtb");
 
   return (
-    <main className="space-y-4">
-      {/* Notice Board - Corporate Banking Style like live app */}
-      <div className="rounded-lg overflow-hidden shadow-md border border-border/40">
-        {/* Dark gradient header like the live app */}
-        <div className="bg-gradient-to-r from-[#1a4a4a] via-[#1f5555] to-[#1a4a4a] px-4 py-2.5 flex items-center justify-between">
+    <main className="space-y-3">
+      {/* Notice Board - Corporate Banking Style */}
+      <div className="rounded-lg overflow-hidden shadow-sm border border-border/30">
+        {/* Dark gradient header */}
+        <div className="bg-gradient-to-r from-[#1a4a4a] via-[#1f5555] to-[#1a4a4a] px-3 py-2 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <Pin className="w-4 h-4 text-[hsl(var(--mtb-orange))]" />
-            <h2 className="font-bold text-[hsl(var(--mtb-orange))] text-sm">MTB Notice Board</h2>
+            <Pin className="w-3.5 h-3.5 text-[hsl(var(--mtb-orange))]" />
+            <h2 className="font-bold text-[hsl(var(--mtb-orange))] text-xs">MTB Notice Board</h2>
             <span className="text-white/80 text-xs font-medium ml-1">::</span>
             <span className="text-white text-xs font-medium">Tuesday Jan 21, 2026</span>
           </div>
@@ -88,28 +88,28 @@ export function MainContent() {
           </a>
         </div>
         
-        {/* Notice content with colored announcement bars like live app */}
+        {/* Notice content */}
         <div className="bg-card">
           {noticeItems.map((item, idx) => (
             <div 
               key={idx} 
-              className={`px-4 py-3 border-b border-border/30 last:border-0 ${
-                idx === 0 ? 'bg-[#1a5555]/10' : idx === 1 ? 'bg-[#d4507a]/10' : 'bg-muted/20'
+              className={`px-3 py-2.5 border-b border-border/20 last:border-0 ${
+                idx === 0 ? 'bg-[#1a5555]/8' : idx === 1 ? 'bg-[#d4507a]/8' : 'bg-muted/10'
               }`}
             >
-              <div className="flex items-start gap-3">
-                <div className={`w-6 h-6 rounded flex items-center justify-center flex-shrink-0 mt-0.5 ${
-                  idx === 0 ? 'bg-[#1a5555]/20' : idx === 1 ? 'bg-[#d4507a]/20' : 'bg-muted'
+              <div className="flex items-start gap-2.5">
+                <div className={`w-5 h-5 rounded flex items-center justify-center flex-shrink-0 mt-0.5 ${
+                  idx === 0 ? 'bg-[#1a5555]/15' : idx === 1 ? 'bg-[#d4507a]/15' : 'bg-muted/50'
                 }`}>
-                  <item.icon className={`w-3.5 h-3.5 ${
+                  <item.icon className={`w-3 h-3 ${
                     idx === 0 ? 'text-[#1a5555]' : idx === 1 ? 'text-[#d4507a]' : 'text-muted-foreground'
                   }`} />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <p className="text-sm text-foreground leading-relaxed">
+                  <p className="text-xs text-foreground leading-relaxed">
                     {item.text}
                   </p>
-                  <a href="#" className={`text-xs ${item.linkColor} hover:underline font-medium mt-1 inline-block`}>
+                  <a href="#" className={`text-[10px] ${item.linkColor} hover:underline font-medium mt-0.5 inline-block`}>
                     {item.link}
                   </a>
                 </div>
@@ -120,14 +120,14 @@ export function MainContent() {
       </div>
 
       {/* Circulars Section */}
-      <div className="rounded-lg overflow-hidden shadow-md bg-card">
-        <div className="px-4 py-2.5 border-b border-border/50 flex items-center justify-between">
+      <div className="rounded-lg overflow-hidden shadow-sm bg-card border border-border/30">
+        <div className="px-3 py-2 border-b border-border/30 flex items-center justify-between">
           <div className="flex items-center gap-1">
             <Button 
               variant={activeTab === "mtb" ? "default" : "ghost"}
               size="sm" 
               onClick={() => setActiveTab("mtb")}
-              className={`h-7 px-4 text-xs font-semibold rounded-sm ${
+              className={`h-6 px-3 text-[11px] font-semibold rounded-sm ${
                 activeTab === "mtb" 
                   ? 'bg-[hsl(var(--mtb-red))] hover:bg-[hsl(var(--mtb-red))]/90 text-white' 
                   : 'text-foreground hover:bg-[hsl(var(--mtb-teal))]/10 hover:text-[hsl(var(--mtb-teal))] bg-transparent'
@@ -139,7 +139,7 @@ export function MainContent() {
               variant={activeTab === "bb" ? "default" : "ghost"}
               size="sm" 
               onClick={() => setActiveTab("bb")}
-              className={`h-7 px-4 text-xs font-semibold rounded-sm ${
+              className={`h-6 px-3 text-[11px] font-semibold rounded-sm ${
                 activeTab === "bb" 
                   ? 'bg-[hsl(var(--mtb-red))] hover:bg-[hsl(var(--mtb-red))]/90 text-white' 
                   : 'text-foreground hover:bg-[hsl(var(--mtb-teal))]/10 hover:text-[hsl(var(--mtb-teal))] bg-transparent'
@@ -148,13 +148,13 @@ export function MainContent() {
               BB Circular
             </Button>
           </div>
-          <div className="flex items-center gap-3 text-sm">
+          <div className="flex items-center gap-2 text-xs">
             <a href="#" className="text-[hsl(var(--mtb-teal))] hover:text-[hsl(var(--mtb-teal))]/80 font-medium flex items-center gap-1">
               My Basket
             </a>
             <span className="text-muted-foreground">•</span>
             <a href="#" className="text-foreground hover:text-[hsl(var(--mtb-teal))] flex items-center gap-1">
-              <Search className="w-3.5 h-3.5" />
+              <Search className="w-3 h-3" />
               Search
             </a>
             <span className="text-muted-foreground">•</span>
@@ -163,40 +163,40 @@ export function MainContent() {
             </a>
           </div>
         </div>
-        <div className="p-3">
+        <div className="p-2.5">
           <CircularList circulars={activeTab === "mtb" ? mtbCirculars : bbCirculars} />
-          <a href="#" className="flex items-center gap-1 text-[hsl(var(--mtb-teal))] text-xs font-medium mt-3 hover:underline">
+          <a href="#" className="flex items-center gap-1 text-[hsl(var(--mtb-teal))] text-xs font-medium mt-2 hover:underline">
             Read More <ChevronRight className="w-3 h-3" />
           </a>
         </div>
       </div>
 
       {/* Branch Reporting */}
-      <div className="rounded-lg overflow-hidden shadow-md bg-card">
-        <div className="bg-[hsl(var(--mtb-teal))] px-4 py-1.5 flex items-center gap-2">
-          <Clock className="w-3.5 h-3.5 text-white" />
+      <div className="rounded-lg overflow-hidden shadow-sm bg-card border border-border/30">
+        <div className="bg-[hsl(var(--mtb-teal))] px-3 py-1.5 flex items-center gap-2">
+          <Clock className="w-3 h-3 text-white" />
           <h3 className="font-semibold text-white text-xs">Branch Reporting</h3>
         </div>
         
         <div className="overflow-x-auto">
-          <table className="w-full text-sm">
+          <table className="w-full text-xs">
             <thead>
-              <tr className="border-b border-border/50 bg-muted/30">
-                <th className="text-left px-4 py-2.5 font-semibold text-foreground">Report</th>
-                <th className="text-center px-3 py-2.5 font-semibold text-foreground">Req. By</th>
-                <th className="text-center px-3 py-2.5 font-semibold text-foreground">Deadline</th>
+              <tr className="border-b border-border/30 bg-muted/20">
+                <th className="text-left px-3 py-2 font-semibold text-foreground">Report</th>
+                <th className="text-center px-2 py-2 font-semibold text-foreground">Req. By</th>
+                <th className="text-center px-2 py-2 font-semibold text-foreground">Deadline</th>
               </tr>
             </thead>
             <tbody>
               {branchReports.map((report) => (
-                <tr key={report.id} className="border-b border-border/30 hover:bg-muted/20 transition-colors">
-                  <td className="px-4 py-2.5">
+                <tr key={report.id} className="border-b border-border/20 hover:bg-muted/10 transition-colors">
+                  <td className="px-3 py-2">
                     <a href="#" className="text-[hsl(var(--mtb-teal))] hover:underline font-medium">
                       {report.title}-{report.id}
                     </a>
                   </td>
-                  <td className="text-center px-3 py-2.5 text-foreground">{report.reqBy}</td>
-                  <td className="text-center px-3 py-2.5 text-foreground">{report.deadline}</td>
+                  <td className="text-center px-2 py-2 text-foreground">{report.reqBy}</td>
+                  <td className="text-center px-2 py-2 text-foreground">{report.deadline}</td>
                 </tr>
               ))}
             </tbody>
