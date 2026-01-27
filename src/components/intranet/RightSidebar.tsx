@@ -9,6 +9,7 @@ import {
   Bell, 
   BarChart3, 
   ChevronRight,
+  Archive,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
@@ -38,6 +39,7 @@ export function RightSidebar() {
   const [onlineExpanded, setOnlineExpanded] = useState(false);
   const [dashboardsExpanded, setDashboardsExpanded] = useState(false);
   const [mtbianExpanded, setMtbianExpanded] = useState(false);
+  const [infoExpanded, setInfoExpanded] = useState(false);
 
   return (
     <aside className="space-y-3">
@@ -205,6 +207,26 @@ export function RightSidebar() {
               <a href="#" className="block text-sm text-foreground hover:text-[hsl(var(--mtb-teal))]">My Performance</a>
               <a href="#" className="block text-sm text-foreground hover:text-[hsl(var(--mtb-teal))]">Leave Balance</a>
               <a href="#" className="block text-sm text-foreground hover:text-[hsl(var(--mtb-teal))]">Attendance</a>
+            </div>
+          </CollapsibleContent>
+        </Collapsible>
+
+        {/* Info & Archives - Like live app */}
+        <Collapsible open={infoExpanded} onOpenChange={setInfoExpanded}>
+          <CollapsibleTrigger asChild>
+            <button className="w-full flex items-center justify-between px-4 py-1.5 rounded-xl bg-gradient-to-r from-[#c06090] to-[#d080a0] text-white hover:opacity-95 transition-all shadow-sm">
+              <div className="flex items-center gap-3">
+                <Archive className="w-3.5 h-3.5" />
+                <span className="text-xs font-semibold">Info & Archives</span>
+              </div>
+              <ChevronRight className={`w-3.5 h-3.5 transition-transform duration-200 ${infoExpanded ? 'rotate-90' : ''}`} />
+            </button>
+          </CollapsibleTrigger>
+          <CollapsibleContent className="overflow-hidden data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
+            <div className="mt-1 bg-card border border-border rounded-lg shadow-sm p-3 space-y-2">
+              <a href="#" className="block text-sm text-foreground hover:text-[hsl(var(--mtb-teal))]">Document Archive</a>
+              <a href="#" className="block text-sm text-foreground hover:text-[hsl(var(--mtb-teal))]">Policy Library</a>
+              <a href="#" className="block text-sm text-foreground hover:text-[hsl(var(--mtb-teal))]">Historical Data</a>
             </div>
           </CollapsibleContent>
         </Collapsible>
