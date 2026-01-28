@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { X, ChevronDown, ChevronRight, User } from "lucide-react";
+import { X, ChevronRight, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+
 
 // Executive Leadership Data
 const executives = [
@@ -252,11 +252,14 @@ interface CHOMenuContentProps {
 }
 
 export function CHOMenuContent({ onClose }: CHOMenuContentProps) {
-  // Default all executives and DMDs to expanded
-  const [expandedExec, setExpandedExec] = useState<string | null>("md");
+  // Default all executives and DMDs to expanded - using arrays for independent control
+  const [expandedExecs, setExpandedExecs] = useState<string[]>(["md", "amd"]);
   const [expandedDmds, setExpandedDmds] = useState<string[]>(dmds.map(d => d.id));
+  
   const toggleExec = (id: string) => {
-    setExpandedExec(expandedExec === id ? null : id);
+    setExpandedExecs(prev => 
+      prev.includes(id) ? prev.filter(e => e !== id) : [...prev, id]
+    );
   };
 
   const toggleDmd = (id: string) => {
@@ -288,7 +291,7 @@ export function CHOMenuContent({ onClose }: CHOMenuContentProps) {
             <ExecutiveCard
               key={exec.id}
               executive={exec}
-              isExpanded={expandedExec === exec.id}
+              isExpanded={expandedExecs.includes(exec.id)}
               onToggle={() => toggleExec(exec.id)}
             />
           ))}
