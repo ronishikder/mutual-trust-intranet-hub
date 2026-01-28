@@ -205,32 +205,15 @@ export function LeftSidebar() {
 
   return (
     <aside className="space-y-2">
-      {/* User Profile Card - Simplified with centered photo */}
+      {/* User Profile Card - Photo and ID only */}
       <div className="mtb-card p-4 flex flex-col items-center">
-        <div className="w-14 h-14 rounded-full bg-muted flex items-center justify-center overflow-hidden border-2 border-border/50 shadow-sm">
-          <User className="w-7 h-7 text-muted-foreground" />
+        <div className="w-16 h-16 rounded-full bg-muted flex items-center justify-center overflow-hidden border-2 border-[hsl(var(--mtb-teal))]/30 shadow-sm">
+          <User className="w-8 h-8 text-muted-foreground" />
         </div>
-        <div className="flex items-center gap-1.5 mt-2">
-          <Mail className="w-3.5 h-3.5 text-[hsl(var(--mtb-teal))]" />
-          <span className="font-semibold text-foreground text-sm">MNet-Mail</span>
-        </div>
-        <div className="mt-2 space-y-0.5 w-full text-left">
-          {mailLinks.map((link) => (
-            <a
-              key={link.label}
-              href="#"
-              className="flex items-center gap-2 px-2 py-1 text-sm text-foreground hover:text-[hsl(var(--mtb-teal))] hover:bg-[hsl(var(--mtb-teal))]/5 rounded transition-colors"
-            >
-              <link.icon className="w-3.5 h-3.5 text-[hsl(var(--mtb-blue))]" />
-              <span>{link.label}</span>
-              {link.count !== null && (
-                <span className="ml-auto text-xs text-muted-foreground">
-                  ( {link.count} )
-                </span>
-              )}
-            </a>
-          ))}
-        </div>
+        <Link to="/profile" className="mt-2 text-center hover:opacity-80 transition-opacity">
+          <p className="text-sm font-semibold text-foreground">C2140</p>
+          <p className="text-xs text-muted-foreground">Senior Officer</p>
+        </Link>
       </div>
 
       {/* Shortcuts */}

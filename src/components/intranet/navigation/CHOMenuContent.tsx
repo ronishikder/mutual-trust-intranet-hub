@@ -252,9 +252,9 @@ interface CHOMenuContentProps {
 }
 
 export function CHOMenuContent({ onClose }: CHOMenuContentProps) {
+  // Default all executives and DMDs to expanded
   const [expandedExec, setExpandedExec] = useState<string | null>("md");
-  const [expandedDmds, setExpandedDmds] = useState<string[]>([]);
-
+  const [expandedDmds, setExpandedDmds] = useState<string[]>(dmds.map(d => d.id));
   const toggleExec = (id: string) => {
     setExpandedExec(expandedExec === id ? null : id);
   };
