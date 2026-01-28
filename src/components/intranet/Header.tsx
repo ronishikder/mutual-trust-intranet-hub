@@ -75,27 +75,19 @@ export function Header() {
           <img src={mtbLogo} alt="Mutual Trust Bank" className="h-10 object-contain" />
         </div>
 
-        {/* Search - Right aligned */}
-        <div className="hidden md:flex items-center gap-3 flex-1 justify-end mr-4">
-          <span className="text-sm font-medium text-foreground">Search</span>
-          <div className="relative w-48">
-            <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+        {/* Search - Wide centered input matching Attachment-3 */}
+        <div className="hidden md:flex items-center flex-1 max-w-2xl mx-4">
+          <div className="relative w-full">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
             <Input
               type="search"
-              placeholder="Search..."
+              placeholder="Search employees, departments, circulars, applications..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               onKeyDown={handleSearchKeyDown}
-              className="pl-9 h-8 text-sm bg-secondary/50 border-border focus:border-primary/40"
+              className="pl-10 pr-4 h-9 text-sm bg-background border border-border rounded-full focus:border-[hsl(var(--mtb-teal))] focus:ring-1 focus:ring-[hsl(var(--mtb-teal))]/20 w-full"
             />
           </div>
-          <Button 
-            size="sm" 
-            className="h-8 px-3 text-xs bg-muted hover:bg-muted/80 text-foreground border border-border"
-            onClick={handleSearch}
-          >
-            GO
-          </Button>
         </div>
 
         {/* Right section: Icons + MNet logo + Sign Out */}
