@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { X } from "lucide-react";
-import { Button } from "@/components/ui/button";
 
 const branchSections = [
   { letter: "A", items: ["Abu Torab Bazar", "Mirsharai BEPZA", "Aganagar", "Agrabad"] },
@@ -46,49 +45,57 @@ interface BranchesMenuContentProps {
 
 export function BranchesMenuContent({ onClose }: BranchesMenuContentProps) {
   return (
-    <div className="absolute left-0 right-0 top-full bg-card border-b border-border shadow-elevated z-50">
-      <div className="container px-6 py-4">
+    <div 
+      className="position-absolute start-0 end-0 shadow-lg"
+      style={{ top: '100%', backgroundColor: 'var(--card-bg)', borderBottom: '1px solid var(--border-color)', zIndex: 1050 }}
+    >
+      <div className="container-fluid px-4 py-4" style={{ maxWidth: '1600px', margin: '0 auto' }}>
         {/* Menu Header */}
-        <div className="flex items-center justify-between mb-4 pb-3 border-b border-border/50">
-          <h2 className="text-base font-bold text-[hsl(var(--mtb-teal))]">Branch Homepages</h2>
-          <Button 
-            variant="ghost" 
-            size="sm"
+        <div className="d-flex align-items-center justify-content-between mb-4 pb-3 border-bottom">
+          <h5 className="mb-0 fw-bold" style={{ fontSize: '0.875rem', color: 'var(--mtb-teal)' }}>
+            Branch Homepages
+          </h5>
+          <button 
             onClick={onClose}
-            className="text-muted-foreground hover:text-foreground hover:bg-muted/50 h-7"
+            className="btn btn-link text-muted d-flex align-items-center gap-1"
+            style={{ fontSize: '0.875rem' }}
           >
-            <X className="w-4 h-4 mr-1" />
+            <X style={{ width: 16, height: 16 }} />
             Close
-          </Button>
+          </button>
         </div>
 
         {/* 6 columns per row */}
-        <div className="max-h-96 overflow-y-auto space-y-4">
+        <div style={{ maxHeight: '400px', overflowY: 'auto' }}>
           {groupBranchesIntoRows(branchSections).map((row, rowIdx) => (
-            <div key={rowIdx} className="grid grid-cols-6 gap-4">
+            <div key={rowIdx} className="row g-3 mb-3">
               {row.map((section) => (
-                <div key={section.letter} className="space-y-1">
-                  <div className="flex items-center gap-2 mb-1.5">
-                    <span className="w-6 h-6 bg-[hsl(var(--mtb-teal))] text-white text-xs font-bold flex items-center justify-center rounded">
+                <div key={section.letter} className="col-2">
+                  <div className="d-flex align-items-center gap-2 mb-2">
+                    <span 
+                      className="d-flex align-items-center justify-content-center rounded fw-bold text-white"
+                      style={{ width: 24, height: 24, fontSize: '0.75rem', backgroundColor: 'var(--mtb-teal)' }}
+                    >
                       {section.letter}
                     </span>
                   </div>
                   {section.items.length > 0 ? (
-                    <ul className="space-y-0.5">
+                    <ul className="list-unstyled mb-0">
                       {section.items.map((item, itemIdx) => (
                         <li key={itemIdx}>
                           <Link 
                             to={`/branch/${item.toLowerCase().replace(/\s+/g, '-')}`}
-                            className="flex items-center gap-1.5 text-xs text-foreground hover:text-[hsl(var(--mtb-teal))] transition-colors py-0.5"
+                            className="sidebar-link py-1"
+                            style={{ fontSize: '0.75rem' }}
                           >
-                            <span className="text-[hsl(var(--mtb-teal))] text-[8px]">▸</span>
+                            <span style={{ color: 'var(--mtb-teal)', fontSize: '0.5rem' }}>▸</span>
                             {item}
                           </Link>
                         </li>
                       ))}
                     </ul>
                   ) : (
-                    <p className="text-[10px] text-muted-foreground italic pl-2">No branches</p>
+                    <p className="mb-0 text-muted fst-italic" style={{ fontSize: '0.625rem', paddingLeft: '0.5rem' }}>No branches</p>
                   )}
                 </div>
               ))}
@@ -97,13 +104,13 @@ export function BranchesMenuContent({ onClose }: BranchesMenuContentProps) {
         </div>
 
         {/* Branch Stats */}
-        <div className="mt-4 pt-3 border-t border-border/50">
-          <div className="flex items-center gap-6 text-xs">
-            <span className="text-muted-foreground">Branches: <strong className="text-foreground">122</strong></span>
-            <span className="text-muted-foreground">Sub-Branches: <strong className="text-foreground">58</strong></span>
-            <span className="text-[hsl(var(--mtb-teal))] font-semibold">Total: 180</span>
-            <span className="text-[hsl(var(--mtb-green))] text-[10px]">● Opened Recently</span>
-            <span className="text-[hsl(var(--mtb-purple))] text-[10px]">● Proposed</span>
+        <div className="mt-4 pt-3 border-top">
+          <div className="d-flex align-items-center gap-4" style={{ fontSize: '0.75rem' }}>
+            <span className="text-muted">Branches: <strong style={{ color: 'var(--foreground)' }}>122</strong></span>
+            <span className="text-muted">Sub-Branches: <strong style={{ color: 'var(--foreground)' }}>58</strong></span>
+            <span className="fw-semibold" style={{ color: 'var(--mtb-teal)' }}>Total: 180</span>
+            <span style={{ color: 'var(--mtb-green)', fontSize: '0.625rem' }}>● Opened Recently</span>
+            <span style={{ color: 'var(--mtb-purple)', fontSize: '0.625rem' }}>● Proposed</span>
           </div>
         </div>
       </div>
