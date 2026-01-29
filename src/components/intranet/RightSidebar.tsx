@@ -85,35 +85,44 @@ export function RightSidebar() {
     <aside className="d-flex flex-column gap-2">
       {/* Upcoming Trainings */}
       <div className="mtb-card overflow-hidden">
-        <div className="mtb-card-header d-flex align-items-center gap-2" style={{ backgroundColor: 'var(--mtb-teal)' }}>
+        <div className="mtb-card-header d-flex align-items-center gap-2" style={{ backgroundColor: 'var(--mtb-teal)', borderRadius: '0.375rem 0.375rem 0 0' }}>
           <GraduationCap style={{ width: 14, height: 14 }} />
           Upcoming Trainings
         </div>
-        <div className="p-3">
+        <div className="p-2">
           <div className="d-flex gap-1 mb-2">
             {trainingMonths.map((month) => (
               <button
                 key={month}
                 onClick={() => setActiveMonth(month)}
-                className={`btn btn-sm flex-grow-1 fw-medium ${activeMonth === month ? 'text-white' : 'btn-outline-secondary'}`}
+                className="btn btn-sm fw-medium"
                 style={{ 
                   fontSize: '0.6875rem', 
-                  padding: '0.25rem 0.5rem',
+                  padding: '0.25rem 0.75rem',
                   borderRadius: '9999px',
-                  backgroundColor: activeMonth === month ? 'var(--mtb-teal)' : 'transparent'
+                  backgroundColor: activeMonth === month ? 'var(--mtb-teal)' : 'transparent',
+                  color: activeMonth === month ? 'white' : 'var(--foreground)',
+                  border: activeMonth === month ? '1px solid var(--mtb-teal)' : '1px solid var(--border-color)'
                 }}
               >
                 {month}
               </button>
             ))}
             <button
-              className="btn btn-sm btn-outline-secondary flex-grow-1 fw-medium"
-              style={{ fontSize: '0.6875rem', padding: '0.25rem 0.25rem', borderRadius: '9999px' }}
+              className="btn btn-sm fw-medium"
+              style={{ 
+                fontSize: '0.6875rem', 
+                padding: '0.25rem 0.5rem', 
+                borderRadius: '9999px',
+                border: '1px solid var(--border-color)',
+                backgroundColor: 'transparent',
+                color: 'var(--foreground)'
+              }}
             >
               MTB Library
             </button>
           </div>
-          <div className="text-center py-2 fst-italic text-muted" style={{ fontSize: '0.75rem' }}>
+          <div className="text-center py-2 fst-italic" style={{ fontSize: '0.75rem', color: 'var(--mtb-teal)' }}>
             No trainings scheduled for {activeMonth === "Jan" ? "January" : activeMonth === "Feb" ? "February" : "March"}
           </div>
         </div>
