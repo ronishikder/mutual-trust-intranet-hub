@@ -1,7 +1,5 @@
 import { useState, useRef, useEffect } from "react";
 import { Search, LogOut, Bell, X, AlertCircle, Info, FileText, Mail, Inbox, Send, FileEdit } from "lucide-react";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
 import { Link, useNavigate } from "react-router-dom";
 import mtbLogo from "@/assets/mtb-logo.png";
 import mnetLogo from "@/assets/mnet-logo.png";
@@ -46,9 +44,9 @@ export function Header() {
 
   const getNotificationIcon = (type: string) => {
     switch (type) {
-      case "alert": return <AlertCircle className="w-4 h-4 text-[hsl(var(--mtb-red))]" />;
-      case "document": return <FileText className="w-4 h-4 text-[hsl(var(--mtb-blue))]" />;
-      default: return <Info className="w-4 h-4 text-[hsl(var(--mtb-teal))]" />;
+      case "alert": return <AlertCircle style={{ width: 16, height: 16, color: 'var(--mtb-red)' }} />;
+      case "document": return <FileText style={{ width: 16, height: 16, color: 'var(--mtb-blue)' }} />;
+      default: return <Info style={{ width: 16, height: 16, color: 'var(--mtb-teal)' }} />;
     }
   };
 
@@ -65,67 +63,73 @@ export function Header() {
   };
 
   return (
-    <header className="bg-card border-b border-border shadow-sm">
+    <header style={{ backgroundColor: 'var(--card-bg)', borderBottom: '1px solid var(--border-color)' }}>
       {/* MTB Brand Gradient bar */}
       <div className="mtb-gradient-bar" />
       
-      <div className="container flex items-center justify-between h-14 px-4 lg:px-6">
+      <div className="container-fluid d-flex align-items-center justify-content-between py-2 px-4" style={{ height: 56, maxWidth: '1600px', margin: '0 auto' }}>
         {/* Logo */}
-        <div className="flex items-center gap-3">
-          <img src={mtbLogo} alt="Mutual Trust Bank" className="h-10 object-contain" />
+        <div className="d-flex align-items-center gap-3">
+          <img src={mtbLogo} alt="Mutual Trust Bank" style={{ height: 40 }} className="object-fit-contain" />
         </div>
 
-        {/* Search - Wide centered input matching Attachment-3 */}
-        <div className="hidden md:flex items-center flex-1 max-w-2xl mx-4">
-          <div className="relative w-full">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-            <Input
+        {/* Search - Wide centered input */}
+        <div className="d-none d-md-flex align-items-center flex-grow-1 mx-4" style={{ maxWidth: 600 }}>
+          <div className="position-relative w-100">
+            <Search 
+              className="position-absolute" 
+              style={{ left: 12, top: '50%', transform: 'translateY(-50%)', width: 16, height: 16, color: 'var(--muted-fg)' }} 
+            />
+            <input
               type="search"
               placeholder="Search employees, departments, circulars, applications..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               onKeyDown={handleSearchKeyDown}
-              className="pl-10 pr-4 h-9 text-sm bg-background border border-border rounded-full focus:border-[hsl(var(--mtb-teal))] focus:ring-1 focus:ring-[hsl(var(--mtb-teal))]/20 w-full"
+              className="form-control form-control-sm-custom w-100"
             />
           </div>
         </div>
 
         {/* Right section: Icons + MNet logo + Sign Out */}
-        <div className="flex items-center gap-2">
+        <div className="d-flex align-items-center gap-2">
           {/* Day/Night Mode Toggle */}
           <ThemeToggle />
 
           {/* MNet-Mail Icon */}
-          <div className="relative" ref={mailRef}>
-            <Button 
-              variant="ghost" 
-              size="icon" 
-              className="relative h-8 w-8 hover:bg-muted/50"
+          <div className="position-relative" ref={mailRef}>
+            <button 
+              className="btn btn-link p-2"
               onClick={() => setShowMailMenu(!showMailMenu)}
+              style={{ color: 'var(--mtb-teal)' }}
             >
-              <Mail className="h-4 w-4 text-[hsl(var(--mtb-teal))]" />
-            </Button>
+              <Mail style={{ width: 18, height: 18 }} />
+            </button>
 
             {/* Mail Popup Menu */}
             {showMailMenu && (
-              <div className="absolute right-0 top-10 w-56 bg-card border border-border rounded-lg shadow-elevated z-50 overflow-hidden">
-                <div className="px-3 py-2 bg-[hsl(var(--mtb-teal))]">
-                  <h3 className="font-semibold text-white text-xs flex items-center gap-2">
-                    <Mail className="w-3.5 h-3.5" />
+              <div 
+                className="position-absolute end-0 mt-1 shadow-lg rounded overflow-hidden"
+                style={{ width: 220, backgroundColor: 'var(--card-bg)', border: '1px solid var(--border-color)', zIndex: 1050 }}
+              >
+                <div className="px-3 py-2" style={{ backgroundColor: 'var(--mtb-teal)' }}>
+                  <h6 className="mb-0 text-white d-flex align-items-center gap-2" style={{ fontSize: '0.75rem' }}>
+                    <Mail style={{ width: 14, height: 14 }} />
                     MNet-Mail
-                  </h3>
+                  </h6>
                 </div>
-                <div className="py-1">
+                <div>
                   {mailMenuItems.map((item) => (
                     <a 
                       key={item.label}
                       href="#" 
-                      className="flex items-center gap-3 px-3 py-2 text-sm text-foreground hover:bg-muted/50 transition-colors"
+                      className="d-flex align-items-center gap-3 px-3 py-2 text-decoration-none"
+                      style={{ color: 'var(--foreground)', fontSize: '0.875rem' }}
                     >
-                      <item.icon className="w-4 h-4 text-muted-foreground" />
-                      <span className="flex-1">{item.label}</span>
+                      <item.icon style={{ width: 16, height: 16, color: 'var(--muted-fg)' }} />
+                      <span className="flex-grow-1">{item.label}</span>
                       {item.count !== null && (
-                        <span className="text-xs text-muted-foreground">({item.count})</span>
+                        <span className="small text-muted">({item.count})</span>
                       )}
                     </a>
                   ))}
@@ -135,88 +139,98 @@ export function Header() {
           </div>
 
           {/* Notifications */}
-          <div className="relative" ref={notificationRef}>
-            <Button 
-              variant="ghost" 
-              size="icon" 
-              className="relative h-8 w-8 hover:bg-muted/50"
+          <div className="position-relative" ref={notificationRef}>
+            <button 
+              className="btn btn-link p-2 position-relative"
               onClick={() => setShowNotifications(!showNotifications)}
+              style={{ color: 'var(--muted-fg)' }}
             >
-              <Bell className="h-4 w-4 text-muted-foreground" />
+              <Bell style={{ width: 18, height: 18 }} />
               {unreadCount > 0 && (
-                <span className="absolute -top-0.5 -right-0.5 text-[9px] font-bold min-w-[16px] h-4 bg-[hsl(var(--mtb-red))] text-white rounded-full flex items-center justify-center">
+                <span 
+                  className="position-absolute badge rounded-pill"
+                  style={{ top: 2, right: 2, backgroundColor: 'var(--mtb-red)', fontSize: '0.5625rem', padding: '0.125rem 0.375rem' }}
+                >
                   {unreadCount}
                 </span>
               )}
-            </Button>
+            </button>
 
             {/* Notification Popup */}
             {showNotifications && (
-              <div className="absolute right-0 top-10 w-80 bg-card border border-border rounded-lg shadow-elevated z-50 overflow-hidden">
-                <div className="flex items-center justify-between px-3 py-2 bg-[hsl(var(--mtb-teal))]">
-                  <h3 className="font-semibold text-white text-xs">Notifications</h3>
-                  <Button 
-                    variant="ghost" 
-                    size="sm" 
-                    className="h-5 w-5 p-0 text-white hover:bg-white/20"
+              <div 
+                className="position-absolute end-0 mt-1 shadow-lg rounded overflow-hidden"
+                style={{ width: 320, backgroundColor: 'var(--card-bg)', border: '1px solid var(--border-color)', zIndex: 1050 }}
+              >
+                <div className="d-flex align-items-center justify-content-between px-3 py-2" style={{ backgroundColor: 'var(--mtb-teal)' }}>
+                  <h6 className="mb-0 text-white" style={{ fontSize: '0.75rem' }}>Notifications</h6>
+                  <button 
+                    className="btn btn-link p-0 text-white"
                     onClick={() => setShowNotifications(false)}
                   >
-                    <X className="h-3.5 w-3.5" />
-                  </Button>
+                    <X style={{ width: 14, height: 14 }} />
+                  </button>
                 </div>
-                <div className="max-h-72 overflow-y-auto">
+                <div style={{ maxHeight: 288, overflowY: 'auto' }}>
                   {notifications.map((notification) => (
                     <div 
                       key={notification.id} 
-                      className={`px-3 py-2.5 border-b border-border/50 hover:bg-muted/30 cursor-pointer transition-colors ${notification.unread ? 'bg-[hsl(var(--mtb-teal))]/5' : ''}`}
+                      className="alert-item"
+                      style={{ backgroundColor: notification.unread ? 'rgba(13, 148, 136, 0.05)' : 'transparent' }}
                     >
-                      <div className="flex items-start gap-2.5">
-                        <div className="mt-0.5">
+                      <div className="d-flex align-items-start gap-2">
+                        <div className="mt-1">
                           {getNotificationIcon(notification.type)}
                         </div>
-                        <div className="flex-1 min-w-0">
-                          <div className="flex items-center gap-1.5">
-                            <p className="text-sm font-medium text-foreground truncate">{notification.title}</p>
+                        <div className="flex-grow-1" style={{ minWidth: 0 }}>
+                          <div className="d-flex align-items-center gap-1">
+                            <p className="mb-0 fw-medium text-truncate" style={{ fontSize: '0.875rem', color: 'var(--foreground)' }}>{notification.title}</p>
                             {notification.unread && (
-                              <span className="w-1.5 h-1.5 rounded-full bg-[hsl(var(--mtb-teal))] flex-shrink-0" />
+                              <span className="rounded-circle flex-shrink-0" style={{ width: 6, height: 6, backgroundColor: 'var(--mtb-teal)' }} />
                             )}
                           </div>
-                          <p className="text-xs text-muted-foreground mt-0.5 line-clamp-1">{notification.message}</p>
-                          <p className="text-[11px] text-muted-foreground/70 mt-0.5">{notification.time}</p>
+                          <p className="mb-0 text-muted text-truncate" style={{ fontSize: '0.75rem' }}>{notification.message}</p>
+                          <p className="mb-0 text-muted" style={{ fontSize: '0.6875rem' }}>{notification.time}</p>
                         </div>
                       </div>
                     </div>
                   ))}
                 </div>
-                <div className="px-3 py-2 bg-muted/20 border-t border-border/50">
-                  <Button variant="link" size="sm" className="w-full text-[hsl(var(--mtb-teal))] text-xs h-6 hover:no-underline">
+                <div className="px-3 py-2 border-top text-center" style={{ backgroundColor: 'rgba(0, 0, 0, 0.02)' }}>
+                  <a href="#" className="text-decoration-none small" style={{ color: 'var(--mtb-teal)' }}>
                     View All Notifications
-                  </Button>
+                  </a>
                 </div>
               </div>
             )}
           </div>
           
           {/* User info */}
-          <div className="flex items-center gap-2 px-3 border-l border-border/50">
-            <Link to="/profile" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-              <div className="w-8 h-8 rounded-full bg-[hsl(var(--mtb-teal))]/10 flex items-center justify-center overflow-hidden">
-                <span className="text-xs font-semibold text-[hsl(var(--mtb-teal))]">JD</span>
+          <div className="d-flex align-items-center gap-2 px-3 border-start" style={{ borderColor: 'var(--border-color)' }}>
+            <Link to="/profile" className="d-flex align-items-center gap-2 text-decoration-none">
+              <div 
+                className="rounded-circle d-flex align-items-center justify-content-center"
+                style={{ width: 32, height: 32, backgroundColor: 'rgba(13, 148, 136, 0.1)' }}
+              >
+                <span className="fw-semibold" style={{ fontSize: '0.75rem', color: 'var(--mtb-teal)' }}>JD</span>
               </div>
-              <div className="text-right hidden sm:block">
-                <p className="text-sm font-medium text-foreground leading-tight">Hi, C2140</p>
+              <div className="text-end d-none d-sm-block">
+                <p className="mb-0 fw-medium" style={{ fontSize: '0.875rem', color: 'var(--foreground)' }}>Hi, C2140</p>
               </div>
             </Link>
           </div>
 
           {/* MNet Logo */}
-          <img src={mnetLogo} alt="MNet" className="h-7 object-contain" />
+          <img src={mnetLogo} alt="MNet" style={{ height: 28 }} className="object-fit-contain" />
           
           {/* Sign Out */}
-          <Button variant="ghost" size="sm" className="text-[hsl(var(--mtb-red))] hover:text-[hsl(var(--mtb-red))]/80 hover:bg-muted/50 h-8 text-sm font-medium gap-1.5">
+          <button 
+            className="btn btn-sm d-flex align-items-center gap-1 fw-medium"
+            style={{ color: 'var(--mtb-red)', fontSize: '0.875rem' }}
+          >
             Sign Out
-            <LogOut className="h-3.5 w-3.5" />
-          </Button>
+            <LogOut style={{ width: 14, height: 14 }} />
+          </button>
         </div>
       </div>
     </header>

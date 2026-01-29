@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { X, ChevronRight, User } from "lucide-react";
-import { Button } from "@/components/ui/button";
-
 
 // Executive Leadership Data
 const executives = [
@@ -142,26 +140,33 @@ function ExecutiveCard({ executive, isExpanded, onToggle }: ExecutiveCardProps) 
   const hasDepartments = executive.departmentCount > 0;
   
   return (
-    <div className="bg-card border border-border/50 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+    <div className="mtb-card overflow-hidden h-100">
       <div className="p-3">
-        <div className="flex items-start gap-3">
+        <div className="d-flex align-items-start gap-3">
           {/* Profile Icon */}
-          <div className="w-10 h-10 rounded-full border-2 border-[hsl(var(--mtb-teal))]/30 flex items-center justify-center bg-muted/30 flex-shrink-0">
-            <User className="w-5 h-5 text-[hsl(var(--mtb-teal))]/60" />
+          <div 
+            className="rounded-circle d-flex align-items-center justify-content-center flex-shrink-0"
+            style={{ width: 40, height: 40, backgroundColor: 'rgba(13, 148, 136, 0.1)', border: '2px solid rgba(13, 148, 136, 0.3)' }}
+          >
+            <User style={{ width: 20, height: 20, color: 'var(--mtb-teal)', opacity: 0.6 }} />
           </div>
           
           {/* Info */}
-          <div className="flex-1 min-w-0">
-            <p className="text-[10px] text-[hsl(var(--mtb-teal))] font-medium leading-tight">{executive.title}</p>
-            <p className="text-sm font-semibold text-foreground mt-0.5 leading-tight">{executive.name}</p>
-            <p className="text-[10px] text-muted-foreground">{executive.designation}</p>
+          <div className="flex-grow-1" style={{ minWidth: 0 }}>
+            <p className="mb-0 fw-medium" style={{ fontSize: '0.625rem', color: 'var(--mtb-teal)', lineHeight: 1.3 }}>{executive.title}</p>
+            <p className="mb-0 fw-semibold mt-1" style={{ fontSize: '0.875rem', color: 'var(--foreground)', lineHeight: 1.3 }}>{executive.name}</p>
+            <p className="mb-0 text-muted" style={{ fontSize: '0.625rem' }}>{executive.designation}</p>
             
             {hasDepartments && (
               <button 
                 onClick={onToggle}
-                className="flex items-center gap-1 mt-2 text-[10px] text-[hsl(var(--mtb-teal))] hover:underline cursor-pointer"
+                className="btn btn-link p-0 mt-2 d-flex align-items-center gap-1 text-decoration-none"
+                style={{ fontSize: '0.625rem', color: 'var(--mtb-teal)' }}
               >
-                <ChevronRight className={`w-3 h-3 transition-transform ${isExpanded ? 'rotate-90' : ''}`} />
+                <ChevronRight 
+                  className={`transition-transform ${isExpanded ? 'rotate-90' : ''}`}
+                  style={{ width: 12, height: 12 }}
+                />
                 {executive.departmentCount} Departments
               </button>
             )}
@@ -171,13 +176,14 @@ function ExecutiveCard({ executive, isExpanded, onToggle }: ExecutiveCardProps) 
       
       {/* Expanded Departments */}
       {isExpanded && hasDepartments && (
-        <div className="border-t border-border/30 bg-muted/10 p-2 space-y-0.5">
+        <div className="border-top p-2" style={{ backgroundColor: 'rgba(0, 0, 0, 0.02)', borderColor: 'var(--border-color)' }}>
           {executive.departments.map((dept) => (
             dept.href ? (
               <Link
                 key={dept.id}
                 to={dept.href}
-                className="block text-[11px] text-foreground/80 hover:text-[hsl(var(--mtb-teal))] px-2 py-1 rounded hover:bg-[hsl(var(--mtb-teal))]/5 transition-colors"
+                className="sidebar-link py-1"
+                style={{ fontSize: '0.6875rem' }}
               >
                 • {dept.label}
               </Link>
@@ -185,7 +191,8 @@ function ExecutiveCard({ executive, isExpanded, onToggle }: ExecutiveCardProps) 
               <a
                 key={dept.id}
                 href="#"
-                className="block text-[11px] text-foreground/80 hover:text-[hsl(var(--mtb-teal))] px-2 py-1 rounded hover:bg-[hsl(var(--mtb-teal))]/5 transition-colors"
+                className="sidebar-link py-1"
+                style={{ fontSize: '0.6875rem' }}
               >
                 • {dept.label}
               </a>
@@ -205,24 +212,31 @@ interface DMDCardProps {
 
 function DMDCard({ dmd, isExpanded, onToggle }: DMDCardProps) {
   return (
-    <div className="bg-card border border-border/50 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-      <div className="p-2.5">
-        <div className="flex items-start gap-2">
+    <div className="mtb-card overflow-hidden h-100">
+      <div className="p-2">
+        <div className="d-flex align-items-start gap-2">
           {/* Profile Icon */}
-          <div className="w-8 h-8 rounded-full border-2 border-[hsl(var(--mtb-teal))]/30 flex items-center justify-center bg-muted/30 flex-shrink-0">
-            <User className="w-4 h-4 text-[hsl(var(--mtb-teal))]/60" />
+          <div 
+            className="rounded-circle d-flex align-items-center justify-content-center flex-shrink-0"
+            style={{ width: 32, height: 32, backgroundColor: 'rgba(13, 148, 136, 0.1)', border: '2px solid rgba(13, 148, 136, 0.3)' }}
+          >
+            <User style={{ width: 16, height: 16, color: 'var(--mtb-teal)', opacity: 0.6 }} />
           </div>
           
           {/* Info */}
-          <div className="flex-1 min-w-0">
-            <p className="text-xs font-semibold text-foreground leading-tight">{dmd.name}</p>
-            <p className="text-[10px] text-muted-foreground">{dmd.designation}</p>
+          <div className="flex-grow-1" style={{ minWidth: 0 }}>
+            <p className="mb-0 fw-semibold" style={{ fontSize: '0.75rem', color: 'var(--foreground)', lineHeight: 1.3 }}>{dmd.name}</p>
+            <p className="mb-0 text-muted" style={{ fontSize: '0.625rem' }}>{dmd.designation}</p>
             
             <button 
               onClick={onToggle}
-              className="flex items-center gap-1 mt-1.5 text-[10px] text-[hsl(var(--mtb-teal))] hover:underline cursor-pointer"
+              className="btn btn-link p-0 mt-1 d-flex align-items-center gap-1 text-decoration-none"
+              style={{ fontSize: '0.625rem', color: 'var(--mtb-teal)' }}
             >
-              <ChevronRight className={`w-3 h-3 transition-transform ${isExpanded ? 'rotate-90' : ''}`} />
+              <ChevronRight 
+                className={`transition-transform ${isExpanded ? 'rotate-90' : ''}`}
+                style={{ width: 12, height: 12 }}
+              />
               {dmd.departmentCount} Departments
             </button>
           </div>
@@ -231,12 +245,13 @@ function DMDCard({ dmd, isExpanded, onToggle }: DMDCardProps) {
       
       {/* Expanded Departments */}
       {isExpanded && (
-        <div className="border-t border-border/30 bg-muted/10 p-2 space-y-0.5">
+        <div className="border-top p-2" style={{ backgroundColor: 'rgba(0, 0, 0, 0.02)', borderColor: 'var(--border-color)' }}>
           {dmd.departments.map((dept) => (
             <a
               key={dept.id}
               href="#"
-              className="block text-[10px] text-foreground/80 hover:text-[hsl(var(--mtb-teal))] px-2 py-0.5 rounded hover:bg-[hsl(var(--mtb-teal))]/5 transition-colors"
+              className="sidebar-link py-1"
+              style={{ fontSize: '0.625rem' }}
             >
               • {dept.label}
             </a>
@@ -269,51 +284,62 @@ export function CHOMenuContent({ onClose }: CHOMenuContentProps) {
   };
 
   return (
-    <div className="absolute left-0 right-0 top-full bg-card border-b border-border shadow-lg z-50">
-      <div className="container px-6 py-4">
+    <div 
+      className="position-absolute start-0 end-0 shadow-lg"
+      style={{ top: '100%', backgroundColor: 'var(--card-bg)', borderBottom: '1px solid var(--border-color)', zIndex: 1050 }}
+    >
+      <div className="container-fluid px-4 py-4" style={{ maxWidth: '1600px', margin: '0 auto' }}>
         {/* Menu Header */}
-        <div className="flex items-center justify-between mb-4">
-          <h2 className="text-sm font-bold text-[hsl(var(--mtb-teal))]">CHO Organizational Hierarchy</h2>
-          <Button 
-            variant="ghost" 
-            size="sm"
+        <div className="d-flex align-items-center justify-content-between mb-4">
+          <h5 className="mb-0 fw-bold" style={{ fontSize: '0.875rem', color: 'var(--mtb-teal)' }}>
+            CHO Organizational Hierarchy
+          </h5>
+          <button 
             onClick={onClose}
-            className="text-muted-foreground hover:text-foreground hover:bg-muted/50 h-7 gap-1"
+            className="btn btn-link text-muted d-flex align-items-center gap-1"
+            style={{ fontSize: '0.875rem' }}
           >
-            <X className="w-4 h-4" />
+            <X style={{ width: 16, height: 16 }} />
             Close
-          </Button>
+          </button>
         </div>
 
         {/* Executive Leadership Row */}
-        <div className="grid grid-cols-3 gap-4 mb-5">
+        <div className="row g-3 mb-4">
           {executives.map((exec) => (
-            <ExecutiveCard
-              key={exec.id}
-              executive={exec}
-              isExpanded={expandedExecs.includes(exec.id)}
-              onToggle={() => toggleExec(exec.id)}
-            />
+            <div key={exec.id} className="col-md-4">
+              <ExecutiveCard
+                executive={exec}
+                isExpanded={expandedExecs.includes(exec.id)}
+                onToggle={() => toggleExec(exec.id)}
+              />
+            </div>
           ))}
         </div>
 
         {/* Deputy Managing Directors Section */}
-        <div className="border-t border-border/50 pt-4">
-          <div className="flex items-center gap-2 mb-3">
-            <div className="w-5 h-5 rounded bg-[hsl(var(--mtb-teal))] flex items-center justify-center">
-              <User className="w-3 h-3 text-white" />
+        <div className="border-top pt-4" style={{ borderColor: 'var(--border-color)' }}>
+          <div className="d-flex align-items-center gap-2 mb-3">
+            <div 
+              className="rounded d-flex align-items-center justify-content-center"
+              style={{ width: 20, height: 20, backgroundColor: 'var(--mtb-teal)' }}
+            >
+              <User className="text-white" style={{ width: 12, height: 12 }} />
             </div>
-            <h3 className="text-xs font-bold text-[hsl(var(--mtb-teal))]">Deputy Managing Directors</h3>
+            <h6 className="mb-0 fw-bold" style={{ fontSize: '0.75rem', color: 'var(--mtb-teal)' }}>
+              Deputy Managing Directors
+            </h6>
           </div>
           
-          <div className="grid grid-cols-6 gap-3">
+          <div className="row g-3">
             {dmds.map((dmd) => (
-              <DMDCard
-                key={dmd.id}
-                dmd={dmd}
-                isExpanded={expandedDmds.includes(dmd.id)}
-                onToggle={() => toggleDmd(dmd.id)}
-              />
+              <div key={dmd.id} className="col-lg-2 col-md-4 col-sm-6">
+                <DMDCard
+                  dmd={dmd}
+                  isExpanded={expandedDmds.includes(dmd.id)}
+                  onToggle={() => toggleDmd(dmd.id)}
+                />
+              </div>
             ))}
           </div>
         </div>

@@ -6,49 +6,49 @@ import { RightSidebar } from "@/components/intranet/RightSidebar";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-vh-100" style={{ backgroundColor: 'var(--background)' }}>
       <Header />
       <Navigation />
       
-      <div className="container px-4 lg:px-6 py-4">
-        <div className="grid grid-cols-1 lg:grid-cols-10 gap-4">
-          {/* Left Sidebar - Equal width with right (2 cols each) */}
-          <div className="hidden lg:block lg:col-span-2">
+      <div className="container-fluid px-4 py-3" style={{ maxWidth: '1600px', margin: '0 auto' }}>
+        <div className="row g-3">
+          {/* Left Sidebar - 2 cols */}
+          <div className="col-lg-2 d-none d-lg-block">
             <LeftSidebar />
           </div>
           
-          {/* Main Content - 6 cols */}
-          <div className="lg:col-span-6 order-1 lg:order-none">
+          {/* Main Content - 8 cols */}
+          <div className="col-12 col-lg-8 order-1 order-lg-0">
             <MainContent />
           </div>
           
-          {/* Right Sidebar - Equal width with left (2 cols) */}
-          <div className="lg:col-span-2 order-2 lg:order-none">
+          {/* Right Sidebar - 2 cols */}
+          <div className="col-lg-2 order-2 order-lg-0">
             <RightSidebar />
           </div>
 
-          {/* Left Sidebar - Shown below on mobile */}
-          <div className="lg:hidden order-3">
+          {/* Left Sidebar - Mobile view */}
+          <div className="col-12 d-lg-none order-3">
             <LeftSidebar />
           </div>
         </div>
       </div>
 
       {/* Footer */}
-      <footer className="border-t border-border bg-card mt-6">
-        <div className="container px-4 lg:px-6 py-4">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-muted-foreground">
-            <p>© Mutual Trust Bank PLC. All rights reserved.</p>
-            <div className="flex items-center gap-4">
-              <a href="#" className="hover:text-foreground transition-colors">IT Support</a>
-              <a href="#" className="hover:text-foreground transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-foreground transition-colors">Terms of Use</a>
+      <footer className="border-top mt-4" style={{ backgroundColor: 'var(--card-bg)', borderColor: 'var(--border-color)' }}>
+        <div className="container-fluid px-4 py-3" style={{ maxWidth: '1600px', margin: '0 auto' }}>
+          <div className="d-flex flex-column flex-sm-row align-items-center justify-content-between gap-2" style={{ fontSize: '0.75rem', color: 'var(--muted-fg)' }}>
+            <p className="mb-0">© Mutual Trust Bank PLC. All rights reserved.</p>
+            <div className="d-flex align-items-center gap-3">
+              <a href="#" className="text-decoration-none" style={{ color: 'var(--muted-fg)' }}>IT Support</a>
+              <a href="#" className="text-decoration-none" style={{ color: 'var(--muted-fg)' }}>Privacy Policy</a>
+              <a href="#" className="text-decoration-none" style={{ color: 'var(--muted-fg)' }}>Terms of Use</a>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="d-flex align-items-center gap-2">
               <span>Powered by</span>
-              <span className="px-2 py-0.5 bg-[hsl(var(--mtb-orange))] text-white text-[10px] rounded">DBD</span>
+              <span className="badge text-white" style={{ backgroundColor: 'var(--mtb-orange)', fontSize: '0.625rem' }}>DBD</span>
               <span>&</span>
-              <span className="px-2 py-0.5 bg-[hsl(var(--mtb-blue))] text-white text-[10px] rounded">ITD</span>
+              <span className="badge text-white" style={{ backgroundColor: 'var(--mtb-blue)', fontSize: '0.625rem' }}>ITD</span>
             </div>
           </div>
         </div>

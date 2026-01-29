@@ -33,22 +33,21 @@ export function Navigation() {
   const closeMenu = () => setOpenMenu(null);
 
   return (
-    <nav className="bg-nav-bg relative" ref={menuRef}>
-      <div className="container px-6">
-        <ul className="flex items-center gap-1">
+    <nav className="nav-bar position-relative" ref={menuRef}>
+      <div className="container-fluid px-4" style={{ maxWidth: '1600px', margin: '0 auto' }}>
+        <ul className="nav gap-1 mb-0">
           {navItems.map((item) => (
-            <li key={item.id}>
+            <li key={item.id} className="nav-item">
               <button
                 onClick={() => handleNavClick(item.id)}
-                className={`flex items-center gap-2 px-5 py-2.5 text-sm font-medium transition-all duration-150 rounded-t-md ${
-                  openMenu === item.id 
-                    ? "bg-[hsl(var(--mtb-teal))] text-white" 
-                    : "text-white/85 hover:bg-white/10 hover:text-white"
-                }`}
+                className={`nav-item-btn ${openMenu === item.id ? 'active' : ''}`}
               >
-                <item.icon className="w-4 h-4" />
+                <item.icon style={{ width: 16, height: 16 }} />
                 {item.label}
-                <ChevronDown className={`w-3 h-3 transition-transform duration-150 ${openMenu === item.id ? 'rotate-180' : ''}`} />
+                <ChevronDown 
+                  className={`transition-transform ${openMenu === item.id ? 'rotate-180' : ''}`}
+                  style={{ width: 12, height: 12 }}
+                />
               </button>
             </li>
           ))}
