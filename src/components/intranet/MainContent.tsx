@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Pin, Search, Clock, ChevronRight, Users, Bike } from "lucide-react";
-import { Button } from "@/components/ui/button";
 
 const mtbCirculars = [
   { date: "20/01/26", title: "POWER OF ATTORNEY", isNew: true },
@@ -24,43 +23,48 @@ const branchReports = [
 const noticeItems = [
   {
     icon: Bike,
-    iconColor: "text-[#333]",
+    iconColor: "#333",
+    bgColor: "rgba(26, 85, 85, 0.08)",
+    iconBgColor: "rgba(26, 85, 85, 0.15)",
     text: "MTB Foundation commemorates International Day of Education 2026 by distributing 'Swapno Sarathi' Bicycles to Female Students of Mathbaria, Barishal",
     link: "View Event Photos",
-    linkColor: "text-[hsl(var(--mtb-teal))]"
   },
   {
     icon: Users,
-    iconColor: "text-[hsl(var(--mtb-orange))]",
+    iconColor: "#d4507a",
+    bgColor: "rgba(212, 80, 122, 0.08)",
+    iconBgColor: "rgba(212, 80, 122, 0.15)",
     text: 'Training on "Agile Customer Service: Commitment to Excellence (Creating Value for Customers)"',
     link: "Participants List",
-    linkColor: "text-[hsl(var(--mtb-teal))]"
   },
   {
     icon: Users,
-    iconColor: "text-[hsl(var(--mtb-orange))]",
+    iconColor: "var(--muted-fg)",
+    bgColor: "rgba(0, 0, 0, 0.02)",
+    iconBgColor: "rgba(0, 0, 0, 0.05)",
     text: 'Training on "Agile Customer Service: Commitment to Excellence (Creating Value for Customers)"',
     link: "Participants List",
-    linkColor: "text-[hsl(var(--mtb-teal))]"
   },
 ];
 
 function CircularList({ circulars }: { circulars: typeof mtbCirculars }) {
   return (
-    <div className="divide-y divide-border/20">
+    <div>
       {circulars.map((circular, idx) => (
-        <div key={idx} className="flex items-center gap-2 py-2 px-1 hover:bg-muted/20 transition-colors">
-          <span className="text-foreground font-mono text-[11px] w-14 flex-shrink-0">
+        <div 
+          key={idx} 
+          className="d-flex align-items-center gap-2 py-2 px-1"
+          style={{ borderBottom: idx !== circulars.length - 1 ? '1px solid var(--border-color)' : 'none' }}
+        >
+          <span className="font-monospace flex-shrink-0" style={{ fontSize: '0.6875rem', width: 56, color: 'var(--foreground)' }}>
             {circular.date}
           </span>
-          <a href="#" className="text-[hsl(var(--mtb-teal))] hover:text-[hsl(var(--mtb-teal))]/80 text-xs flex-1 truncate transition-colors font-medium">
+          <a href="#" className="mtb-link flex-grow-1 text-truncate fw-medium" style={{ fontSize: '0.75rem' }}>
             {circular.title}
-            <span className="text-[hsl(var(--mtb-teal))]/70 ml-1 text-[10px] font-normal">...more..</span>
+            <span className="ms-1" style={{ color: 'var(--muted-fg)', fontSize: '0.625rem' }}>...more..</span>
           </a>
           {circular.isNew && (
-            <span className="text-[9px] bg-[hsl(var(--mtb-red))] text-white px-1.5 py-0.5 rounded font-semibold flex-shrink-0">
-              New
-            </span>
+            <span className="badge-new flex-shrink-0">New</span>
           )}
         </div>
       ))}
@@ -72,44 +76,48 @@ export function MainContent() {
   const [activeTab, setActiveTab] = useState<"mtb" | "bb">("mtb");
 
   return (
-    <main className="space-y-3">
-      {/* Notice Board - Corporate Banking Style */}
-      <div className="rounded-lg overflow-hidden shadow-sm border border-border/30">
+    <main className="d-flex flex-column gap-3">
+      {/* Notice Board */}
+      <div className="mtb-card overflow-hidden">
         {/* Dark gradient header */}
-        <div className="bg-gradient-to-r from-[#1a4a4a] via-[#1f5555] to-[#1a4a4a] px-3 py-2 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <Pin className="w-3.5 h-3.5 text-[hsl(var(--mtb-orange))]" />
-            <h2 className="font-bold text-[hsl(var(--mtb-orange))] text-xs">MTB Notice Board</h2>
-            <span className="text-white/80 text-xs font-medium ml-1">::</span>
-            <span className="text-white text-xs font-medium">Tuesday Jan 21, 2026</span>
+        <div 
+          className="px-3 py-2 d-flex align-items-center justify-content-between"
+          style={{ background: 'linear-gradient(90deg, #1a4a4a 0%, #1f5555 50%, #1a4a4a 100%)' }}
+        >
+          <div className="d-flex align-items-center gap-2">
+            <Pin style={{ width: 14, height: 14, color: 'var(--mtb-orange)' }} />
+            <h6 className="mb-0 fw-bold" style={{ fontSize: '0.75rem', color: 'var(--mtb-orange)' }}>MTB Notice Board</h6>
+            <span className="text-white-50" style={{ fontSize: '0.75rem' }}>::</span>
+            <span className="text-white" style={{ fontSize: '0.75rem' }}>Tuesday Jan 21, 2026</span>
           </div>
-          <a href="#" className="text-xs text-white/90 hover:text-white transition-colors font-medium">
+          <a href="#" className="text-white-75 text-decoration-none fw-medium" style={{ fontSize: '0.75rem' }}>
             View All
           </a>
         </div>
         
         {/* Notice content */}
-        <div className="bg-card">
+        <div>
           {noticeItems.map((item, idx) => (
             <div 
               key={idx} 
-              className={`px-3 py-2.5 border-b border-border/20 last:border-0 ${
-                idx === 0 ? 'bg-[#1a5555]/8' : idx === 1 ? 'bg-[#d4507a]/8' : 'bg-muted/10'
-              }`}
+              className="px-3 py-2"
+              style={{ 
+                backgroundColor: item.bgColor,
+                borderBottom: idx !== noticeItems.length - 1 ? '1px solid var(--border-color)' : 'none'
+              }}
             >
-              <div className="flex items-start gap-2.5">
-                <div className={`w-5 h-5 rounded flex items-center justify-center flex-shrink-0 mt-0.5 ${
-                  idx === 0 ? 'bg-[#1a5555]/15' : idx === 1 ? 'bg-[#d4507a]/15' : 'bg-muted/50'
-                }`}>
-                  <item.icon className={`w-3 h-3 ${
-                    idx === 0 ? 'text-[#1a5555]' : idx === 1 ? 'text-[#d4507a]' : 'text-muted-foreground'
-                  }`} />
+              <div className="d-flex align-items-start gap-2">
+                <div 
+                  className="rounded d-flex align-items-center justify-content-center flex-shrink-0 mt-1"
+                  style={{ width: 20, height: 20, backgroundColor: item.iconBgColor }}
+                >
+                  <item.icon style={{ width: 12, height: 12, color: item.iconColor }} />
                 </div>
-                <div className="flex-1 min-w-0">
-                  <p className="text-xs text-foreground leading-relaxed">
+                <div className="flex-grow-1" style={{ minWidth: 0 }}>
+                  <p className="mb-1" style={{ fontSize: '0.75rem', lineHeight: 1.5, color: 'var(--foreground)' }}>
                     {item.text}
                   </p>
-                  <a href="#" className={`text-[10px] ${item.linkColor} hover:underline font-medium mt-0.5 inline-block`}>
+                  <a href="#" className="mtb-link fw-medium" style={{ fontSize: '0.625rem' }}>
                     {item.link}
                   </a>
                 </div>
@@ -120,83 +128,81 @@ export function MainContent() {
       </div>
 
       {/* Circulars Section */}
-      <div className="rounded-lg overflow-hidden shadow-sm bg-card border border-border/30">
-        <div className="px-3 py-2 border-b border-border/30 flex items-center justify-between">
-          <div className="flex items-center gap-1">
-            <Button 
-              variant={activeTab === "mtb" ? "default" : "ghost"}
-              size="sm" 
+      <div className="mtb-card overflow-hidden">
+        <div className="px-3 py-2 d-flex align-items-center justify-content-between border-bottom" style={{ borderColor: 'var(--border-color)' }}>
+          <div className="d-flex align-items-center gap-1">
+            <button 
               onClick={() => setActiveTab("mtb")}
-              className={`h-6 px-3 text-[11px] font-semibold rounded-sm ${
-                activeTab === "mtb" 
-                  ? 'bg-[hsl(var(--mtb-red))] hover:bg-[hsl(var(--mtb-red))]/90 text-white' 
-                  : 'text-foreground hover:bg-[hsl(var(--mtb-teal))]/10 hover:text-[hsl(var(--mtb-teal))] bg-transparent'
-              }`}
+              className={`btn btn-sm px-3 py-1 fw-semibold ${activeTab === "mtb" ? 'btn-mtb-red text-white' : ''}`}
+              style={{ 
+                fontSize: '0.6875rem',
+                backgroundColor: activeTab === "mtb" ? 'var(--mtb-red)' : 'transparent',
+                color: activeTab === "mtb" ? 'white' : 'var(--foreground)'
+              }}
             >
               MTB Circulars
-            </Button>
-            <Button 
-              variant={activeTab === "bb" ? "default" : "ghost"}
-              size="sm" 
+            </button>
+            <button 
               onClick={() => setActiveTab("bb")}
-              className={`h-6 px-3 text-[11px] font-semibold rounded-sm ${
-                activeTab === "bb" 
-                  ? 'bg-[hsl(var(--mtb-red))] hover:bg-[hsl(var(--mtb-red))]/90 text-white' 
-                  : 'text-foreground hover:bg-[hsl(var(--mtb-teal))]/10 hover:text-[hsl(var(--mtb-teal))] bg-transparent'
-              }`}
+              className={`btn btn-sm px-3 py-1 fw-semibold ${activeTab === "bb" ? 'btn-mtb-red text-white' : ''}`}
+              style={{ 
+                fontSize: '0.6875rem',
+                backgroundColor: activeTab === "bb" ? 'var(--mtb-red)' : 'transparent',
+                color: activeTab === "bb" ? 'white' : 'var(--foreground)'
+              }}
             >
               BB Circular
-            </Button>
+            </button>
           </div>
-          <div className="flex items-center gap-2 text-xs">
-            <a href="#" className="text-[hsl(var(--mtb-teal))] hover:text-[hsl(var(--mtb-teal))]/80 font-medium flex items-center gap-1">
+          <div className="d-flex align-items-center gap-2" style={{ fontSize: '0.75rem' }}>
+            <a href="#" className="mtb-link fw-medium d-flex align-items-center gap-1">
               My Basket
             </a>
-            <span className="text-muted-foreground">•</span>
-            <a href="#" className="text-foreground hover:text-[hsl(var(--mtb-teal))] flex items-center gap-1">
-              <Search className="w-3 h-3" />
+            <span className="text-muted">•</span>
+            <a href="#" className="text-decoration-none d-flex align-items-center gap-1" style={{ color: 'var(--foreground)' }}>
+              <Search style={{ width: 12, height: 12 }} />
               Search
             </a>
-            <span className="text-muted-foreground">•</span>
-            <a href="#" className="text-foreground hover:text-[hsl(var(--mtb-teal))] font-medium">
+            <span className="text-muted">•</span>
+            <a href="#" className="text-decoration-none fw-medium" style={{ color: 'var(--foreground)' }}>
               Recent
             </a>
           </div>
         </div>
-        <div className="p-2.5">
+        <div className="p-3">
           <CircularList circulars={activeTab === "mtb" ? mtbCirculars : bbCirculars} />
-          <a href="#" className="flex items-center gap-1 text-[hsl(var(--mtb-teal))] text-xs font-medium mt-2 hover:underline">
-            Read More <ChevronRight className="w-3 h-3" />
+          <a href="#" className="mtb-link d-inline-flex align-items-center gap-1 fw-medium mt-2" style={{ fontSize: '0.75rem' }}>
+            Read More <ChevronRight style={{ width: 12, height: 12 }} />
           </a>
         </div>
       </div>
 
       {/* Branch Reporting */}
-      <div className="rounded-lg overflow-hidden shadow-sm bg-card border border-border/30">
-        <div className="bg-[hsl(var(--mtb-teal))] px-3 py-1.5 flex items-center gap-2">
-          <Clock className="w-3 h-3 text-white" />
-          <h3 className="font-semibold text-white text-xs">Branch Reporting</h3>
+      <div className="mtb-card overflow-hidden">
+        <div className="mtb-card-header d-flex align-items-center gap-2" style={{ backgroundColor: 'var(--mtb-teal)' }}>
+          <Clock style={{ width: 12, height: 12 }} />
+          Branch Reporting
         </div>
         
-        <div className="overflow-x-auto">
-          <table className="w-full text-xs">
+        <div className="table-responsive">
+          <table className="table table-mtb mb-0">
             <thead>
-              <tr className="border-b border-border/30 bg-muted/20">
-                <th className="text-left px-3 py-2 font-semibold text-foreground">Report</th>
-                <th className="text-center px-2 py-2 font-semibold text-foreground">Req. By</th>
-                <th className="text-center px-2 py-2 font-semibold text-foreground">Deadline</th>
+              <tr>
+                <th className="text-start px-3 py-2">Report</th>
+                <th className="text-center px-2 py-2">Req. By</th>
+                <th className="text-center px-2 py-2">Deadline</th>
               </tr>
             </thead>
             <tbody>
               {branchReports.map((report) => (
-                <tr key={report.id} className="border-b border-border/20 hover:bg-muted/10 transition-colors">
+                <tr key={report.id}>
                   <td className="px-3 py-2">
-                    <a href="#" className="text-[hsl(var(--mtb-teal))] hover:underline font-medium">
+                    <a href="#" className="mtb-link fw-medium">
                       {report.title}-{report.id}
                     </a>
                   </td>
-                  <td className="text-center px-2 py-2 text-foreground">{report.reqBy}</td>
-                  <td className="text-center px-2 py-2 text-foreground">{report.deadline}</td>
+                  <td className="text-center px-2 py-2">{report.reqBy}</td>
+                  <td className="text-center px-2 py-2">{report.deadline}</td>
                 </tr>
               ))}
             </tbody>

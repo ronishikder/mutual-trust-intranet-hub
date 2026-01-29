@@ -1,9 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import {
-  Mail,
-  Inbox,
-  Send,
   FileText,
   Link as LinkIcon,
   Bookmark,
@@ -15,18 +12,8 @@ import {
   Clock,
   ChevronDown,
   ChevronRight,
-  Search,
-  CreditCard,
 } from "lucide-react";
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-
-const mailLinks = [
-  { icon: Inbox, label: "Inbox", count: 0 },
-  { icon: Send, label: "Compose", count: null },
-  { icon: FileText, label: "Sent Items", count: null },
-];
+import { ProfileCard } from "./ProfileCard";
 
 interface ShortcutItem {
   icon: typeof Bookmark;
@@ -130,54 +117,62 @@ function ExpandableItem({ item }: { item: ShortcutItem }) {
 
   if (!item.hasSubmenu) {
     return (
-      <a href="#" className="flex items-center gap-2 px-2.5 py-1.5 text-sm text-foreground hover:text-[hsl(var(--mtb-teal))] hover:bg-[hsl(var(--mtb-teal))]/5 rounded transition-colors">
-        <span className="text-[hsl(var(--mtb-teal))] text-xs">»</span>
-        <span className="flex-1">{item.label}</span>
+      <a href="#" className="sidebar-link">
+        <span style={{ color: 'var(--mtb-teal)', fontSize: '0.75rem' }}>»</span>
+        <span className="flex-grow-1">{item.label}</span>
         {item.count !== undefined && (
-          <span className="text-sm text-foreground font-medium">{item.count}</span>
+          <span className="fw-medium">{item.count}</span>
         )}
       </a>
     );
   }
 
   return (
-    <Collapsible open={isOpen} onOpenChange={setIsOpen}>
-      <CollapsibleTrigger className="w-full">
-        <div className="flex items-center gap-2 px-2.5 py-1.5 text-sm text-foreground hover:text-[hsl(var(--mtb-teal))] hover:bg-[hsl(var(--mtb-teal))]/5 rounded cursor-pointer transition-colors">
-          {isOpen ? (
-            <ChevronDown className="w-3 h-3 text-[hsl(var(--mtb-teal))]" />
-          ) : (
-            <ChevronRight className="w-3 h-3 text-muted-foreground" />
-          )}
-          <span className={`flex-1 text-left ${item.label === "M-Tracker" ? "text-[hsl(var(--mtb-orange))] font-medium" : ""}`}>{item.label}</span>
-        </div>
-      </CollapsibleTrigger>
-      <CollapsibleContent>
-        <div className="ml-4 border-l border-[hsl(var(--mtb-teal))]/20 pl-2 py-0.5 space-y-0.5">
+    <div>
+      <button 
+        className="sidebar-link w-100 border-0 bg-transparent text-start"
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        {isOpen ? (
+          <ChevronDown style={{ width: 12, height: 12, color: 'var(--mtb-teal)' }} />
+        ) : (
+          <ChevronRight style={{ width: 12, height: 12, color: 'var(--muted-fg)' }} />
+        )}
+        <span 
+          className="flex-grow-1"
+          style={{ color: item.label === "M-Tracker" ? 'var(--mtb-orange)' : 'inherit', fontWeight: item.label === "M-Tracker" ? 500 : 'normal' }}
+        >
+          {item.label}
+        </span>
+      </button>
+      {isOpen && (
+        <div className="ms-3 ps-2" style={{ borderLeft: '1px solid rgba(13, 148, 136, 0.2)' }}>
           {item.subItems?.map((subItem) => (
             subItem.href ? (
               <Link
                 key={subItem.label}
                 to={subItem.href}
-                className="flex items-center gap-1.5 px-1.5 py-1 text-sm text-foreground/80 hover:text-[hsl(var(--mtb-teal))] hover:bg-[hsl(var(--mtb-teal))]/5 rounded transition-colors"
+                className="sidebar-link py-1"
+                style={{ fontSize: '0.8125rem' }}
               >
-                <span className="text-[hsl(var(--mtb-orange))] text-[8px]">●</span>
+                <span style={{ color: 'var(--mtb-orange)', fontSize: '0.5rem' }}>●</span>
                 {subItem.label}
               </Link>
             ) : (
               <a
                 key={subItem.label}
                 href="#"
-                className="flex items-center gap-1.5 px-1.5 py-1 text-sm text-foreground/80 hover:text-[hsl(var(--mtb-teal))] hover:bg-[hsl(var(--mtb-teal))]/5 rounded transition-colors"
+                className="sidebar-link py-1"
+                style={{ fontSize: '0.8125rem' }}
               >
-                <span className="text-[hsl(var(--mtb-orange))] text-[8px]">●</span>
+                <span style={{ color: 'var(--mtb-orange)', fontSize: '0.5rem' }}>●</span>
                 {subItem.label}
               </a>
             )
           ))}
         </div>
-      </CollapsibleContent>
-    </Collapsible>
+      )}
+    </div>
   );
 }
 
@@ -204,24 +199,16 @@ export function LeftSidebar() {
   const [knowledgeOpen, setKnowledgeOpen] = useState(false);
 
   return (
-    <aside className="space-y-2">
-      {/* User Profile Card - Photo and ID only */}
-      <div className="mtb-card p-4 flex flex-col items-center">
-        <div className="w-16 h-16 rounded-full bg-muted flex items-center justify-center overflow-hidden border-2 border-[hsl(var(--mtb-teal))]/30 shadow-sm">
-          <User className="w-8 h-8 text-muted-foreground" />
-        </div>
-        <Link to="/profile" className="mt-2 text-center hover:opacity-80 transition-opacity">
-          <p className="text-sm font-semibold text-foreground">C2140</p>
-          <p className="text-xs text-muted-foreground">Senior Officer</p>
-        </Link>
-      </div>
+    <aside className="d-flex flex-column gap-2">
+      {/* LinkedIn-style Profile Card */}
+      <ProfileCard />
 
       {/* Shortcuts */}
       <div className="mtb-card overflow-hidden">
-        <div className="bg-[hsl(var(--mtb-teal))] px-3 py-1.5">
-          <h4 className="text-xs font-semibold text-white">Shortcuts</h4>
+        <div className="mtb-card-header" style={{ backgroundColor: 'var(--mtb-teal)' }}>
+          Shortcuts
         </div>
-        <div className="p-1.5 space-y-0">
+        <div className="p-2">
           {shortcuts.map((item) => (
             <ExpandableItem key={item.label} item={item} />
           ))}
@@ -230,43 +217,43 @@ export function LeftSidebar() {
 
       {/* Life Quote */}
       <div className="mtb-card overflow-hidden">
-        <div className="bg-[hsl(var(--mtb-blue))] px-3 py-1.5">
-          <h4 className="text-xs font-semibold text-white">Life Quote</h4>
+        <div className="mtb-card-header" style={{ backgroundColor: 'var(--mtb-blue)' }}>
+          Life Quote
         </div>
-        <div className="p-2.5">
-          <blockquote className="text-sm italic text-foreground leading-relaxed">
-            <span className="text-xl text-[hsl(var(--mtb-red))] leading-none font-serif">"</span>
+        <div className="p-3">
+          <blockquote className="small fst-italic mb-2" style={{ lineHeight: 1.6 }}>
+            <span style={{ fontSize: '1.25rem', color: 'var(--mtb-red)', fontFamily: 'serif' }}>"</span>
             In the end, it's not the years in your life that count. It's the life in your years.
-            <span className="text-xl text-[hsl(var(--mtb-red))] leading-none font-serif">"</span>
+            <span style={{ fontSize: '1.25rem', color: 'var(--mtb-red)', fontFamily: 'serif' }}>"</span>
           </blockquote>
-          <p className="text-xs text-muted-foreground mt-1.5 text-right">— Abraham Lincoln</p>
-          <div className="mt-2 flex gap-2 text-xs">
-            <a href="#" className="text-[hsl(var(--mtb-teal))] hover:underline">Share your thoughts</a>
-            <span className="text-muted-foreground">|</span>
-            <a href="#" className="text-[hsl(var(--mtb-teal))] hover:underline">Suggest a Quote</a>
+          <p className="text-end small text-muted mb-2" style={{ fontSize: '0.75rem' }}>— Abraham Lincoln</p>
+          <div className="d-flex gap-2" style={{ fontSize: '0.75rem' }}>
+            <a href="#" className="mtb-link">Share your thoughts</a>
+            <span className="text-muted">|</span>
+            <a href="#" className="mtb-link">Suggest a Quote</a>
           </div>
         </div>
       </div>
 
       {/* Search a Word */}
       <div className="mtb-card overflow-hidden">
-        <div className="bg-[hsl(var(--mtb-green))] px-3 py-1.5">
-          <h4 className="text-xs font-semibold text-white">Search a Word</h4>
+        <div className="mtb-card-header" style={{ backgroundColor: 'var(--mtb-green)' }}>
+          Search a Word
         </div>
-        <div className="p-2.5">
-          <div className="flex gap-1">
-            <Input 
+        <div className="p-3">
+          <div className="d-flex gap-1 mb-2">
+            <input 
               type="text" 
-              placeholder="" 
-              className="h-7 text-sm border-border flex-1"
+              className="form-control form-control-sm flex-grow-1" 
+              style={{ borderRadius: '0.25rem' }}
             />
-            <Button size="sm" className="h-7 px-2.5 text-xs bg-[hsl(var(--mtb-green))] hover:bg-[hsl(var(--mtb-green))]/90 text-white">
+            <button className="btn btn-sm text-white" style={{ backgroundColor: 'var(--mtb-green)', fontSize: '0.75rem' }}>
               GO
-            </Button>
+            </button>
           </div>
-          <div className="mt-1.5 flex items-center gap-1.5">
-            <span className="text-xs text-foreground">in</span>
-            <select className="text-xs border border-border rounded px-2 py-1 bg-card text-foreground flex-1">
+          <div className="d-flex align-items-center gap-2">
+            <span style={{ fontSize: '0.75rem' }}>in</span>
+            <select className="form-select form-select-sm flex-grow-1" style={{ fontSize: '0.75rem' }}>
               <option>Dictionary</option>
               <option>Thesaurus</option>
             </select>
@@ -276,68 +263,77 @@ export function LeftSidebar() {
 
       {/* MTBians' News */}
       <div className="mtb-card overflow-hidden">
-        <div className="bg-[hsl(var(--mtb-blue))] px-3 py-1.5">
-          <h4 className="text-xs font-semibold text-white">MTBians' News</h4>
+        <div className="mtb-card-header" style={{ backgroundColor: 'var(--mtb-blue)' }}>
+          MTBians' News
         </div>
-        <div className="p-2.5 space-y-1.5">
+        <div className="p-3">
           {mtbiansNews.map((news, idx) => (
-            <div key={idx} className="flex items-start gap-1.5 text-xs">
-              <span className="text-[hsl(var(--mtb-blue))]">📷</span>
-              <span className="text-foreground flex-1 leading-relaxed">{news.text}</span>
-              {news.isNew && <span className="text-[hsl(var(--mtb-red))] text-[9px] font-bold">NEW</span>}
+            <div key={idx} className="d-flex align-items-start gap-2 mb-2" style={{ fontSize: '0.75rem' }}>
+              <span style={{ color: 'var(--mtb-blue)' }}>📷</span>
+              <span className="flex-grow-1" style={{ lineHeight: 1.4 }}>{news.text}</span>
+              {news.isNew && <span className="badge-new">NEW</span>}
             </div>
           ))}
-          <div className="pt-1.5 flex gap-2 text-xs border-t border-border/50 mt-1.5">
-            <a href="#" className="text-[hsl(var(--mtb-teal))] hover:underline">News detail</a>
-            <span className="text-muted-foreground">|</span>
-            <a href="#" className="text-[hsl(var(--mtb-teal))] hover:underline">Add News</a>
+          <div className="pt-2 border-top d-flex gap-2" style={{ fontSize: '0.75rem' }}>
+            <a href="#" className="mtb-link">News detail</a>
+            <span className="text-muted">|</span>
+            <a href="#" className="mtb-link">Add News</a>
           </div>
         </div>
       </div>
 
       {/* Knowledge Point - Collapsible */}
-      <Collapsible open={knowledgeOpen} onOpenChange={setKnowledgeOpen}>
-        <div className="mtb-card overflow-hidden">
-          <CollapsibleTrigger className="w-full">
-            <div className="bg-[hsl(var(--mtb-orange))] px-3 py-1.5 flex items-center justify-between cursor-pointer hover:bg-[hsl(var(--mtb-orange))]/90 transition-colors">
-              <h4 className="text-xs font-semibold text-white">Knowledge Point</h4>
-              {knowledgeOpen ? (
-                <ChevronDown className="w-3.5 h-3.5 text-white" />
-              ) : (
-                <ChevronRight className="w-3.5 h-3.5 text-white" />
-              )}
-            </div>
-          </CollapsibleTrigger>
-          <CollapsibleContent>
-            <div className="p-2.5 space-y-1.5">
-              {knowledgePoints.map((item, idx) => (
-                <div key={idx} className="flex items-center gap-2 text-xs">
-                  {item.icon && !item.isLogo && <span className="text-sm">{item.icon}</span>}
-                  {item.isLogo && (
-                    <span className="w-4 h-4 bg-[hsl(var(--mtb-red))] text-white text-[8px] font-bold rounded flex items-center justify-center">M</span>
-                  )}
-                  <a href="#" className="text-[hsl(var(--mtb-teal))] hover:underline">{item.label}</a>
-                  {item.badges && (
-                    <div className="flex gap-0.5 ml-auto">
-                      {item.badges.map((badge) => (
-                        <span key={badge} className="px-1 py-0.5 bg-muted text-[9px] text-foreground/70 rounded border border-border/50">
-                          {badge}
-                        </span>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          </CollapsibleContent>
-        </div>
-      </Collapsible>
+      <div className="mtb-card overflow-hidden">
+        <button 
+          className="expandable-header w-100 border-0"
+          style={{ backgroundColor: 'var(--mtb-orange)' }}
+          onClick={() => setKnowledgeOpen(!knowledgeOpen)}
+        >
+          <span>Knowledge Point</span>
+          {knowledgeOpen ? (
+            <ChevronDown style={{ width: 14, height: 14 }} />
+          ) : (
+            <ChevronRight style={{ width: 14, height: 14 }} />
+          )}
+        </button>
+        {knowledgeOpen && (
+          <div className="p-3">
+            {knowledgePoints.map((item, idx) => (
+              <div key={idx} className="d-flex align-items-center gap-2 mb-1" style={{ fontSize: '0.75rem' }}>
+                {item.icon && !item.isLogo && <span>{item.icon}</span>}
+                {item.isLogo && (
+                  <span 
+                    className="d-flex align-items-center justify-content-center rounded"
+                    style={{ width: 16, height: 16, backgroundColor: 'var(--mtb-red)', color: 'white', fontSize: '0.5rem', fontWeight: 'bold' }}
+                  >
+                    M
+                  </span>
+                )}
+                <a href="#" className="mtb-link">{item.label}</a>
+                {item.badges && (
+                  <div className="d-flex gap-1 ms-auto">
+                    {item.badges.map((badge) => (
+                      <span 
+                        key={badge} 
+                        className="badge bg-light text-secondary border"
+                        style={{ fontSize: '0.5625rem', padding: '0.125rem 0.25rem' }}
+                      >
+                        {badge}
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
 
       {/* Hotlines */}
-      <div className="mtb-card p-2.5">
-        <div className="flex items-center gap-2">
-          <span className="text-base">📞</span>
-          <span className="font-semibold text-foreground text-xs">Hotlines</span>
+      <div className="mtb-card p-3">
+        <div className="d-flex align-items-center gap-2">
+          <span style={{ fontSize: '1rem' }}>📞</span>
+          <span className="fw-semibold" style={{ fontSize: '0.75rem' }}>Hotlines</span>
         </div>
       </div>
     </aside>

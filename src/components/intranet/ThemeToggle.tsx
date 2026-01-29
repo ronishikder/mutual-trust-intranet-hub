@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { Sun, Moon } from "lucide-react";
-import { Button } from "@/components/ui/button";
 
 export function ThemeToggle() {
   const [isDark, setIsDark] = useState(false);
@@ -17,26 +16,27 @@ export function ThemeToggle() {
     
     if (newMode) {
       document.documentElement.classList.add("dark");
+      document.documentElement.setAttribute("data-theme", "dark");
       localStorage.setItem("theme", "dark");
     } else {
       document.documentElement.classList.remove("dark");
+      document.documentElement.removeAttribute("data-theme");
       localStorage.setItem("theme", "light");
     }
   };
 
   return (
-    <Button
-      variant="ghost"
-      size="icon"
+    <button
       onClick={toggleTheme}
-      className="relative h-8 w-8 hover:bg-muted/50"
+      className="btn btn-link p-2"
       aria-label={isDark ? "Switch to day mode" : "Switch to night mode"}
+      style={{ color: isDark ? 'var(--mtb-yellow)' : 'var(--muted-fg)' }}
     >
       {isDark ? (
-        <Sun className="h-4 w-4 text-[hsl(var(--mtb-yellow))]" />
+        <Sun style={{ width: 18, height: 18 }} />
       ) : (
-        <Moon className="h-4 w-4 text-muted-foreground" />
+        <Moon style={{ width: 18, height: 18 }} />
       )}
-    </Button>
+    </button>
   );
 }
