@@ -86,15 +86,11 @@ export function MainContent() {
         >
           <div className="d-flex align-items-center gap-2">
             <Pin style={{ width: 14, height: 14, color: 'var(--mtb-orange)' }} />
-            <h6 className="mb-0 fw-bold" style={{ fontSize: '0.8125rem', color: 'var(--mtb-orange)' }}>MTB Notice Board</h6>
-            <span style={{ fontSize: '0.75rem', color: 'rgba(255, 255, 255, 0.5)' }}>::</span>
-            <span style={{ fontSize: '0.75rem', color: 'white' }}>Tuesday Jan 21, 2026</span>
+            <h6 className="mb-0 fw-bold" style={{ fontSize: '0.75rem', color: 'var(--mtb-orange)' }}>MTB Notice Board</h6>
+            <span className="text-white-50" style={{ fontSize: '0.75rem' }}>::</span>
+            <span className="text-white" style={{ fontSize: '0.75rem' }}>Tuesday Jan 21, 2026</span>
           </div>
-          <a 
-            href="#" 
-            className="text-decoration-none fw-medium" 
-            style={{ fontSize: '0.75rem', color: 'var(--mtb-teal)' }}
-          >
+          <a href="#" className="text-white-75 text-decoration-none fw-medium" style={{ fontSize: '0.75rem' }}>
             View All
           </a>
         </div>
@@ -112,16 +108,16 @@ export function MainContent() {
             >
               <div className="d-flex align-items-start gap-2">
                 <div 
-                  className="rounded-circle d-flex align-items-center justify-content-center flex-shrink-0 mt-1"
-                  style={{ width: 24, height: 24, backgroundColor: 'transparent' }}
+                  className="rounded d-flex align-items-center justify-content-center flex-shrink-0 mt-1"
+                  style={{ width: 20, height: 20, backgroundColor: item.iconBgColor }}
                 >
-                  <item.icon style={{ width: 16, height: 16, color: item.iconColor }} />
+                  <item.icon style={{ width: 12, height: 12, color: item.iconColor }} />
                 </div>
                 <div className="flex-grow-1" style={{ minWidth: 0 }}>
-                  <p className="mb-1" style={{ fontSize: '0.8125rem', lineHeight: 1.5, color: 'var(--foreground)' }}>
+                  <p className="mb-1" style={{ fontSize: '0.75rem', lineHeight: 1.5, color: 'var(--foreground)' }}>
                     {item.text}
                   </p>
-                  <a href="#" className="mtb-link fw-medium" style={{ fontSize: '0.6875rem' }}>
+                  <a href="#" className="mtb-link fw-medium" style={{ fontSize: '0.625rem' }}>
                     {item.link}
                   </a>
                 </div>
