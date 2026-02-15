@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MNet - Mutual Trust Bank Intranet</title>
+  <meta name="description" content="MNet Intranet Portal for Mutual Trust Bank PLC">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="css/theme.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Gradient Bar -->
+  <div class="mtb-gradient-bar"></div>
+
+  <!-- Header -->
+  <header class="mtb-header">
+    <div class="container-fluid d-flex align-items-center justify-content-between py-2 px-4" style="max-width:1600px;margin:0 auto;height:56px">
+      <!-- Logo -->
+      <div class="d-flex align-items-center gap-2">
+        <i class="bi bi-bank2 fs-4" style="color:var(--mtb-teal)"></i>
+        <span class="fw-bold" style="font-size:1.1rem;color:var(--mtb-teal)">MNet</span>
+      </div>
+
+      <!-- Search -->
+      <div class="d-none d-md-flex flex-grow-1 mx-4 position-relative" style="max-width:600px">
+        <i class="bi bi-search position-absolute" style="left:12px;top:50%;transform:translateY(-50%);color:var(--muted-fg)"></i>
+        <input type="search" id="headerSearch" class="form-control mtb-search w-100" placeholder="Search employees, departments, circulars...">
+      </div>
+
+      <!-- Right Actions -->
+      <div class="d-flex align-items-center gap-2">
+        <button id="themeToggle" class="btn btn-link p-2" style="color:var(--muted-fg)" title="Toggle theme"><i class="bi bi-moon"></i></button>
+        <button class="btn btn-link p-2" style="color:var(--mtb-teal)" title="Mail"><i class="bi bi-envelope"></i></button>
+
+        <!-- Notification Bell -->
+        <div class="position-relative">
+          <button id="notificationBell" class="btn btn-link p-2 position-relative" style="color:var(--muted-fg)">
+            <i class="bi bi-bell"></i>
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill" style="background:var(--mtb-red);font-size:0.5625rem">3</span>
+          </button>
+          <div id="notificationPanel" class="position-absolute end-0 mt-1 shadow-lg rounded overflow-hidden d-none" style="width:300px;background:var(--card-bg);border:1px solid var(--border-color);z-index:1060">
+            <div class="px-3 py-2 d-flex justify-content-between align-items-center" style="background:var(--mtb-teal)">
+              <span class="text-white fw-semibold" style="font-size:0.75rem">Notifications</span>
+            </div>
+            <div class="alert-item" style="background:rgba(13,148,136,0.05)">
+              <div class="d-flex gap-2"><i class="bi bi-exclamation-circle text-danger mt-1"></i><div><p class="mb-0 fw-medium" style="font-size:0.875rem">System Maintenance</p><p class="mb-0 text-muted" style="font-size:0.75rem">Scheduled for Jan 25 at 10 PM</p></div></div>
+            </div>
+            <div class="alert-item" style="background:rgba(13,148,136,0.05)">
+              <div class="d-flex gap-2"><i class="bi bi-info-circle mt-1" style="color:var(--mtb-teal)"></i><div><p class="mb-0 fw-medium" style="font-size:0.875rem">New Circular Published</p><p class="mb-0 text-muted" style="font-size:0.75rem">Ref: 2026-0341 loan policy</p></div></div>
+            </div>
+            <div class="alert-item">
+              <div class="d-flex gap-2"><i class="bi bi-file-text mt-1" style="color:var(--mtb-blue)"></i><div><p class="mb-0 fw-medium" style="font-size:0.875rem">Training Reminder</p><p class="mb-0 text-muted" style="font-size:0.75rem">AML/CFT deadline: Jan 30</p></div></div>
+            </div>
+            <div class="text-center py-2 border-top"><a href="#" style="color:var(--mtb-teal);font-size:0.8125rem;text-decoration:none">View All</a></div>
+          </div>
+        </div>
+
+        <div class="d-flex align-items-center gap-2 ps-2 border-start" style="border-color:var(--border-color)!important">
+          <div class="rounded-circle d-flex align-items-center justify-content-center" style="width:32px;height:32px;background:rgba(13,148,136,0.1)">
+            <span class="fw-semibold" style="font-size:0.75rem;color:var(--mtb-teal)">JD</span>
+          </div>
+          <span class="d-none d-sm-inline fw-medium" style="font-size:0.875rem">Hi, C2140</span>
+        </div>
+
+        <button class="btn btn-sm d-flex align-items-center gap-1 fw-medium" style="color:var(--mtb-red);font-size:0.875rem">
+          Sign Out <i class="bi bi-box-arrow-right"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigation -->
+  <nav class="mtb-nav position-relative">
+    <div class="container-fluid px-4" style="max-width:1600px;margin:0 auto">
+      <ul class="nav gap-1 mb-0">
+        <li class="nav-item"><a href="#" class="nav-link" data-mega-toggle="megaCHO"><i class="bi bi-building"></i> CHO <i class="bi bi-chevron-down" style="font-size:0.625rem"></i></a></li>
+        <li class="nav-item"><a href="#" class="nav-link" data-mega-toggle="megaBranches"><i class="bi bi-geo-alt"></i> Branches <i class="bi bi-chevron-down" style="font-size:0.625rem"></i></a></li>
+        <li class="nav-item"><a href="#" class="nav-link" data-mega-toggle="megaDivisions"><i class="bi bi-diagram-3"></i> Divisions <i class="bi bi-chevron-down" style="font-size:0.625rem"></i></a></li>
+        <li class="nav-item"><a href="#" class="nav-link" data-mega-toggle="megaSubsidiaries"><i class="bi bi-briefcase"></i> Subsidiaries <i class="bi bi-chevron-down" style="font-size:0.625rem"></i></a></li>
+      </ul>
+    </div>
+
+    <!-- CHO Mega Menu -->
+    <div id="megaCHO" class="mega-menu">
+      <div class="container-fluid px-4 py-3" style="max-width:1600px;margin:0 auto">
+        <div class="row g-3">
+          <div class="col-md-3">
+            <h6 class="mega-menu-header rounded mb-2">Managing Director</h6>
+            <a href="#" class="mega-menu-link">▸ MD Secretariat</a>
+            <a href="#" class="mega-menu-link">▸ Board Affairs</a>
+            <a href="#" class="mega-menu-link">▸ Share Department</a>
+          </div>
+          <div class="col-md-3">
+            <h6 class="mega-menu-header rounded mb-2">AMD & CFO</h6>
+            <a href="#" class="mega-menu-link">▸ Financial Admin Division</a>
+            <a href="#" class="mega-menu-link">▸ Accounts Department</a>
+            <a href="#" class="mega-menu-link">▸ Treasury Division</a>
+          </div>
+          <div class="col-md-3">
+            <h6 class="mega-menu-header rounded mb-2">DMD - Operations</h6>
+            <a href="#" class="mega-menu-link">▸ General Banking Division</a>
+            <a href="#" class="mega-menu-link">▸ Card Division</a>
+            <a href="#" class="mega-menu-link">▸ IT Division</a>
+          </div>
+          <div class="col-md-3">
+            <h6 class="mega-menu-header rounded mb-2">DMD - Business</h6>
+            <a href="#" class="mega-menu-link">▸ Retail Banking Division</a>
+            <a href="#" class="mega-menu-link">▸ SME Division</a>
+            <a href="#" class="mega-menu-link">▸ Corporate Banking</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Branches Mega Menu -->
+    <div id="megaBranches" class="mega-menu">
+      <div class="container-fluid px-4 py-3" style="max-width:1600px;margin:0 auto">
+        <h6 class="mega-menu-header rounded mb-3 d-inline-block px-3"><i class="bi bi-geo-alt me-1"></i> All Branches (A-Z)</h6>
+        <div class="row g-2">
+          <div class="col-md-2"><a href="#" class="mega-menu-link">Agrabad</a></div>
+          <div class="col-md-2"><a href="#" class="mega-menu-link">Banani</a></div>
+          <div class="col-md-2"><a href="#" class="mega-menu-link">Bogura</a></div>
+          <div class="col-md-2"><a href="#" class="mega-menu-link">Chattogram</a></div>
+          <div class="col-md-2"><a href="#" class="mega-menu-link">Dhanmondi</a></div>
+          <div class="col-md-2"><a href="#" class="mega-menu-link">DEPZ</a></div>
+          <div class="col-md-2"><a href="#" class="mega-menu-link">Elephant Road</a></div>
+          <div class="col-md-2"><a href="#" class="mega-menu-link">Gulshan</a></div>
+          <div class="col-md-2"><a href="#" class="mega-menu-link">Jessore</a></div>
+          <div class="col-md-2"><a href="#" class="mega-menu-link">Khulna</a></div>
+          <div class="col-md-2"><a href="#" class="mega-menu-link">Mirpur-2</a></div>
+          <div class="col-md-2"><a href="#" class="mega-menu-link">Motijheel</a></div>
+          <div class="col-md-2"><a href="#" class="mega-menu-link">Narayanganj</a></div>
+          <div class="col-md-2"><a href="#" class="mega-menu-link">Rajshahi</a></div>
+          <div class="col-md-2"><a href="#" class="mega-menu-link">Sylhet</a></div>
+          <div class="col-md-2"><a href="#" class="mega-menu-link">Uttara</a></div>
+        </div>
+        <div class="mt-3 pt-2 border-top text-muted" style="font-size:0.75rem">Total Branches: <strong>180</strong></div>
+      </div>
+    </div>
+
+    <!-- Divisions Mega Menu -->
+    <div id="megaDivisions" class="mega-menu">
+      <div class="container-fluid px-4 py-3" style="max-width:1600px;margin:0 auto">
+        <div class="row g-3">
+          <div class="col-md-3">
+            <h6 class="mega-menu-header rounded mb-2">Banking Operations</h6>
+            <a href="#" class="mega-menu-link">▸ General Banking</a>
+            <a href="#" class="mega-menu-link">▸ Foreign Exchange</a>
+            <a href="#" class="mega-menu-link">▸ Treasury</a>
+          </div>
+          <div class="col-md-3">
+            <h6 class="mega-menu-header rounded mb-2">Business</h6>
+            <a href="#" class="mega-menu-link">▸ Retail Banking</a>
+            <a href="#" class="mega-menu-link">▸ Corporate Banking</a>
+            <a href="#" class="mega-menu-link">▸ SME Banking</a>
+          </div>
+          <div class="col-md-3">
+            <h6 class="mega-menu-header rounded mb-2">Risk & Compliance</h6>
+            <a href="#" class="mega-menu-link">▸ Credit Risk Management</a>
+            <a href="#" class="mega-menu-link">▸ Internal Control</a>
+            <a href="#" class="mega-menu-link">▸ AML & CFT</a>
+          </div>
+          <div class="col-md-3">
+            <h6 class="mega-menu-header rounded mb-2">Support</h6>
+            <a href="#" class="mega-menu-link">▸ IT Division</a>
+            <a href="#" class="mega-menu-link">▸ HR Division</a>
+            <a href="#" class="mega-menu-link">▸ Admin Division</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Subsidiaries Mega Menu -->
+    <div id="megaSubsidiaries" class="mega-menu">
+      <div class="container-fluid px-4 py-3" style="max-width:1600px;margin:0 auto">
+        <div class="row g-3">
+          <div class="col-md-4">
+            <h6 class="mega-menu-header rounded mb-2">Financial Subsidiaries</h6>
+            <a href="#" class="mega-menu-link">▸ MTB Securities Limited</a>
+            <a href="#" class="mega-menu-link">▸ MTB Capital Limited</a>
+            <a href="#" class="mega-menu-link">▸ MTB Exchange (UK) Limited</a>
+          </div>
+          <div class="col-md-4">
+            <h6 class="mega-menu-header rounded mb-2">Technology</h6>
+            <a href="#" class="mega-menu-link">▸ MTB FinTech Limited</a>
+          </div>
+          <div class="col-md-4">
+            <h6 class="mega-menu-header rounded mb-2">Foundation</h6>
+            <a href="#" class="mega-menu-link">▸ MTB Foundation</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="container-fluid px-4 py-3" style="max-width:1600px;margin:0 auto">
+    <div class="row g-3">
+
+      <!-- Left Sidebar -->
+      <div class="col-lg-2 d-none d-lg-block">
+        <!-- Profile Card -->
+        <div class="profile-card mb-3">
+          <div class="profile-card-banner"></div>
+          <div class="profile-avatar">JD</div>
+          <div class="text-center p-3">
+            <h6 class="mb-0 fw-semibold" style="font-size:0.875rem">John Doe</h6>
+            <p class="mb-1 text-muted" style="font-size:0.75rem">Senior Officer</p>
+            <p class="mb-0 text-muted" style="font-size:0.6875rem">IT Division</p>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="mtb-card">
+          <div class="mtb-card-header" style="background:var(--mtb-teal)">
+            <i class="bi bi-lightning-charge me-1"></i> Shortcuts
+          </div>
+          <div class="mtb-card-body">
+            <a href="#" class="sidebar-link"><i class="bi bi-speedometer2"></i> CBS Apps</a>
+            <a href="#" class="sidebar-link"><i class="bi bi-globe"></i> Online Apps</a>
+            <a href="#" class="sidebar-link"><i class="bi bi-search"></i> M-Tracker</a>
+            <a href="#" class="sidebar-link"><i class="bi bi-bank"></i> My Bank Account</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Area -->
+      <div class="col-12 col-lg-8">
+        <!-- Welcome Banner -->
+        <div class="mtb-card mb-3 p-4 text-center" style="background:linear-gradient(135deg, var(--mtb-teal), #0b7d73);color:#fff;border:none">
+          <h4 class="mb-1">Welcome to MNet</h4>
+          <p class="mb-0" style="opacity:0.9;font-size:0.875rem">Mutual Trust Bank PLC — Intranet Portal</p>
+        </div>
+
+        <!-- Sample Form Card -->
+        <div class="mtb-card mb-3">
+          <div class="mtb-card-header" style="background:var(--mtb-blue)">
+            <i class="bi bi-pencil-square me-1"></i> Quick Feedback
+          </div>
+          <div class="mtb-card-body">
+            <form class="needs-validation" novalidate>
+              <div class="mb-3">
+                <label for="feedbackName" class="form-label" style="font-size:0.8125rem">Full Name</label>
+                <input type="text" class="form-control form-control-sm" id="feedbackName" required minlength="2" maxlength="100">
+                <div class="invalid-feedback" style="font-size:0.75rem">Please enter your name.</div>
+              </div>
+              <div class="mb-3">
+                <label for="feedbackDept" class="form-label" style="font-size:0.8125rem">Department</label>
+                <select class="form-select form-select-sm" id="feedbackDept" required>
+                  <option value="">Select...</option>
+                  <option>IT Division</option>
+                  <option>HR Division</option>
+                  <option>Treasury</option>
+                  <option>Retail Banking</option>
+                </select>
+                <div class="invalid-feedback" style="font-size:0.75rem">Please select a department.</div>
+              </div>
+              <div class="mb-3">
+                <label for="feedbackMsg" class="form-label" style="font-size:0.8125rem">Message</label>
+                <textarea class="form-control form-control-sm" id="feedbackMsg" rows="3" required minlength="10" maxlength="1000"></textarea>
+                <div class="invalid-feedback" style="font-size:0.75rem">Please enter at least 10 characters.</div>
+              </div>
+              <button type="submit" class="btn btn-sm btn-mtb-teal">
+                <i class="bi bi-send me-1"></i> Submit Feedback
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Table Card -->
+        <div class="mtb-card">
+          <div class="mtb-card-header" style="background:var(--mtb-orange)">
+            <i class="bi bi-megaphone me-1"></i> Latest Circulars
+          </div>
+          <div class="table-responsive">
+            <table class="table table-mtb table-hover mb-0">
+              <thead>
+                <tr>
+                  <th class="ps-3">Ref No.</th>
+                  <th>Subject</th>
+                  <th>Date</th>
+                  <th class="pe-3">Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="ps-3">2026-0341</td>
+                  <td>Revised Loan Disbursement Policy</td>
+                  <td>Jan 20, 2026</td>
+                  <td class="pe-3"><span class="badge-new">NEW</span></td>
+                </tr>
+                <tr>
+                  <td class="ps-3">2026-0340</td>
+                  <td>AML/CFT Training Schedule Q1</td>
+                  <td>Jan 18, 2026</td>
+                  <td class="pe-3"><span class="badge-new">NEW</span></td>
+                </tr>
+                <tr>
+                  <td class="ps-3">2026-0339</td>
+                  <td>Holiday Calendar 2026</td>
+                  <td>Jan 15, 2026</td>
+                  <td class="pe-3"><span class="text-muted" style="font-size:0.75rem">Read</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Sidebar -->
+      <div class="col-lg-2">
+        <div class="mtb-card mb-3">
+          <div class="mtb-card-header" style="background:var(--mtb-green)">
+            <i class="bi bi-calendar-event me-1"></i> Upcoming Trainings
+          </div>
+          <div class="mtb-card-body">
+            <div class="mb-2">
+              <p class="mb-0 fw-medium" style="font-size:0.8125rem">AML/CFT Refresher</p>
+              <p class="mb-0 text-muted" style="font-size:0.6875rem">Jan 30, 2026 · 10:00 AM</p>
+            </div>
+            <div>
+              <p class="mb-0 fw-medium" style="font-size:0.8125rem">Core Banking Update</p>
+              <p class="mb-0 text-muted" style="font-size:0.6875rem">Feb 05, 2026 · 2:00 PM</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mtb-card mb-3">
+          <div class="mtb-card-header" style="background:var(--mtb-purple)">
+            <i class="bi bi-bar-chart me-1"></i> Business Dashboard
+          </div>
+          <div class="mtb-card-body text-center">
+            <p class="mb-1" style="font-size:0.75rem;color:var(--muted-fg)">Total Deposits</p>
+            <h5 class="mb-0 fw-bold" style="color:var(--mtb-teal)">৳ 45,230 Cr</h5>
+          </div>
+        </div>
+
+        <div class="mtb-card">
+          <div class="mtb-card-header" style="background:var(--mtb-red)">
+            <i class="bi bi-exclamation-triangle me-1"></i> Alerts
+          </div>
+          <div class="mtb-card-body">
+            <div class="alert-item px-0">
+              <p class="mb-0 fw-medium" style="font-size:0.8125rem">Password expires in 7 days</p>
+              <p class="mb-0 text-muted" style="font-size:0.6875rem">Change via IT Portal</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="mtb-footer mt-4">
+    <div class="container-fluid px-4 py-3 d-flex flex-column flex-sm-row align-items-center justify-content-between gap-2" style="max-width:1600px;margin:0 auto">
+      <p class="mb-0">© Mutual Trust Bank PLC. All rights reserved.</p>
+      <div class="d-flex gap-3">
+        <a href="#" class="text-decoration-none" style="color:var(--muted-fg)">IT Support</a>
+        <a href="#" class="text-decoration-none" style="color:var(--muted-fg)">Privacy Policy</a>
+        <a href="#" class="text-decoration-none" style="color:var(--muted-fg)">Terms of Use</a>
+      </div>
+      <div class="d-flex align-items-center gap-2">
+        <span>Powered by</span>
+        <span class="badge text-white" style="background:var(--mtb-orange);font-size:0.625rem">DBD</span>
+        <span>&</span>
+        <span class="badge text-white" style="background:var(--mtb-blue);font-size:0.625rem">ITD</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
