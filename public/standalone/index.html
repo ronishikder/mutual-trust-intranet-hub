@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MNet - Mutual Trust Bank Intranet</title>
-  <meta name="description" content="MNet Intranet Portal for Mutual Trust Bank PLC">
+  <meta name="description" content="MTB Corporate Intranet Portal - Mutual Trust Bank PLC">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -12,361 +12,422 @@
 </head>
 <body>
 
-  <!-- Gradient Bar -->
+  <!-- ===== GRADIENT BAR ===== -->
   <div class="mtb-gradient-bar"></div>
 
-  <!-- Header -->
+  <!-- ===== HEADER ===== -->
   <header class="mtb-header">
-    <div class="container-fluid d-flex align-items-center justify-content-between py-2 px-4" style="max-width:1600px;margin:0 auto;height:56px">
-      <!-- Logo -->
-      <div class="d-flex align-items-center gap-2">
-        <i class="bi bi-bank2 fs-4" style="color:var(--mtb-teal)"></i>
-        <span class="fw-bold" style="font-size:1.1rem;color:var(--mtb-teal)">MNet</span>
+    <div class="container-fluid d-flex align-items-center justify-content-between py-2 px-4" style="height:56px;max-width:1600px;margin:0 auto">
+      <div class="d-flex align-items-center gap-3">
+        <img src="https://mutual-trust-intranet-hub.lovable.app/assets/mtb-logo-DsVEZOWl.png" alt="Mutual Trust Bank" style="height:40px" class="object-fit-contain">
       </div>
-
-      <!-- Search -->
-      <div class="d-none d-md-flex flex-grow-1 mx-4 position-relative" style="max-width:600px">
-        <i class="bi bi-search position-absolute" style="left:12px;top:50%;transform:translateY(-50%);color:var(--muted-fg)"></i>
-        <input type="search" id="headerSearch" class="form-control mtb-search w-100" placeholder="Search employees, departments, circulars...">
+      <div class="d-none d-md-flex align-items-center flex-grow-1 mx-4" style="max-width:600px">
+        <div class="position-relative w-100">
+          <i class="bi bi-search position-absolute" style="left:12px;top:50%;transform:translateY(-50%);color:var(--muted-fg)"></i>
+          <input type="search" id="headerSearch" placeholder="Search employees, departments, circulars, applications..." class="form-control form-control-sm-custom w-100">
+        </div>
       </div>
-
-      <!-- Right Actions -->
       <div class="d-flex align-items-center gap-2">
-        <button id="themeToggle" class="btn btn-link p-2" style="color:var(--muted-fg)" title="Toggle theme"><i class="bi bi-moon"></i></button>
-        <button class="btn btn-link p-2" style="color:var(--mtb-teal)" title="Mail"><i class="bi bi-envelope"></i></button>
-
-        <!-- Notification Bell -->
-        <div class="position-relative">
-          <button id="notificationBell" class="btn btn-link p-2 position-relative" style="color:var(--muted-fg)">
-            <i class="bi bi-bell"></i>
-            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill" style="background:var(--mtb-red);font-size:0.5625rem">3</span>
-          </button>
-          <div id="notificationPanel" class="position-absolute end-0 mt-1 shadow-lg rounded overflow-hidden d-none" style="width:300px;background:var(--card-bg);border:1px solid var(--border-color);z-index:1060">
-            <div class="px-3 py-2 d-flex justify-content-between align-items-center" style="background:var(--mtb-teal)">
-              <span class="text-white fw-semibold" style="font-size:0.75rem">Notifications</span>
-            </div>
-            <div class="alert-item" style="background:rgba(13,148,136,0.05)">
-              <div class="d-flex gap-2"><i class="bi bi-exclamation-circle text-danger mt-1"></i><div><p class="mb-0 fw-medium" style="font-size:0.875rem">System Maintenance</p><p class="mb-0 text-muted" style="font-size:0.75rem">Scheduled for Jan 25 at 10 PM</p></div></div>
-            </div>
-            <div class="alert-item" style="background:rgba(13,148,136,0.05)">
-              <div class="d-flex gap-2"><i class="bi bi-info-circle mt-1" style="color:var(--mtb-teal)"></i><div><p class="mb-0 fw-medium" style="font-size:0.875rem">New Circular Published</p><p class="mb-0 text-muted" style="font-size:0.75rem">Ref: 2026-0341 loan policy</p></div></div>
-            </div>
-            <div class="alert-item">
-              <div class="d-flex gap-2"><i class="bi bi-file-text mt-1" style="color:var(--mtb-blue)"></i><div><p class="mb-0 fw-medium" style="font-size:0.875rem">Training Reminder</p><p class="mb-0 text-muted" style="font-size:0.75rem">AML/CFT deadline: Jan 30</p></div></div>
-            </div>
-            <div class="text-center py-2 border-top"><a href="#" style="color:var(--mtb-teal);font-size:0.8125rem;text-decoration:none">View All</a></div>
-          </div>
-        </div>
-
-        <div class="d-flex align-items-center gap-2 ps-2 border-start" style="border-color:var(--border-color)!important">
-          <div class="rounded-circle d-flex align-items-center justify-content-center" style="width:32px;height:32px;background:rgba(13,148,136,0.1)">
-            <span class="fw-semibold" style="font-size:0.75rem;color:var(--mtb-teal)">JD</span>
-          </div>
-          <span class="d-none d-sm-inline fw-medium" style="font-size:0.875rem">Hi, C2140</span>
-        </div>
-
-        <button class="btn btn-sm d-flex align-items-center gap-1 fw-medium" style="color:var(--mtb-red);font-size:0.875rem">
-          Sign Out <i class="bi bi-box-arrow-right"></i>
+        <button id="themeToggle" class="btn btn-link p-2" style="color:var(--muted-fg)" aria-label="Toggle theme">
+          <i class="bi bi-moon" style="font-size:1.125rem"></i>
         </button>
+        <div class="position-relative" id="mailWrapper">
+          <button class="btn btn-link p-2" id="mailToggle" style="color:var(--mtb-teal)">
+            <i class="bi bi-envelope" style="font-size:1.125rem"></i>
+          </button>
+          <div class="position-absolute end-0 mt-1 shadow-lg rounded overflow-hidden d-none" id="mailDropdown" style="width:220px;background:var(--card-bg);border:1px solid var(--border-color);z-index:1050">
+            <div class="px-3 py-2" style="background:var(--mtb-teal)">
+              <h6 class="mb-0 text-white d-flex align-items-center gap-2" style="font-size:0.75rem"><i class="bi bi-envelope"></i> MNet-Mail</h6>
+            </div>
+            <a href="#" class="d-flex align-items-center gap-3 px-3 py-2 text-decoration-none" style="color:var(--foreground);font-size:0.875rem"><i class="bi bi-inbox" style="color:var(--muted-fg)"></i><span class="flex-grow-1">Inbox</span><span class="small text-muted">(12)</span></a>
+            <a href="#" class="d-flex align-items-center gap-3 px-3 py-2 text-decoration-none" style="color:var(--foreground);font-size:0.875rem"><i class="bi bi-pencil-square" style="color:var(--muted-fg)"></i><span class="flex-grow-1">Compose</span></a>
+            <a href="#" class="d-flex align-items-center gap-3 px-3 py-2 text-decoration-none" style="color:var(--foreground);font-size:0.875rem"><i class="bi bi-send" style="color:var(--muted-fg)"></i><span class="flex-grow-1">Sent Items</span><span class="small text-muted">(5)</span></a>
+          </div>
+        </div>
+        <div class="position-relative" id="notifWrapper">
+          <button class="btn btn-link p-2 position-relative" id="notifToggle" style="color:var(--muted-fg)">
+            <i class="bi bi-bell" style="font-size:1.125rem"></i>
+            <span class="position-absolute badge rounded-pill" style="top:2px;right:2px;background:var(--mtb-red);font-size:0.5625rem;padding:0.125rem 0.375rem">3</span>
+          </button>
+          <div class="position-absolute end-0 mt-1 shadow-lg rounded overflow-hidden d-none" id="notifDropdown" style="width:320px;background:var(--card-bg);border:1px solid var(--border-color);z-index:1050">
+            <div class="d-flex align-items-center justify-content-between px-3 py-2" style="background:var(--mtb-teal)">
+              <h6 class="mb-0 text-white" style="font-size:0.75rem">Notifications</h6>
+              <button class="btn btn-link p-0 text-white" onclick="document.getElementById('notifDropdown').classList.add('d-none')"><i class="bi bi-x"></i></button>
+            </div>
+            <div style="max-height:288px;overflow-y:auto">
+              <div class="alert-item" style="background:rgba(13,148,136,0.05)"><div class="d-flex align-items-start gap-2"><i class="bi bi-exclamation-circle mt-1" style="color:var(--mtb-red)"></i><div class="flex-grow-1"><div class="d-flex align-items-center gap-1"><p class="mb-0 fw-medium text-truncate" style="font-size:0.875rem">System Maintenance</p><span class="rounded-circle flex-shrink-0" style="width:6px;height:6px;background:var(--mtb-teal)"></span></div><p class="mb-0 text-muted text-truncate" style="font-size:0.75rem">Scheduled for Jan 25, 2026 at 10 PM</p><p class="mb-0 text-muted" style="font-size:0.6875rem">2h ago</p></div></div></div>
+              <div class="alert-item" style="background:rgba(13,148,136,0.05)"><div class="d-flex align-items-start gap-2"><i class="bi bi-info-circle mt-1" style="color:var(--mtb-teal)"></i><div class="flex-grow-1"><div class="d-flex align-items-center gap-1"><p class="mb-0 fw-medium text-truncate" style="font-size:0.875rem">New Circular Published</p><span class="rounded-circle flex-shrink-0" style="width:6px;height:6px;background:var(--mtb-teal)"></span></div><p class="mb-0 text-muted text-truncate" style="font-size:0.75rem">Circular Ref: 2026-0341 regarding loan policy</p><p class="mb-0 text-muted" style="font-size:0.6875rem">5h ago</p></div></div></div>
+              <div class="alert-item" style="background:rgba(13,148,136,0.05)"><div class="d-flex align-items-start gap-2"><i class="bi bi-file-text mt-1" style="color:var(--mtb-blue)"></i><div class="flex-grow-1"><div class="d-flex align-items-center gap-1"><p class="mb-0 fw-medium text-truncate" style="font-size:0.875rem">Training Reminder</p><span class="rounded-circle flex-shrink-0" style="width:6px;height:6px;background:var(--mtb-teal)"></span></div><p class="mb-0 text-muted text-truncate" style="font-size:0.75rem">AML/CFT Training deadline: Jan 30</p><p class="mb-0 text-muted" style="font-size:0.6875rem">1d ago</p></div></div></div>
+              <div class="alert-item"><div class="d-flex align-items-start gap-2"><i class="bi bi-info-circle mt-1" style="color:var(--mtb-teal)"></i><div class="flex-grow-1"><p class="mb-0 fw-medium text-truncate" style="font-size:0.875rem">Branch Update</p><p class="mb-0 text-muted text-truncate" style="font-size:0.75rem">New branch opened at Mirpur-2</p><p class="mb-0 text-muted" style="font-size:0.6875rem">2d ago</p></div></div></div>
+              <div class="alert-item"><div class="d-flex align-items-start gap-2"><i class="bi bi-exclamation-circle mt-1" style="color:var(--mtb-red)"></i><div class="flex-grow-1"><p class="mb-0 fw-medium text-truncate" style="font-size:0.875rem">Password Expiry</p><p class="mb-0 text-muted text-truncate" style="font-size:0.75rem">Your password will expire in 7 days</p><p class="mb-0 text-muted" style="font-size:0.6875rem">3d ago</p></div></div></div>
+            </div>
+            <div class="px-3 py-2 border-top text-center" style="background:rgba(0,0,0,0.02)"><a href="#" class="text-decoration-none small" style="color:var(--mtb-teal)">View All Notifications</a></div>
+          </div>
+        </div>
+        <div class="d-flex align-items-center gap-2 px-3 border-start" style="border-color:var(--border-color)">
+          <a href="#" class="d-flex align-items-center gap-2 text-decoration-none">
+            <div class="rounded-circle d-flex align-items-center justify-content-center" style="width:32px;height:32px;background:rgba(13,148,136,0.1)"><span class="fw-semibold" style="font-size:0.75rem;color:var(--mtb-teal)">JD</span></div>
+            <div class="text-end d-none d-sm-block"><p class="mb-0 fw-medium" style="font-size:0.875rem;color:var(--foreground)">Hi, C2140</p></div>
+          </a>
+        </div>
+        <img src="https://mutual-trust-intranet-hub.lovable.app/assets/mnet-logo-KsVrHLQr.png" alt="MNet" style="height:28px" class="object-fit-contain">
+        <button class="btn btn-sm d-flex align-items-center gap-1 fw-medium" style="color:var(--mtb-red);font-size:0.875rem">Sign Out <i class="bi bi-box-arrow-right"></i></button>
       </div>
     </div>
   </header>
 
-  <!-- Navigation -->
-  <nav class="mtb-nav position-relative">
+  <!-- ===== NAVIGATION BAR ===== -->
+  <nav class="nav-bar position-relative" id="mainNav">
     <div class="container-fluid px-4" style="max-width:1600px;margin:0 auto">
       <ul class="nav gap-1 mb-0">
-        <li class="nav-item"><a href="#" class="nav-link" data-mega-toggle="megaCHO"><i class="bi bi-building"></i> CHO <i class="bi bi-chevron-down" style="font-size:0.625rem"></i></a></li>
-        <li class="nav-item"><a href="#" class="nav-link" data-mega-toggle="megaBranches"><i class="bi bi-geo-alt"></i> Branches <i class="bi bi-chevron-down" style="font-size:0.625rem"></i></a></li>
-        <li class="nav-item"><a href="#" class="nav-link" data-mega-toggle="megaDivisions"><i class="bi bi-diagram-3"></i> Divisions <i class="bi bi-chevron-down" style="font-size:0.625rem"></i></a></li>
-        <li class="nav-item"><a href="#" class="nav-link" data-mega-toggle="megaSubsidiaries"><i class="bi bi-briefcase"></i> Subsidiaries <i class="bi bi-chevron-down" style="font-size:0.625rem"></i></a></li>
+        <li class="nav-item"><button class="nav-item-btn" data-mega-toggle="cho"><i class="bi bi-building"></i> CHO <i class="bi bi-chevron-down" style="font-size:0.75rem"></i></button></li>
+        <li class="nav-item"><button class="nav-item-btn" data-mega-toggle="branches"><i class="bi bi-geo-alt"></i> Branches <i class="bi bi-chevron-down" style="font-size:0.75rem"></i></button></li>
+        <li class="nav-item"><button class="nav-item-btn" data-mega-toggle="divisions"><i class="bi bi-diagram-3"></i> Divisions <i class="bi bi-chevron-down" style="font-size:0.75rem"></i></button></li>
+        <li class="nav-item"><button class="nav-item-btn" data-mega-toggle="subsidiaries"><i class="bi bi-briefcase"></i> Subsidiaries <i class="bi bi-chevron-down" style="font-size:0.75rem"></i></button></li>
       </ul>
     </div>
 
-    <!-- CHO Mega Menu -->
-    <div id="megaCHO" class="mega-menu">
-      <div class="container-fluid px-4 py-3" style="max-width:1600px;margin:0 auto">
-        <div class="row g-3">
-          <div class="col-md-3">
-            <h6 class="mega-menu-header rounded mb-2">Managing Director</h6>
-            <a href="#" class="mega-menu-link">▸ MD Secretariat</a>
-            <a href="#" class="mega-menu-link">▸ Board Affairs</a>
-            <a href="#" class="mega-menu-link">▸ Share Department</a>
+    <!-- CHO MEGA MENU -->
+    <div class="mega-menu" id="mega-cho">
+      <div class="container-fluid px-4 py-4" style="max-width:1600px;margin:0 auto">
+        <div class="d-flex align-items-center justify-content-between mb-4">
+          <h5 class="mb-0 fw-bold" style="font-size:0.875rem;color:var(--mtb-teal)">CHO Organizational Hierarchy</h5>
+          <button class="btn btn-link text-muted d-flex align-items-center gap-1" style="font-size:0.875rem" data-mega-close><i class="bi bi-x-lg"></i> Close</button>
+        </div>
+        <div class="row g-3 mb-4">
+          <div class="col-md-4">
+            <div class="mtb-card overflow-hidden h-100"><div class="p-3"><div class="d-flex align-items-start gap-3"><div class="rounded-circle d-flex align-items-center justify-content-center flex-shrink-0" style="width:40px;height:40px;background:rgba(13,148,136,0.1);border:2px solid rgba(13,148,136,0.3)"><i class="bi bi-person" style="color:var(--mtb-teal);opacity:0.6"></i></div><div class="flex-grow-1"><p class="mb-0 fw-medium" style="font-size:0.625rem;color:var(--mtb-teal)">Office of the MTB Group Chairman</p><p class="mb-0 fw-semibold mt-1" style="font-size:0.875rem">Mr. Rashed Ahmed Chowdhury</p><p class="mb-0 text-muted" style="font-size:0.625rem">Chairman</p></div></div></div></div>
           </div>
-          <div class="col-md-3">
-            <h6 class="mega-menu-header rounded mb-2">AMD & CFO</h6>
-            <a href="#" class="mega-menu-link">▸ Financial Admin Division</a>
-            <a href="#" class="mega-menu-link">▸ Accounts Department</a>
-            <a href="#" class="mega-menu-link">▸ Treasury Division</a>
+          <div class="col-md-4">
+            <div class="mtb-card overflow-hidden h-100"><div class="p-3"><div class="d-flex align-items-start gap-3"><div class="rounded-circle d-flex align-items-center justify-content-center flex-shrink-0" style="width:40px;height:40px;background:rgba(13,148,136,0.1);border:2px solid rgba(13,148,136,0.3)"><i class="bi bi-person" style="color:var(--mtb-teal);opacity:0.6"></i></div><div class="flex-grow-1"><p class="mb-0 fw-medium" style="font-size:0.625rem;color:var(--mtb-teal)">Office of the MTB Managing Director & CEO</p><p class="mb-0 fw-semibold mt-1" style="font-size:0.875rem">Syed Mahbubar Rahman</p><p class="mb-0 text-muted" style="font-size:0.625rem">Managing Director & CEO</p><button class="btn btn-link p-0 mt-2 d-flex align-items-center gap-1 text-decoration-none" style="font-size:0.625rem;color:var(--mtb-teal)" data-bs-toggle="collapse" data-bs-target="#mdDepts"><i class="bi bi-chevron-right"></i> 13 Departments</button></div></div></div><div class="collapse show" id="mdDepts"><div class="border-top p-2" style="background:rgba(0,0,0,0.02)"><a href="#" class="sidebar-link py-1" style="font-size:0.6875rem">• MTB Investor Relations Department</a><a href="#" class="sidebar-link py-1" style="font-size:0.6875rem">• MTB Group Human Resources Division</a><a href="#" class="sidebar-link py-1" style="font-size:0.6875rem">• Group Finance</a><a href="#" class="sidebar-link py-1" style="font-size:0.6875rem">• MTB Group Legal Affairs Division</a><a href="#" class="sidebar-link py-1" style="font-size:0.6875rem">• MTB Research & Development Department</a><a href="#" class="sidebar-link py-1" style="font-size:0.6875rem">• MTB Communications Department</a></div></div></div>
           </div>
-          <div class="col-md-3">
-            <h6 class="mega-menu-header rounded mb-2">DMD - Operations</h6>
-            <a href="#" class="mega-menu-link">▸ General Banking Division</a>
-            <a href="#" class="mega-menu-link">▸ Card Division</a>
-            <a href="#" class="mega-menu-link">▸ IT Division</a>
+          <div class="col-md-4">
+            <div class="mtb-card overflow-hidden h-100"><div class="p-3"><div class="d-flex align-items-start gap-3"><div class="rounded-circle d-flex align-items-center justify-content-center flex-shrink-0" style="width:40px;height:40px;background:rgba(13,148,136,0.1);border:2px solid rgba(13,148,136,0.3)"><i class="bi bi-person" style="color:var(--mtb-teal);opacity:0.6"></i></div><div class="flex-grow-1"><p class="mb-0 fw-medium" style="font-size:0.625rem;color:var(--mtb-teal)">Additional Managing Director</p><p class="mb-0 fw-semibold mt-1" style="font-size:0.875rem">Chowdhury Akhtar Asif</p><p class="mb-0 text-muted" style="font-size:0.625rem">AMD & CBO</p><button class="btn btn-link p-0 mt-2 d-flex align-items-center gap-1 text-decoration-none" style="font-size:0.625rem;color:var(--mtb-teal)" data-bs-toggle="collapse" data-bs-target="#amdDepts"><i class="bi bi-chevron-right"></i> 13 Departments</button></div></div></div><div class="collapse show" id="amdDepts"><div class="border-top p-2" style="background:rgba(0,0,0,0.02)"><a href="#" class="sidebar-link py-1" style="font-size:0.6875rem">• Business Monitoring & Analytics Department</a><a href="#" class="sidebar-link py-1" style="font-size:0.6875rem">• Cash Management & Transaction Banking Division</a><a href="#" class="sidebar-link py-1" style="font-size:0.6875rem">• Branch Banking Division</a><a href="#" class="sidebar-link py-1" style="font-size:0.6875rem">• Wholesale Banking Division</a><a href="#" class="sidebar-link py-1" style="font-size:0.6875rem">• MTB OBU (Business)</a><a href="#" class="sidebar-link py-1" style="font-size:0.6875rem">• Islamic Banking Division</a><a href="#" class="sidebar-link py-1" style="font-size:0.6875rem">• Structured Finance Department</a></div></div></div>
           </div>
-          <div class="col-md-3">
-            <h6 class="mega-menu-header rounded mb-2">DMD - Business</h6>
-            <a href="#" class="mega-menu-link">▸ Retail Banking Division</a>
-            <a href="#" class="mega-menu-link">▸ SME Division</a>
-            <a href="#" class="mega-menu-link">▸ Corporate Banking</a>
+        </div>
+        <div class="border-top pt-4">
+          <div class="d-flex align-items-center gap-2 mb-3"><div class="rounded d-flex align-items-center justify-content-center" style="width:20px;height:20px;background:var(--mtb-teal)"><i class="bi bi-person text-white" style="font-size:0.75rem"></i></div><h6 class="mb-0 fw-bold" style="font-size:0.75rem;color:var(--mtb-teal)">Deputy Managing Directors</h6></div>
+          <div class="row g-3">
+            <div class="col-lg-2 col-md-4 col-sm-6"><div class="mtb-card overflow-hidden h-100"><div class="p-2"><div class="d-flex align-items-start gap-2"><div class="rounded-circle d-flex align-items-center justify-content-center flex-shrink-0" style="width:32px;height:32px;background:rgba(13,148,136,0.1);border:2px solid rgba(13,148,136,0.3)"><i class="bi bi-person" style="font-size:0.75rem;color:var(--mtb-teal);opacity:0.6"></i></div><div class="flex-grow-1" style="min-width:0"><p class="mb-0 fw-semibold" style="font-size:0.75rem">Goutam Prosad Das</p><p class="mb-0 text-muted" style="font-size:0.625rem">DMD & GHOICC</p><button class="btn btn-link p-0 mt-1 d-flex align-items-center gap-1 text-decoration-none" style="font-size:0.625rem;color:var(--mtb-teal)" data-bs-toggle="collapse" data-bs-target="#dmd1"><i class="bi bi-chevron-right"></i> 6 Departments</button></div></div></div><div class="collapse show" id="dmd1"><div class="border-top p-2" style="background:rgba(0,0,0,0.02)"><a href="#" class="sidebar-link py-1" style="font-size:0.625rem">• Regulatory Affairs</a><a href="#" class="sidebar-link py-1" style="font-size:0.625rem">• Internal Control & Compliance</a></div></div></div></div>
+            <div class="col-lg-2 col-md-4 col-sm-6"><div class="mtb-card overflow-hidden h-100"><div class="p-2"><div class="d-flex align-items-start gap-2"><div class="rounded-circle d-flex align-items-center justify-content-center flex-shrink-0" style="width:32px;height:32px;background:rgba(13,148,136,0.1);border:2px solid rgba(13,148,136,0.3)"><i class="bi bi-person" style="font-size:0.75rem;color:var(--mtb-teal);opacity:0.6"></i></div><div class="flex-grow-1" style="min-width:0"><p class="mb-0 fw-semibold" style="font-size:0.75rem">Rais Uddin Ahmad</p><p class="mb-0 text-muted" style="font-size:0.625rem">DMD & CAMLCO</p><button class="btn btn-link p-0 mt-1 d-flex align-items-center gap-1 text-decoration-none" style="font-size:0.625rem;color:var(--mtb-teal)" data-bs-toggle="collapse" data-bs-target="#dmd2"><i class="bi bi-chevron-right"></i> 8 Departments</button></div></div></div><div class="collapse show" id="dmd2"><div class="border-top p-2" style="background:rgba(0,0,0,0.02)"><a href="#" class="sidebar-link py-1" style="font-size:0.625rem">• Board Division</a><a href="#" class="sidebar-link py-1" style="font-size:0.625rem">• Share Department</a><a href="#" class="sidebar-link py-1" style="font-size:0.625rem">• Payment Technology & Reports (Flora) Division</a><a href="#" class="sidebar-link py-1" style="font-size:0.625rem">• Technology Operations Division</a><a href="#" class="sidebar-link py-1" style="font-size:0.625rem">• AML & CFT Division</a></div></div></div></div>
+            <div class="col-lg-2 col-md-4 col-sm-6"><div class="mtb-card overflow-hidden h-100"><div class="p-2"><div class="d-flex align-items-start gap-2"><div class="rounded-circle d-flex align-items-center justify-content-center flex-shrink-0" style="width:32px;height:32px;background:rgba(13,148,136,0.1);border:2px solid rgba(13,148,136,0.3)"><i class="bi bi-person" style="font-size:0.75rem;color:var(--mtb-teal);opacity:0.6"></i></div><div class="flex-grow-1" style="min-width:0"><p class="mb-0 fw-semibold" style="font-size:0.75rem">Md. Bakhteyer Hossain</p><p class="mb-0 text-muted" style="font-size:0.625rem">DMD & COO</p><button class="btn btn-link p-0 mt-1 d-flex align-items-center gap-1 text-decoration-none" style="font-size:0.625rem;color:var(--mtb-teal)" data-bs-toggle="collapse" data-bs-target="#dmd3"><i class="bi bi-chevron-right"></i> 13 Departments</button></div></div></div><div class="collapse show" id="dmd3"><div class="border-top p-2" style="background:rgba(0,0,0,0.02)"><a href="#" class="sidebar-link py-1" style="font-size:0.625rem">• MITS Facilitation Department</a><a href="#" class="sidebar-link py-1" style="font-size:0.625rem">• MTB Factoring Services</a><a href="#" class="sidebar-link py-1" style="font-size:0.625rem">• MTB International Trade</a><a href="#" class="sidebar-link py-1" style="font-size:0.625rem">• MTB Operations Division</a></div></div></div></div>
+            <div class="col-lg-2 col-md-4 col-sm-6"><div class="mtb-card overflow-hidden h-100"><div class="p-2"><div class="d-flex align-items-start gap-2"><div class="rounded-circle d-flex align-items-center justify-content-center flex-shrink-0" style="width:32px;height:32px;background:rgba(13,148,136,0.1);border:2px solid rgba(13,148,136,0.3)"><i class="bi bi-person" style="font-size:0.75rem;color:var(--mtb-teal);opacity:0.6"></i></div><div class="flex-grow-1" style="min-width:0"><p class="mb-0 fw-semibold" style="font-size:0.75rem">Md. Shamsul Islam</p><p class="mb-0 text-muted" style="font-size:0.625rem">DMD & HoTreasury</p><button class="btn btn-link p-0 mt-1 d-flex align-items-center gap-1 text-decoration-none" style="font-size:0.625rem;color:var(--mtb-teal)" data-bs-toggle="collapse" data-bs-target="#dmd4"><i class="bi bi-chevron-right"></i> 5 Departments</button></div></div></div><div class="collapse show" id="dmd4"><div class="border-top p-2" style="background:rgba(0,0,0,0.02)"><a href="#" class="sidebar-link py-1" style="font-size:0.625rem">• MTB Treasury Division</a><a href="#" class="sidebar-link py-1" style="font-size:0.625rem">• MTB Infrastructure Department</a><a href="#" class="sidebar-link py-1" style="font-size:0.625rem">• MTB Engineering Department</a><a href="#" class="sidebar-link py-1" style="font-size:0.625rem">• Security & Printing Department</a><a href="#" class="sidebar-link py-1" style="font-size:0.625rem">• Transport Department</a></div></div></div></div>
+            <div class="col-lg-2 col-md-4 col-sm-6"><div class="mtb-card overflow-hidden h-100"><div class="p-2"><div class="d-flex align-items-start gap-2"><div class="rounded-circle d-flex align-items-center justify-content-center flex-shrink-0" style="width:32px;height:32px;background:rgba(13,148,136,0.1);border:2px solid rgba(13,148,136,0.3)"><i class="bi bi-person" style="font-size:0.75rem;color:var(--mtb-teal);opacity:0.6"></i></div><div class="flex-grow-1" style="min-width:0"><p class="mb-0 fw-semibold" style="font-size:0.75rem">Usman Rashed Muyeen</p><p class="mb-0 text-muted" style="font-size:0.625rem">DMD & GCRO</p><button class="btn btn-link p-0 mt-1 d-flex align-items-center gap-1 text-decoration-none" style="font-size:0.625rem;color:var(--mtb-teal)" data-bs-toggle="collapse" data-bs-target="#dmd5"><i class="bi bi-chevron-right"></i> 9 Departments</button></div></div></div><div class="collapse show" id="dmd5"><div class="border-top p-2" style="background:rgba(0,0,0,0.02)"><a href="#" class="sidebar-link py-1" style="font-size:0.625rem">• Credit Risk Management</a><a href="#" class="sidebar-link py-1" style="font-size:0.625rem">• CIB Department</a><a href="#" class="sidebar-link py-1" style="font-size:0.625rem">• Risk Management Division</a></div></div></div></div>
+            <div class="col-lg-2 col-md-4 col-sm-6"><div class="mtb-card overflow-hidden h-100"><div class="p-2"><div class="d-flex align-items-start gap-2"><div class="rounded-circle d-flex align-items-center justify-content-center flex-shrink-0" style="width:32px;height:32px;background:rgba(13,148,136,0.1);border:2px solid rgba(13,148,136,0.3)"><i class="bi bi-person" style="font-size:0.75rem;color:var(--mtb-teal);opacity:0.6"></i></div><div class="flex-grow-1" style="min-width:0"><p class="mb-0 fw-semibold" style="font-size:0.75rem">Md. Shafquat Hossain</p><p class="mb-0 text-muted" style="font-size:0.625rem">DMD & HoRetail</p><button class="btn btn-link p-0 mt-1 d-flex align-items-center gap-1 text-decoration-none" style="font-size:0.625rem;color:var(--mtb-teal)" data-bs-toggle="collapse" data-bs-target="#dmd6"><i class="bi bi-chevron-right"></i> 11 Departments</button></div></div></div><div class="collapse show" id="dmd6"><div class="border-top p-2" style="background:rgba(0,0,0,0.02)"><a href="#" class="sidebar-link py-1" style="font-size:0.625rem">• Non-Resident Banking</a><a href="#" class="sidebar-link py-1" style="font-size:0.625rem">• Retail Banking Division</a><a href="#" class="sidebar-link py-1" style="font-size:0.625rem">• Card Division</a><a href="#" class="sidebar-link py-1" style="font-size:0.625rem">• Agent Banking Department</a></div></div></div></div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Branches Mega Menu -->
-    <div id="megaBranches" class="mega-menu">
-      <div class="container-fluid px-4 py-3" style="max-width:1600px;margin:0 auto">
-        <h6 class="mega-menu-header rounded mb-3 d-inline-block px-3"><i class="bi bi-geo-alt me-1"></i> All Branches (A-Z)</h6>
-        <div class="row g-2">
-          <div class="col-md-2"><a href="#" class="mega-menu-link">Agrabad</a></div>
-          <div class="col-md-2"><a href="#" class="mega-menu-link">Banani</a></div>
-          <div class="col-md-2"><a href="#" class="mega-menu-link">Bogura</a></div>
-          <div class="col-md-2"><a href="#" class="mega-menu-link">Chattogram</a></div>
-          <div class="col-md-2"><a href="#" class="mega-menu-link">Dhanmondi</a></div>
-          <div class="col-md-2"><a href="#" class="mega-menu-link">DEPZ</a></div>
-          <div class="col-md-2"><a href="#" class="mega-menu-link">Elephant Road</a></div>
-          <div class="col-md-2"><a href="#" class="mega-menu-link">Gulshan</a></div>
-          <div class="col-md-2"><a href="#" class="mega-menu-link">Jessore</a></div>
-          <div class="col-md-2"><a href="#" class="mega-menu-link">Khulna</a></div>
-          <div class="col-md-2"><a href="#" class="mega-menu-link">Mirpur-2</a></div>
-          <div class="col-md-2"><a href="#" class="mega-menu-link">Motijheel</a></div>
-          <div class="col-md-2"><a href="#" class="mega-menu-link">Narayanganj</a></div>
-          <div class="col-md-2"><a href="#" class="mega-menu-link">Rajshahi</a></div>
-          <div class="col-md-2"><a href="#" class="mega-menu-link">Sylhet</a></div>
-          <div class="col-md-2"><a href="#" class="mega-menu-link">Uttara</a></div>
+    <!-- BRANCHES MEGA MENU -->
+    <div class="mega-menu" id="mega-branches">
+      <div class="container-fluid px-4 py-4" style="max-width:1600px;margin:0 auto">
+        <div class="d-flex align-items-center justify-content-between mb-4 pb-3 border-bottom">
+          <h5 class="mb-0 fw-bold" style="font-size:0.875rem;color:var(--mtb-teal)">Branch Homepages</h5>
+          <button class="btn btn-link text-muted d-flex align-items-center gap-1" style="font-size:0.875rem" data-mega-close><i class="bi bi-x-lg"></i> Close</button>
         </div>
-        <div class="mt-3 pt-2 border-top text-muted" style="font-size:0.75rem">Total Branches: <strong>180</strong></div>
-      </div>
-    </div>
-
-    <!-- Divisions Mega Menu -->
-    <div id="megaDivisions" class="mega-menu">
-      <div class="container-fluid px-4 py-3" style="max-width:1600px;margin:0 auto">
-        <div class="row g-3">
-          <div class="col-md-3">
-            <h6 class="mega-menu-header rounded mb-2">Banking Operations</h6>
-            <a href="#" class="mega-menu-link">▸ General Banking</a>
-            <a href="#" class="mega-menu-link">▸ Foreign Exchange</a>
-            <a href="#" class="mega-menu-link">▸ Treasury</a>
-          </div>
-          <div class="col-md-3">
-            <h6 class="mega-menu-header rounded mb-2">Business</h6>
-            <a href="#" class="mega-menu-link">▸ Retail Banking</a>
-            <a href="#" class="mega-menu-link">▸ Corporate Banking</a>
-            <a href="#" class="mega-menu-link">▸ SME Banking</a>
-          </div>
-          <div class="col-md-3">
-            <h6 class="mega-menu-header rounded mb-2">Risk & Compliance</h6>
-            <a href="#" class="mega-menu-link">▸ Credit Risk Management</a>
-            <a href="#" class="mega-menu-link">▸ Internal Control</a>
-            <a href="#" class="mega-menu-link">▸ AML & CFT</a>
-          </div>
-          <div class="col-md-3">
-            <h6 class="mega-menu-header rounded mb-2">Support</h6>
-            <a href="#" class="mega-menu-link">▸ IT Division</a>
-            <a href="#" class="mega-menu-link">▸ HR Division</a>
-            <a href="#" class="mega-menu-link">▸ Admin Division</a>
+        <div style="max-height:400px;overflow-y:auto" id="branchGrid"></div>
+        <div class="mt-4 pt-3 border-top">
+          <div class="d-flex align-items-center gap-4" style="font-size:0.75rem">
+            <span class="text-muted">Branches: <strong style="color:var(--foreground)">122</strong></span>
+            <span class="text-muted">Sub-Branches: <strong style="color:var(--foreground)">58</strong></span>
+            <span class="fw-semibold" style="color:var(--mtb-teal)">Total: 180</span>
+            <span style="color:var(--mtb-green);font-size:0.625rem">● Opened Recently</span>
+            <span style="color:var(--mtb-purple);font-size:0.625rem">● Proposed</span>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Subsidiaries Mega Menu -->
-    <div id="megaSubsidiaries" class="mega-menu">
-      <div class="container-fluid px-4 py-3" style="max-width:1600px;margin:0 auto">
-        <div class="row g-3">
+    <!-- DIVISIONS MEGA MENU -->
+    <div class="mega-menu" id="mega-divisions">
+      <div class="container-fluid px-4 py-4" style="max-width:1600px;margin:0 auto">
+        <div class="d-flex align-items-center justify-content-between mb-4 pb-3 border-bottom">
+          <h5 class="mb-0 fw-bold" style="font-size:0.875rem;color:var(--mtb-teal)">Countrywide Branch Distributions</h5>
+          <button class="btn btn-link text-muted d-flex align-items-center gap-1" style="font-size:0.875rem" data-mega-close><i class="bi bi-x-lg"></i> Close</button>
+        </div>
+        <div class="row g-4" style="max-height:320px;overflow-y:auto">
           <div class="col-md-4">
-            <h6 class="mega-menu-header rounded mb-2">Financial Subsidiaries</h6>
-            <a href="#" class="mega-menu-link">▸ MTB Securities Limited</a>
-            <a href="#" class="mega-menu-link">▸ MTB Capital Limited</a>
-            <a href="#" class="mega-menu-link">▸ MTB Exchange (UK) Limited</a>
+            <h6 class="fw-semibold text-uppercase pb-2 mb-3 border-bottom" style="font-size:0.75rem;color:var(--mtb-teal);letter-spacing:0.05em">MTB Defined Regions</h6>
+            <ul class="list-unstyled mb-0">
+              <li><a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> Branch Banking Division- Region 0</a></li>
+              <li><a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> Branch Banking Division- Region 1</a></li>
+              <li><a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> Branch Banking Division- Region 2</a></li>
+              <li><a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> Branch Banking Division- Region 3</a></li>
+              <li><a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> Branch Banking Division- Region 4</a></li>
+              <li><a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> All MTB Regions at Glance</a></li>
+            </ul>
           </div>
           <div class="col-md-4">
-            <h6 class="mega-menu-header rounded mb-2">Technology</h6>
-            <a href="#" class="mega-menu-link">▸ MTB FinTech Limited</a>
+            <h6 class="fw-semibold text-uppercase pb-2 mb-3 border-bottom" style="font-size:0.75rem;color:var(--mtb-teal);letter-spacing:0.05em">Division Wise Branches</h6>
+            <ul class="list-unstyled mb-0">
+              <li><a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> Dhaka Division (62)</a></li>
+              <li><a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> Chattogram Division (32)</a></li>
+              <li><a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> Rajshahi Division (8)</a></li>
+              <li><a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> Sylhet Division (6)</a></li>
+              <li><a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> Rangpur Division (5)</a></li>
+              <li><a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> Khulna Division (4)</a></li>
+              <li><a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> Mymensingh Division (3)</a></li>
+              <li><a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> Barishal Division (2)</a></li>
+            </ul>
           </div>
           <div class="col-md-4">
-            <h6 class="mega-menu-header rounded mb-2">Foundation</h6>
-            <a href="#" class="mega-menu-link">▸ MTB Foundation</a>
+            <h6 class="fw-semibold text-uppercase pb-2 mb-3 border-bottom" style="font-size:0.75rem;color:var(--mtb-teal);letter-spacing:0.05em">District Wise Branches</h6>
+            <ul class="list-unstyled mb-0">
+              <li><a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> Barishal (4)</a></li>
+              <li><a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> Bogura (1)</a></li>
+              <li><a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> Chattogram (20)</a></li>
+              <li><a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> Cumilla (13)</a></li>
+              <li><a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> Dhaka (57)</a></li>
+              <li><a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> Faridpur (3)</a></li>
+              <li><a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> Gaibandha (1)</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SUBSIDIARIES MEGA MENU -->
+    <div class="mega-menu" id="mega-subsidiaries">
+      <div class="container-fluid px-4 py-4" style="max-width:1600px;margin:0 auto">
+        <div class="d-flex align-items-center justify-content-between mb-4 pb-3 border-bottom">
+          <h5 class="mb-0 fw-bold" style="font-size:0.875rem;color:var(--mtb-teal)">Subsidiaries Homepages</h5>
+          <button class="btn btn-link text-muted d-flex align-items-center gap-1" style="font-size:0.875rem" data-mega-close><i class="bi bi-x-lg"></i> Close</button>
+        </div>
+        <div class="row g-4" style="max-height:320px;overflow-y:auto">
+          <div class="col-md-6">
+            <h6 class="fw-semibold text-uppercase pb-2 mb-3 border-bottom" style="font-size:0.75rem;color:var(--mtb-teal);letter-spacing:0.05em">MTB Capital Ltd.</h6>
+            <ul class="list-unstyled mb-0"><li><a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> MTB Capital Head Office</a></li></ul>
+          </div>
+          <div class="col-md-6">
+            <h6 class="fw-semibold text-uppercase pb-2 mb-3 border-bottom" style="font-size:0.75rem;color:var(--mtb-teal);letter-spacing:0.05em">MTB Securities Ltd.</h6>
+            <ul class="list-unstyled mb-0">
+              <li><a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> MTB Securities Corporate Head Office</a></li>
+              <li><a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> MTBSL-Agrabad Office</a></li>
+              <li><a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> MTBSL-Baridhara Office</a></li>
+              <li><a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> MTBSL-Gulshan Office</a></li>
+              <li><a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> MTBSL-Dhanmondi Office</a></li>
+              <li><a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> MTBSL-DSE Tower</a></li>
+              <li><a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> MTBSL Khulna Branch</a></li>
+              <li><a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> MTBSL-Narayangonj Office</a></li>
+              <li><a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> MTBSL-Rajshahi Office</a></li>
+              <li><a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> MTBSL-Sylhet Office</a></li>
+              <li><a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> MTBSL-Uttara Office</a></li>
+            </ul>
           </div>
         </div>
       </div>
     </div>
   </nav>
 
-  <!-- Main Content -->
-  <main class="container-fluid px-4 py-3" style="max-width:1600px;margin:0 auto">
+  <!-- ===== MAIN CONTENT (3:6:3 Grid) ===== -->
+  <div class="container-fluid px-4 py-3" style="max-width:1600px;margin:0 auto">
     <div class="row g-3">
 
-      <!-- Left Sidebar -->
-      <div class="col-lg-2 d-none d-lg-block">
-        <!-- Profile Card -->
-        <div class="profile-card mb-3">
-          <div class="profile-card-banner"></div>
-          <div class="profile-avatar">JD</div>
-          <div class="text-center p-3">
-            <h6 class="mb-0 fw-semibold" style="font-size:0.875rem">John Doe</h6>
-            <p class="mb-1 text-muted" style="font-size:0.75rem">Senior Officer</p>
-            <p class="mb-0 text-muted" style="font-size:0.6875rem">IT Division</p>
+      <!-- LEFT SIDEBAR (col-3) -->
+      <div class="col-lg-3 d-none d-lg-block">
+        <div class="d-flex flex-column gap-2">
+          <!-- Profile Card -->
+          <div class="profile-card">
+            <div class="profile-card-header"></div>
+            <div class="profile-avatar-wrapper"><a href="#"><div class="profile-avatar"><i class="bi bi-person" style="font-size:1.5rem;color:var(--muted-fg)"></i></div></a></div>
+            <div class="text-center px-3 pb-3 pt-2">
+              <a href="#" class="text-decoration-none"><h6 class="mb-0 d-inline-flex align-items-center gap-1" style="color:var(--foreground)"><span class="fw-semibold">Roni Shikder</span><i class="bi bi-check-circle-fill" style="color:var(--mtb-teal);font-size:0.875rem"></i></h6></a>
+              <p class="small text-muted mb-0 mt-1" style="font-size:0.75rem;line-height:1.4">Unit Head, Enterprise Solutions,<br>CBS Integration & Development...</p>
+              <p class="d-flex align-items-center justify-content-center gap-1 text-muted mb-2 mt-1" style="font-size:0.75rem"><i class="bi bi-geo-alt" style="font-size:0.75rem"></i> Dhaka</p>
+              <div class="d-flex align-items-center justify-content-center gap-2 pt-2 border-top"><img src="https://mutual-trust-intranet-hub.lovable.app/assets/mtb-logo-DsVEZOWl.png" alt="MTB" style="height:16px" class="object-fit-contain"><span class="small fw-medium" style="color:var(--foreground);font-size:0.75rem">Mutual Trust Bank PLC</span></div>
+            </div>
           </div>
-        </div>
 
-        <!-- Quick Links -->
-        <div class="mtb-card">
-          <div class="mtb-card-header" style="background:var(--mtb-teal)">
-            <i class="bi bi-lightning-charge me-1"></i> Shortcuts
+          <!-- Shortcuts -->
+          <div class="mtb-card overflow-hidden">
+            <div class="mtb-card-header" style="background:var(--mtb-teal)">Shortcuts</div>
+            <div class="p-2">
+              <div><button class="sidebar-link w-100 border-0 bg-transparent text-start" data-bs-toggle="collapse" data-bs-target="#myStuff"><i class="bi bi-chevron-right" style="font-size:0.75rem;color:var(--muted-fg)"></i><span class="flex-grow-1">My Stuff</span></button><div class="collapse" id="myStuff"><div class="ms-3 ps-2" style="border-left:1px solid rgba(13,148,136,0.2)"><a href="#" class="sidebar-link py-1" style="font-size:0.8125rem"><span style="color:var(--mtb-orange);font-size:0.5rem">●</span> My Documents</a><a href="#" class="sidebar-link py-1" style="font-size:0.8125rem"><span style="color:var(--mtb-orange);font-size:0.5rem">●</span> My Tasks</a><a href="#" class="sidebar-link py-1" style="font-size:0.8125rem"><span style="color:var(--mtb-orange);font-size:0.5rem">●</span> My Calendar</a><a href="#" class="sidebar-link py-1" style="font-size:0.8125rem"><span style="color:var(--mtb-orange);font-size:0.5rem">●</span> My Favorites</a><a href="#" class="sidebar-link py-1" style="font-size:0.8125rem"><span style="color:var(--mtb-orange);font-size:0.5rem">●</span> My Profile</a><a href="#" class="sidebar-link py-1" style="font-size:0.8125rem"><span style="color:var(--mtb-orange);font-size:0.5rem">●</span> My Bank A/C</a></div></div></div>
+              <div><button class="sidebar-link w-100 border-0 bg-transparent text-start" data-bs-toggle="collapse" data-bs-target="#quickLinksLeft"><i class="bi bi-chevron-right" style="font-size:0.75rem;color:var(--muted-fg)"></i><span class="flex-grow-1">Quick Links</span></button><div class="collapse" id="quickLinksLeft"><div class="ms-3 ps-2" style="border-left:1px solid rgba(13,148,136,0.2)"><a href="#" class="sidebar-link py-1" style="font-size:0.8125rem"><span style="color:var(--mtb-orange);font-size:0.5rem">●</span> Internet Banking</a><a href="#" class="sidebar-link py-1" style="font-size:0.8125rem"><span style="color:var(--mtb-orange);font-size:0.5rem">●</span> Mobile Banking</a><a href="#" class="sidebar-link py-1" style="font-size:0.8125rem"><span style="color:var(--mtb-orange);font-size:0.5rem">●</span> ATM Locator</a><a href="#" class="sidebar-link py-1" style="font-size:0.8125rem"><span style="color:var(--mtb-orange);font-size:0.5rem">●</span> Branch Locator</a><a href="#" class="sidebar-link py-1" style="font-size:0.8125rem"><span style="color:var(--mtb-orange);font-size:0.5rem">●</span> Exchange Rates</a></div></div></div>
+              <div><button class="sidebar-link w-100 border-0 bg-transparent text-start" data-bs-toggle="collapse" data-bs-target="#mTracker"><i class="bi bi-chevron-down" style="font-size:0.75rem;color:var(--mtb-teal)"></i><span class="flex-grow-1" style="color:var(--mtb-orange);font-weight:500">M-Tracker</span></button><div class="collapse show" id="mTracker"><div class="ms-3 ps-2" style="border-left:1px solid rgba(13,148,136,0.2)"><a href="#" class="sidebar-link py-1" style="font-size:0.8125rem"><span style="color:var(--mtb-orange);font-size:0.5rem">●</span> CIF Tracker</a><a href="#" class="sidebar-link py-1" style="font-size:0.8125rem"><span style="color:var(--mtb-orange);font-size:0.5rem">●</span> EMail Address</a></div></div></div>
+              <div><button class="sidebar-link w-100 border-0 bg-transparent text-start" data-bs-toggle="collapse" data-bs-target="#mtbpedia"><i class="bi bi-chevron-right" style="font-size:0.75rem;color:var(--muted-fg)"></i><span class="flex-grow-1">MTBPedia</span></button><div class="collapse" id="mtbpedia"><div class="ms-3 ps-2" style="border-left:1px solid rgba(13,148,136,0.2)"><a href="#" class="sidebar-link py-1" style="font-size:0.8125rem"><span style="color:var(--mtb-orange);font-size:0.5rem">●</span> Knowledge Base</a><a href="#" class="sidebar-link py-1" style="font-size:0.8125rem"><span style="color:var(--mtb-orange);font-size:0.5rem">●</span> FAQs</a><a href="#" class="sidebar-link py-1" style="font-size:0.8125rem"><span style="color:var(--mtb-orange);font-size:0.5rem">●</span> Guidelines</a><a href="#" class="sidebar-link py-1" style="font-size:0.8125rem"><span style="color:var(--mtb-orange);font-size:0.5rem">●</span> Manuals</a></div></div></div>
+              <div><button class="sidebar-link w-100 border-0 bg-transparent text-start" data-bs-toggle="collapse" data-bs-target="#regAffairs"><i class="bi bi-chevron-right" style="font-size:0.75rem;color:var(--muted-fg)"></i><span class="flex-grow-1">Regulatory Affairs</span></button><div class="collapse" id="regAffairs"><div class="ms-3 ps-2" style="border-left:1px solid rgba(13,148,136,0.2)"><a href="#" class="sidebar-link py-1" style="font-size:0.8125rem"><span style="color:var(--mtb-orange);font-size:0.5rem">●</span> Bangladesh Bank Circulars</a><a href="#" class="sidebar-link py-1" style="font-size:0.8125rem"><span style="color:var(--mtb-orange);font-size:0.5rem">●</span> BSEC Guidelines</a><a href="#" class="sidebar-link py-1" style="font-size:0.8125rem"><span style="color:var(--mtb-orange);font-size:0.5rem">●</span> Policy Documents</a></div></div></div>
+              <div><button class="sidebar-link w-100 border-0 bg-transparent text-start" data-bs-toggle="collapse" data-bs-target="#downloads"><i class="bi bi-chevron-right" style="font-size:0.75rem;color:var(--muted-fg)"></i><span class="flex-grow-1">Downloads</span></button><div class="collapse" id="downloads"><div class="ms-3 ps-2" style="border-left:1px solid rgba(13,148,136,0.2)"><a href="#" class="sidebar-link py-1" style="font-size:0.8125rem"><span style="color:var(--mtb-orange);font-size:0.5rem">●</span> Forms</a><a href="#" class="sidebar-link py-1" style="font-size:0.8125rem"><span style="color:var(--mtb-orange);font-size:0.5rem">●</span> Templates</a><a href="#" class="sidebar-link py-1" style="font-size:0.8125rem"><span style="color:var(--mtb-orange);font-size:0.5rem">●</span> Software</a></div></div></div>
+              <div><button class="sidebar-link w-100 border-0 bg-transparent text-start" data-bs-toggle="collapse" data-bs-target="#itsAdmin"><i class="bi bi-chevron-right" style="font-size:0.75rem;color:var(--muted-fg)"></i><span class="flex-grow-1">ITS Admin</span></button><div class="collapse" id="itsAdmin"><div class="ms-3 ps-2" style="border-left:1px solid rgba(13,148,136,0.2)"><a href="#" class="sidebar-link py-1" style="font-size:0.8125rem"><span style="color:var(--mtb-orange);font-size:0.5rem">●</span> CBS Application</a><a href="#" class="sidebar-link py-1" style="font-size:0.8125rem"><span style="color:var(--mtb-orange);font-size:0.5rem">●</span> Email Client</a><a href="#" class="sidebar-link py-1" style="font-size:0.8125rem"><span style="color:var(--mtb-orange);font-size:0.5rem">●</span> VPN Access</a></div></div></div>
+              <a href="#" class="sidebar-link"><span style="color:var(--mtb-teal);font-size:0.75rem">»</span><span class="flex-grow-1">User Setup:</span><span class="fw-medium">0</span></a>
+              <a href="#" class="sidebar-link"><span style="color:var(--mtb-teal);font-size:0.75rem">»</span><span class="flex-grow-1">User Cre8/Trns:</span><span class="fw-medium">0</span></a>
+            </div>
           </div>
-          <div class="mtb-card-body">
-            <a href="#" class="sidebar-link"><i class="bi bi-speedometer2"></i> CBS Apps</a>
-            <a href="#" class="sidebar-link"><i class="bi bi-globe"></i> Online Apps</a>
-            <a href="#" class="sidebar-link"><i class="bi bi-search"></i> M-Tracker</a>
-            <a href="#" class="sidebar-link"><i class="bi bi-bank"></i> My Bank Account</a>
+
+          <!-- Life Quote -->
+          <div class="mtb-card overflow-hidden">
+            <div class="mtb-card-header" style="background:var(--mtb-blue)">Life Quote</div>
+            <div class="p-3">
+              <blockquote class="small fst-italic mb-2" style="line-height:1.6"><span style="font-size:1.25rem;color:var(--mtb-red);font-family:serif">"</span>In the end, it's not the years in your life that count. It's the life in your years.<span style="font-size:1.25rem;color:var(--mtb-red);font-family:serif">"</span></blockquote>
+              <p class="text-end small text-muted mb-2" style="font-size:0.75rem">— Abraham Lincoln</p>
+              <div class="d-flex gap-2" style="font-size:0.75rem"><a href="#" class="mtb-link">Share your thoughts</a><span class="text-muted">|</span><a href="#" class="mtb-link">Suggest a Quote</a></div>
+            </div>
           </div>
+
+          <!-- Search a Word -->
+          <div class="mtb-card overflow-hidden">
+            <div class="mtb-card-header" style="background:var(--mtb-green)">Search a Word</div>
+            <div class="p-3">
+              <div class="d-flex gap-1 mb-2"><input type="text" class="form-control form-control-sm flex-grow-1" style="border-radius:0.25rem"><button class="btn btn-sm text-white" style="background:var(--mtb-green);font-size:0.75rem">GO</button></div>
+              <div class="d-flex align-items-center gap-2"><span style="font-size:0.75rem">in</span><select class="form-select form-select-sm flex-grow-1" style="font-size:0.75rem"><option>Dictionary</option><option>Thesaurus</option></select></div>
+            </div>
+          </div>
+
+          <!-- MTBians' News -->
+          <div class="mtb-card overflow-hidden">
+            <div class="mtb-card-header" style="background:var(--mtb-blue)">MTBians' News</div>
+            <div class="p-3">
+              <div class="d-flex align-items-start gap-2 mb-2" style="font-size:0.75rem"><span style="color:var(--mtb-blue)">📷</span><span class="flex-grow-1" style="line-height:1.4">Deposit of 02 crore Taka Collected by Md. Obaidullah Ansari,</span><span class="badge-new">NEW</span></div>
+              <div class="d-flex align-items-start gap-2 mb-2" style="font-size:0.75rem"><span style="color:var(--mtb-blue)">📷</span><span class="flex-grow-1" style="line-height:1.4">AIBB completed successfully.</span><span class="badge-new">NEW</span></div>
+              <div class="d-flex align-items-start gap-2 mb-2" style="font-size:0.75rem"><span style="color:var(--mtb-blue)">📷</span><span class="flex-grow-1" style="line-height:1.4">Congratulations for passing AIBB exam successfully.</span><span class="badge-new">NEW</span></div>
+              <div class="d-flex align-items-start gap-2 mb-2" style="font-size:0.75rem"><span style="color:var(--mtb-blue)">📷</span><span class="flex-grow-1" style="line-height:1.4">PROCURING DEPOSIT</span></div>
+              <div class="pt-2 border-top d-flex gap-2" style="font-size:0.75rem"><a href="#" class="mtb-link">News detail</a><span class="text-muted">|</span><a href="#" class="mtb-link">Add News</a></div>
+            </div>
+          </div>
+
+          <!-- Knowledge Point -->
+          <div class="mtb-card overflow-hidden">
+            <button class="expandable-header w-100 border-0" style="background:var(--mtb-orange)" data-bs-toggle="collapse" data-bs-target="#knowledgePoint"><span>Knowledge Point</span><i class="bi bi-chevron-right"></i></button>
+            <div class="collapse" id="knowledgePoint">
+              <div class="p-3">
+                <div class="d-flex align-items-center gap-2 mb-1" style="font-size:0.75rem">📖 <a href="#" class="mtb-link">The Holy Quran</a></div>
+                <div class="d-flex align-items-center gap-2 mb-1" style="font-size:0.75rem"><span class="d-flex align-items-center justify-content-center rounded" style="width:16px;height:16px;background:var(--mtb-red);color:white;font-size:0.5rem;font-weight:bold">M</span> <a href="#" class="mtb-link">Ask & Learn</a></div>
+                <div class="d-flex align-items-center gap-2 mb-1" style="font-size:0.75rem"><a href="#" class="mtb-link">Exam:</a><div class="d-flex gap-1 ms-auto"><span class="badge bg-light text-secondary border" style="font-size:0.5625rem;padding:0.125rem 0.25rem">KAMP</span><span class="badge bg-light text-secondary border" style="font-size:0.5625rem;padding:0.125rem 0.25rem">KARMA</span></div></div>
+                <div class="d-flex align-items-center gap-2 mb-1" style="font-size:0.75rem">📚 <a href="#" class="mtb-link">Finance Glossary</a></div>
+                <div class="d-flex align-items-center gap-2 mb-1" style="font-size:0.75rem">📖 <a href="#" class="mtb-link">Worth Reading</a></div>
+                <div class="d-flex align-items-center gap-2 mb-1" style="font-size:0.75rem">📚 <a href="#" class="mtb-link">MTB Library</a></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hotlines -->
+          <div class="mtb-card p-3"><div class="d-flex align-items-center gap-2"><span style="font-size:1rem">📞</span><span class="fw-semibold" style="font-size:0.75rem">Hotlines</span></div></div>
         </div>
       </div>
 
-      <!-- Main Area -->
-      <div class="col-12 col-lg-8">
-        <!-- Welcome Banner -->
-        <div class="mtb-card mb-3 p-4 text-center" style="background:linear-gradient(135deg, var(--mtb-teal), #0b7d73);color:#fff;border:none">
-          <h4 class="mb-1">Welcome to MNet</h4>
-          <p class="mb-0" style="opacity:0.9;font-size:0.875rem">Mutual Trust Bank PLC — Intranet Portal</p>
-        </div>
+      <!-- MAIN CONTENT (col-6) -->
+      <div class="col-12 col-lg-6 order-1 order-lg-0">
+        <main class="d-flex flex-column gap-3">
+          <!-- Notice Board -->
+          <div class="mtb-card overflow-hidden">
+            <div class="px-3 py-2 d-flex align-items-center justify-content-between" style="background:linear-gradient(90deg,#1a4a4a 0%,#1f5555 50%,#1a4a4a 100%)">
+              <div class="d-flex align-items-center gap-2"><i class="bi bi-pin-angle" style="color:var(--mtb-orange);font-size:0.875rem"></i><h6 class="mb-0 fw-bold" style="font-size:0.75rem;color:var(--mtb-orange)">MTB Notice Board</h6><span class="text-white-50" style="font-size:0.75rem">::</span><span class="text-white" style="font-size:0.75rem">Tuesday Jan 21, 2026</span></div>
+              <a href="#" class="text-white-75 text-decoration-none fw-medium" style="font-size:0.75rem">View All</a>
+            </div>
+            <div class="px-3 py-2" style="background:rgba(26,85,85,0.08);border-bottom:1px solid var(--border-color)"><div class="d-flex align-items-start gap-2"><div class="rounded d-flex align-items-center justify-content-center flex-shrink-0 mt-1" style="width:20px;height:20px;background:rgba(26,85,85,0.15)"><i class="bi bi-bicycle" style="font-size:0.75rem;color:#333"></i></div><div class="flex-grow-1" style="min-width:0"><p class="mb-1" style="font-size:0.75rem;line-height:1.5">MTB Foundation commemorates International Day of Education 2026 by distributing 'Swapno Sarathi' Bicycles to Female Students of Mathbaria, Barishal</p><a href="#" class="mtb-link fw-medium" style="font-size:0.625rem">View Event Photos</a></div></div></div>
+            <div class="px-3 py-2" style="background:rgba(212,80,122,0.08);border-bottom:1px solid var(--border-color)"><div class="d-flex align-items-start gap-2"><div class="rounded d-flex align-items-center justify-content-center flex-shrink-0 mt-1" style="width:20px;height:20px;background:rgba(212,80,122,0.15)"><i class="bi bi-people" style="font-size:0.75rem;color:#d4507a"></i></div><div class="flex-grow-1" style="min-width:0"><p class="mb-1" style="font-size:0.75rem;line-height:1.5">Training on "Agile Customer Service: Commitment to Excellence (Creating Value for Customers)"</p><a href="#" class="mtb-link fw-medium" style="font-size:0.625rem">Participants List</a></div></div></div>
+            <div class="px-3 py-2" style="background:rgba(0,0,0,0.02)"><div class="d-flex align-items-start gap-2"><div class="rounded d-flex align-items-center justify-content-center flex-shrink-0 mt-1" style="width:20px;height:20px;background:rgba(0,0,0,0.05)"><i class="bi bi-people" style="font-size:0.75rem;color:var(--muted-fg)"></i></div><div class="flex-grow-1" style="min-width:0"><p class="mb-1" style="font-size:0.75rem;line-height:1.5">Training on "Agile Customer Service: Commitment to Excellence (Creating Value for Customers)"</p><a href="#" class="mtb-link fw-medium" style="font-size:0.625rem">Participants List</a></div></div></div>
+          </div>
 
-        <!-- Sample Form Card -->
-        <div class="mtb-card mb-3">
-          <div class="mtb-card-header" style="background:var(--mtb-blue)">
-            <i class="bi bi-pencil-square me-1"></i> Quick Feedback
+          <!-- Circulars -->
+          <div class="mtb-card overflow-hidden">
+            <div class="px-3 py-2 d-flex align-items-center justify-content-between border-bottom">
+              <div class="d-flex align-items-center gap-1">
+                <button class="btn btn-sm px-3 py-1 fw-semibold text-white circular-tab active" style="font-size:0.6875rem;background:var(--mtb-red)" data-tab="mtb">MTB Circulars</button>
+                <button class="btn btn-sm px-3 py-1 fw-semibold circular-tab" style="font-size:0.6875rem;background:transparent;color:var(--foreground)" data-tab="bb">BB Circular</button>
+              </div>
+              <div class="d-flex align-items-center gap-2" style="font-size:0.75rem"><a href="#" class="mtb-link fw-medium">My Basket</a><span class="text-muted">•</span><a href="#" class="text-decoration-none d-flex align-items-center gap-1" style="color:var(--foreground)"><i class="bi bi-search" style="font-size:0.75rem"></i> Search</a><span class="text-muted">•</span><a href="#" class="text-decoration-none fw-medium" style="color:var(--foreground)">Recent</a></div>
+            </div>
+            <div class="p-3">
+              <div id="circulars-mtb">
+                <div class="d-flex align-items-center gap-2 py-2 px-1" style="border-bottom:1px solid var(--border-color)"><span class="font-monospace flex-shrink-0" style="font-size:0.6875rem;width:56px">20/01/26</span><a href="#" class="mtb-link flex-grow-1 text-truncate fw-medium" style="font-size:0.75rem">POWER OF ATTORNEY <span class="ms-1" style="color:var(--muted-fg);font-size:0.625rem">...more..</span></a><span class="badge-new flex-shrink-0">New</span></div>
+                <div class="d-flex align-items-center gap-2 py-2 px-1" style="border-bottom:1px solid var(--border-color)"><span class="font-monospace flex-shrink-0" style="font-size:0.6875rem;width:56px">20/01/26</span><a href="#" class="mtb-link flex-grow-1 text-truncate fw-medium" style="font-size:0.75rem">Automation of Sanchaypatra Tax Certificate Generation <span class="ms-1" style="color:var(--muted-fg);font-size:0.625rem">...more..</span></a><span class="badge-new flex-shrink-0">New</span></div>
+                <div class="d-flex align-items-center gap-2 py-2 px-1" style="border-bottom:1px solid var(--border-color)"><span class="font-monospace flex-shrink-0" style="font-size:0.6875rem;width:56px">19/01/26</span><a href="#" class="mtb-link flex-grow-1 text-truncate fw-medium" style="font-size:0.75rem">AML/CFT Compliance Guidelines Update <span class="ms-1" style="color:var(--muted-fg);font-size:0.625rem">...more..</span></a></div>
+                <div class="d-flex align-items-center gap-2 py-2 px-1"><span class="font-monospace flex-shrink-0" style="font-size:0.6875rem;width:56px">18/01/26</span><a href="#" class="mtb-link flex-grow-1 text-truncate fw-medium" style="font-size:0.75rem">IT Security Protocol Revision <span class="ms-1" style="color:var(--muted-fg);font-size:0.625rem">...more..</span></a></div>
+              </div>
+              <div id="circulars-bb" class="d-none">
+                <div class="d-flex align-items-center gap-2 py-2 px-1" style="border-bottom:1px solid var(--border-color)"><span class="font-monospace flex-shrink-0" style="font-size:0.6875rem;width:56px">25/01/26</span><a href="#" class="mtb-link flex-grow-1 text-truncate fw-medium" style="font-size:0.75rem">SDAD Circular No. 01: Temporary Intermission of Banking Operations <span class="ms-1" style="color:var(--muted-fg);font-size:0.625rem">...more..</span></a><span class="badge-new flex-shrink-0">New</span></div>
+                <div class="d-flex align-items-center gap-2 py-2 px-1" style="border-bottom:1px solid var(--border-color)"><span class="font-monospace flex-shrink-0" style="font-size:0.6875rem;width:56px">24/01/26</span><a href="#" class="mtb-link flex-grow-1 text-truncate fw-medium" style="font-size:0.75rem">BRPD Circular No. 02/2026 - Capital Adequacy <span class="ms-1" style="color:var(--muted-fg);font-size:0.625rem">...more..</span></a><span class="badge-new flex-shrink-0">New</span></div>
+                <div class="d-flex align-items-center gap-2 py-2 px-1" style="border-bottom:1px solid var(--border-color)"><span class="font-monospace flex-shrink-0" style="font-size:0.6875rem;width:56px">23/01/26</span><a href="#" class="mtb-link flex-grow-1 text-truncate fw-medium" style="font-size:0.75rem">DFIM Circular No. 01/2026 - Microfinance Policy <span class="ms-1" style="color:var(--muted-fg);font-size:0.625rem">...more..</span></a></div>
+                <div class="d-flex align-items-center gap-2 py-2 px-1"><span class="font-monospace flex-shrink-0" style="font-size:0.6875rem;width:56px">22/01/26</span><a href="#" class="mtb-link flex-grow-1 text-truncate fw-medium" style="font-size:0.75rem">FE Circular No. 03/2026 - Foreign Exchange <span class="ms-1" style="color:var(--muted-fg);font-size:0.625rem">...more..</span></a></div>
+              </div>
+              <a href="#" class="mtb-link d-inline-flex align-items-center gap-1 fw-medium mt-2" style="font-size:0.75rem">Read More <i class="bi bi-chevron-right" style="font-size:0.75rem"></i></a>
+            </div>
           </div>
-          <div class="mtb-card-body">
-            <form class="needs-validation" novalidate>
-              <div class="mb-3">
-                <label for="feedbackName" class="form-label" style="font-size:0.8125rem">Full Name</label>
-                <input type="text" class="form-control form-control-sm" id="feedbackName" required minlength="2" maxlength="100">
-                <div class="invalid-feedback" style="font-size:0.75rem">Please enter your name.</div>
-              </div>
-              <div class="mb-3">
-                <label for="feedbackDept" class="form-label" style="font-size:0.8125rem">Department</label>
-                <select class="form-select form-select-sm" id="feedbackDept" required>
-                  <option value="">Select...</option>
-                  <option>IT Division</option>
-                  <option>HR Division</option>
-                  <option>Treasury</option>
-                  <option>Retail Banking</option>
-                </select>
-                <div class="invalid-feedback" style="font-size:0.75rem">Please select a department.</div>
-              </div>
-              <div class="mb-3">
-                <label for="feedbackMsg" class="form-label" style="font-size:0.8125rem">Message</label>
-                <textarea class="form-control form-control-sm" id="feedbackMsg" rows="3" required minlength="10" maxlength="1000"></textarea>
-                <div class="invalid-feedback" style="font-size:0.75rem">Please enter at least 10 characters.</div>
-              </div>
-              <button type="submit" class="btn btn-sm btn-mtb-teal">
-                <i class="bi bi-send me-1"></i> Submit Feedback
-              </button>
-            </form>
-          </div>
-        </div>
 
-        <!-- Table Card -->
-        <div class="mtb-card">
-          <div class="mtb-card-header" style="background:var(--mtb-orange)">
-            <i class="bi bi-megaphone me-1"></i> Latest Circulars
+          <!-- Branch Reporting -->
+          <div class="mtb-card overflow-hidden">
+            <div class="mtb-card-header d-flex align-items-center gap-2" style="background:var(--mtb-teal)"><i class="bi bi-clock" style="font-size:0.75rem"></i> Branch Reporting</div>
+            <div class="table-responsive">
+              <table class="table table-mtb mb-0">
+                <thead><tr><th class="text-start px-3 py-2">Report</th><th class="text-center px-2 py-2">Req. By</th><th class="text-center px-2 py-2">Deadline</th></tr></thead>
+                <tbody>
+                  <tr><td class="px-3 py-2"><a href="#" class="mtb-link fw-medium">Account Info ref-2026-404(1)</a></td><td class="text-center px-2 py-2">ACD</td><td class="text-center px-2 py-2">Jan 25</td></tr>
+                  <tr><td class="px-3 py-2"><a href="#" class="mtb-link fw-medium">Account Info ref-2026-396(1)</a></td><td class="text-center px-2 py-2">ACD</td><td class="text-center px-2 py-2">Jan 25</td></tr>
+                </tbody>
+              </table>
+            </div>
           </div>
-          <div class="table-responsive">
-            <table class="table table-mtb table-hover mb-0">
-              <thead>
-                <tr>
-                  <th class="ps-3">Ref No.</th>
-                  <th>Subject</th>
-                  <th>Date</th>
-                  <th class="pe-3">Status</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td class="ps-3">2026-0341</td>
-                  <td>Revised Loan Disbursement Policy</td>
-                  <td>Jan 20, 2026</td>
-                  <td class="pe-3"><span class="badge-new">NEW</span></td>
-                </tr>
-                <tr>
-                  <td class="ps-3">2026-0340</td>
-                  <td>AML/CFT Training Schedule Q1</td>
-                  <td>Jan 18, 2026</td>
-                  <td class="pe-3"><span class="badge-new">NEW</span></td>
-                </tr>
-                <tr>
-                  <td class="ps-3">2026-0339</td>
-                  <td>Holiday Calendar 2026</td>
-                  <td>Jan 15, 2026</td>
-                  <td class="pe-3"><span class="text-muted" style="font-size:0.75rem">Read</span></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
+        </main>
       </div>
 
-      <!-- Right Sidebar -->
-      <div class="col-lg-2">
-        <div class="mtb-card mb-3">
-          <div class="mtb-card-header" style="background:var(--mtb-green)">
-            <i class="bi bi-calendar-event me-1"></i> Upcoming Trainings
-          </div>
-          <div class="mtb-card-body">
-            <div class="mb-2">
-              <p class="mb-0 fw-medium" style="font-size:0.8125rem">AML/CFT Refresher</p>
-              <p class="mb-0 text-muted" style="font-size:0.6875rem">Jan 30, 2026 · 10:00 AM</p>
+      <!-- RIGHT SIDEBAR (col-3) -->
+      <div class="col-lg-3 order-2 order-lg-0">
+        <aside class="d-flex flex-column gap-2">
+          <!-- Upcoming Trainings -->
+          <div class="mtb-card overflow-hidden">
+            <div class="mtb-card-header d-flex align-items-center gap-2" style="background:var(--mtb-teal)"><i class="bi bi-mortarboard"></i> Upcoming Trainings</div>
+            <div class="p-3">
+              <div class="d-flex gap-1 mb-2">
+                <button class="btn btn-sm flex-grow-1 fw-medium text-white training-month active" style="font-size:0.6875rem;padding:0.25rem 0.5rem;border-radius:9999px;background:var(--mtb-teal)" data-month="Jan">Jan</button>
+                <button class="btn btn-sm flex-grow-1 fw-medium btn-outline-secondary training-month" style="font-size:0.6875rem;padding:0.25rem 0.5rem;border-radius:9999px" data-month="Feb">Feb</button>
+                <button class="btn btn-sm flex-grow-1 fw-medium btn-outline-secondary training-month" style="font-size:0.6875rem;padding:0.25rem 0.5rem;border-radius:9999px" data-month="Mar">Mar</button>
+                <button class="btn btn-sm btn-outline-secondary flex-grow-1 fw-medium" style="font-size:0.6875rem;padding:0.25rem 0.25rem;border-radius:9999px">MTB Library</button>
+              </div>
+              <div class="text-center py-2 fst-italic text-muted" style="font-size:0.75rem" id="trainingText">No trainings scheduled for January</div>
             </div>
-            <div>
-              <p class="mb-0 fw-medium" style="font-size:0.8125rem">Core Banking Update</p>
-              <p class="mb-0 text-muted" style="font-size:0.6875rem">Feb 05, 2026 · 2:00 PM</p>
-            </div>
           </div>
-        </div>
 
-        <div class="mtb-card mb-3">
-          <div class="mtb-card-header" style="background:var(--mtb-purple)">
-            <i class="bi bi-bar-chart me-1"></i> Business Dashboard
+          <!-- Quick Links -->
+          <div class="mtb-card overflow-hidden">
+            <a href="#" class="d-flex align-items-center gap-2 px-3 py-2 text-decoration-none" style="color:var(--foreground);border-bottom:1px solid var(--border-color)"><div class="rounded d-flex align-items-center justify-content-center" style="width:28px;height:28px;background:var(--mtb-blue)"><i class="bi bi-search text-white" style="font-size:0.875rem"></i></div><span class="fw-medium" style="font-size:0.875rem">Internal JobWatch</span></a>
+            <a href="#" class="d-flex align-items-center gap-2 px-3 py-2 text-decoration-none" style="color:var(--foreground);border-bottom:1px solid var(--border-color)"><div class="rounded d-flex align-items-center justify-content-center" style="width:28px;height:28px;background:var(--mtb-teal)"><i class="bi bi-heart-pulse text-white" style="font-size:0.875rem"></i></div><span class="fw-medium" style="font-size:0.875rem">Life & Medical Insurance</span></a>
+            <a href="#" class="d-flex align-items-center gap-2 px-3 py-2 text-decoration-none" style="color:var(--foreground);border-bottom:1px solid var(--border-color)"><div class="rounded d-flex align-items-center justify-content-center" style="width:28px;height:28px;background:var(--mtb-blue)"><i class="bi bi-headset text-white" style="font-size:0.875rem"></i></div><span class="fw-medium" style="font-size:0.875rem">CBS-Support</span></a>
+            <a href="#" class="d-flex align-items-center gap-2 px-3 py-2 text-decoration-none" style="color:var(--foreground)"><div class="rounded d-flex align-items-center justify-content-center" style="width:28px;height:28px;background:var(--mtb-blue)"><i class="bi bi-display text-white" style="font-size:0.875rem"></i></div><span class="fw-medium" style="font-size:0.875rem">IT Service Desk</span></a>
           </div>
-          <div class="mtb-card-body text-center">
-            <p class="mb-1" style="font-size:0.75rem;color:var(--muted-fg)">Total Deposits</p>
-            <h5 class="mb-0 fw-bold" style="color:var(--mtb-teal)">৳ 45,230 Cr</h5>
-          </div>
-        </div>
 
-        <div class="mtb-card">
-          <div class="mtb-card-header" style="background:var(--mtb-red)">
-            <i class="bi bi-exclamation-triangle me-1"></i> Alerts
+          <!-- CBS Apps -->
+          <div class="mtb-card overflow-hidden"><button class="expandable-header w-100 border-0" style="background:var(--mtb-blue)" data-bs-toggle="collapse" data-bs-target="#cbsApps"><div class="d-flex align-items-center gap-2"><i class="bi bi-display"></i><span>CBS Apps</span></div><i class="bi bi-chevron-right" style="font-size:0.75rem"></i></button><div class="collapse" id="cbsApps"><div class="p-2"><a href="#" class="sidebar-link">Core Banking System</a><a href="#" class="sidebar-link">Trade Finance</a><a href="#" class="sidebar-link">Loan Management</a></div></div></div>
+
+          <!-- Online Apps -->
+          <div class="mtb-card overflow-hidden"><button class="expandable-header w-100 border-0" style="background:var(--mtb-green)" data-bs-toggle="collapse" data-bs-target="#onlineApps"><div class="d-flex align-items-center gap-2"><i class="bi bi-globe"></i><span>Online Apps</span></div><i class="bi bi-chevron-right" style="font-size:0.75rem"></i></button><div class="collapse" id="onlineApps"><div class="p-2"><a href="#" class="sidebar-link">Internet Banking</a><a href="#" class="sidebar-link">Mobile Banking</a><a href="#" class="sidebar-link">Agent Banking</a></div></div></div>
+
+          <!-- Alerts -->
+          <div class="mtb-card overflow-hidden"><button class="expandable-header w-100 border-0" style="background:var(--mtb-orange)" data-bs-toggle="collapse" data-bs-target="#alertsPanel"><div class="d-flex align-items-center gap-2"><i class="bi bi-bell"></i><span>Alerts</span></div><div class="d-flex align-items-center gap-1"><span class="badge-new">6 New</span><i class="bi bi-chevron-right" style="font-size:0.75rem"></i></div></button><div class="collapse" id="alertsPanel"><div><div class="alert-item"><p class="mb-0 fw-medium" style="font-size:0.875rem">System maintenance scheduled for tonight</p><p class="mb-0 text-muted" style="font-size:0.625rem">2 hours ago</p></div><div class="alert-item"><p class="mb-0 fw-medium" style="font-size:0.875rem">New security update available</p><p class="mb-0 text-muted" style="font-size:0.625rem">5 hours ago</p></div><div class="alert-item"><p class="mb-0 fw-medium" style="font-size:0.875rem">Password expiry reminder</p><p class="mb-0 text-muted" style="font-size:0.625rem">1 day ago</p></div><div class="alert-item"><p class="mb-0 fw-medium" style="font-size:0.875rem">New circular published</p><p class="mb-0 text-muted" style="font-size:0.625rem">1 day ago</p></div><div class="alert-item"><p class="mb-0 fw-medium" style="font-size:0.875rem">Training registration deadline</p><p class="mb-0 text-muted" style="font-size:0.625rem">2 days ago</p></div><div class="alert-item"><p class="mb-0 fw-medium" style="font-size:0.875rem">Holiday schedule updated</p><p class="mb-0 text-muted" style="font-size:0.625rem">3 days ago</p></div></div></div></div>
+
+          <!-- Business Dashboards -->
+          <div class="mtb-card overflow-hidden"><button class="expandable-header w-100 border-0" style="background:var(--mtb-purple)" data-bs-toggle="collapse" data-bs-target="#bizDash"><div class="d-flex align-items-center gap-2"><i class="bi bi-bar-chart-line"></i><span>Business Dashboards</span></div><i class="bi bi-chevron-right" style="font-size:0.75rem"></i></button><div class="collapse" id="bizDash"><div class="p-2"><a href="#" class="sidebar-link">MIS Dashboard</a><a href="#" class="sidebar-link">Performance Analytics</a><a href="#" class="sidebar-link">Risk Dashboard</a></div></div></div>
+
+          <!-- MTBian Dashboard -->
+          <div class="mtb-card overflow-hidden"><button class="expandable-header w-100 border-0" style="background:var(--mtb-teal)" data-bs-toggle="collapse" data-bs-target="#mtbianDash"><div class="d-flex align-items-center gap-2"><i class="bi bi-bar-chart-line"></i><span>MTBian Dashboard</span></div><i class="bi bi-chevron-right" style="font-size:0.75rem"></i></button><div class="collapse" id="mtbianDash"><div class="p-2"><a href="#" class="sidebar-link">My Performance</a><a href="#" class="sidebar-link">Leave Balance</a><a href="#" class="sidebar-link">Attendance</a></div></div></div>
+
+          <!-- Info & Archives -->
+          <div class="mtb-card overflow-hidden"><button class="expandable-header w-100 border-0" style="background:linear-gradient(90deg,#c06090,#d080a0)" data-bs-toggle="collapse" data-bs-target="#infoArchives"><div class="d-flex align-items-center gap-2"><i class="bi bi-archive"></i><span>Info & Archives</span></div><i class="bi bi-chevron-right" style="font-size:0.75rem"></i></button><div class="collapse" id="infoArchives"><div class="p-2"><a href="#" class="sidebar-link">Document Archive</a><a href="#" class="sidebar-link">Policy Library</a><a href="#" class="sidebar-link">Historical Data</a></div></div></div>
+
+          <!-- Shreya Banner -->
+          <div class="mtb-card overflow-hidden" style="background:linear-gradient(135deg,#1a5555,#2a6666)"><div class="p-3 text-center"><div class="mx-auto mb-1 rounded d-flex align-items-center justify-content-center" style="width:64px;height:64px;background:rgba(255,255,255,0.1)"><span style="font-size:2rem">🌸</span></div><p class="mb-0 text-white fw-bold" style="font-size:0.875rem">SHREYA</p><p class="mb-0 text-white-50" style="font-size:0.5625rem">MTB Women's Platform</p></div></div>
+
+          <!-- A-Face-A-Day -->
+          <div class="mtb-card overflow-hidden">
+            <div class="mtb-card-header" style="background:var(--mtb-blue)">A-Face-A-Day</div>
+            <div class="p-3"><div class="d-flex align-items-start gap-3"><div class="rounded border d-flex align-items-center justify-content-center flex-shrink-0" style="width:48px;height:56px;background:var(--background);border-color:var(--border-color)"><i class="bi bi-person" style="font-size:1.5rem;color:var(--muted-fg);opacity:0.4"></i></div><div class="flex-grow-1" style="font-size:0.6875rem;line-height:1.5;color:var(--foreground)">Our today's face is <span class="fw-semibold">Sathi Parvin</span> who is working in Cash Department at our Shyamoli Branch.<div class="mt-2 d-flex align-items-center gap-2" style="font-size:0.625rem"><a href="#" class="mtb-link">know More</a><span style="color:var(--mtb-orange)">●</span><a href="#" class="text-decoration-none" style="color:var(--mtb-orange)">congratulate</a></div></div></div></div>
           </div>
-          <div class="mtb-card-body">
-            <div class="alert-item px-0">
-              <p class="mb-0 fw-medium" style="font-size:0.8125rem">Password expires in 7 days</p>
-              <p class="mb-0 text-muted" style="font-size:0.6875rem">Change via IT Portal</p>
-            </div>
-          </div>
-        </div>
+        </aside>
       </div>
+
+      <!-- Mobile fallback -->
+      <div class="col-12 d-lg-none order-3"><div class="mtb-card p-3"><p class="mb-0 text-muted text-center" style="font-size:0.75rem">Sidebar content available on desktop view</p></div></div>
     </div>
-  </main>
+  </div>
 
-  <!-- Footer -->
-  <footer class="mtb-footer mt-4">
-    <div class="container-fluid px-4 py-3 d-flex flex-column flex-sm-row align-items-center justify-content-between gap-2" style="max-width:1600px;margin:0 auto">
-      <p class="mb-0">© Mutual Trust Bank PLC. All rights reserved.</p>
-      <div class="d-flex gap-3">
-        <a href="#" class="text-decoration-none" style="color:var(--muted-fg)">IT Support</a>
-        <a href="#" class="text-decoration-none" style="color:var(--muted-fg)">Privacy Policy</a>
-        <a href="#" class="text-decoration-none" style="color:var(--muted-fg)">Terms of Use</a>
-      </div>
-      <div class="d-flex align-items-center gap-2">
-        <span>Powered by</span>
-        <span class="badge text-white" style="background:var(--mtb-orange);font-size:0.625rem">DBD</span>
-        <span>&</span>
-        <span class="badge text-white" style="background:var(--mtb-blue);font-size:0.625rem">ITD</span>
+  <!-- FOOTER -->
+  <footer class="border-top mt-4" style="background:var(--card-bg);border-color:var(--border-color)">
+    <div class="container-fluid px-4 py-3" style="max-width:1600px;margin:0 auto">
+      <div class="d-flex flex-column flex-sm-row align-items-center justify-content-between gap-2" style="font-size:0.75rem;color:var(--muted-fg)">
+        <p class="mb-0">© Mutual Trust Bank PLC. All rights reserved.</p>
+        <div class="d-flex align-items-center gap-3"><a href="#" class="text-decoration-none" style="color:var(--muted-fg)">IT Support</a><a href="#" class="text-decoration-none" style="color:var(--muted-fg)">Privacy Policy</a><a href="#" class="text-decoration-none" style="color:var(--muted-fg)">Terms of Use</a></div>
+        <div class="d-flex align-items-center gap-2"><span>Powered by</span><span class="badge text-white" style="background:var(--mtb-orange);font-size:0.625rem">DBD</span><span>&</span><span class="badge text-white" style="background:var(--mtb-blue);font-size:0.625rem">ITD</span></div>
       </div>
     </div>
   </footer>
