@@ -285,3 +285,35 @@ body {
   background-color: var(--border-color) !important;
   color: var(--foreground) !important;
 }
+
+/* Department/Branch Title Section */
+.dept-title-section {
+  padding: 1.5rem 0;
+  background: linear-gradient(135deg, rgba(13,148,136,0.03), rgba(13,148,136,0.08));
+  border-bottom: 1px solid var(--border-color);
+}
+
+.dept-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--mtb-teal);
+  line-height: 1.3;
+}
+
+/* Staff Member Card */
+.staff-member {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border-color);
+  transition: background-color 0.15s ease;
+}
+
+.staff-member:last-child { border-bottom: none; }
+.staff-member:hover { background-color: rgba(13,148,136,0.03); }
+
+[data-theme="dark"] .staff-member:hover {
+  background-color: rgba(255,255,255,0.03);
+}
+
+[data-theme="dark"] .dept-title-section {
+  background: linear-gradient(135deg, rgba(13,148,136,0.05), rgba(13,148,136,0.1));
+}
