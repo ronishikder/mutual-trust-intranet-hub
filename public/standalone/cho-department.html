@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Group Human Resources Division - MNet</title>
+  <meta name="description" content="MTB Group Human Resources Division - Corporate Intranet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="css/theme.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- GRADIENT BAR -->
+  <div class="mtb-gradient-bar"></div>
+
+  <!-- HEADER -->
+  <header class="mtb-header">
+    <div class="container-fluid d-flex align-items-center justify-content-between py-2 px-4" style="height:56px;max-width:1600px;margin:0 auto">
+      <div class="d-flex align-items-center gap-3">
+        <img src="https://mutual-trust-intranet-hub.lovable.app/assets/mtb-logo-DsVEZOWl.png" alt="Mutual Trust Bank" style="height:40px" class="object-fit-contain">
+      </div>
+      <div class="d-none d-md-flex align-items-center flex-grow-1 mx-4" style="max-width:600px">
+        <div class="position-relative w-100">
+          <i class="bi bi-search position-absolute" style="left:12px;top:50%;transform:translateY(-50%);color:var(--muted-fg)"></i>
+          <input type="search" id="headerSearch" placeholder="Search employees, departments, circulars, applications..." class="form-control form-control-sm-custom w-100">
+        </div>
+      </div>
+      <div class="d-flex align-items-center gap-2">
+        <button id="themeToggle" class="btn btn-link p-2" style="color:var(--muted-fg)" aria-label="Toggle theme"><i class="bi bi-moon" style="font-size:1.125rem"></i></button>
+        <div class="d-flex align-items-center gap-2">
+          <span class="text-muted" style="font-size:0.75rem">Quick Jump :</span>
+          <span class="fw-medium" style="font-size:0.75rem;color:var(--foreground)">CHO</span>
+          <select class="form-select form-select-sm" style="width:200px;font-size:0.75rem">
+            <option selected>Group Human Resources Divisi...</option>
+            <option>Group Finance</option>
+            <option>Legal Affairs Division</option>
+          </select>
+        </div>
+        <div class="d-flex align-items-center gap-2 px-3 border-start" style="border-color:var(--border-color)">
+          <a href="index.html" class="text-decoration-none d-flex align-items-center gap-1" style="font-size:0.75rem;color:var(--mtb-teal)"><i class="bi bi-house"></i> Home</a>
+        </div>
+        <img src="https://mutual-trust-intranet-hub.lovable.app/assets/mnet-logo-KsVrHLQr.png" alt="MNet" style="height:28px" class="object-fit-contain">
+      </div>
+    </div>
+  </header>
+
+  <!-- NAVIGATION BAR -->
+  <nav class="nav-bar position-relative" id="mainNav">
+    <div class="container-fluid px-4" style="max-width:1600px;margin:0 auto">
+      <ul class="nav gap-1 mb-0">
+        <li class="nav-item"><button class="nav-item-btn active" data-mega-toggle="cho"><i class="bi bi-building"></i> CHO <i class="bi bi-chevron-down" style="font-size:0.75rem"></i></button></li>
+        <li class="nav-item"><button class="nav-item-btn" data-mega-toggle="branches"><i class="bi bi-geo-alt"></i> Branches <i class="bi bi-chevron-down" style="font-size:0.75rem"></i></button></li>
+        <li class="nav-item"><button class="nav-item-btn" data-mega-toggle="divisions"><i class="bi bi-diagram-3"></i> Divisions <i class="bi bi-chevron-down" style="font-size:0.75rem"></i></button></li>
+        <li class="nav-item"><button class="nav-item-btn" data-mega-toggle="subsidiaries"><i class="bi bi-briefcase"></i> Subsidiaries <i class="bi bi-chevron-down" style="font-size:0.75rem"></i></button></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- PAGE TITLE SECTION -->
+  <div class="dept-title-section">
+    <div class="container-fluid px-4" style="max-width:1600px;margin:0 auto">
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <h2 class="dept-title mb-0">Group Human<br>Resources<br>Division</h2>
+        </div>
+        <div class="col-lg-6">
+          <!-- Reporting Line -->
+          <div class="mtb-card overflow-hidden">
+            <div class="mtb-card-header d-flex align-items-center gap-2" style="background:var(--mtb-orange)">
+              <i class="bi bi-diagram-2"></i> Reporting Line
+            </div>
+            <div class="p-3">
+              <div class="d-flex align-items-center justify-content-between">
+                <span class="fw-semibold" style="font-size:0.8125rem;color:var(--mtb-teal)">Group Human Resources Division reports to</span>
+                <div class="d-flex align-items-center gap-2">
+                  <div class="rounded-circle d-flex align-items-center justify-content-center" style="width:36px;height:36px;background:rgba(13,148,136,0.1)">
+                    <i class="bi bi-person" style="color:var(--mtb-teal)"></i>
+                  </div>
+                  <div>
+                    <p class="mb-0 fw-semibold" style="font-size:0.75rem">Syed Mahbubar Rahman</p>
+                    <p class="mb-0 text-muted" style="font-size:0.625rem">Managing Director & CEO</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mt-2 d-flex align-items-center gap-2 p-2 rounded" style="background:rgba(13,148,136,0.08)">
+            <i class="bi bi-geo-alt-fill" style="color:var(--mtb-red)"></i>
+            <span class="fw-semibold" style="font-size:0.8125rem;color:var(--mtb-teal)">Located@ MTB Centre, 5th Floor (SUN)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT (3:6:3 Grid) -->
+  <div class="container-fluid px-4 py-3" style="max-width:1600px;margin:0 auto">
+    <div class="row g-3">
+
+      <!-- LEFT SIDEBAR (col-3) - GHR App Store & Forms -->
+      <div class="col-lg-3 d-none d-lg-block">
+        <div class="d-flex flex-column gap-2">
+
+          <!-- GHR App Store -->
+          <div class="mtb-card overflow-hidden">
+            <div class="mtb-card-header d-flex align-items-center gap-2" style="background:var(--mtb-green)">
+              <i class="bi bi-grid-3x3-gap"></i> GHR App Store
+            </div>
+            <div class="p-2">
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><i class="bi bi-star-fill" style="color:var(--mtb-orange);font-size:0.5rem"></i> Annual Salary Increment 2025</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><i class="bi bi-star-fill" style="color:var(--mtb-orange);font-size:0.5rem"></i> Salary Fixation after Promotion in 2025</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><i class="bi bi-star-fill" style="color:var(--mtb-orange);font-size:0.5rem"></i> HR Onboarding</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><i class="bi bi-check-circle" style="color:var(--mtb-green);font-size:0.625rem"></i> Ack. Code of Conduct</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><i class="bi bi-check-circle" style="color:var(--mtb-green);font-size:0.625rem"></i> Mandatory Leave Plan</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><i class="bi bi-check-circle" style="color:var(--mtb-green);font-size:0.625rem"></i> Online Leave</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><i class="bi bi-file-earmark" style="color:var(--mtb-blue);font-size:0.625rem"></i> Application for NOC/LOI/Salary Certificate/Pay Slip</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><i class="bi bi-phone" style="color:var(--mtb-blue);font-size:0.625rem"></i> Mobile Reimbursement</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><i class="bi bi-heart" style="color:var(--mtb-red);font-size:0.625rem"></i> Life & Medical Insurance</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><i class="bi bi-speedometer" style="color:var(--mtb-purple);font-size:0.625rem"></i> Performance Appraisal System</a>
+            </div>
+          </div>
+
+          <!-- Employee Taxes -->
+          <div class="mtb-card overflow-hidden">
+            <div class="mtb-card-header" style="background:var(--mtb-teal)">Employee Taxes</div>
+            <div class="p-2">
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> Confirmation: Tax Return Sub.</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> Income Tax: Investment Requirement</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> My Income Tax Certificate <span class="badge-new">New</span></a>
+            </div>
+          </div>
+
+          <!-- Employee Provident Fund -->
+          <div class="mtb-card overflow-hidden">
+            <div class="mtb-card-header" style="background:var(--mtb-teal)">Employee Provident Fund</div>
+            <div class="p-2">
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> Confirmation: My PF Investment Option</a>
+            </div>
+          </div>
+
+          <!-- Performance Appraisal Forms -->
+          <div class="mtb-card overflow-hidden">
+            <div class="mtb-card-header" style="background:var(--mtb-blue)">Performance Appraisal Forms (PAF)</div>
+            <div class="p-2">
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-blue);font-size:0.5rem">▸</span> Branch Category-wise Role Distribution</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-blue);font-size:0.5rem">▸</span> Annual Performance Appraisal Form</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-blue);font-size:0.5rem">▸</span> JO (Job Objectives) - KPI- Target Form</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-blue);font-size:0.5rem">▸</span> JD (Job Description) Form</a>
+            </div>
+          </div>
+
+          <!-- MTB Code of Conduct -->
+          <div class="mtb-card overflow-hidden">
+            <div class="mtb-card-header" style="background:var(--mtb-red)">MTB Code of Conduct</div>
+            <div class="p-2">
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-red);font-size:0.5rem">▸</span> MTB Circular Letter # GHR/32/2018</a>
+            </div>
+          </div>
+
+          <!-- Other Forms -->
+          <div class="mtb-card overflow-hidden">
+            <div class="mtb-card-header" style="background:var(--mtb-purple)">Other Forms</div>
+            <div class="p-2">
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-purple);font-size:0.5rem">▸</span> Exit Interview Form</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-purple);font-size:0.5rem">▸</span> Job Confirmation (Forwarding Letter)</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-purple);font-size:0.5rem">▸</span> Job Confirmation (Appraisal Form)</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-purple);font-size:0.5rem">▸</span> Death Benefit Nomination</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-purple);font-size:0.5rem">▸</span> PF Nomination</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-purple);font-size:0.5rem">▸</span> Terms and Conditions of PF Loan</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-purple);font-size:0.5rem">▸</span> PF Loan Application Form</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-purple);font-size:0.5rem">▸</span> Internship Evaluation Form</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-purple);font-size:0.5rem">▸</span> Gratuity Nominee Form</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-purple);font-size:0.5rem">▸</span> Leave Application</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-purple);font-size:0.5rem">▸</span> Car Purchase Application</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-purple);font-size:0.5rem">▸</span> PF Enrollment & Nominee Form</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-purple);font-size:0.5rem">▸</span> Handover Takeover Form</a>
+            </div>
+          </div>
+
+          <!-- HR Policies -->
+          <div class="mtb-card overflow-hidden">
+            <div class="mtb-card-header" style="background:var(--mtb-teal)">HR Policies</div>
+            <div class="p-2">
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> MTB Know Your Employee Policy</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> MTB Employees Grievance Redressal Policy</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> Leave Management FAQ</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> Miscarriage Leave Policy</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> MTB Whistleblowing Policy</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> EHBL/YEHF Product Guide Program (PPG)</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> MTB Employee Separation Policy</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> MTB Promotion Policy</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> MTB Performance Bonus Policy</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> MTB Recruitment & Selection Policy</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> Employees Car Loan Revised</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> MTB Paternity Leave Policy</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> Speak up Policy</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> MTB Training Policy</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> Group Life Insurance Facility</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> MTB Employee Provident Fund</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> MTB Anti-Harassment Policy</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> Motor Pool Policy</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> Executives' Car Policy</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> MTB Employees' Welfare Fund Policy</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> Medical Assistance Fund</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> Mobile Phones for Employees</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> Travel & Daily Allowance (Foreign)</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> Travel & Daily Allowance (Domestic)</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> Gratuity Scheme for Employees</a>
+            </div>
+          </div>
+
+          <!-- Employee Disciplinary Dashboard -->
+          <div class="mtb-card overflow-hidden">
+            <div class="mtb-card-header" style="background:var(--mtb-red)">Employee Disciplinary Dashboard</div>
+            <div class="p-2">
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-red);font-size:0.5rem">▸</span> Disciplinary actions taken against employees in 2023</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-red);font-size:0.5rem">▸</span> Disciplinary actions taken against employees in 2022</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-red);font-size:0.5rem">▸</span> Disciplinary actions taken against employees in 2021</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-red);font-size:0.5rem">▸</span> Disciplinary actions taken against employees in 2020</a>
+            </div>
+          </div>
+
+          <!-- Trainings -->
+          <div class="mtb-card overflow-hidden">
+            <div class="mtb-card-header" style="background:var(--mtb-orange)">Trainings</div>
+            <div class="p-2">
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-orange);font-size:0.5rem">▸</span> 'Time and Stress Management' Training Detail</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-orange);font-size:0.5rem">▸</span> "Mastering Self-Leadership: Growth Mindset"</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-orange);font-size:0.5rem">▸</span> "Mastering Self-Leadership: Growth Mindset" Training Detail</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-orange);font-size:0.5rem">▸</span> Focus Group Discussion on Gender Diversity Training Detail</a>
+            </div>
+          </div>
+
+          <!-- Branch Reportings -->
+          <div class="mtb-card overflow-hidden">
+            <div class="mtb-card-header" style="background:var(--mtb-teal)">Branch Reportings</div>
+            <div class="p-2">
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> Contractual Staff Salary January 2026</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> Sending Newly Assigned Service RM Code against A/C No.</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> Sending BM's, BCM's, SME RM's and GB- Customer Service's SME Achievements</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> Photograph of Branch/Sub-Branch Signboard</a>
+              <div class="text-end mt-1"><a href="#" class="mtb-link fw-medium" style="font-size:0.625rem">SEE REPORTS</a></div>
+            </div>
+          </div>
+
+          <!-- Events in Photos -->
+          <div class="mtb-card overflow-hidden">
+            <div class="mtb-card-header" style="background:var(--mtb-blue)">Events in Photos</div>
+            <div class="p-2">
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-blue);font-size:0.5rem">▸</span> Mutual Trust Bank Partners with Halt Prize 2025 at Asian University for Women (AUW) as Title Sponsor</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-blue);font-size:0.5rem">▸</span> MTB Participated in IUB Career & Networking Day 2024 <i class="bi bi-camera" style="font-size:0.625rem;color:var(--mtb-blue)"></i></a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-blue);font-size:0.5rem">▸</span> "Foundation Training for In-service Officials" <i class="bi bi-camera" style="font-size:0.625rem;color:var(--mtb-blue)"></i></a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-blue);font-size:0.5rem">▸</span> Career and networking day 2023 Independent University, Bangladesh</a>
+            </div>
+          </div>
+
+          <!-- MNet Notices -->
+          <div class="mtb-card overflow-hidden">
+            <div class="mtb-card-header" style="background:var(--mtb-green)">MNet Notices</div>
+            <div class="p-2">
+              <div class="p-2 mb-1 rounded" style="background:rgba(255,193,7,0.1);border:1px solid rgba(255,193,7,0.3);font-size:0.6875rem;line-height:1.5">
+                <strong>20/01/2026 :</strong> Zoom-based "Information & Cyber Security Awareness" training scheduled in January 29, 2026 from 4.00 PM to 6.00 PM has been postponed. New schedule will be communicated soon.
+              </div>
+              <div class="p-2 rounded" style="background:rgba(255,193,7,0.1);border:1px solid rgba(255,193,7,0.3);font-size:0.6875rem;line-height:1.5">
+                <strong>19/01/2026 :</strong> Please check your RMwise Deposit Contribution till December 2025 From: MNet>CBS Apps>MTB CBS MIS>Daily>RMwise Deposit
+              </div>
+            </div>
+          </div>
+
+          <!-- Homepage Content Managers -->
+          <div class="mtb-card overflow-hidden">
+            <div class="mtb-card-header" style="background:var(--mtb-orange)">Homepage Content Managers:</div>
+            <div class="p-2">
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><i class="bi bi-person-circle" style="color:var(--mtb-teal);font-size:0.625rem"></i> Mohammad Abdus Salam</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><i class="bi bi-person-circle" style="color:var(--mtb-teal);font-size:0.625rem"></i> Md. Ashraf Ali</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><i class="bi bi-gear" style="color:var(--muted-fg);font-size:0.625rem"></i> Content Managers' List</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MAIN CONTENT (col-3) - Committees -->
+      <div class="col-lg-3">
+        <div class="d-flex flex-column gap-2">
+          <!-- MTB Committees -->
+          <div class="mtb-card overflow-hidden">
+            <div class="mtb-card-header" style="background:var(--mtb-teal)">MTB Committees</div>
+            <div class="p-2" style="max-height:600px;overflow-y:auto">
+              <a href="#" class="sidebar-link py-1" style="font-size:0.6875rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> Streamlining the Disposal of Inward Remittances and Enhancing Operational Efficiency Committee</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.6875rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> RBS Working Committee</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.6875rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> RBS Coordination Committee</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.6875rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> Reconstitution of 'Advisory Committee of MTB Club'</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.6875rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> MTB ISO 20000-1 (ITSMS), and ISO 22301 (BCMS) Working Committees</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.6875rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> Formation of "ISS Desk"</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.6875rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> MTB ISO 20000 (ITSM) and 22301 (BCMS) Steering Committee</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.6875rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> Cost Rationalization Committee</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.6875rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> Formation of Recovery Task Force for Chattogram Regional Branches</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.6875rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> Promotion Committee</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.6875rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> IFRS 9 Implementation Working Committee</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.6875rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> IFRS 9 Implementation Supervisory Committee</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.6875rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> Written off Loan Recovery Unit</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.6875rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> Formation of the 'Willful Defaulter Identification Unit'</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.6875rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> Re-constitution of "MTB Recovery Plan Advisory" and 'Sub-Committee'</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.6875rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> Reconstitution of Executive Committee of MTB Club</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.6875rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> Foreign Direct Investment (FDI) Monitoring Committee</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.6875rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> Formation of Financial Literacy Wing</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.6875rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> Extended MANCOM (EMC)</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.6875rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> Management Information System (MIS) Committee</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.6875rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> DII Testing Committee</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.6875rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> e-KYC Guidelines Implementation Committee</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.6875rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> Post Import Financing (PIF) Monitoring Unit</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.6875rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> MTB ISO 27001 Implementation Team</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.6875rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> MTB ISO 27001 Steering Committee</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.6875rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> MTB IT Steering Committee</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.6875rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> MTB IT Risk Management Committee</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.6875rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> Archiving of Documents Committee</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.6875rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> Special Cell for Monitoring of Large Loans</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.6875rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> Enterprise Risk Associate Forum (ERAF)</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.6875rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> Employee House Building Loan Committee (EHBLC)</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.6875rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> MTB AML & CFT Compliance Solution Implementation</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.6875rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> MTB TBML Compliance Solution Implementation Committee</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.6875rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> MTB Property Valuation Committee</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.6875rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> MTB Senior Management Team (SMT)</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.6875rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> MTB Computer Incident Response Team (CIRT)</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.6875rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> Network Expansion Steering Committee</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.6875rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> Central Compliance Committee (CCC)</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.6875rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> Tender Evaluation Committee (TEC)</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.6875rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> MTB IT Security Committee</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.6875rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> FATCA Compliance Committee</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.6875rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> Credit Risk Management Committee (CRMC)</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.6875rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> Executive Risk Management Committee (ERMC)</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.6875rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> Supervisory Review Process (SRP) Team</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.6875rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> Purchase Committee</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.6875rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> ALCO</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.6875rem"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> MANCOM</a>
+            </div>
+          </div>
+
+          <!-- Information -->
+          <div class="mtb-card overflow-hidden">
+            <div class="mtb-card-header" style="background:var(--mtb-blue)">Information</div>
+            <div class="p-2">
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-blue);font-size:0.5rem">▸</span> Organization Hierarchy</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-blue);font-size:0.5rem">▸</span> MTB Group Organogram</a>
+            </div>
+          </div>
+
+          <!-- Instructions -->
+          <div class="mtb-card overflow-hidden">
+            <div class="mtb-card-header" style="background:var(--mtb-purple)">Instructions</div>
+            <div class="p-2">
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-purple);font-size:0.5rem">▸</span> Holidays for the Year 2026</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-purple);font-size:0.5rem">▸</span> Holidays for the Year 2025</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-purple);font-size:0.5rem">▸</span> Holidays of the Year 2024</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-purple);font-size:0.5rem">▸</span> Mandatory Leave of 15 Days</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-purple);font-size:0.5rem">▸</span> Maintaining Discipline</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-purple);font-size:0.5rem">▸</span> Mandatory Medical Checkup</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-purple);font-size:0.5rem">▸</span> MTB Dress Code</a>
+            </div>
+          </div>
+
+          <!-- Salary Calendar -->
+          <div class="mtb-card overflow-hidden">
+            <div class="mtb-card-header" style="background:var(--mtb-green)">Salary Calendar</div>
+            <div class="p-2">
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-green);font-size:0.5rem">▸</span> Salary Calendar 2026</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-green);font-size:0.5rem">▸</span> Salary Calendar 2025</a>
+            </div>
+          </div>
+
+          <!-- Delegation of Power -->
+          <div class="mtb-card overflow-hidden">
+            <div class="mtb-card-header" style="background:var(--mtb-orange)">Delegation of Power</div>
+            <div class="p-2">
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-orange);font-size:0.5rem">▸</span> Delegation of Administrative Power</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-orange);font-size:0.5rem">▸</span> Delegation of Financial Power</a>
+            </div>
+          </div>
+
+          <!-- Branch Staff Distribution Summary -->
+          <div class="mtb-card overflow-hidden">
+            <div class="mtb-card-header" style="background:var(--mtb-teal)">Branch Staff Distribution Summary</div>
+            <div class="table-responsive">
+              <table class="table table-mtb mb-0">
+                <tbody>
+                  <tr><td class="px-3 py-1">Branch Manager</td><td class="text-end px-3 py-1 fw-semibold">177</td></tr>
+                  <tr><td class="px-3 py-1">Branch Operations Manager</td><td class="text-end px-3 py-1 fw-semibold">118</td></tr>
+                  <tr><td class="px-3 py-1">Cash Department</td><td class="text-end px-3 py-1 fw-semibold">369</td></tr>
+                  <tr><td class="px-3 py-1">Dept undefined</td><td class="text-end px-3 py-1 fw-semibold">38</td></tr>
+                  <tr><td class="px-3 py-1">Facilities Department</td><td class="text-end px-3 py-1 fw-semibold">10</td></tr>
+                  <tr><td class="px-3 py-1">GB- Customer Service</td><td class="text-end px-3 py-1 fw-semibold">431</td></tr>
+                  <tr><td class="px-3 py-1">Retail RM</td><td class="text-end px-3 py-1 fw-semibold">110</td></tr>
+                  <tr><td class="px-3 py-1">SME RM</td><td class="text-end px-3 py-1 fw-semibold">150</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT CONTENT (col-6) - Circulars & Staff -->
+      <div class="col-lg-6">
+        <div class="d-flex flex-column gap-3">
+
+          <!-- Circulars -->
+          <div class="mtb-card overflow-hidden">
+            <div class="px-3 py-2 d-flex align-items-center justify-content-between" style="background:var(--mtb-teal)">
+              <div class="d-flex align-items-center gap-2">
+                <span class="text-white fw-semibold" style="font-size:0.75rem">Circulars (1018)</span>
+              </div>
+              <div class="d-flex align-items-center gap-2">
+                <i class="bi bi-search text-white" style="font-size:0.75rem"></i>
+                <span class="text-white" style="font-size:0.75rem">Search</span>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <table class="table table-mtb mb-0">
+                <thead>
+                  <tr>
+                    <th class="px-3 py-2">Date</th>
+                    <th class="px-3 py-2">Subject</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td class="px-3 py-2" style="white-space:nowrap">20/01/2026</td><td class="px-3 py-2"><a href="#" class="fw-bold" style="color:var(--mtb-red);text-decoration:none">POWER OF ATTORNEY</a></td></tr>
+                  <tr><td class="px-3 py-2" style="white-space:nowrap">19/01/2026</td><td class="px-3 py-2"><a href="#" class="fw-bold" style="color:var(--mtb-red);text-decoration:none">POWER OF ATTORNEY</a></td></tr>
+                  <tr><td class="px-3 py-2" style="white-space:nowrap">14/01/2026</td><td class="px-3 py-2"><a href="#" class="fw-bold" style="color:var(--mtb-red);text-decoration:none">Mandatory Leave Plan for the year 2026</a></td></tr>
+                  <tr><td class="px-3 py-2" style="white-space:nowrap">30/12/2025</td><td class="px-3 py-2"><a href="#" class="mtb-link" style="font-size:0.75rem">Closure of Scheduled Banks on 31 December 2026 in Mourning of BNP Chairperson Begum Khaleda Zia</a></td></tr>
+                  <tr><td class="px-3 py-2" style="white-space:nowrap">22/12/2025</td><td class="px-3 py-2"><a href="#" class="mtb-link" style="font-size:0.75rem">Renaming of "Systems, Policies, Processes & Procedure Department (SPPD)" as "Operational Projects and Process Re-engineering Department"</a></td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="px-3 py-2 text-end"><a href="#" class="mtb-link fw-medium" style="font-size:0.75rem">Next >></a></div>
+          </div>
+
+          <!-- Departments under GHR -->
+          <div class="mtb-card overflow-hidden">
+            <div class="mtb-card-header" style="background:var(--mtb-blue)">Departments under Group Human Resources Division</div>
+            <div class="p-3">
+              <ul class="list-unstyled mb-0" style="font-size:0.8125rem">
+                <li class="mb-1"><span style="color:var(--mtb-teal);font-size:0.5rem">▸</span> HR Attached Staff</li>
+                <li class="mb-1 ms-3"><span style="color:var(--muted-fg);font-size:0.5rem">▸</span> Management Trainee</li>
+                <li class="mb-1 ms-3"><span style="color:var(--muted-fg);font-size:0.5rem">▸</span> HR Trainee Staff</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Shortcuts to GHR Units -->
+          <div class="mtb-card overflow-hidden">
+            <div class="px-3 py-2 d-flex align-items-center gap-2" style="background:rgba(13,148,136,0.05);border-bottom:1px solid var(--border-color)">
+              <i class="bi bi-bookmark-check" style="color:var(--mtb-teal)"></i>
+              <span class="fw-semibold" style="font-size:0.8125rem">Shortcuts to GHR Units</span>
+            </div>
+            <div class="px-3 py-2">
+              <div class="d-flex flex-wrap gap-2" style="font-size:0.75rem">
+                <a href="#cpo" class="mtb-link fw-medium">Chief People Officer (1)</a><span class="text-muted">|</span>
+                <a href="#er" class="mtb-link fw-medium">Employee Relations (1)</a><span class="text-muted">|</span>
+                <a href="#fw" class="mtb-link fw-medium">Facilities Wing (2)</a><span class="text-muted">|</span>
+                <a href="#hro" class="mtb-link fw-medium">HR Operations (5)</a><span class="text-muted">|</span>
+                <a href="#od" class="mtb-link fw-medium">Organizational Development (3)</a><span class="text-muted">|</span>
+                <a href="#rta" class="mtb-link fw-medium">Re-sourcing & Talent Acquisition (3)</a><span class="text-muted">|</span>
+                <a href="#rm" class="mtb-link fw-medium">Reward Management (3)</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Links -->
+          <div class="d-flex flex-wrap gap-3 align-items-center" style="font-size:0.75rem">
+            <a href="#" class="mtb-link d-flex align-items-center gap-1"><i class="bi bi-file-text"></i> Job Descriptions</a>
+            <a href="#" class="mtb-link d-flex align-items-center gap-1"><i class="bi bi-check-circle"></i> Availability</a>
+            <span class="text-muted"><i class="bi bi-eye"></i> Page Visitors: 387683</span>
+          </div>
+
+          <!-- List of Staff -->
+          <div class="mtb-card overflow-hidden">
+            <div class="mtb-card-header" style="background:var(--mtb-teal)">List of Staff</div>
+            <div class="p-0">
+              <div class="px-3 py-2 fw-bold" style="font-size:0.8125rem;background:rgba(255,193,7,0.1);border-bottom:1px solid var(--border-color)">
+                Unit Name Undefined <span style="color:var(--mtb-red)">◄</span>
+              </div>
+
+              <!-- Staff Member -->
+              <div class="staff-member">
+                <div class="d-flex align-items-start gap-3">
+                  <div class="rounded-circle d-flex align-items-center justify-content-center flex-shrink-0" style="width:48px;height:48px;background:rgba(13,148,136,0.1);border:2px solid rgba(13,148,136,0.3)">
+                    <i class="bi bi-person" style="color:var(--mtb-teal);font-size:1.25rem"></i>
+                  </div>
+                  <div class="flex-grow-1">
+                    <p class="mb-0 fw-bold" style="font-size:0.8125rem">Fabiha Khan Maisha</p>
+                    <div class="p-1 rounded mb-1" style="background:rgba(255,193,7,0.15);font-size:0.625rem;color:var(--mtb-red)">Please confirm your functional designation via Dept./Division Head.</div>
+                    <p class="mb-0 text-muted" style="font-size:0.6875rem">IP Phone: 2711</p>
+                    <p class="mb-0 text-muted" style="font-size:0.6875rem">Mobile: 01798097118</p>
+                    <p class="mb-0 text-muted" style="font-size:0.6875rem">Email: fabiha.khan@mutualtrustbank.com</p>
+                  </div>
+                  <span class="badge text-white" style="background:var(--mtb-green);font-size:0.5625rem">LOGGED IN</span>
+                </div>
+              </div>
+
+              <div class="staff-member">
+                <div class="d-flex align-items-start gap-3">
+                  <div class="rounded-circle d-flex align-items-center justify-content-center flex-shrink-0" style="width:48px;height:48px;background:rgba(13,148,136,0.1);border:2px solid rgba(13,148,136,0.3)">
+                    <i class="bi bi-person" style="color:var(--mtb-teal);font-size:1.25rem"></i>
+                  </div>
+                  <div class="flex-grow-1">
+                    <p class="mb-0 fw-bold" style="font-size:0.8125rem">Ayman Mustakim</p>
+                    <div class="p-1 rounded mb-1" style="background:rgba(255,193,7,0.15);font-size:0.625rem;color:var(--mtb-red)">Please confirm your functional designation via Dept./Division Head.</div>
+                    <p class="mb-0 text-muted" style="font-size:0.6875rem">Mobile: 01972130097</p>
+                    <p class="mb-0 text-muted" style="font-size:0.6875rem">Email: ayman.mustakim@mutualtrustbank.com</p>
+                  </div>
+                  <span class="badge text-white" style="background:var(--mtb-green);font-size:0.5625rem">LOGGED IN</span>
+                </div>
+              </div>
+
+              <!-- Chief People Officer Section -->
+              <div class="px-3 py-2 fw-bold" id="cpo" style="font-size:0.8125rem;background:rgba(13,148,136,0.05);border-bottom:1px solid var(--border-color);border-top:1px solid var(--border-color)">
+                Chief People Officer
+              </div>
+              <div class="staff-member">
+                <div class="d-flex align-items-start gap-3">
+                  <div class="rounded-circle d-flex align-items-center justify-content-center flex-shrink-0" style="width:48px;height:48px;background:rgba(13,148,136,0.1);border:2px solid rgba(13,148,136,0.3)">
+                    <i class="bi bi-person" style="color:var(--mtb-teal);font-size:1.25rem"></i>
+                  </div>
+                  <div class="flex-grow-1">
+                    <p class="mb-0 fw-bold" style="font-size:0.8125rem">Masud Mushfiq Zaman, Chief People Officer</p>
+                    <p class="mb-0 text-muted" style="font-size:0.6875rem">Office: Extn. 2550</p>
+                    <p class="mb-0 text-muted" style="font-size:0.6875rem">Mobile: 01711355940</p>
+                    <p class="mb-0 text-muted" style="font-size:0.6875rem">Email: mushfiq.zaman@mutualtrustbank.com</p>
+                  </div>
+                  <span class="badge text-white" style="background:var(--mtb-green);font-size:0.5625rem">LOGGED IN</span>
+                </div>
+              </div>
+
+              <!-- Reward Management Section -->
+              <div class="px-3 py-2 fw-bold" id="rm" style="font-size:0.8125rem;background:rgba(13,148,136,0.05);border-bottom:1px solid var(--border-color);border-top:1px solid var(--border-color)">
+                Reward Management
+              </div>
+              <div class="staff-member">
+                <div class="d-flex align-items-start gap-3">
+                  <div class="rounded-circle d-flex align-items-center justify-content-center flex-shrink-0" style="width:48px;height:48px;background:rgba(13,148,136,0.1);border:2px solid rgba(13,148,136,0.3)">
+                    <i class="bi bi-person" style="color:var(--mtb-teal);font-size:1.25rem"></i>
+                  </div>
+                  <div class="flex-grow-1">
+                    <p class="mb-0 fw-bold" style="font-size:0.8125rem">Muhammad Monirul Alam, Associate Manager</p>
+                    <p class="mb-0 text-muted" style="font-size:0.6875rem">Office: 984-6966 Ext: 2567, IP Phone: 4106</p>
+                    <p class="mb-0 text-muted" style="font-size:0.6875rem">Mobile: 01727368560</p>
+                    <p class="mb-0 text-muted" style="font-size:0.6875rem">Email: monirul@mutualtrustbank.com</p>
+                  </div>
+                  <span class="badge text-white" style="background:var(--mtb-green);font-size:0.5625rem">LOGGED IN</span>
+                </div>
+              </div>
+              <div class="staff-member">
+                <div class="d-flex align-items-start gap-3">
+                  <div class="rounded-circle d-flex align-items-center justify-content-center flex-shrink-0" style="width:48px;height:48px;background:rgba(13,148,136,0.1);border:2px solid rgba(13,148,136,0.3)">
+                    <i class="bi bi-person" style="color:var(--mtb-teal);font-size:1.25rem"></i>
+                  </div>
+                  <div class="flex-grow-1">
+                    <p class="mb-0 fw-bold" style="font-size:0.8125rem">Md. Rakibuzzaman, Assistant Manager</p>
+                    <p class="mb-0 text-muted" style="font-size:0.6875rem">Office: Extension: 2558</p>
+                    <p class="mb-0 text-muted" style="font-size:0.6875rem">IP Phone: 2712</p>
+                    <p class="mb-0 text-muted" style="font-size:0.6875rem">Mobile: 01717619618</p>
+                    <p class="mb-0 text-muted" style="font-size:0.6875rem">Email: rakibmtb@mutualtrustbank.com</p>
+                  </div>
+                  <span class="badge text-white" style="background:var(--mtb-green);font-size:0.5625rem">LOGGED IN</span>
+                </div>
+              </div>
+              <div class="staff-member">
+                <div class="d-flex align-items-start gap-3">
+                  <div class="rounded-circle d-flex align-items-center justify-content-center flex-shrink-0" style="width:48px;height:48px;background:rgba(13,148,136,0.1);border:2px solid rgba(13,148,136,0.3)">
+                    <i class="bi bi-person" style="color:var(--mtb-teal);font-size:1.25rem"></i>
+                  </div>
+                  <div class="flex-grow-1">
+                    <p class="mb-0 fw-bold" style="font-size:0.8125rem">Tesnova Rahman, Associate</p>
+                    <p class="mb-0 text-muted" style="font-size:0.6875rem">Office: Ext: 2571</p>
+                    <p class="mb-0 text-muted" style="font-size:0.6875rem">IP Phone: 2717</p>
+                    <p class="mb-0 text-muted" style="font-size:0.6875rem">Mobile: 01521502201</p>
+                    <p class="mb-0 text-muted" style="font-size:0.6875rem">Email: tesnova.rahman@mutualtrustbank.com</p>
+                  </div>
+                  <div class="d-flex flex-column gap-1 flex-shrink-0">
+                    <span class="badge" style="background:var(--mtb-purple);font-size:0.5rem">WORK FROM HOME</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- HR Operations -->
+              <div class="px-3 py-2 fw-bold" id="hro" style="font-size:0.8125rem;background:rgba(13,148,136,0.05);border-bottom:1px solid var(--border-color);border-top:1px solid var(--border-color)">
+                HR Operations
+              </div>
+              <div class="staff-member">
+                <div class="d-flex align-items-start gap-3">
+                  <div class="rounded-circle d-flex align-items-center justify-content-center flex-shrink-0" style="width:48px;height:48px;background:rgba(13,148,136,0.1);border:2px solid rgba(13,148,136,0.3)">
+                    <i class="bi bi-person" style="color:var(--mtb-teal);font-size:1.25rem"></i>
+                  </div>
+                  <div class="flex-grow-1">
+                    <p class="mb-0 fw-bold" style="font-size:0.8125rem">Md. Ashraf Ali, Unit Head</p>
+                    <p class="mb-0 text-muted" style="font-size:0.6875rem">Office: 9846966 (Extn 2556); IP 7975</p>
+                    <p class="mb-0 text-muted" style="font-size:0.6875rem">IP Phone: 7975</p>
+                    <p class="mb-0 text-muted" style="font-size:0.6875rem">Mobile: 01799983553</p>
+                    <p class="mb-0 text-muted" style="font-size:0.6875rem">Email: ashraf@mutualtrustbank.com</p>
+                  </div>
+                  <span class="badge text-white" style="background:var(--mtb-green);font-size:0.5625rem">LOGGED IN</span>
+                </div>
+              </div>
+              <div class="staff-member">
+                <div class="d-flex align-items-start gap-3">
+                  <div class="rounded-circle d-flex align-items-center justify-content-center flex-shrink-0" style="width:48px;height:48px;background:rgba(13,148,136,0.1);border:2px solid rgba(13,148,136,0.3)">
+                    <i class="bi bi-person" style="color:var(--mtb-teal);font-size:1.25rem"></i>
+                  </div>
+                  <div class="flex-grow-1">
+                    <p class="mb-0 fw-bold" style="font-size:0.8125rem">Md. Shahidul Islam, Manager</p>
+                    <p class="mb-0 text-muted" style="font-size:0.6875rem">Office: Ext. 2551, IP 2714</p>
+                    <p class="mb-0 text-muted" style="font-size:0.6875rem">Mobile: 01581429534</p>
+                  </div>
+                  <span class="badge text-white" style="background:var(--mtb-green);font-size:0.5625rem">LOGGED IN</span>
+                </div>
+              </div>
+              <div class="staff-member">
+                <div class="d-flex align-items-start gap-3">
+                  <div class="rounded-circle d-flex align-items-center justify-content-center flex-shrink-0" style="width:48px;height:48px;background:rgba(13,148,136,0.1);border:2px solid rgba(13,148,136,0.3)">
+                    <i class="bi bi-person" style="color:var(--mtb-teal);font-size:1.25rem"></i>
+                  </div>
+                  <div class="flex-grow-1">
+                    <p class="mb-0 fw-bold" style="font-size:0.8125rem">Shahed Saamar, Associate Manager</p>
+                    <p class="mb-0 text-muted" style="font-size:0.6875rem">Office: 9846966 Extn: 2564; IP No. 2725</p>
+                    <p class="mb-0 text-muted" style="font-size:0.6875rem">Mobile: 01914908088</p>
+                  </div>
+                  <span class="badge text-white" style="background:var(--mtb-green);font-size:0.5625rem">LOGGED IN</span>
+                </div>
+              </div>
+
+              <!-- Staff Summary Bar -->
+              <div class="d-flex align-items-center justify-content-between px-3 py-2" style="background:var(--mtb-green)">
+                <span class="text-white fw-semibold" style="font-size:0.75rem">Total Staff: 20 <a href="#" class="text-white"><i class="bi bi-download"></i> download</a></span>
+                <span class="text-white fw-semibold" style="font-size:0.75rem">Gender distribution</span>
+                <span class="badge text-white" style="background:var(--mtb-blue);font-size:0.6875rem">15</span>
+                <span class="text-white fw-semibold" style="font-size:0.75rem">S(25.00%)</span>
+              </div>
+
+              <!-- Presence Summary -->
+              <div class="px-3 py-2" style="font-size:0.75rem">
+                <p class="mb-1">Presence summary: 16/20 (80.00%)</p>
+                <p class="mb-0 text-muted" style="font-size:0.6875rem">Div/ Dept Head (defines units): <span class="fw-semibold">Masud Mushfiq Zaman</span></p>
+                <p class="mb-0 text-muted" style="font-size:0.6875rem">Requisition approver: <span class="fw-semibold">Masud Mushfiq Zaman</span></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Temporary Staff -->
+          <div class="mtb-card overflow-hidden">
+            <div class="mtb-card-header" style="background:var(--mtb-orange)">List of Temporary (Time-Bound) Staff</div>
+            <div class="p-3">
+              <div class="d-flex align-items-center gap-2" style="font-size:0.8125rem">
+                <i class="bi bi-check-circle-fill" style="color:var(--mtb-green)"></i>
+                <span>Availability</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Total Staff Count -->
+          <div class="text-center py-2" style="font-size:0.8125rem">
+            <p class="mb-1">Total Staff Count: 0 <a href="#" class="mtb-link"><i class="bi bi-download"></i> download</a></p>
+            <p class="mb-0"><span class="fw-bold" style="color:var(--mtb-red)">Temp Staff Salary Reviewer:</span> <span class="fw-semibold">Mohammad Abdus Salam</span></p>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="border-top mt-4" style="background:var(--card-bg);border-color:var(--border-color)">
+    <div class="container-fluid px-4 py-3" style="max-width:1600px;margin:0 auto">
+      <div class="d-flex flex-column flex-sm-row align-items-center justify-content-between gap-2" style="font-size:0.75rem;color:var(--muted-fg)">
+        <p class="mb-0">© Mutual Trust Bank PLC. All rights reserved.</p>
+        <div class="d-flex align-items-center gap-3"><a href="#" class="text-decoration-none" style="color:var(--muted-fg)">IT Support</a><a href="#" class="text-decoration-none" style="color:var(--muted-fg)">Privacy Policy</a><a href="#" class="text-decoration-none" style="color:var(--muted-fg)">Terms of Use</a></div>
+        <div class="d-flex align-items-center gap-2"><span>Powered by</span><span class="badge text-white" style="background:var(--mtb-orange);font-size:0.625rem">DBD</span><span>&</span><span class="badge text-white" style="background:var(--mtb-blue);font-size:0.625rem">ITD</span></div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

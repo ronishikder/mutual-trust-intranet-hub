@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Banani Branch - MNet</title>
+  <meta name="description" content="MTB Banani Branch - Corporate Intranet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="css/theme.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- GRADIENT BAR -->
+  <div class="mtb-gradient-bar"></div>
+
+  <!-- HEADER -->
+  <header class="mtb-header">
+    <div class="container-fluid d-flex align-items-center justify-content-between py-2 px-4" style="height:56px;max-width:1600px;margin:0 auto">
+      <div class="d-flex align-items-center gap-3">
+        <img src="https://mutual-trust-intranet-hub.lovable.app/assets/mtb-logo-DsVEZOWl.png" alt="Mutual Trust Bank" style="height:40px" class="object-fit-contain">
+      </div>
+      <div class="d-flex align-items-center gap-2">
+        <button id="themeToggle" class="btn btn-link p-2" style="color:var(--muted-fg)" aria-label="Toggle theme"><i class="bi bi-moon" style="font-size:1.125rem"></i></button>
+        <div class="d-flex align-items-center gap-2">
+          <span class="text-muted" style="font-size:0.75rem">Quick Jump :</span>
+          <span class="fw-medium" style="font-size:0.75rem;color:var(--foreground)">CHO</span>
+          <select class="form-select form-select-sm" style="width:160px;font-size:0.75rem"><option>Select Department</option></select>
+          <span class="fw-medium" style="font-size:0.75rem;color:var(--foreground)">Branch</span>
+          <select class="form-select form-select-sm" style="width:160px;font-size:0.75rem"><option selected>Banani Branch</option><option>Gulshan Branch</option><option>Motijheel Branch</option></select>
+          <span class="fw-medium" style="font-size:0.75rem;color:var(--foreground)">Sub-Branch</span>
+          <select class="form-select form-select-sm" style="width:160px;font-size:0.75rem"><option>Select Sub-Branch</option></select>
+        </div>
+        <div class="d-flex align-items-center gap-2 px-3 border-start" style="border-color:var(--border-color)">
+          <a href="index.html" class="text-decoration-none d-flex align-items-center gap-1" style="font-size:0.75rem;color:var(--mtb-teal)"><i class="bi bi-house"></i> Home</a>
+        </div>
+        <img src="https://mutual-trust-intranet-hub.lovable.app/assets/mnet-logo-KsVrHLQr.png" alt="MNet" style="height:28px" class="object-fit-contain">
+      </div>
+    </div>
+  </header>
+
+  <!-- NAVIGATION BAR -->
+  <nav class="nav-bar position-relative" id="mainNav">
+    <div class="container-fluid px-4" style="max-width:1600px;margin:0 auto">
+      <ul class="nav gap-1 mb-0">
+        <li class="nav-item"><button class="nav-item-btn" data-mega-toggle="cho"><i class="bi bi-building"></i> CHO <i class="bi bi-chevron-down" style="font-size:0.75rem"></i></button></li>
+        <li class="nav-item"><button class="nav-item-btn active" data-mega-toggle="branches"><i class="bi bi-geo-alt"></i> Branches <i class="bi bi-chevron-down" style="font-size:0.75rem"></i></button></li>
+        <li class="nav-item"><button class="nav-item-btn" data-mega-toggle="divisions"><i class="bi bi-diagram-3"></i> Divisions <i class="bi bi-chevron-down" style="font-size:0.75rem"></i></button></li>
+        <li class="nav-item"><button class="nav-item-btn" data-mega-toggle="subsidiaries"><i class="bi bi-briefcase"></i> Subsidiaries <i class="bi bi-chevron-down" style="font-size:0.75rem"></i></button></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- BRANCH TITLE -->
+  <div class="dept-title-section">
+    <div class="container-fluid px-4" style="max-width:1600px;margin:0 auto">
+      <div class="row align-items-center">
+        <div class="col-lg-4">
+          <h2 class="dept-title mb-1">Banani Branch</h2>
+          <span class="badge text-white" style="background:var(--mtb-blue);font-size:0.6875rem">CAT A</span>
+        </div>
+        <div class="col-lg-8">
+          <!-- Reporting Line -->
+          <div class="mtb-card overflow-hidden">
+            <div class="mtb-card-header d-flex align-items-center gap-2" style="background:var(--mtb-orange)">
+              <i class="bi bi-diagram-2"></i> Reporting Line
+            </div>
+            <div class="p-3 d-flex align-items-center justify-content-between">
+              <span class="fw-semibold" style="font-size:0.8125rem;color:var(--mtb-teal)">Banani reports to</span>
+              <div class="d-flex align-items-center gap-2">
+                <div class="rounded-circle d-flex align-items-center justify-content-center" style="width:36px;height:36px;background:rgba(13,148,136,0.1)"><i class="bi bi-person" style="color:var(--mtb-teal)"></i></div>
+                <div>
+                  <p class="mb-0 fw-semibold" style="font-size:0.75rem">Md. Mostafa Khaled Bin Ali</p>
+                  <p class="mb-0 text-muted" style="font-size:0.625rem">Head of Region 2</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT (3:6:3) -->
+  <div class="container-fluid px-4 py-3" style="max-width:1600px;margin:0 auto">
+    <div class="row g-3">
+
+      <!-- LEFT SIDEBAR (col-3) - Branch Info -->
+      <div class="col-lg-3">
+        <div class="d-flex flex-column gap-2">
+
+          <!-- Branch Photo -->
+          <div class="mtb-card overflow-hidden">
+            <div class="p-3 text-center" style="background:linear-gradient(135deg, #1a5555, #2a6666)">
+              <div class="mx-auto mb-2 d-flex align-items-center justify-content-center rounded" style="width:100%;height:140px;background:rgba(255,255,255,0.1)">
+                <i class="bi bi-building" style="font-size:3rem;color:rgba(255,255,255,0.3)"></i>
+              </div>
+            </div>
+          </div>
+
+          <!-- Branch Profile -->
+          <div class="mtb-card overflow-hidden">
+            <div class="mtb-card-header" style="background:var(--mtb-teal)">Branch Profile</div>
+            <div class="p-3" style="font-size:0.75rem;line-height:1.6">
+              <p class="mb-2">Located at a growing business location, Banani Branch started its operation on November 30, 2008. Besides conventional banking the branch also has an MTB Yaqeen Islamic Banking Window.</p>
+            </div>
+          </div>
+
+          <!-- Deposit Summary - Conventional -->
+          <div class="mtb-card overflow-hidden">
+            <div class="mtb-card-header d-flex align-items-center justify-content-between" style="background:var(--mtb-blue)">
+              <span>Deposit Summary - Conventional</span>
+              <span style="font-size:0.625rem">Figure in million</span>
+            </div>
+            <div class="table-responsive">
+              <table class="table table-mtb mb-0">
+                <tbody>
+                  <tr><td class="px-3 py-1">1.</td><td class="px-3 py-1">Branch Deposit</td><td class="text-end px-3 py-1 fw-semibold">7,976.55</td></tr>
+                </tbody>
+              </table>
+              <div class="px-3 py-1 text-muted" style="font-size:0.625rem">Deposit balances were last updated on 24-JAN-26</div>
+            </div>
+          </div>
+
+          <!-- Deposit Summary - Islamic -->
+          <div class="mtb-card overflow-hidden">
+            <div class="mtb-card-header d-flex align-items-center justify-content-between" style="background:var(--mtb-green)">
+              <span>Deposit Summary - Islamic</span>
+              <span style="font-size:0.625rem">Figure in million</span>
+            </div>
+            <div class="table-responsive">
+              <table class="table table-mtb mb-0">
+                <tbody>
+                  <tr><td class="px-3 py-1">1.</td><td class="px-3 py-1">Branch Deposit</td><td class="text-end px-3 py-1 fw-semibold">2,333.10</td></tr>
+                </tbody>
+              </table>
+              <div class="px-3 py-1 text-muted" style="font-size:0.625rem">Deposit balances were last updated on 20-JAN-26</div>
+            </div>
+          </div>
+
+          <!-- Custodian of 12 ATM Booth / Cash Status -->
+          <div class="mtb-card overflow-hidden">
+            <div class="mtb-card-header" style="background:var(--mtb-orange)">Custodian of 12 ATM Booth / Cash Status</div>
+            <div class="table-responsive">
+              <table class="table table-mtb mb-0">
+                <tbody>
+                  <tr><td class="px-3 py-1">1.</td><td class="px-3 py-1">MTB ABC TOWER ATM</td><td class="text-end px-3 py-1">4,224,500.00</td></tr>
+                  <tr><td class="px-3 py-1">2.</td><td class="px-3 py-1">MTB Banani Branch CRM</td><td class="text-end px-3 py-1">3,029,000.00</td></tr>
+                  <tr><td class="px-3 py-1">3.</td><td class="px-3 py-1">MTB Banani Grove Road ATM</td><td class="text-end px-3 py-1">1,213,500.00</td></tr>
+                  <tr><td class="px-3 py-1">4.</td><td class="px-3 py-1">MTB BUET Graduates Club CRM</td><td class="text-end px-3 py-1">921,000.00</td></tr>
+                  <tr><td class="px-3 py-1">5.</td><td class="px-3 py-1">MTB Falcon Mart Cart. CRM</td><td class="text-end px-3 py-1">1,404,500.00</td></tr>
+                  <tr><td class="px-3 py-1">6.</td><td class="px-3 py-1">MTB KAKOLI ATM</td><td class="text-end px-3 py-1">1,760,000.00</td></tr>
+                  <tr><td class="px-3 py-1">7.</td><td class="px-3 py-1">MTB Mohakhali ATM</td><td class="text-end px-3 py-1">1,357,000.00</td></tr>
+                  <tr><td class="px-3 py-1">8.</td><td class="px-3 py-1">MTB RAOWA CLUB ATM</td><td class="text-end px-3 py-1">865,000.00</td></tr>
+                  <tr><td class="px-3 py-1">9.</td><td class="px-3 py-1">MTB SQUARE FOOD AND BEVERAGE ATM</td><td class="text-end px-3 py-1">972,500.00</td></tr>
+                </tbody>
+              </table>
+              <div class="px-3 py-1 text-muted" style="font-size:0.625rem">026 at 10:39AM. This update is a courtesy of ADC</div>
+            </div>
+          </div>
+
+          <!-- Basic Information -->
+          <div class="mtb-card overflow-hidden">
+            <div class="mtb-card-header" style="background:var(--mtb-teal)">Basic Information</div>
+            <div class="p-3" style="font-size:0.75rem">
+              <div class="row mb-1"><div class="col-5 fw-semibold">MTB Region</div><div class="col-7">: Region 2</div></div>
+              <div class="row mb-1"><div class="col-5 fw-semibold">District</div><div class="col-7">: Dhaka</div></div>
+              <div class="row mb-1"><div class="col-5 fw-semibold">Adm. Division</div><div class="col-7">: Dhaka Division</div></div>
+              <div class="row mb-1"><div class="col-5 fw-semibold">Code</div><div class="col-7">: 0034</div></div>
+              <div class="row mb-1"><div class="col-5 fw-semibold">Opening Date</div><div class="col-7">: 30/11/2008</div></div>
+              <div class="row mb-1"><div class="col-5 fw-semibold">Age</div><div class="col-7">: 17 years 1 months 26 days</div></div>
+              <div class="row mb-1"><div class="col-5 fw-semibold">No. of Emp.</div><div class="col-7">: 16</div></div>
+            </div>
+          </div>
+
+          <!-- Authorized Branch Vault Limits -->
+          <div class="mtb-card overflow-hidden">
+            <div class="mtb-card-header" style="background:var(--mtb-purple)">Authorized Branch Vault Limits</div>
+            <div class="table-responsive">
+              <table class="table table-mtb mb-0">
+                <thead><tr><th class="px-3 py-1">Cash Point</th><th class="text-end px-3 py-1">Limit</th><th class="text-end px-3 py-1">Expires on</th></tr></thead>
+                <tbody>
+                  <tr><td class="px-3 py-1">Vault</td><td class="text-end px-3 py-1">40,000,000</td><td class="text-end px-3 py-1">30/06/2026</td></tr>
+                  <tr><td class="px-3 py-1">Counter</td><td class="text-end px-3 py-1">5,000,000</td><td class="text-end px-3 py-1">30/06/2026</td></tr>
+                </tbody>
+              </table>
+              <div class="px-3 py-1 text-muted" style="font-size:0.625rem">Updated last on: 08/07/2025 by: Arman [all branch]</div>
+            </div>
+          </div>
+
+          <!-- Authorized ATM Cash Limits -->
+          <div class="mtb-card overflow-hidden">
+            <div class="mtb-card-header" style="background:var(--mtb-blue)">Authorized ATM Cash Limits</div>
+            <div class="table-responsive">
+              <table class="table table-mtb mb-0">
+                <thead><tr><th class="px-3 py-1">ATM</th><th class="text-end px-3 py-1">Limit</th><th class="text-end px-3 py-1">Expiry</th></tr></thead>
+                <tbody>
+                  <tr><td class="px-3 py-1">1. ABC Tower ATM Booth</td><td class="text-end px-3 py-1">6,000,000</td><td class="text-end px-3 py-1">30/06/2026</td></tr>
+                  <tr><td class="px-3 py-1">2. Banani Branch CRM</td><td class="text-end px-3 py-1">6,000,000</td><td class="text-end px-3 py-1">30/06/2026</td></tr>
+                  <tr><td class="px-3 py-1">3. RAOWA Club ATM</td><td class="text-end px-3 py-1">6,000,000</td><td class="text-end px-3 py-1">30/06/2026</td></tr>
+                  <tr><td class="px-3 py-1">4. Mohakhali ATM</td><td class="text-end px-3 py-1">6,000,000</td><td class="text-end px-3 py-1">30/06/2026</td></tr>
+                  <tr><td class="px-3 py-1">5. Kakoli ATM</td><td class="text-end px-3 py-1">6,000,000</td><td class="text-end px-3 py-1">30/06/2026</td></tr>
+                  <tr><td class="px-3 py-1">6. MTB Square Food & Beverage ATM</td><td class="text-end px-3 py-1">5,000,000</td><td class="text-end px-3 py-1">30/06/2026</td></tr>
+                  <tr><td class="px-3 py-1">7. Banani Grove Road ATM</td><td class="text-end px-3 py-1">5,000,000</td><td class="text-end px-3 py-1">30/06/2026</td></tr>
+                  <tr><td class="px-3 py-1">8. MTB BUET Graduates Club CRM</td><td class="text-end px-3 py-1">6,000,000</td><td class="text-end px-3 py-1">30/06/2026</td></tr>
+                </tbody>
+              </table>
+              <div class="px-3 py-1 text-end"><a href="#" class="mtb-link" style="font-size:0.625rem">[all ATMs]</a></div>
+            </div>
+          </div>
+
+          <!-- Others (Address & Contact) -->
+          <div class="mtb-card overflow-hidden">
+            <div class="mtb-card-header" style="background:var(--mtb-teal)">Others</div>
+            <div class="p-3" style="font-size:0.75rem">
+              <div class="row mb-1"><div class="col-4 fw-semibold">Address</div><div class="col-8">: Lintoo Centre (1st floor and 2nd floor) House- 82, Rd-11, Block-D, Ward -19, Banani, Dhaka-1213</div></div>
+              <div class="row mb-1"><div class="col-4 fw-semibold">Phone</div><div class="col-8">: +88 02 2222 83831 (PABX)<br>+88 02 2222 74164 (PABX)<br>+88 02 2222 83861 (Direct)<br>+88 02 2222 75469 (Direct)</div></div>
+              <div class="row mb-1"><div class="col-4 fw-semibold">IP Phone</div><div class="col-8">: 8340 (used for Positive Pay)</div></div>
+              <div class="row mb-1"><div class="col-4 fw-semibold">Fax</div><div class="col-8">: 988-3861</div></div>
+              <div class="row mb-1"><div class="col-4 fw-semibold">Email</div><div class="col-8">: banani.br@mutualtrustbank.com</div></div>
+              <div class="row mb-1"><div class="col-4 fw-semibold">BB Code</div><div class="col-8">: 650112</div></div>
+              <div class="row mb-1"><div class="col-4 fw-semibold">Routing No.</div><div class="col-8">: 145260439</div></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- MAIN CONTENT (col-6) - Staff Directory -->
+      <div class="col-lg-6">
+        <div class="d-flex flex-column gap-3">
+
+          <!-- Branch Manager -->
+          <div class="mtb-card overflow-hidden">
+            <div class="mtb-card-header" style="background:var(--mtb-teal)">Branch Manager</div>
+            <div class="staff-member">
+              <div class="d-flex align-items-start gap-3">
+                <div class="rounded-circle d-flex align-items-center justify-content-center flex-shrink-0" style="width:56px;height:56px;background:rgba(13,148,136,0.1);border:2px solid rgba(13,148,136,0.3)">
+                  <i class="bi bi-person" style="color:var(--mtb-teal);font-size:1.5rem"></i>
+                </div>
+                <div class="flex-grow-1">
+                  <p class="mb-0" style="font-size:0.75rem;color:var(--muted-fg)">Name</p>
+                  <p class="mb-1 fw-bold" style="font-size:0.875rem">: Mohammad Hamidul Islam</p>
+                  <p class="mb-0" style="font-size:0.75rem"><span class="text-muted">Phone (mobile)</span> : <span class="fw-medium">01712622062</span></p>
+                  <p class="mb-1" style="font-size:0.75rem"><span class="text-muted">Phone (office)</span> : </p>
+                  <div class="d-flex gap-2" style="font-size:0.6875rem">
+                    <a href="#" class="mtb-link">Detail Profile</a> | <a href="#" class="mtb-link">Mail:</a>
+                    <a href="#" class="fw-medium" style="color:var(--mtb-blue);text-decoration:none">MNet</a>|<a href="#" class="fw-medium" style="color:var(--mtb-blue);text-decoration:none">Outlook</a>
+                    <span class="badge text-white" style="background:var(--mtb-green);font-size:0.5625rem">LOGGED IN</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Branch Operations Manager -->
+          <div class="mtb-card overflow-hidden">
+            <div class="mtb-card-header" style="background:var(--mtb-blue)">Branch Operations Manager</div>
+            <div class="staff-member">
+              <div class="d-flex align-items-start gap-3">
+                <div class="rounded-circle d-flex align-items-center justify-content-center flex-shrink-0" style="width:56px;height:56px;background:rgba(13,148,136,0.1);border:2px solid rgba(13,148,136,0.3)">
+                  <i class="bi bi-person" style="color:var(--mtb-teal);font-size:1.5rem"></i>
+                </div>
+                <div class="flex-grow-1">
+                  <p class="mb-0" style="font-size:0.75rem;color:var(--muted-fg)">Name</p>
+                  <p class="mb-1 fw-bold" style="font-size:0.875rem">: Tamanna Azim Choudhury</p>
+                  <p class="mb-0" style="font-size:0.75rem"><span class="text-muted">Phone (mobile)</span> : <span class="fw-medium">01322840528</span></p>
+                  <p class="mb-1" style="font-size:0.75rem"><span class="text-muted">Phone (office)</span> : <span class="fw-medium">01322 840 528</span></p>
+                  <div class="d-flex gap-2" style="font-size:0.6875rem">
+                    <a href="#" class="mtb-link">Detail Profile</a> | <a href="#" class="mtb-link">Mail:</a>
+                    <a href="#" class="fw-medium" style="color:var(--mtb-blue);text-decoration:none">MNet</a>|<a href="#" class="fw-medium" style="color:var(--mtb-blue);text-decoration:none">Outlook</a>
+                    <span class="badge text-white" style="background:var(--mtb-green);font-size:0.5625rem">LOGGED IN</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Page Visitors -->
+          <div class="text-end" style="font-size:0.75rem;color:var(--muted-fg)">
+            <i class="bi bi-eye"></i> Branch Page Visitors: 8429
+          </div>
+
+          <!-- Other Departments -->
+          <div class="mtb-card overflow-hidden">
+            <div class="mtb-card-header" style="background:var(--mtb-teal)">Other Departments</div>
+
+            <!-- Dept undefined -->
+            <div class="px-3 py-2 fw-bold" style="font-size:0.8125rem;background:rgba(253,126,20,0.08);border-bottom:1px solid var(--border-color)">Dept undefined</div>
+            <div class="staff-member">
+              <div class="d-flex align-items-start gap-3">
+                <div class="rounded-circle d-flex align-items-center justify-content-center flex-shrink-0" style="width:40px;height:40px;background:rgba(13,148,136,0.1);border:2px solid rgba(13,148,136,0.3)"><i class="bi bi-person" style="color:var(--mtb-teal)"></i></div>
+                <div class="flex-grow-1">
+                  <p class="mb-0 fw-bold" style="font-size:0.8125rem">S M Rayhan Mujahid</p>
+                  <div class="p-1 rounded mb-1" style="background:rgba(255,193,7,0.15);font-size:0.625rem;color:var(--mtb-red)">Please confirm your functional designation via Branch</div>
+                  <p class="mb-0 text-muted" style="font-size:0.6875rem">Mobile: 01712960128 Mail: <a href="#" class="mtb-link">MNet</a>|<a href="#" class="mtb-link">Outlook</a></p>
+                </div>
+                <span class="badge text-white" style="background:var(--mtb-green);font-size:0.5625rem">LOGGED IN</span>
+              </div>
+            </div>
+
+            <!-- SME RM -->
+            <div class="px-3 py-2 fw-bold" style="font-size:0.8125rem;background:rgba(253,126,20,0.08);border-bottom:1px solid var(--border-color)">SME RM</div>
+            <div class="staff-member">
+              <div class="d-flex align-items-start gap-3">
+                <div class="rounded-circle d-flex align-items-center justify-content-center flex-shrink-0" style="width:40px;height:40px;background:rgba(13,148,136,0.1);border:2px solid rgba(13,148,136,0.3)"><i class="bi bi-person" style="color:var(--mtb-teal)"></i></div>
+                <div class="flex-grow-1">
+                  <p class="mb-0 fw-bold" style="font-size:0.8125rem">Md. Kamal Hossain, Relationship Manager</p>
+                  <p class="mb-0 text-muted" style="font-size:0.6875rem">Office: +88-02-222274164</p>
+                  <p class="mb-0 text-muted" style="font-size:0.6875rem">Mobile: 01617516490 Mail: <a href="#" class="mtb-link">MNet</a>|<a href="#" class="mtb-link">Outlook</a></p>
+                </div>
+                <span class="badge text-white" style="background:var(--mtb-green);font-size:0.5625rem">LOGGED IN</span>
+              </div>
+            </div>
+            <div class="staff-member">
+              <div class="d-flex align-items-start gap-3">
+                <div class="rounded-circle d-flex align-items-center justify-content-center flex-shrink-0" style="width:40px;height:40px;background:rgba(13,148,136,0.1);border:2px solid rgba(13,148,136,0.3)"><i class="bi bi-person" style="color:var(--mtb-teal)"></i></div>
+                <div class="flex-grow-1">
+                  <p class="mb-0 fw-bold" style="font-size:0.8125rem">Md. Raaqul Islam, Relationship Officer</p>
+                  <p class="mb-0 text-muted" style="font-size:0.6875rem">Mobile: 01715819746 Mail: <a href="#" class="mtb-link">MNet</a>|<a href="#" class="mtb-link">Outlook</a></p>
+                </div>
+                <span class="badge text-white" style="background:var(--mtb-green);font-size:0.5625rem">LOGGED IN</span>
+              </div>
+            </div>
+
+            <!-- Retail RM -->
+            <div class="px-3 py-2 fw-bold" style="font-size:0.8125rem;background:rgba(253,126,20,0.08);border-bottom:1px solid var(--border-color)">Retail RM</div>
+            <div class="staff-member">
+              <div class="d-flex align-items-start gap-3">
+                <div class="rounded-circle d-flex align-items-center justify-content-center flex-shrink-0" style="width:40px;height:40px;background:rgba(13,148,136,0.1);border:2px solid rgba(13,148,136,0.3)"><i class="bi bi-person" style="color:var(--mtb-teal)"></i></div>
+                <div class="flex-grow-1">
+                  <p class="mb-0 fw-bold" style="font-size:0.8125rem">Md. Yeamin Ul Islam, Associate Relationship Manager</p>
+                  <p class="mb-0 text-muted" style="font-size:0.6875rem">Office: 01611113502</p>
+                  <p class="mb-0 text-muted" style="font-size:0.6875rem">Mobile: 01980300111 Mail: <a href="#" class="mtb-link">MNet</a>|<a href="#" class="mtb-link">Outlook</a></p>
+                </div>
+                <span class="badge text-white" style="background:var(--mtb-green);font-size:0.5625rem">LOGGED IN</span>
+              </div>
+            </div>
+
+            <!-- Cash Department -->
+            <div class="px-3 py-2 fw-bold" style="font-size:0.8125rem;background:rgba(253,126,20,0.08);border-bottom:1px solid var(--border-color)">Cash Department</div>
+            <div class="staff-member">
+              <div class="d-flex align-items-start gap-3">
+                <div class="rounded-circle d-flex align-items-center justify-content-center flex-shrink-0" style="width:40px;height:40px;background:rgba(13,148,136,0.1);border:2px solid rgba(13,148,136,0.3)"><i class="bi bi-person" style="color:var(--mtb-teal)"></i></div>
+                <div class="flex-grow-1">
+                  <p class="mb-0 fw-bold" style="font-size:0.8125rem">Muhit Mostafa, Customer Service Officer</p>
+                  <p class="mb-0 text-muted" style="font-size:0.6875rem">Mobile: 01751334403 Mail: <a href="#" class="mtb-link">MNet</a>|<a href="#" class="mtb-link">Outlook</a></p>
+                </div>
+                <span class="badge text-white" style="background:var(--mtb-green);font-size:0.5625rem">LOGGED IN</span>
+              </div>
+            </div>
+            <div class="staff-member">
+              <div class="d-flex align-items-start gap-3">
+                <div class="rounded-circle d-flex align-items-center justify-content-center flex-shrink-0" style="width:40px;height:40px;background:rgba(13,148,136,0.1);border:2px solid rgba(13,148,136,0.3)"><i class="bi bi-person" style="color:var(--mtb-teal)"></i></div>
+                <div class="flex-grow-1">
+                  <p class="mb-0 fw-bold" style="font-size:0.8125rem">Ratan Khan, Customer Service Officer</p>
+                  <p class="mb-0 text-muted" style="font-size:0.6875rem">Mobile: 01926919636 Mail: <a href="#" class="mtb-link">MNet</a>|<a href="#" class="mtb-link">Outlook</a></p>
+                </div>
+                <span class="badge text-white" style="background:var(--mtb-green);font-size:0.5625rem">LOGGED IN</span>
+              </div>
+            </div>
+            <div class="staff-member">
+              <div class="d-flex align-items-start gap-3">
+                <div class="rounded-circle d-flex align-items-center justify-content-center flex-shrink-0" style="width:40px;height:40px;background:rgba(255,193,7,0.15);border:2px solid rgba(255,193,7,0.3)"><i class="bi bi-person" style="color:var(--mtb-orange)"></i></div>
+                <div class="flex-grow-1">
+                  <p class="mb-0 fw-bold" style="font-size:0.8125rem">Nazmun Nahar, Customer Service Officer</p>
+                  <p class="mb-0 text-muted" style="font-size:0.6875rem">Mobile: 01683020661 Mail: <a href="#" class="mtb-link">MNet</a>|<a href="#" class="mtb-link">Outlook</a></p>
+                </div>
+                <span class="badge" style="background:var(--mtb-orange);color:white;font-size:0.5625rem">NO LOGIN</span>
+              </div>
+            </div>
+
+            <!-- GB- Customer Service -->
+            <div class="px-3 py-2 fw-bold" style="font-size:0.8125rem;background:rgba(253,126,20,0.08);border-bottom:1px solid var(--border-color)">GB- Customer Service</div>
+            <div class="staff-member">
+              <div class="d-flex align-items-start gap-3">
+                <div class="rounded-circle d-flex align-items-center justify-content-center flex-shrink-0" style="width:40px;height:40px;background:rgba(13,148,136,0.1);border:2px solid rgba(13,148,136,0.3)"><i class="bi bi-person" style="color:var(--mtb-teal)"></i></div>
+                <div class="flex-grow-1">
+                  <p class="mb-0 fw-bold" style="font-size:0.8125rem">Tania Sultana, Assistant Customer Service Manager</p>
+                  <p class="mb-0 text-muted" style="font-size:0.6875rem">Mobile: 01681054455 Mail: <a href="#" class="mtb-link">MNet</a>|<a href="#" class="mtb-link">Outlook</a></p>
+                </div>
+                <span class="badge text-white" style="background:var(--mtb-green);font-size:0.5625rem">LOGGED IN</span>
+              </div>
+            </div>
+            <div class="staff-member">
+              <div class="d-flex align-items-start gap-3">
+                <div class="rounded-circle d-flex align-items-center justify-content-center flex-shrink-0" style="width:40px;height:40px;background:rgba(13,148,136,0.1);border:2px solid rgba(13,148,136,0.3)"><i class="bi bi-person" style="color:var(--mtb-teal)"></i></div>
+                <div class="flex-grow-1">
+                  <p class="mb-0 fw-bold" style="font-size:0.8125rem">Nabila Hoque, Customer Service Officer</p>
+                  <p class="mb-0 text-muted" style="font-size:0.6875rem">Mobile: 01907940857 Mail: <a href="#" class="mtb-link">MNet</a>|<a href="#" class="mtb-link">Outlook</a></p>
+                </div>
+                <span class="badge text-white" style="background:var(--mtb-green);font-size:0.5625rem">LOGGED IN</span>
+              </div>
+            </div>
+            <div class="staff-member">
+              <div class="d-flex align-items-start gap-3">
+                <div class="rounded-circle d-flex align-items-center justify-content-center flex-shrink-0" style="width:40px;height:40px;background:rgba(13,148,136,0.1);border:2px solid rgba(13,148,136,0.3)"><i class="bi bi-person" style="color:var(--mtb-teal)"></i></div>
+                <div class="flex-grow-1">
+                  <p class="mb-0 fw-bold" style="font-size:0.8125rem">Md. Mehedi Hasan, Customer Service Officer</p>
+                  <p class="mb-0 text-muted" style="font-size:0.6875rem">Mobile: 01710-534554 Mail: <a href="#" class="mtb-link">MNet</a>|<a href="#" class="mtb-link">Outlook</a></p>
+                </div>
+                <span class="badge text-white" style="background:var(--mtb-green);font-size:0.5625rem">LOGGED IN</span>
+              </div>
+            </div>
+
+            <!-- Staff Summary Bar -->
+            <div class="d-flex align-items-center justify-content-between px-3 py-2" style="background:var(--mtb-green)">
+              <span class="text-white fw-semibold" style="font-size:0.75rem">Total Staff: 16 <a href="#" class="text-white"><i class="bi bi-download"></i> download</a></span>
+              <span class="text-white fw-semibold" style="font-size:0.75rem">Gender distribution</span>
+              <span class="badge text-white" style="background:var(--mtb-blue);font-size:0.6875rem">10</span>
+              <span class="text-white fw-semibold" style="font-size:0.75rem">6(37.50%)</span>
+            </div>
+
+            <!-- Presence -->
+            <div class="px-3 py-2" style="font-size:0.75rem">
+              Presence summary: 14/16 (87.50%)
+            </div>
+          </div>
+
+          <!-- CHO assigned Representatives -->
+          <div class="mtb-card overflow-hidden">
+            <div class="mtb-card-header" style="background:var(--mtb-orange)">CHO assigned Representatives / Visitors logged in from Banani Branch LAN today</div>
+            <div class="table-responsive">
+              <table class="table table-mtb mb-0">
+                <tbody>
+                  <tr><td class="px-3 py-1"><i class="bi bi-person-circle" style="color:var(--mtb-teal)"></i> Khandaker Sharar Iqbal</td><td class="px-3 py-1">Management Trainee<br>Corporate Head Office</td><td class="px-3 py-1"></td></tr>
+                  <tr><td class="px-3 py-1"><i class="bi bi-person-circle" style="color:var(--mtb-teal)"></i> Ikram Mahmood</td><td class="px-3 py-1">Branch Manager<br>Kaliganji SME/ Agri Branch</td><td class="px-3 py-1">Mentioned reason: I am on a visit to another office</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Contractual Staff -->
+          <div class="mtb-card overflow-hidden">
+            <div class="mtb-card-header" style="background:var(--mtb-teal)">List of Contractual Staff</div>
+            <div class="p-3">
+              <div class="d-flex align-items-center gap-2 mb-2" style="font-size:0.8125rem"><i class="bi bi-check-circle-fill" style="color:var(--mtb-green)"></i> Availability</div>
+              <p class="mb-0" style="font-size:0.75rem">Total: 0 <a href="#" class="mtb-link"><i class="bi bi-download"></i> download</a></p>
+            </div>
+          </div>
+
+          <!-- Branch Events in Photos -->
+          <div class="mtb-card overflow-hidden">
+            <div class="mtb-card-header" style="background:var(--mtb-blue)">Branch Events in Photos</div>
+            <div class="p-2">
+              <div class="d-flex justify-content-between py-1" style="font-size:0.75rem;border-bottom:1px solid var(--border-color)"><span>2023</span><span>: Nobo Borsho Boron and Eid Reunion Program by MTB Banani Branch</span><a href="#" class="mtb-link">View</a></div>
+              <div class="d-flex justify-content-between py-1" style="font-size:0.75rem;border-bottom:1px solid var(--border-color)"><span>2018</span><span>: School Banking Campaign 2018 organized by MTB Banani Branch</span><a href="#" class="mtb-link">View</a></div>
+              <div class="d-flex justify-content-between py-1" style="font-size:0.75rem;border-bottom:1px solid var(--border-color)"><span>2017</span><span>: School Banking Campaign 2017 organized by MTB Banani Branch</span><a href="#" class="mtb-link">View</a></div>
+              <div class="d-flex justify-content-between py-1" style="font-size:0.75rem;border-bottom:1px solid var(--border-color)"><span>2016</span><span>: School Banking Campaign organized by MTB Banani Branch</span><a href="#" class="mtb-link">View</a></div>
+              <div class="d-flex justify-content-between py-1" style="font-size:0.75rem;border-bottom:1px solid var(--border-color)"><span>2014</span><span>: Milad Mehfil on the occasion of Relocation of MTB Banani Branch</span><a href="#" class="mtb-link">View</a></div>
+              <div class="d-flex justify-content-between py-1" style="font-size:0.75rem;border-bottom:1px solid var(--border-color)"><span>2011</span><span>: Inauguration of 23rd MTB ATM Booth at ABC Tower, Banani</span><a href="#" class="mtb-link">View</a></div>
+              <div class="d-flex justify-content-between py-1" style="font-size:0.75rem;border-bottom:1px solid var(--border-color)"><span>2011</span><span>: MTB ATM at Biqus Tower</span><a href="#" class="mtb-link">View</a></div>
+              <div class="d-flex justify-content-between py-1" style="font-size:0.75rem"><span>2008</span><span>: Mutual Trust Bank Ltd has opened its 33rd branch in Banani</span><a href="#" class="mtb-link">View</a></div>
+            </div>
+          </div>
+
+          <!-- Customer Call Logs -->
+          <div class="mtb-card overflow-hidden">
+            <div class="mtb-card-header" style="background:var(--mtb-purple)">Customer Call Logs</div>
+            <div class="table-responsive">
+              <table class="table table-mtb mb-0">
+                <tbody>
+                  <tr><td class="px-3 py-1">02/05/2017</td><td class="px-3 py-1 fw-medium mtb-link">AYUB PROPERTIES LIMITED</td></tr>
+                  <tr><td class="px-3 py-1">02/05/2017</td><td class="px-3 py-1 fw-medium mtb-link">LIGHTING HOUSE</td></tr>
+                  <tr><td class="px-3 py-1">02/05/2017</td><td class="px-3 py-1 fw-medium mtb-link">ORPA FASHION</td></tr>
+                  <tr><td class="px-3 py-1">02/05/2017</td><td class="px-3 py-1 fw-medium mtb-link">NDE</td></tr>
+                  <tr><td class="px-3 py-1">12/01/2017</td><td class="px-3 py-1 fw-medium mtb-link">Golden agro chemicals ltd</td></tr>
+                </tbody>
+              </table>
+              <div class="px-3 py-1 text-end"><a href="#" class="mtb-link" style="font-size:0.625rem">MORE</a> | <a href="#" class="mtb-link" style="font-size:0.625rem">CALL MORE</a></div>
+            </div>
+          </div>
+
+          <!-- MTBians' Triggered News -->
+          <div class="mtb-card overflow-hidden">
+            <div class="mtb-card-header" style="background:var(--mtb-red)">MTBians' Triggered News</div>
+            <div class="p-2">
+              <a href="#" class="sidebar-link py-1" style="font-size:0.6875rem"><i class="bi bi-camera" style="color:var(--mtb-blue);font-size:0.5rem"></i> 28/09/2025 -Regional Head's visit at Banani Branch view</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.6875rem"><i class="bi bi-camera" style="color:var(--mtb-blue);font-size:0.5rem"></i> 25/10/2023 -MTB's 24 Anniversary Celebration at Banani Branch view</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.6875rem"><i class="bi bi-camera" style="color:var(--mtb-blue);font-size:0.5rem"></i> 13/04/2023 -Pohela Boishakh & Choitro Shongkranti Celebration at Banani Branch view</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.6875rem"><i class="bi bi-camera" style="color:var(--mtb-blue);font-size:0.5rem"></i> 03/03/2019 -Doa Mahfil view</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.6875rem"><i class="bi bi-camera" style="color:var(--mtb-blue);font-size:0.5rem"></i> 18/09/2018 -MTB Banani Branch congratulates Mr. Khan Aftab Uddin, Managing Director of Spectra Engineers Ltd. for being awarded the CIP status. view</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- RIGHT SIDEBAR (col-3) - empty for branch page but could have widgets -->
+      <div class="col-lg-3 d-none d-lg-block">
+        <div class="d-flex flex-column gap-2">
+          <!-- Quick Links -->
+          <div class="mtb-card overflow-hidden">
+            <div class="mtb-card-header" style="background:var(--mtb-teal)">Quick Actions</div>
+            <div class="p-2">
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><i class="bi bi-printer" style="color:var(--mtb-blue);font-size:0.625rem"></i> Print Branch Profile</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><i class="bi bi-envelope" style="color:var(--mtb-teal);font-size:0.625rem"></i> Mail to Branch</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><i class="bi bi-qr-code" style="color:var(--mtb-purple);font-size:0.625rem"></i> Download QR</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><i class="bi bi-file-earmark-text" style="color:var(--mtb-green);font-size:0.625rem"></i> Read QR Content</a>
+            </div>
+          </div>
+
+          <!-- Branch Performance -->
+          <div class="mtb-card overflow-hidden">
+            <div class="mtb-card-header" style="background:var(--mtb-blue)">Branch Performance</div>
+            <div class="p-3 text-center">
+              <div class="mb-2" style="font-size:2rem;font-weight:700;color:var(--mtb-teal)">A+</div>
+              <p class="mb-0 text-muted" style="font-size:0.6875rem">Performance Grade (Q4 2025)</p>
+            </div>
+          </div>
+
+          <!-- Staff Distribution -->
+          <div class="mtb-card overflow-hidden">
+            <div class="mtb-card-header" style="background:var(--mtb-green)">Staff Distribution</div>
+            <div class="table-responsive">
+              <table class="table table-mtb mb-0">
+                <tbody>
+                  <tr><td class="px-3 py-1">Branch Manager</td><td class="text-end px-3 py-1 fw-semibold">1</td></tr>
+                  <tr><td class="px-3 py-1">Branch Ops Manager</td><td class="text-end px-3 py-1 fw-semibold">1</td></tr>
+                  <tr><td class="px-3 py-1">Cash Department</td><td class="text-end px-3 py-1 fw-semibold">3</td></tr>
+                  <tr><td class="px-3 py-1">GB- Customer Service</td><td class="text-end px-3 py-1 fw-semibold">5</td></tr>
+                  <tr><td class="px-3 py-1">Retail RM</td><td class="text-end px-3 py-1 fw-semibold">1</td></tr>
+                  <tr><td class="px-3 py-1">SME RM</td><td class="text-end px-3 py-1 fw-semibold">2</td></tr>
+                  <tr><td class="px-3 py-1">Dept undefined</td><td class="text-end px-3 py-1 fw-semibold">3</td></tr>
+                  <tr class="fw-bold" style="background:rgba(13,148,136,0.05)"><td class="px-3 py-1">Total</td><td class="text-end px-3 py-1">16</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- My Authorities -->
+          <div class="mtb-card overflow-hidden">
+            <div class="mtb-card-header" style="background:var(--mtb-orange)">My Authorities</div>
+            <div class="p-2">
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-orange);font-size:0.5rem">▸</span> Update Branch Profile</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-orange);font-size:0.5rem">▸</span> Manage Staff Directory</a>
+              <a href="#" class="sidebar-link py-1" style="font-size:0.75rem"><span style="color:var(--mtb-orange);font-size:0.5rem">▸</span> Branch Signboard Photo</a>
+            </div>
+          </div>
+
+          <!-- Branch Location Map Placeholder -->
+          <div class="mtb-card overflow-hidden">
+            <div class="mtb-card-header" style="background:var(--mtb-purple)">Branch Location</div>
+            <div class="p-3 text-center">
+              <div class="d-flex align-items-center justify-content-center rounded" style="height:120px;background:rgba(13,148,136,0.05);border:1px dashed var(--border-color)">
+                <div><i class="bi bi-geo-alt" style="font-size:2rem;color:var(--mtb-red)"></i><p class="mb-0 text-muted mt-1" style="font-size:0.625rem">Banani, Dhaka-1213</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="border-top mt-4" style="background:var(--card-bg);border-color:var(--border-color)">
+    <div class="container-fluid px-4 py-3" style="max-width:1600px;margin:0 auto">
+      <div class="d-flex flex-column flex-sm-row align-items-center justify-content-between gap-2" style="font-size:0.75rem;color:var(--muted-fg)">
+        <p class="mb-0">© Mutual Trust Bank PLC. All rights reserved.</p>
+        <div class="d-flex align-items-center gap-3"><a href="#" class="text-decoration-none" style="color:var(--muted-fg)">IT Support</a><a href="#" class="text-decoration-none" style="color:var(--muted-fg)">Privacy Policy</a><a href="#" class="text-decoration-none" style="color:var(--muted-fg)">Terms of Use</a></div>
+        <div class="d-flex align-items-center gap-2"><span>Powered by</span><span class="badge text-white" style="background:var(--mtb-orange);font-size:0.625rem">DBD</span><span>&</span><span class="badge text-white" style="background:var(--mtb-blue);font-size:0.625rem">ITD</span></div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
